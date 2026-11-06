@@ -1,0 +1,59 @@
+{
+  "schema_version": "fulcrum-step2-validation-receipt-v1",
+  "project": "fulcrum",
+  "step": "2",
+  "checked_at": "2026-11-06T15:42:50Z",
+  "status": "BLOCKED_REQUIRED_CAPABILITY_CONFLICT",
+  "checkpoint": {
+    "phase": "phase_1_prereqs",
+    "recorded_at": "2026-11-06T15:40:59Z",
+    "step1_status": "complete",
+    "step2_status": "in_progress"
+  },
+  "checks": {
+    "new_evidence_and_request_json_parse": "PASS",
+    "native_form_validate_payload_require_context_true": {
+      "saved_context_errors": [],
+      "full_discovery_ledger_errors": [],
+      "current_recall_material_inputs_errors": []
+    },
+    "unchanged_predecessor_bytes": {
+      "approved_requirements": true,
+      "discovery_ledger": true,
+      "revision1_sku_manifest": true,
+      "renderer_owned_sku_view": true,
+      "requirements_review": true,
+      "hash_evidence": "agent-output/fulcrum/_meta/02-residency-evidence.json"
+    },
+    "settled_recall_material_input_count": 51,
+    "project_root_markdown_only": true,
+    "step2_reviewer_attempts_in_recall": 0,
+    "step2_pricing_invocations_this_execution": 0
+  },
+  "pending_request": {
+    "request_id": "fulcrum-step2-residency-20261106-154059",
+    "path": "agent-output/fulcrum/_meta/02-residency-input-request.json",
+    "phase": "phase_2_required_capability_feasibility",
+    "needed_inputs": ["residency_conflict_resolution"],
+    "asked_by_delegated_architect": false,
+    "response_received": false
+  },
+  "not_completed": [
+    "Whole-workload feasibility and WAF scoring",
+    "Current derived SKU configuration, manifest revision 2 and human SKU confirmation",
+    "Applicable VNet/address and usage decisions",
+    "Pricing, budget gate, canonical architecture/cost artifacts and charts",
+    "Both mandatory independent Step 2 reviews",
+    "Current preliminary target-scoped policy feasibility",
+    "Final human Gate 2 and Step 2 completion"
+  ],
+  "authority_preserved": {
+    "azure_target_reads_or_writes": false,
+    "credentials_or_confidential_target_bindings_accessed": false,
+    "requirements_or_user_pin_changes": false,
+    "assessment_only_exit_selected": false,
+    "source_or_iac_or_application_edits": false,
+    "git_index_commit_or_remote_mutations": false,
+    "spending_or_deployment_authorization_inferred": false
+  }
+}

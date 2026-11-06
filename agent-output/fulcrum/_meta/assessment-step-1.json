@@ -1,0 +1,647 @@
+{
+  "contract": "practical-v1",
+  "step": "1",
+  "scope": {
+    "request_id": "fulcrum-entra-residency-user-decision-20261106-154915",
+    "input_ids": [
+      "company_size",
+      "target_environments",
+      "timeline",
+      "review_depth",
+      "project_name",
+      "industry",
+      "scenario",
+      "system_description",
+      "business_objective",
+      "infrastructure_scope",
+      "application_scope_exclusions",
+      "technology_evaluation_constraints",
+      "design_preferences_not_decisions",
+      "data_sensitivity",
+      "data_processing_constraints",
+      "security_privacy_requirements",
+      "compliance",
+      "anonymity_requirements",
+      "notification_intent",
+      "workload_pattern",
+      "daily_users",
+      "peak_concurrent_users",
+      "monthly_budget",
+      "budget_currency",
+      "budget_limit",
+      "cost_monitoring_mode",
+      "availability_target",
+      "recovery_profile",
+      "performance_target",
+      "iac_tool",
+      "target_region",
+      "private_client_access",
+      "authentication_requirement",
+      "compute_host",
+      "monitoring_access_scope",
+      "monitoring_network_requirement",
+      "monitoring_privacy_retention",
+      "non_relational_store",
+      "notification_channels",
+      "relational_db",
+      "residency_requirement",
+      "service_tier",
+      "storage_needs",
+      "notification_delivery_scope",
+      "messaging_events",
+      "supporting_services",
+      "sku_app_service",
+      "sku_nosql",
+      "sku_storage_repl",
+      "sku_commitment",
+      "sku_env_override"
+    ],
+    "environments": [
+      "dev"
+    ]
+  },
+  "inputs": {
+    "anonymity_requirements": {
+      "input_id": "anonymity_requirements",
+      "value": [
+        "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+        "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+        "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+        "Do not request real names, personal emails, domains or identities during discovery",
+        "Do not publish repository remote URLs or account identities in project documentation",
+        "Author attribution uses agent role only; no people",
+        "Fictional sample data only"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "application_scope_exclusions": {
+      "input_id": "application_scope_exclusions",
+      "value": [
+        "Cross-platform mobile application development",
+        "Backend application code",
+        "Application tests",
+        "Application permission implementation",
+        "Detailed business workflow, escalation and reporting implementation"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "authentication_requirement": {
+      "input_id": "authentication_requirement",
+      "value": "Employees plus external Volunteers \u2014 fictional dev accounts",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "availability_target": {
+      "input_id": "availability_target",
+      "value": "Dev/test \u2014 occasional downtime acceptable",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "budget_currency": {
+      "input_id": "budget_currency",
+      "value": "USD",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:25Z"
+    },
+    "budget_limit": {
+      "input_id": "budget_limit",
+      "value": "Planning target \u2014 optimize and highlight overruns",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "business_objective": {
+      "input_id": "business_objective",
+      "value": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "company_size": {
+      "input_id": "company_size",
+      "value": "Startup / small business",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+      "recorded_at": "2026-11-06T13:48:22Z"
+    },
+    "compliance": {
+      "input_id": "compliance",
+      "value": [
+        "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "compute_host": {
+      "input_id": "compute_host",
+      "value": "App Service \u2014 Linux containers",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:52Z"
+    },
+    "cost_monitoring_mode": {
+      "input_id": "cost_monitoring_mode",
+      "value": "minimal",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "daily_users": {
+      "input_id": "daily_users",
+      "value": "Up to 50",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:25Z"
+    },
+    "data_processing_constraints": {
+      "input_id": "data_processing_constraints",
+      "value": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "data_sensitivity": {
+      "input_id": "data_sensitivity",
+      "value": [
+        "Personal / customer data",
+        "Internal business data",
+        "Synthetic test data"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "design_preferences_not_decisions": {
+      "input_id": "design_preferences_not_decisions",
+      "value": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "iac_tool": {
+      "input_id": "iac_tool",
+      "value": "Bicep",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "industry": {
+      "input_id": "industry",
+      "value": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:31Z"
+    },
+    "infrastructure_scope": {
+      "input_id": "infrastructure_scope",
+      "value": [
+        "Hosting support for a containerized backend; backend code excluded",
+        "Cloud-hosted data",
+        "Identity and access management",
+        "Notification platform capabilities, with channels still to evaluate",
+        "Monitoring and operations",
+        "Infrastructure-as-code",
+        "Infrastructure testing and deployment automation",
+        "Store anonymous resulting documentation in this repository"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "messaging_events": {
+      "input_id": "messaging_events",
+      "value": [
+        "None \u2014 no separate messaging/event service required"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "monitoring_access_scope": {
+      "input_id": "monitoring_access_scope",
+      "value": "An existing platform/team handles monitoring access",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:52Z"
+    },
+    "monitoring_network_requirement": {
+      "input_id": "monitoring_network_requirement",
+      "value": "Authenticated public monitoring permitted if policy allows",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:52Z"
+    },
+    "monitoring_privacy_retention": {
+      "input_id": "monitoring_privacy_retention",
+      "value": "30 days for sanitized dev diagnostics",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:52Z"
+    },
+    "monthly_budget": {
+      "input_id": "monthly_budget",
+      "value": "500\u20132,000/month",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:25Z"
+    },
+    "non_relational_store": {
+      "input_id": "non_relational_store",
+      "value": "Cosmos DB \u2014 preferred primary document store",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:52Z"
+    },
+    "notification_channels": {
+      "input_id": "notification_channels",
+      "value": [
+        "Email capability \u2014 fictional/dev testing only",
+        "Mobile push capability \u2014 fictional/dev testing only",
+        "Dev simulation only \u2014 no outbound delivery"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:53Z"
+    },
+    "notification_delivery_scope": {
+      "input_id": "notification_delivery_scope",
+      "value": "Simulation-only MVP \u2014 defer email/push transports, retain functional channel intent",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "notification_intent": {
+      "input_id": "notification_intent",
+      "value": {
+        "events": [
+          "New opportunities",
+          "Registration confirmations",
+          "Approval decisions",
+          "Assignment changes",
+          "Upcoming activities"
+        ],
+        "candidate_channels_only": [
+          "Email",
+          "Push",
+          "Other channels"
+        ],
+        "mandatory_channel_confirmed": false
+      },
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:33Z"
+    },
+    "peak_concurrent_users": {
+      "input_id": "peak_concurrent_users",
+      "value": "10\u2013100",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:25Z"
+    },
+    "performance_target": {
+      "input_id": "performance_target",
+      "value": "Typical API responses under 2 seconds \u2014 planning goal to validate",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "private_client_access": {
+      "input_id": "private_client_access",
+      "value": "A new secure remote-access path is needed",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "project_name": {
+      "input_id": "project_name",
+      "value": "fulcrum",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:31Z"
+    },
+    "recovery_profile": {
+      "input_id": "recovery_profile",
+      "value": "Standard \u2014 recover within 4 hours; up to 1 hour of data loss",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "relational_db": {
+      "input_id": "relational_db",
+      "value": "None \u2014 relational storage not required",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:53Z"
+    },
+    "residency_requirement": {
+      "input_id": "residency_requirement",
+      "value": {
+        "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies.",
+        "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
+        "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
+        "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver.",
+        "acceptance_scope": "Project Stakeholders accept this narrow exception as meeting their project GDPR requirements. This is not independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority."
+      },
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "fulcrum-entra-residency-user-decision-20261106-154915",
+      "recorded_at": "2026-11-06T15:53:38Z"
+    },
+    "review_depth": {
+      "input_id": "review_depth",
+      "value": "default",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+      "recorded_at": "2026-11-06T13:48:22Z"
+    },
+    "scenario": {
+      "input_id": "scenario",
+      "value": "Greenfield \u2014 new workload",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "security_privacy_requirements": {
+      "input_id": "security_privacy_requirements",
+      "value": [
+        "Secure authentication and role-based access control",
+        "Encryption in transit and at rest",
+        "Secrets management",
+        "Audit logging",
+        "Data minimization",
+        "Retention and deletion",
+        "Privacy-aware monitoring",
+        "Mandatory security and privacy baseline"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "service_tier": {
+      "input_id": "service_tier",
+      "value": "Balanced",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:53Z"
+    },
+    "sku_app_service": {
+      "input_id": "sku_app_service",
+      "value": "No SKU preference \u2014 Architect choose least-cost suitable tier meeting captured requirements",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "sku_commitment": {
+      "input_id": "sku_commitment",
+      "value": "On-demand only \u2014 no reserved commitment",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "sku_env_override": {
+      "input_id": "sku_env_override",
+      "value": "No dev-specific SKU override \u2014 apply these preferences to dev only",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "sku_nosql": {
+      "input_id": "sku_nosql",
+      "value": "No SKU preference \u2014 Architect choose least-cost suitable tier meeting captured requirements",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "sku_storage_repl": {
+      "input_id": "sku_storage_repl",
+      "value": "LRS \u2014 explicit locally redundant replication pin",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "storage_needs": {
+      "input_id": "storage_needs",
+      "value": [
+        "Blob storage \u2014 media or documents"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+      "recorded_at": "2026-11-06T14:21:53Z"
+    },
+    "supporting_services": {
+      "input_id": "supporting_services",
+      "value": [
+        "Azure Monitor + Application Insights + Log Analytics \u2014 preferred diagnostics products",
+        "Key Vault \u2014 preferred secrets/certificates service",
+        "Azure Container Registry \u2014 preferred container image registry"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+      "recorded_at": "2026-11-06T14:33:26Z"
+    },
+    "system_description": {
+      "input_id": "system_description",
+      "value": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "target_environments": {
+      "input_id": "target_environments",
+      "value": [
+        "dev"
+      ],
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+      "recorded_at": "2026-11-06T13:48:22Z"
+    },
+    "target_region": {
+      "input_id": "target_region",
+      "value": "swedencentral",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "technology_evaluation_constraints": {
+      "input_id": "technology_evaluation_constraints",
+      "value": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-brief-capture-20261106-134127",
+      "recorded_at": "2026-11-06T13:48:32Z"
+    },
+    "timeline": {
+      "input_id": "timeline",
+      "value": "Within 2 weeks",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+      "recorded_at": "2026-11-06T13:48:22Z"
+    },
+    "workload_pattern": {
+      "input_id": "workload_pattern",
+      "value": "Web application with a database",
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+      "recorded_at": "2026-11-06T14:10:08Z"
+    }
+  }
+}

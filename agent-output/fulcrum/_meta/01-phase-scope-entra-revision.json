@@ -1,0 +1,20 @@
+{
+  "request_id": "fulcrum-entra-residency-user-decision-20261106-154915",
+  "input_ids": [
+    "company_size", "target_environments", "timeline", "review_depth",
+    "project_name", "industry", "scenario", "system_description", "business_objective",
+    "infrastructure_scope", "application_scope_exclusions", "technology_evaluation_constraints",
+    "design_preferences_not_decisions", "data_sensitivity", "data_processing_constraints",
+    "security_privacy_requirements", "compliance", "anonymity_requirements", "notification_intent",
+    "workload_pattern", "daily_users", "peak_concurrent_users", "monthly_budget",
+    "budget_currency", "budget_limit", "cost_monitoring_mode", "availability_target",
+    "recovery_profile", "performance_target", "iac_tool", "target_region",
+    "private_client_access", "authentication_requirement", "compute_host",
+    "monitoring_access_scope", "monitoring_network_requirement", "monitoring_privacy_retention",
+    "non_relational_store", "notification_channels", "relational_db", "residency_requirement",
+    "service_tier", "storage_needs", "notification_delivery_scope", "messaging_events",
+    "supporting_services", "sku_app_service", "sku_nosql", "sku_storage_repl",
+    "sku_commitment", "sku_env_override"
+  ],
+  "environments": ["dev"]
+}

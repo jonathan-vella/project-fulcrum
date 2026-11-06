@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "challenged_artifact": "agent-output/fulcrum/01-requirements.md",
+  "artifact_type": "requirements",
+  "review_focus": "comprehensive",
+  "pass_number": 1,
+  "overall_assessment": "APPROVED",
+  "risk_level": "low",
+  "findings": [],
+  "cache_inputs": {
+    "artifact_sha": "14fbcba64659e5f498037ee05f7871ee3a2a5f3db6d908d742e306a5fc8306be",
+    "checklists_sha": "418fdabfe6b6d1f762c798fd559369a89c1e607af237a5c2861abc9b34876073",
+    "protocol_sha": "ee62e6840d6b4e331bf39fc6ae1a617ae17bebe795a5a9d8587cb8c5ab988182",
+    "reviewer": "challenger-review-subagent",
+    "reviewer_contract": ".github/skills/apex-azure-defaults/references/one-shot-review.md",
+    "reviewer_contract_sha": "9c3243808f64728c77d632c952456548576fcb0be301a9c5d22973d0a69c4c7a",
+    "reviewer_definition": ".github/agents/_subagents/challenger-review-subagent.agent.md",
+    "reviewer_definition_sha": "61fc7885bbfdd9f47dcbbc23cbc3a8ecbc0e6a5f04d6504c3146bae9d32bd769",
+    "model_policy": "runtime-managed",
+    "artifact_hash": "c65dcc2ccd9c340939d710de077f63c74591710e721e7e788fee4b4c8c04e485"
+  },
+  "supporting_inputs": [
+    {
+      "path": "agent-output/fulcrum/_meta/assessment-step-1.json",
+      "sha256": "fd192768c919f9f1828d266cfb6158ed1d7db6297693494d1a50ea4b66d10ac0"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "sha256": "4ac4c1894f9d654f82cff0b3ee531aa9fa9ab2cf14d80b4fbb199eeda7a815a8"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/01-residency-refinement-provenance.json",
+      "sha256": "eede53a5d938a24206bcbc5de624a272191f23ddd7f15ae5c6946caa4be5bad7"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-entra-residency-exception-receipt.json",
+      "sha256": "aede5b0b1388721399ae5a96087c0d2c3ab910dd7769987c7aa769ad632fbf7a"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/01-phase-scope-entra-revision.json",
+      "sha256": "f7de6f8b29b29160298074843b745151ae412cbce987035231008ebcaf4a8b69"
+    },
+    {
+      "path": ".github/instructions/sku-manifest.instructions.md",
+      "sha256": "0b7b5d88e656a7587610d460fc64fb162d2dea8a2be3a268c0e9af45f04e347d"
+    },
+    {
+      "path": "tools/schemas/sku-manifest.schema.json",
+      "sha256": "a35c83eac26d36c6c6faf6a445b237f946f2446fcfdbb5e364b42925509def5a"
+    },
+    {
+      "path": ".github/skills/apex-azure-artifacts/templates/01-requirements.template.md",
+      "sha256": "42dbae701e9741d988728b7aca5fdefc6edcb064817ddbfc83a7c3d9801c985c"
+    },
+    {
+      "path": ".github/skills/apex-azure-artifacts/templates/PROJECT-README.template.md",
+      "sha256": "0ef09dc620004e35de49b9d6a6c1fbe90b109bd3b7a6c26b013bf1a65f171ff8"
+    }
+  ],
+  "must_fix_count": 0,
+  "should_fix_count": 0,
+  "suggestion_count": 0,
+  "review_execution": {
+    "reviewer": "challenger-review-subagent",
+    "worker_id": "3f3df2a9-958e-49ba-98ab-79fc6babd88e",
+    "parent_id": "c43642a4-368a-4e34-a56f-3087ce737523",
+    "tool_call_id": "call_btdPAipkPz1vo0XEEHkpGuYj",
+    "completed_at": "2026-11-06T16:19:16.522Z",
+    "request_id": "fulcrum-requirements-entra-revision-20261106-155430",
+    "step": "1",
+    "review_depth": "default",
+    "project_name": "fulcrum"
+  }
+}

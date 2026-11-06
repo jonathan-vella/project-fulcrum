@@ -1,0 +1,16 @@
+{
+  "request_id": "fulcrum-step2-residency-20261106-154059",
+  "request_id_source": "apex-local",
+  "phase": "phase_2_required_capability_feasibility",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "request_requirements_revision",
+  "normalized_response": {
+    "residency_conflict_resolution": "request_requirements_revision"
+  },
+  "authorized_next_action": "Return to 02-Requirements to determine an explicit acceptable residency boundary.",
+  "settled_residency_changed": false,
+  "authority_boundary": "No replacement boundary or identity exception was selected. Existing approved requirements remain authoritative until revised and reviewed through the supported workflow. No Azure operations, spend, Production or deployment authority is granted.",
+  "sdk_response_id_supplied": false
+}

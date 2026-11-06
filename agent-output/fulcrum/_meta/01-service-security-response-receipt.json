@@ -1,0 +1,70 @@
+{
+  "project": "fulcrum",
+  "step": 1,
+  "phase": "phase_3_nfr",
+  "capture_mode": "returned",
+  "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+  "request_id_source": "apex-local",
+  "captured_at": "2026-11-06T14:21:11Z",
+  "source_conversation_at": "2026-11-06T14:19:42.762Z",
+  "respondent": "Project Stakeholders",
+  "relayed_by": "01-Orchestrator",
+  "source_locator": "Current delegated continuation relays the actual native ask_user response to the saved unchanged service/security form. Parent reports validate_payload(form, context, require_context=True) => [] and actual invocation of that unchanged form.",
+  "request_envelope_path": "agent-output/fulcrum/_meta/01-service-security-input-request.json",
+  "actual_response": {
+    "service_tier": "Balanced",
+    "compute_host": "App Service — Linux containers",
+    "relational_db": "None — relational storage not required",
+    "non_relational_store": "Cosmos DB — preferred primary document store",
+    "storage_needs": "Blob storage — media or documents",
+    "notification_channels": "Email capability — fictional/dev testing only, Mobile push capability — fictional/dev testing only, Dev simulation only — no outbound delivery",
+    "residency_requirement": "Single region — Sweden Central only",
+    "monitoring_network_requirement": "Authenticated public monitoring permitted if policy allows",
+    "monitoring_access_scope": "An existing platform/team handles monitoring access",
+    "monitoring_privacy_retention": "30 days for sanitized dev diagnostics"
+  },
+  "normalized_explicit_values": {
+    "service_tier": "Balanced",
+    "compute_host": "App Service — Linux containers",
+    "relational_db": "None — relational storage not required",
+    "non_relational_store": "Cosmos DB — preferred primary document store",
+    "storage_needs": ["Blob storage — media or documents"],
+    "notification_channels": [
+      "Email capability — fictional/dev testing only",
+      "Mobile push capability — fictional/dev testing only",
+      "Dev simulation only — no outbound delivery"
+    ],
+    "residency_requirement": "Single region — Sweden Central only",
+    "monitoring_network_requirement": "Authenticated public monitoring permitted if policy allows",
+    "monitoring_access_scope": "An existing platform/team handles monitoring access",
+    "monitoring_privacy_retention": "30 days for sanitized dev diagnostics"
+  },
+  "normalizations": [
+    "The native single-string storage multi-select exactly matches one displayed label; normalize to a one-element array.",
+    "The native comma-separated notification multi-select exactly matches three displayed labels; normalize to an array retaining all three in returned order. No selection is dropped.",
+    "For the separate canonical recall decision only, the unambiguous no-relational-store answer maps to relational_db=none. The ledger/material input retains the original label."
+  ],
+  "material_ambiguities": [
+    {
+      "input_id": "notification_channels",
+      "claim": "Email and mobile push capability were selected together with simulation-only, although the form said to choose simulation alone.",
+      "resolution": "Pending one triggered notification-delivery follow-up. Preserve both functional channel intents; no outbound delivery permission, transport provisioning scope or deferral is inferred."
+    }
+  ],
+  "interpretation_constraints": [
+    "Balanced is the actual optimization profile, not a creative SKU, tier floor or promise of availability.",
+    "App Service Linux container hosting, Cosmos DB as the preferred primary document store, no relational store, and Blob media/document storage are explicit service intents. No second database, cache, gateway or queue is added.",
+    "Single region — Sweden Central only is a material residency constraint, not merely a region preference. It is not relaxed to Sweden, EU/EEA or an assumed global-service exception.",
+    "Architecture must assess feasibility across identity, email/push, monitoring and all other dependencies, including global/control-plane behavior. If a capability cannot satisfy the exact boundary, return the precise scope conflict to Project Stakeholders; do not remove identity/notification intent or claim compliance.",
+    "Authenticated public monitoring is conditional on effective policy and applies only to Log Analytics/workspace-based Application Insights. Private API/data, private DNS, TLS, authentication and least privilege remain mandatory.",
+    "Existing platform/team monitoring-access responsibility is settled. No team/contact/identity follow-up is required for discovery.",
+    "Thirty days is the explicit sanitized dev diagnostic retention requirement, not evidence that a resource is configured or a waiver of applicable policy/audit/legal requirements.",
+    "The original notification_intent and infrastructure_scope wording in the source brief remain historical source context; the current explicit notification_channels answer and its unresolved delivery ambiguity take precedence for current discovery."
+  ],
+  "applicable_environments": ["dev"],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "previous_answer_snapshot_locator": "agent-output/fulcrum/_meta/01-service-security-input-request.json#/context/answers",
+  "authority_scope": "Infrastructure-only dev MVP discovery and authorized anonymous Step 1 documentation/checks/review. No Azure operations, deployment, credential changes, spend, outbound notification permission or Production authority is supplied by this receipt.",
+  "sdk_response_id_supplied": false,
+  "gate_1_approval": null
+}

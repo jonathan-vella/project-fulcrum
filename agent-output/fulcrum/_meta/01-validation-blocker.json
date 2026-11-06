@@ -1,0 +1,77 @@
+{
+  "project": "fulcrum",
+  "step": "1",
+  "status": "RESOLVED",
+  "resolution": {
+    "authorization": "Explicit request to repair the APEX issue locally and submit the generic upstream fix",
+    "command": "node tools/scripts/validate-sku-manifest.mjs fulcrum",
+    "exit_code": 0,
+    "error_count": 0,
+    "warning_count": 0,
+    "targeted_tests_passed": 77,
+    "pin_changed": false,
+    "configuration_invented": false,
+    "review_dispatched": false,
+    "gate_approved": false,
+    "next_action": "Resume the same Requirements owner for remaining checks, independent review and human Gate 1. Historical failure details below are retained."
+  },
+  "stage": "phase_5_artifact",
+  "last_completed_phase": "phase_4_technical",
+  "command": "node tools/scripts/validate-sku-manifest.mjs fulcrum",
+  "exit_code": 1,
+  "errors": [
+    "/services/0 must have required property 'iac_logical_names'",
+    "/services/0 must have required property 'capacity'",
+    "/services/0 must have required property 'zonal'",
+    "/services/0 must have required property 'sla_target'",
+    "/services/0 must match \"else\" schema"
+  ],
+  "error_count": 5,
+  "warning_count": 0,
+  "schema_path": "tools/schemas/sku-manifest.schema.json",
+  "schema_locator": "$defs.service.allOf[0].else.required",
+  "scope_conflict": "Step 1 must capture only explicit user pins, not derive architecture. The only exact pin is LRS replication. Schema requires full configuration for every source except observed-current, while this is a greenfield user-pin and cannot be relabelled observed-current.",
+  "unprovided_configuration": [
+    "Bicep and Terraform IaC logical names",
+    "Fixed/autoscale capacity mode and numeric default count",
+    "Zonal architecture configuration",
+    "Per-service SLA target"
+  ],
+  "not_permitted_repairs": [
+    "Invent architecture fields, a full Standard_LRS provider SKU or user confirmation",
+    "Mislabel the pin observed-current or architect-derived",
+    "Drop the actual LRS pin or add a skip sentinel",
+    "Modify repository schema, validator or renderer outside Step 1 ownership"
+  ],
+  "safe_outputs": {
+    "requirements": "agent-output/fulcrum/01-requirements.md",
+    "manifest_draft_invalid": "agent-output/fulcrum/contracts/sku-manifest.json",
+    "renderer_output_not_validation": "agent-output/fulcrum/sku-manifest.md",
+    "same_request_response_receipt": "agent-output/fulcrum/_meta/01-platform-sku-response-receipt.json"
+  },
+  "passed_checks": [
+    "JSON syntax for new receipt, full ledger, eight new input records, phase-scope files and manifest",
+    "Eight actual response inputs adopted through recall using their unchanged asked request ID",
+    "phase_3_nfr and phase_4_technical checkpoints",
+    "Recorded existing Step 1 phase authorization; permission_granted=false",
+    "npm run check:h2-order -- fulcrum: 9 required H2s in order, 10 total",
+    "Renderer wrote sku-manifest.md rev 1"
+  ],
+  "review": {
+    "required": true,
+    "artifact_type": "requirements",
+    "review_focus": "comprehensive",
+    "pass_number": 1,
+    "output_path": "agent-output/fulcrum/reviews/challenge-findings-requirements.json",
+    "attempts_before_this_continuation": 0,
+    "attempts_this_continuation": 0,
+    "dispatched": false,
+    "reason": "Artifact prerequisite validation failed. This is not a reviewer-capability failure.",
+    "practical_allowance": "Initial plus at most one closure within original granted scope; unchanged."
+  },
+  "human_gate_1": "Not ready; no review, findings, verdict or approval.",
+  "next_owner": "01-Orchestrator",
+  "next_action": "Resolve the Step 1 pin-only manifest/schema contract with the repository tooling owner under separate authorized scope. Resume this same Step 1 from the retained ledger after resolution; validate, freeze the material projection, run the mandatory one-shot review, then offer the separate real human Gate 1.",
+  "needed_material_inputs": [],
+  "permission_granted": false
+}

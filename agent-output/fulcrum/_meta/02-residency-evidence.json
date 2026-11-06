@@ -1,0 +1,62 @@
+{
+  "schema_version": "fulcrum-step2-feasibility-evidence-v1",
+  "project": "fulcrum",
+  "step": "2",
+  "observed_at": "2026-11-06T15:40:29Z",
+  "evidence_scope": "Current public Microsoft documentation only; no tenant, subscription, resource, policy or runtime observations.",
+  "authorization_receipt": "agent-output/fulcrum/_meta/01-gate1-response-receipt.json",
+  "sources": [
+    {
+      "id": "entra-core-store",
+      "url": "https://learn.microsoft.com/en-us/entra/fundamentals/data-residency",
+      "title": "Microsoft Entra ID and data residency",
+      "retrieval": "azure-mcp-documentation microsoft_docs_search followed by microsoft_docs_fetch",
+      "section": "Core Store",
+      "excerpt": "Scale units are assigned to a geo-location. Each geo-location uses two or more Azure regions to store the data.",
+      "additional_observations": [
+        "Public-cloud tenant country/region selection maps to a geo-location and a scale unit, not a selectable single Azure deployment region.",
+        "The article includes external tenants, distinguishes their geographic availability, and lists no Sweden Central-only option.",
+        "The cloud solution model is geographic, with component-specific exceptions; a regional application resource does not change this identity boundary."
+      ]
+    },
+    {
+      "id": "entra-europe-boundary",
+      "url": "https://learn.microsoft.com/entra/fundamentals/data-storage-eu",
+      "title": "Customer data storage and processing for European customers in Microsoft Entra ID",
+      "retrieval": "azure-mcp-documentation microsoft_docs_search followed by microsoft_docs_fetch",
+      "section": "Introduction and services that transfer customer data",
+      "observations": [
+        "European data residency and the EU Data Boundary have documented qualifications and transfers.",
+        "Neither commitment is evidence of Sweden Central-only storage and processing.",
+        "No target tenant location or optional feature configuration has been observed."
+      ]
+    }
+  ],
+  "finding": {
+    "id": "ARCH-FEAS-001",
+    "classification": "Blocking required-capability conflict; architect research, not an independent reviewer finding.",
+    "requirements": [
+      "FR-04 workforce and external Volunteer Entra identity using fictional dev accounts",
+      "Strict Sweden Central-only residency including identity and global/control-plane dependencies"
+    ],
+    "conclusion": "The required Entra identity capability conflicts with the approved single-region boundary. No compliant end-to-end implementation candidate has been established.",
+    "confidence": "High",
+    "runtime_status": "Unverified",
+    "owner": "Project Stakeholders through the interactive parent and 02-Requirements",
+    "release_condition": "Actual owner resolution and any required Requirements-owner revision, validation, review and approval; renewed Architecture feasibility checks against the resulting current authority.",
+    "not_authorized": [
+      "Substituting EU or geographic residency for the approved boundary",
+      "Removing authentication, external Volunteers or managed identity",
+      "Accepting a security or legal exception",
+      "Treating fictional accounts as a regional service guarantee",
+      "Pricing or approving an infeasible committed architecture"
+    ]
+  },
+  "unchanged_inputs": {
+    "agent-output/fulcrum/01-requirements.md": "7611e8b552ed0afae8f6a4e3a50c3b42666f99f1ebd7bdebdca2d060d95345d1",
+    "agent-output/fulcrum/_meta/01-discovery-answers.json": "4ac4c1894f9d654f82cff0b3ee531aa9fa9ab2cf14d80b4fbb199eeda7a815a8",
+    "agent-output/fulcrum/contracts/sku-manifest.json": "a0d2a2d3db1442adf59e4837c951c29370d0a4c1b9455725a36ed450890694ed",
+    "agent-output/fulcrum/sku-manifest.md": "3a17f30ac12b72f50369b991bb51dbaf1c494a81791fa59031b9122b998fb1eb",
+    "agent-output/fulcrum/reviews/challenge-findings-requirements.json": "ba9dc91a1cb5c57c8bba6edc2e53d5e7e3d2bf53b4774899605e72ea821d15f1"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "request_id": "fulcrum-entra-residency-user-decision-20261106-154915",
+  "request_id_source": "apex-local",
+  "capture_mode": "recovered",
+  "source": "Explicit user message in the current conversation at 2026-11-06T15:49:15.027Z; not a response to an unasked form",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "original_response": "i want to approve this exception since this is Entra's behaviour and it is compliant with my gdpr requirements as per [Customer data storage and processing for European customers in Microsoft Entra ID - Microsoft Entra | Microsoft Learn](https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu)",
+  "decision": "Approve a narrow residency exception for Microsoft Entra identity's documented European customer data storage and processing behavior; retain Sweden Central-only for workload data.",
+  "basis_url": "https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu",
+  "basis_verified": {
+    "source": "Azure MCP documentation search followed by fetch of the cited official page",
+    "commitment_is_qualified": true,
+    "conditions": [
+      "Applicability depends on how the tenant was created and provisioned.",
+      "The page says most customer data is stored and processed within the EU Data Boundary, with documented qualifications and limited transfers.",
+      "Optional capabilities and other integrated services require separate data-handling review."
+    ]
+  },
+  "approved_requirements_revision": {
+    "workload_data": "Retain the existing Sweden Central-only requirement.",
+    "microsoft_entra_identity": "Accept the documented European storage and processing behavior cited by Project Stakeholders, subject to verifying the applicable tenant and identity service commitments.",
+    "other_services": "No automatic residency exception.",
+    "optional_cross_boundary_features": "No automatic authorization for optional transfers or features."
+  },
+  "authority_boundary": "This records the user's project requirement acceptance, not independent GDPR certification, a waiver of applicable law or effective Azure Policy, a general global-services exception, or Azure read/write, spend, Production or deployment authorization.",
+  "next_owner": "02-Requirements",
+  "next_action": "Apply the narrowly authorized material requirement revision through the supported recall refinement lifecycle; preserve prior evidence and accounting, validate and independently review affected requirements before Architecture relies on revised authority.",
+  "sdk_response_id_supplied": false
+}

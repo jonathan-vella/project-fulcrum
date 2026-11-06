@@ -1,0 +1,63 @@
+{
+  "project": "fulcrum",
+  "step": 1,
+  "phase": "phase_2_workload",
+  "capture_mode": "returned",
+  "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+  "request_id_source": "apex-local",
+  "captured_at": "2026-11-06T14:09:00Z",
+  "respondent": "Project Stakeholders",
+  "relayed_by": "01-Orchestrator",
+  "source_locator": "Current delegated continuation relays the actual native ask_user response to the saved unchanged workload form; parent reported validate_payload(form, context, require_context=True) errors=[] before display.",
+  "request_envelope_path": "agent-output/fulcrum/_meta/01-workload-input-request.json",
+  "actual_response": {
+    "workload_pattern": "Web application with a database",
+    "daily_users": "Up to 50",
+    "peak_concurrent_users": "10–100",
+    "monthly_budget": "500–2,000/month",
+    "budget_currency": "USD",
+    "budget_limit": "Planning target — optimize and highlight overruns",
+    "cost_monitoring_mode": "minimal — budget only; operational alerts remain",
+    "availability_target": "Dev/test — occasional downtime acceptable",
+    "recovery_profile": "Standard — recover within 4 hours; up to 1 hour of data loss",
+    "performance_target": "Typical API responses under 2 seconds — planning goal to validate",
+    "iac_tool": "Bicep",
+    "target_region": "Sweden Central (swedencentral)",
+    "private_client_access": "A new secure remote-access path is needed",
+    "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts"
+  },
+  "normalized_explicit_values": {
+    "workload_pattern": "Web application with a database",
+    "daily_users": "Up to 50",
+    "peak_concurrent_users": "10–100",
+    "monthly_budget": "500–2,000/month",
+    "budget_currency": "USD",
+    "budget_limit": "Planning target — optimize and highlight overruns",
+    "cost_monitoring_mode": "minimal",
+    "availability_target": "Dev/test — occasional downtime acceptable",
+    "recovery_profile": "Standard — recover within 4 hours; up to 1 hour of data loss",
+    "performance_target": "Typical API responses under 2 seconds — planning goal to validate",
+    "iac_tool": "Bicep",
+    "target_region": "swedencentral",
+    "private_client_access": "A new secure remote-access path is needed",
+    "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts"
+  },
+  "normalizations": [
+    "Sweden Central (swedencentral) maps unambiguously to region identifier swedencentral.",
+    "The selected minimal cost-monitoring label maps to canonical minimal; budget-only cost monitoring and continuing operational alerts retain their original meaning."
+  ],
+  "interpretation_constraints": [
+    "Daily users and concurrency are dev planning ranges, not measured usage or precise point estimates.",
+    "USD 500–2,000/month is a soft planning range, not an exact USD 2,000 cap, a price estimate or spend authorization.",
+    "Under-two-second typical API responses, RTO within 4 hours and RPO up to 1 hour are objectives to validate, not verified platform capabilities.",
+    "No Production SLA is captured. Standard recovery does not imply the runbook profile's 99.9% SLA.",
+    "Minimal monitoring does not remove operational alerts. Budget notices use Owner-role recipients and may not reach a named non-Owner; no recipient, role membership, delivery or existing monitoring configuration is verified.",
+    "Employees and external Volunteers are distinct sign-in populations; only fictional dev accounts are in scope. No workforce-only identity architecture is selected.",
+    "Secure remote-access intent is captured, not a VPN, gateway, ingress, DNS or other network design."
+  ],
+  "applicable_environments": ["dev"],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "authority_scope": "Infrastructure-only dev MVP discovery and authorized anonymous Step 1 documentation/checks/review. No live Azure reads/writes, deployment, credentials, spend or Production authority.",
+  "sdk_response_id_supplied": false,
+  "gate_1_approval": null
+}

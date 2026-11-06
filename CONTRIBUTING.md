@@ -156,7 +156,7 @@ npm run lint:md:fix
 ### 1. Fork & Clone
 
 > **Note:** For **using** APEX, create your own repo from the
-> [Accelerator template](https://github.com/jonathan-vella/apex-accelerator)
+> [Accelerator template](https://github.com/jonathan-vella/project-fulcrum)
 > instead. The instructions below are for contributing back to this upstream project.
 
 ```bash

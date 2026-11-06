@@ -1,0 +1,189 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "phase": "phase_1_discovery",
+  "stage": "business",
+  "complete": false,
+  "request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+  "request_id_source": "apex-local",
+  "needed_inputs": ["company_size", "target_environments", "timeline", "review_depth"],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "brief_capture_receipt_path": "agent-output/fulcrum/_meta/01-brief-capture-receipt.json",
+  "source_brief_path": "agent-output/fulcrum/README.md",
+  "source_brief_section": "Supplied source briefing",
+  "helper_provenance": {
+    "command": "node tools/scripts/requirements-discovery.mjs --stage business --answers agent-output/fulcrum/_meta/01-discovery-answers.json",
+    "emitted_fields": ["company_size", "target_environments", "timeline"],
+    "adaptations": [
+      "Business descriptions adapted to nonprofit infrastructure-only MVP context; native choice and array shapes retained",
+      "Independent review_depth input added once for the interactive parent; no captured answer or default assigned"
+    ]
+  },
+  "form": {
+    "message": "Project Fulcrum — MVP planning basics. The nonprofit purpose, containerized-backend hosting scope, anonymity and exclusion of application development are already captured. Please answer only these four missing choices. Not sure is valid, and custom answers use the same field. No architecture, Azure access, spending or Gate 1 approval is requested.",
+    "requestedSchema": {
+      "properties": {
+        "company_size": {
+          "type": "string",
+          "title": "The Organization — planning footprint",
+          "description": "Choose a broad size for platform planning, not names or an exact employee count. Startup / small business also covers a small nonprofit initiative. You may enter a custom answer in this same field.",
+          "enum": ["Startup / small business", "Mid-market", "Enterprise", "Not sure yet"]
+        },
+        "target_environments": {
+          "type": "array",
+          "title": "MVP — environments in this delivery",
+          "description": "Select environments to plan now. dev/test use fictional data; prod is live use and retains applicable legal duties and mandatory privacy/security controls. A future Production ambition does not automatically put prod in this MVP. A custom answer is available in this same field.",
+          "items": {
+            "type": "string",
+            "enum": ["dev", "test", "staging", "prod", "sandbox", "Not sure yet"]
+          }
+        },
+        "timeline": {
+          "type": "string",
+          "title": "Hosting platform — first usable target",
+          "description": "When should the first usable infrastructure platform be available? This is not the application team's delivery date. You may enter a custom answer, including Not sure, in this same field.",
+          "enum": [
+            "Within 2 weeks",
+            "Within 1 month",
+            "Within 3 months",
+            "Within 6 months",
+            "A specific date — enter it here",
+            "No fixed date / exploratory"
+          ]
+        },
+        "review_depth": {
+          "type": "string",
+          "title": "Delivery — independent review depth",
+          "description": "default is recommended for a practical MVP: all mandatory independent reviews and human gates still apply. deep opts into additional Architecture and IaC-planning lenses and more review work; it is not required merely because personal data may be processed. You may enter a custom answer in this same field.",
+          "enum": ["default", "deep", "Not sure — guide me"]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "project_name": "fulcrum",
+      "project_display_name": "Project Fulcrum",
+      "industry": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+      "scenario": "Greenfield — new workload",
+      "system_description": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+      "business_objective": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+      "delivery_context": "New MVP; pro bono initiative for The Organization. Existing coordination relies on calls, email, instant messaging, spreadsheets and manual approvals/follow-ups, causing overhead, low visibility and poor scalability. This is business context, not a migration request.",
+      "infrastructure_scope": [
+        "Hosting support for a containerized backend; backend code excluded",
+        "Cloud-hosted data",
+        "Identity and access management",
+        "Notification platform capabilities, with channels still to evaluate",
+        "Monitoring and operations",
+        "Infrastructure-as-code",
+        "Infrastructure testing and deployment automation",
+        "Store anonymous resulting documentation in this repository"
+      ],
+      "application_scope_exclusions": [
+        "Cross-platform mobile application development",
+        "Backend application code",
+        "Application tests",
+        "Application permission implementation",
+        "Detailed business workflow, escalation and reporting implementation"
+      ],
+      "initial_application_roles": ["Volunteer", "Coordinator", "Manager", "Administrator"],
+      "application_role_constraints": "Initial permission boundaries require Project Stakeholders validation. Manager is a functional role, not an identifiable party. Exact permissions and application implementation belong to another team.",
+      "volunteer_workflow_intent": [
+        "Registration and profiles",
+        "Opportunity discovery",
+        "Registering interest",
+        "Assignments and participation status",
+        "Notifications"
+      ],
+      "unconfirmed_application_features": [
+        "Skills-based matching",
+        "Availability management",
+        "Exact configurable rules and escalation",
+        "Detailed reports and impact metrics"
+      ],
+      "opportunity_workflow_intent": {
+        "authorized_staff_actions": [
+          "Create and publish",
+          "Specify requirements, location and timing",
+          "Manage registrations",
+          "Review and approve",
+          "Track status",
+          "Update and cancel"
+        ],
+        "example_categories": ["Community visits", "Event support", "Training", "Outreach", "Other assignments"]
+      },
+      "configurable_workflow_intent": "Volunteer registration, participation approval, assignment confirmation, cancellations and changes. Exact rules and escalation remain undefined, belong to the application team, and do not block platform intake.",
+      "notification_intent": {
+        "events": [
+          "New opportunities",
+          "Registration confirmations",
+          "Approval decisions",
+          "Assignment changes",
+          "Upcoming activities"
+        ],
+        "candidate_channels_only": ["Email", "Push", "Other channels"],
+        "mandatory_channel_confirmed": false
+      },
+      "operational_reporting_intent": "Opportunities, registrations, assignment status, completed activities and participation. Detailed reports and impact metrics require application stakeholder confirmation.",
+      "cloud_preference": "Azure preferred; architecture not finalized",
+      "candidate_technologies_only": [
+        "App Service Linux Containers",
+        "Cosmos DB",
+        "Microsoft Entra ID",
+        "Azure Container Registry",
+        "Blob Storage",
+        "Key Vault",
+        "Azure Monitor/Application Insights",
+        "Application Gateway"
+      ],
+      "technology_evaluation_constraints": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+      "design_preferences_not_decisions": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+      "engineering_principles": [
+        "Security and privacy",
+        "Mobile-first",
+        "API-first",
+        "Cloud-native",
+        "Infrastructure-as-code",
+        "Automated testing and deployment",
+        "Least privilege",
+        "Observability",
+        "Cost consciousness",
+        "Simplicity and maintainability"
+      ],
+      "data_sensitivity": ["Personal / customer data", "Internal business data", "Synthetic test data"],
+      "data_processing_constraints": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+      "security_privacy_requirements": [
+        "Secure authentication and role-based access control",
+        "Encryption in transit and at rest",
+        "Secrets management",
+        "Audit logging",
+        "Data minimization",
+        "Retention and deletion",
+        "Privacy-aware monitoring",
+        "Mandatory security and privacy baseline"
+      ],
+      "compliance": [
+        "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+      ],
+      "anonymity_requirements": [
+        "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+        "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+        "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+        "Do not request real names, personal emails, domains or identities during discovery",
+        "Do not publish repository remote URLs or account identities in project documentation",
+        "Author attribution uses agent role only; no people",
+        "Fictional sample data only"
+      ],
+      "recommendation_provenance_requirement": "Reasonable recommendations must be labelled Assumption/Recommendation, never represented as user-confirmed values or permission.",
+      "sku_pin_evidence": "No SKU locks were volunteered. This is not an explicit no-preference response and does not complete SKU elicitation.",
+      "authorized_current_activity": "Bounded Step 1 requirements discovery, anonymous documentation, validation and the required independent review through the interactive parent. No Azure reads or writes, credential operations, deployment, infrastructure code, application scaffolding, commits or pushes are authorized."
+    },
+    "fields": {
+      "company_size": {"input_id": "company_size", "kind": "input"},
+      "target_environments": {"input_id": "target_environments", "kind": "input"},
+      "timeline": {"input_id": "timeline", "kind": "input"},
+      "review_depth": {"input_id": "review_depth", "kind": "input"}
+    }
+  }
+}

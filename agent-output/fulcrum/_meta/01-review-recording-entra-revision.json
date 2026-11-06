@@ -1,0 +1,79 @@
+{
+  "project": "fulcrum",
+  "step": "1",
+  "request_path": "agent-output/fulcrum/_meta/01-review-request-entra-revision.json",
+  "request_id": "fulcrum-requirements-entra-revision-20261106-155430",
+  "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+  "closure_of": "fulcrum-requirements-comprehensive-20261106-152603",
+  "extension_receipt": "agent-output/fulcrum/_meta/01-review-extension-response-receipt.json",
+  "preflight": "PASS before dispatch; exact saved request and all ten attempt-input paths validated",
+  "attempt_started_at": "2026-11-06T16:18:06Z",
+  "input_digest": "c2daafb2bdd237334143a0b91e6dc1b048e100ec6fbc1b33def990d9b8f56e45",
+  "native_result": "completed, nonempty structured JSON",
+  "publication": {
+    "command": "node tools/scripts/record-review.mjs --events /home/vscode/.copilot/session-state/0cf01309-cc69-48e4-a764-f07a5c17a7b5/events.jsonl --request-id fulcrum-requirements-entra-revision-20261106-155430 --output agent-output/fulcrum/reviews/challenge-findings-requirements-entra-revision.json",
+    "exit_code": 0,
+    "path": "agent-output/fulcrum/reviews/challenge-findings-requirements-entra-revision.json",
+    "source": "Actual linked synchronous native reviewer interaction; no parent-authored findings"
+  },
+  "execution": {
+    "reviewer": "challenger-review-subagent",
+    "worker_id": "3f3df2a9-958e-49ba-98ab-79fc6babd88e",
+    "parent_id": "c43642a4-368a-4e34-a56f-3087ce737523",
+    "tool_call_id": "call_btdPAipkPz1vo0XEEHkpGuYj",
+    "completed_at": "2026-11-06T16:19:16.522Z"
+  },
+  "strict_validation": {
+    "command": "node tools/scripts/validate-challenger-findings.mjs --path agent-output/fulcrum/reviews/challenge-findings-requirements-entra-revision.json --verify-cache",
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "audit_outcome": {
+    "outcome": "completed",
+    "review_output": "nonempty",
+    "recorded_at": "2026-11-06T16:19:28Z",
+    "initial_outcome_command": "Exit 1: Practical review attempts require the exact --review-request. No outcome was persisted by that command.",
+    "corrected_outcome_command": "Exit 0 with exact --review-request, original --closure-of and saved input digest; no second dispatch.",
+    "selection_command": "Exit 0, already_applied; subsequent recall show independently confirmed current_path and effective_reviews point to the strictly validated revised result."
+  },
+  "checkpoint": {
+    "phase": "phase_6_challenger",
+    "recorded_at": "2026-11-06T16:19:46Z"
+  },
+  "overall_assessment": "APPROVED",
+  "risk_level": "low",
+  "finding_counts": {
+    "must_fix": 0,
+    "should_fix": 0,
+    "suggestion": 0
+  },
+  "review_allowance": {
+    "calls": 2,
+    "max_calls": 3,
+    "remaining": 1,
+    "new_dispatches_this_continuation": 1,
+    "history": "One original dispatch plus one authorized affected review; same cycle, no reset, no extra closure required for the clean current result."
+  },
+  "current_projection_sha256": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c",
+  "preserved": {
+    "historical_review_sha256": "ba9dc91a1cb5c57c8bba6edc2e53d5e7e3d2bf53b4774899605e72ea821d15f1",
+    "manifest_revision": 1,
+    "manifest_sha256": "a0d2a2d3db1442adf59e4837c951c29370d0a4c1b9455725a36ed450890694ed",
+    "requirements_sha256": "14fbcba64659e5f498037ee05f7871ee3a2a5f3db6d908d742e306a5fc8306be",
+    "frozen_inputs": "Unchanged before, during and after reviewer execution; original ledger and all 51 current material inputs preserved."
+  },
+  "post_write_validation": {
+    "gate_request": "agent-output/fulcrum/_meta/01-gate1-entra-revision-input-request.json",
+    "gate_form": "PASS: validate_payload(form, context, require_context=True) errors=[]; needed_inputs exactly matches the sole approval property",
+    "gate_context": "PASS: all 51 answers exactly equal current frozen projection values; original full custom/history ledger remains separately linked",
+    "gate_preflight_correction": "First check reported context requires only answers and fields; descriptive provenance was moved outside context. Corrected check passed before delegated return. No question was displayed and no human response invented.",
+    "owned_json": "PASS: all three newly written/updated JSON receipts and gate envelope parse",
+    "README_H2_order": "PASS: five required deliverable H2s in exact order. Initial checker incorrectly included template authoring instructions and failed; corrected checker excluded those two instruction headings, with no artifact change needed.",
+    "preserved_hashes": "PASS: original review, rev-1 manifest and current Requirements match saved SHA-256 values",
+    "freshness_after_status_writes": "PASS: repeated strict review verification after mutable README/handoff updates; zero errors and warnings",
+    "markdown_lint": "Not run; no markdownlint or lint:artifact-templates against agent-output"
+  },
+  "other_command_recovery": "An inspection command accidentally piped jq output to shell command keys (exit 127). Corrected to jq 'keys' (exit 0). This did not mutate inputs, record findings or invoke a reviewer.",
+  "approval": "Revised human Gate 1 remains unanswered. Step 1 is in_progress; no completion, transition, Architecture invocation or Azure operation performed."
+}

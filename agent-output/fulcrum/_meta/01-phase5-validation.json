@@ -1,0 +1,56 @@
+{
+  "project": "fulcrum",
+  "step": "1",
+  "recorded_at": "2026-11-06T15:26:03Z",
+  "checkpoint": "phase_5_artifact",
+  "checkpoint_recorded_at": "2026-11-06T15:25:09Z",
+  "checks": [
+    {
+      "command": "node tools/scripts/validate-sku-manifest.mjs fulcrum",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "command": "npm run check:h2-order -- fulcrum",
+      "exit_code": 0,
+      "required_h2": 9,
+      "total_h2": 10
+    },
+    {
+      "command": "node tools/scripts/render-sku-manifest-md.mjs fulcrum",
+      "exit_code": 0,
+      "result": "Already up-to-date; renderer-owned view unchanged."
+    },
+    {
+      "check": "Parse pre-existing owned JSON, excluding recall state",
+      "result": "PASS",
+      "files": 32
+    },
+    {
+      "check": "Parse generated _meta/assessment-step-1.json",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "check": "Project root Markdown-only",
+      "result": "PASS",
+      "non_markdown_files": []
+    },
+    {
+      "check": "Recall assessment_readiness.1",
+      "result": "current",
+      "material_input_count": 51
+    }
+  ],
+  "manifest": {
+    "path": "agent-output/fulcrum/contracts/sku-manifest.json",
+    "status": "draft",
+    "revision": 1,
+    "sole_exact_pin": "LRS",
+    "changed_during_continuation": false
+  },
+  "independent_review": "Pending; no attempt consumed at this capture.",
+  "human_gate_1": "Not requested or approved.",
+  "scope": "Owned Step 1 documentation, checks and required independent review only. No source edits, Git operations, Azure access, application code, infrastructure code or architecture decisions."
+}

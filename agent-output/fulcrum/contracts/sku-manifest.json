@@ -1,0 +1,34 @@
+{
+  "$schema": "../../../tools/schemas/sku-manifest.schema.json",
+  "schema_version": "sku-manifest-v1",
+  "project": "fulcrum",
+  "default_region": "swedencentral",
+  "created_at": "2026-11-06T14:34:00Z",
+  "updated_at": "2026-11-06T14:34:00Z",
+  "current_revision": 1,
+  "environments": ["dev"],
+  "revisions": [
+    {
+      "rev": 1,
+      "created_at": "2026-11-06T14:34:00Z",
+      "agent": "02-Requirements",
+      "step": "1",
+      "apex_recall_checkpoint": "fulcrum:1:phase_5_artifact",
+      "summary": "Draft Step 1 capture: sole explicit creative pin is LRS replication. App Service and Cosmos explicitly have no SKU preference. On-demand only, dev only, no environment override. No architecture-derived configuration or prices. Validation and checkpoint success are tracked separately.",
+      "changed_ids": ["storage-blob-replication"]
+    }
+  ],
+  "services": [
+    {
+      "id": "storage-blob-replication",
+      "service": "Storage Account",
+      "size": "LRS",
+      "regions": ["swedencentral"],
+      "commitment": {"type": "on-demand"},
+      "notes": "Explicit LRS replication-only user pin from requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac; Project Stakeholders, dev only. No account performance tier, capacity, numeric SLA, zoning design or IaC logical names supplied. This is not a full provider SKU. No dev-specific override. Baseline requires private Blob access, DNS, Entra/managed identity and disabled shared/public access; detailed implementation belongs to later owners.",
+      "source": "user-pin",
+      "source_step": "1",
+      "last_modified_rev": 1
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "project": "fulcrum",
+  "step": 1,
+  "phase": "phase_1_discovery",
+  "capture_mode": "returned",
+  "request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+  "request_id_source": "apex-local",
+  "captured_at": "2026-11-06T13:48:06Z",
+  "respondent": "Project Stakeholders",
+  "relayed_by": "01-Orchestrator",
+  "source_locator": "Current delegated continuation relays the actual interactive native ask_user response to the unchanged persisted business form; parent reported applicability validation errors=[].",
+  "request_envelope_path": "agent-output/fulcrum/_meta/01-business-input-request.json",
+  "actual_response": {
+    "company_size": "Startup / small business",
+    "target_environments": "dev",
+    "timeline": "Within 2 weeks",
+    "review_depth": "default"
+  },
+  "normalized_explicit_values": {
+    "company_size": "Startup / small business",
+    "target_environments": ["dev"],
+    "timeline": "Within 2 weeks",
+    "review_depth": "default"
+  },
+  "normalizations": [
+    "Native multi-select returned target_environments as the single string dev; normalize the unambiguous answer to [dev], retaining the original value above."
+  ],
+  "applicable_environments": ["dev"],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "authority_scope": "Discovery answers for an infrastructure-only dev MVP. No Gate 1 approval, Azure read/write/deployment/spend authorization or Production scope.",
+  "sdk_response_id_supplied": false,
+  "gate_1_approval": null,
+  "canonical_review_depth_owner": "01-Orchestrator; Requirements retains the answer and scoped material record, not a routing-key ownership transfer."
+}

@@ -1,0 +1,58 @@
+{
+  "request_id": "fulcrum-requirements-review-extension-20261106-155540",
+  "request_id_source": "apex-local",
+  "execution_mode": "delegated",
+  "project": "fulcrum",
+  "step": "1",
+  "phase": "material_revision_review_authority",
+  "needed_inputs": ["requirements_residency_review_extension"],
+  "answer_ledger_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "consumed_projection_path": "agent-output/fulcrum/_meta/assessment-step-1.json",
+  "review_request_path": "agent-output/fulcrum/_meta/01-review-request-entra-revision.json",
+  "accounting": {
+    "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+    "initial_id": "fulcrum-requirements-comprehensive-20261106-152603",
+    "actual_calls_consumed": 1,
+    "current_max_calls": 2,
+    "current_projection_sha256": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c",
+    "original_cycle_projection_sha256": "08f361797248f58a850cb8d4b9cb061c41fe5f5669bacb2007e9aa74d1dcccc9",
+    "requested_absolute_max_calls": 3,
+    "new_dispatches": 0,
+    "preflight": "PASS",
+    "start_audit": "BLOCKED before dispatch",
+    "exact_error": "Material scope changed; owner-led cycle revision required, not an allowance reset"
+  },
+  "form": {
+    "message": "Project Fulcrum — review authority for the already-approved narrow Entra residency change. The edit and focused checks are complete; no residency answer is missing. The existing independent-review cycle has used 1 of 2 calls. Its start writer blocks changed material inputs despite that unused slot. The supported scope-revision writer requires an explicit increase of the same cycle's absolute limit: the smallest is 3, preserving the 1 consumed call and all history. Authorize that bounded extension for this exact dev-only revision, or pause? This is not Gate 1 artifact approval, a broader residency exception or Azure authority. Only the required affected review will be dispatched now; no automatic extra call is promised.",
+    "requestedSchema": {
+      "properties": {
+        "requirements_residency_review_extension": {
+          "type": "string",
+          "title": "Project Fulcrum — same-cycle affected Requirements review limit",
+          "description": "Explicit review-scope reconciliation is required by the supported writer. Approval raises this cycle's absolute ceiling from 2 to 3, retains the original consumed call and binds the current projection. No option is preselected. Current independent review and separate human Gate 1 still follow.",
+          "enum": ["authorize_bounded_extension", "pause"],
+          "enumNames": [
+            "Authorize — reconcile this exact revision in the existing cycle, absolute maximum 3 calls",
+            "Pause — do not dispatch the affected review"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "target_environments": ["dev"],
+      "residency_requirement": "Sweden Central-only workload/non-Entra dependencies; explicit narrow exception for documented qualified European Entra identity behavior, already accepted by Project Stakeholders.",
+      "review_cycle_calls_consumed": 1,
+      "review_cycle_current_max_calls": 2,
+      "residency_exception_request_id": "fulcrum-entra-residency-user-decision-20261106-154915"
+    },
+    "fields": {
+      "requirements_residency_review_extension": {
+        "input_id": "requirements_residency_review_extension",
+        "kind": "approval"
+      }
+    }
+  },
+  "parent_action": "Validate current bytes and pending applicability with the full ledger/current consumed projection. Forward only form.message and form.requestedSchema to native ask_user, retaining this local request ID and context separately. Record the actual human response. Only explicit authorization permits decide --review-extension with this same cycle ID, max_calls 3, current projection SHA and actual approval request ID. Never substitute the earlier Entra exception approval for extension authority. Then rerun exact preflight/start audit with --closure-of the original invocation before native dispatch; use actual attributed recorder result and strict verification. Return current findings and a separate revised Gate 1 afterward. Cancellation stops; pause or ambiguous text supplies no extension."
+}

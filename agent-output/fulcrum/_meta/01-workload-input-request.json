@@ -1,0 +1,274 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "phase": "phase_2_workload",
+  "stage": "workload",
+  "complete": false,
+  "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
+  "request_id_source": "apex-local",
+  "needed_inputs": [
+    "workload_pattern", "daily_users", "peak_concurrent_users", "monthly_budget",
+    "budget_currency", "budget_limit", "cost_monitoring_mode", "availability_target",
+    "recovery_profile", "performance_target", "iac_tool", "target_region",
+    "private_client_access", "authentication_requirement"
+  ],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "previous_response_receipt_path": "agent-output/fulcrum/_meta/01-business-response-receipt.json",
+  "helper_provenance": {
+    "commands": [
+      "node tools/scripts/requirements-discovery.mjs --stage business --answers agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "node tools/scripts/requirements-discovery.mjs --stage workload --answers agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "node tools/scripts/requirements-discovery.mjs --stage access --answers agent-output/fulcrum/_meta/01-discovery-answers.json"
+    ],
+    "business_result": {"complete": true, "form": null},
+    "workload_emitted_fields": [
+      "workload_pattern", "daily_users", "monthly_budget", "budget_currency",
+      "availability_target", "recovery_profile", "iac_tool", "target_region"
+    ],
+    "access_helper_request_id": "requirements-d66cd5e1-64b4-41e2-b322-deb7feb0b5ed",
+    "access_fields_batched_now": ["private_client_access", "authentication_requirement"],
+    "adaptations": [
+      "Retain workload helper request ID before display; contextualize native guided choices for infrastructure-only dev MVP.",
+      "Add web/API concurrency explicitly: complete brief has mobile/API intent although the helper did not match its short system-description text.",
+      "Add independent performance intent, budget-limit meaning and dev cost-monitoring mode; no defaults are assigned.",
+      "Batch missing private-client access and sign-in population from the actual access-stage helper; no architecture, exact identities or application role matrices requested.",
+      "Preserve answered data sensitivity, compliance, environment and business choices; fictional dev data only.",
+      "Defer detailed service menus until workload/profile answers exist; future SKU elicitation is still mandatory.",
+      "No personal email input. Live cost-alert identities/recipient binding remain secure later prerequisites outside anonymous artifacts; no named recipient or routing is inferred.",
+      "Deferral rationale/expiry is asked only if deferred is actually selected; monitoring networking/responsibility and residency intent remain later discovery."
+    ]
+  },
+  "form": {
+    "message": "Project Fulcrum — dev platform planning. Small nonprofit footprint, dev only, fictional data, two-week infrastructure target and default reviews are captured. Please give rough planning choices below; Not sure / recommend is valid. Suggested ranges are not confirmed defaults, service selections or permission to spend/deploy. Application development stays with the other team. Do not enter real contacts, domains, identities or container endpoints.",
+    "requestedSchema": {
+      "properties": {
+        "workload_pattern": {
+          "type": "string",
+          "title": "Dev hosting — workload planning pattern",
+          "description": "Recommendation: Development / test platform fits this hosting-only MVP. Web application with a database is an alternative planning pattern for the mobile/API workload; neither choice selects an Azure host or database. Custom answers use this same field.",
+          "enum": ["Development / test platform", "Web application with a database", "Internal API / integration service", "Event-driven / background processing", "Not sure — guide me"]
+        },
+        "daily_users": {
+          "type": "string",
+          "title": "Dev pilot — daily test users",
+          "description": "Count fictional-user testing and platform users in this dev delivery, not future Production Volunteers. Recommendation to consider: a small pilot up to 50, if realistic. Choose a range or use a custom answer here.",
+          "enum": ["Up to 50", "50–500", "500–5,000", "5,000–50,000", "More than 50,000", "Not sure — start with a small pilot"]
+        },
+        "peak_concurrent_users": {
+          "type": "string",
+          "title": "Dev API — simultaneous test users",
+          "description": "A rough peak is enough; this is concurrency, not employee count. Fewer than 10 may suit a small dev pilot, but it is not assumed. Custom answers use this same field.",
+          "enum": ["Fewer than 10", "10–100", "100–1,000", "More than 1,000", "Not sure — help estimate"]
+        },
+        "monthly_budget": {
+          "type": "string",
+          "title": "Dev Azure — monthly planning budget",
+          "description": "Choose a range in the currency selected below, or enter an exact amount here. Include required private networking/security in later costing; a low budget never waives the baseline. This is not spending authorization.",
+          "enum": ["Under 100/month", "100–500/month", "500–2,000/month", "2,000–10,000/month", "Above 10,000/month", "Not decided — show me a costed recommendation"]
+        },
+        "budget_currency": {
+          "type": "string",
+          "title": "Dev estimate — budget currency",
+          "description": "Which currency should later cost planning use? EUR is an option for EU planning, not an assumed choice. Custom answers use this same field.",
+          "enum": ["EUR", "USD", "GBP", "Not sure yet"]
+        },
+        "budget_limit": {
+          "type": "string",
+          "title": "Dev budget — target or hard constraint",
+          "description": "A planning target allows alternatives with overruns highlighted. A hard limit blocks an over-budget design pending a new decision; Azure budgets alone are not automatic spend cutoffs. Neither grants spend authority. Custom answers use this same field.",
+          "enum": ["Planning target — optimize and highlight overruns", "Hard monthly limit — do not proceed beyond it", "Not sure — recommend a budgeting approach"]
+        },
+        "cost_monitoring_mode": {
+          "type": "string",
+          "title": "Dev costs — monitoring requirement",
+          "description": "Recommendation to consider: minimal for a dev-only pilot, keeping operational alerts. Minimal means budget-only cost monitoring; notices use Owner-role recipients and may not reach a named non-Owner. Enforced adds a cost Action Group and anomaly alert. Deferred needs a later rationale and YYYY-MM-DD expiry only after selection. Exact recipients must be securely bound later; do not enter emails here. Custom answers use this same field.",
+          "enum": ["minimal — budget only; operational alerts remain", "enforced — budget, cost Action Group and anomaly alert", "deferred — request a time-limited cost-monitoring exception", "Not sure — recommend"]
+        },
+        "availability_target": {
+          "type": "string",
+          "title": "Dev platform — acceptable downtime",
+          "description": "Recommendation to consider: occasional dev/test downtime acceptable, without a Production SLA claim. Higher targets may add cost. Choose the needed impact level or a custom answer here.",
+          "enum": ["Dev/test — occasional downtime acceptable", "Business hours — recover within the working day", "Production — about 99.9% availability", "Critical — about 99.99% availability", "Not sure — recommend a suitable target"]
+        },
+        "recovery_profile": {
+          "type": "string",
+          "title": "Dev platform — interruption and test-data loss",
+          "description": "Recommendation to consider: relaxed recovery for fictional dev data. These are planning objectives, not tested capabilities. No Production recovery commitment is included. Custom answers use this same field.",
+          "enum": ["Relaxed — recover within a day; up to half a day of data loss", "Standard — recover within 4 hours; up to 1 hour of data loss", "Critical — recover within 15 minutes; up to 5 minutes of data loss", "Not sure — recommend and explain"]
+        },
+        "performance_target": {
+          "type": "string",
+          "title": "Dev API host — response-time planning intent",
+          "description": "Capture platform planning intent only; application optimization/tests remain with the other team. Recommendation to consider: usable smoke tests without a fixed latency target for this first dev platform. Custom numeric targets or Not sure can be entered here.",
+          "enum": ["Usable dev smoke tests — no fixed latency target", "Typical API responses under 2 seconds — planning goal to validate", "Not sure — recommend a practical dev target"]
+        },
+        "iac_tool": {
+          "type": "string",
+          "title": "Platform delivery — IaC tool preference",
+          "description": "Bicep is Azure-native; Terraform suits existing Terraform skills or multi-cloud work. Recommendation to consider: Bicep if there is no existing tool preference. This is not IaC generation authorization. Custom answers use this same field.",
+          "enum": ["Bicep", "Terraform", "Not sure — guide me"]
+        },
+        "target_region": {
+          "type": "string",
+          "title": "Dev hosting — region preference",
+          "description": "Sweden Central is an unconfirmed repository fallback only. Select a preference or let Architecture recommend an allowed region; this does not confirm service availability or authorize Azure access. Residency is not inferred from choosing a region. Custom answers use this same field.",
+          "enum": ["Sweden Central (swedencentral)", "West Europe (westeurope)", "Germany West Central (germanywestcentral)", "No preference — recommend an allowed region"]
+        },
+        "private_client_access": {
+          "type": "string",
+          "title": "Private dev services — caller access intent",
+          "description": "Private data access, API isolation and private DNS remain mandatory even with fictional data. Capture the access need, not a VPN/topology decision; a new path must fit effective policy. Recommendation if unknown: let Architecture design a secure path. No endpoint, principal or real domain is needed. Custom answers use this same field.",
+          "enum": ["Existing corporate network / VPN", "A new secure remote-access path is needed", "Only applications need access; no direct human data access", "Private build/deployment runners are available", "Not sure — design a suitable secure path"]
+        },
+        "authentication_requirement": {
+          "type": "string",
+          "title": "Dev identity platform — sign-in population",
+          "description": "Which sign-in capability should the platform support for fictional dev testing? External Volunteer sign-in is not automatically employee Entra sign-in; greenfield external identity uses Entra External ID where applicable. Exact registrations/roles and application implementation stay with the other team. No real identities are requested. Custom answers use this same field.",
+          "enum": ["Employees with existing Entra sign-in", "External customers / partners", "Employees plus external Volunteers — fictional dev accounts", "Applications/services only", "No interactive sign-in needed", "Not sure — guide me"]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "project_name": "fulcrum",
+      "project_display_name": "Project Fulcrum",
+      "industry": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+      "scenario": "Greenfield — new workload",
+      "company_size": "Startup / small business",
+      "target_environments": ["dev"],
+      "timeline": "Within 2 weeks",
+      "review_depth": "default",
+      "current_delivery_scope": "New dev-only hosting-platform MVP; first usable infrastructure within two weeks. Future Production is outside this delivery.",
+      "current_delivery_data_constraint": "Development uses fictional data only. Mandatory security/privacy baseline applies in dev; future Production GDPR requirement remains outside this dev delivery, with no compliance certification.",
+      "system_description": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+      "business_objective": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+      "delivery_context": "New MVP; pro bono initiative for The Organization. Existing coordination relies on calls, email, instant messaging, spreadsheets and manual approvals/follow-ups, causing overhead, low visibility and poor scalability. This is business context, not a migration request.",
+      "infrastructure_scope": [
+        "Hosting support for a containerized backend; backend code excluded",
+        "Cloud-hosted data",
+        "Identity and access management",
+        "Notification platform capabilities, with channels still to evaluate",
+        "Monitoring and operations",
+        "Infrastructure-as-code",
+        "Infrastructure testing and deployment automation",
+        "Store anonymous resulting documentation in this repository"
+      ],
+      "application_scope_exclusions": [
+        "Cross-platform mobile application development",
+        "Backend application code",
+        "Application tests",
+        "Application permission implementation",
+        "Detailed business workflow, escalation and reporting implementation"
+      ],
+      "initial_application_roles": ["Volunteer", "Coordinator", "Manager", "Administrator"],
+      "application_role_constraints": "Initial permission boundaries require Project Stakeholders validation. Manager is a functional role, not an identifiable party. Exact permissions and application implementation belong to another team.",
+      "volunteer_workflow_intent": [
+        "Registration and profiles",
+        "Opportunity discovery",
+        "Registering interest",
+        "Assignments and participation status",
+        "Notifications"
+      ],
+      "unconfirmed_application_features": [
+        "Skills-based matching",
+        "Availability management",
+        "Exact configurable rules and escalation",
+        "Detailed reports and impact metrics"
+      ],
+      "opportunity_workflow_intent": {
+        "authorized_staff_actions": [
+          "Create and publish",
+          "Specify requirements, location and timing",
+          "Manage registrations",
+          "Review and approve",
+          "Track status",
+          "Update and cancel"
+        ],
+        "example_categories": ["Community visits", "Event support", "Training", "Outreach", "Other assignments"]
+      },
+      "configurable_workflow_intent": "Volunteer registration, participation approval, assignment confirmation, cancellations and changes. Exact rules and escalation remain undefined, belong to the application team, and do not block platform intake.",
+      "notification_intent": {
+        "events": [
+          "New opportunities",
+          "Registration confirmations",
+          "Approval decisions",
+          "Assignment changes",
+          "Upcoming activities"
+        ],
+        "candidate_channels_only": ["Email", "Push", "Other channels"],
+        "mandatory_channel_confirmed": false
+      },
+      "operational_reporting_intent": "Opportunities, registrations, assignment status, completed activities and participation. Detailed reports and impact metrics require application stakeholder confirmation.",
+      "cloud_preference": "Azure preferred; architecture not finalized",
+      "candidate_technologies_only": [
+        "App Service Linux Containers",
+        "Cosmos DB",
+        "Microsoft Entra ID",
+        "Azure Container Registry",
+        "Blob Storage",
+        "Key Vault",
+        "Azure Monitor/Application Insights",
+        "Application Gateway"
+      ],
+      "technology_evaluation_constraints": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+      "design_preferences_not_decisions": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+      "engineering_principles": [
+        "Security and privacy",
+        "Mobile-first",
+        "API-first",
+        "Cloud-native",
+        "Infrastructure-as-code",
+        "Automated testing and deployment",
+        "Least privilege",
+        "Observability",
+        "Cost consciousness",
+        "Simplicity and maintainability"
+      ],
+      "data_sensitivity": ["Personal / customer data", "Internal business data", "Synthetic test data"],
+      "data_processing_constraints": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+      "security_privacy_requirements": [
+        "Secure authentication and role-based access control",
+        "Encryption in transit and at rest",
+        "Secrets management",
+        "Audit logging",
+        "Data minimization",
+        "Retention and deletion",
+        "Privacy-aware monitoring",
+        "Mandatory security and privacy baseline"
+      ],
+      "compliance": [
+        "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+      ],
+      "anonymity_requirements": [
+        "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+        "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+        "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+        "Do not request real names, personal emails, domains or identities during discovery",
+        "Do not publish repository remote URLs or account identities in project documentation",
+        "Author attribution uses agent role only; no people",
+        "Fictional sample data only"
+      ],
+      "recommendation_provenance_requirement": "Reasonable recommendations must be labelled Assumption/Recommendation, never represented as user-confirmed values or permission.",
+      "sku_pin_evidence": "No SKU locks were volunteered. This is not an explicit no-preference response and does not complete SKU elicitation.",
+      "authorized_current_activity": "Bounded Step 1 requirements discovery, anonymous documentation, validation and the required independent review through the interactive parent. No Azure reads or writes, credential operations, deployment, infrastructure code, application scaffolding, commits or pushes are authorized."
+    },
+    "fields": {
+      "workload_pattern": {"input_id": "workload_pattern", "kind": "input"},
+      "daily_users": {"input_id": "daily_users", "kind": "input"},
+      "peak_concurrent_users": {"input_id": "peak_concurrent_users", "kind": "input"},
+      "monthly_budget": {"input_id": "monthly_budget", "kind": "input"},
+      "budget_currency": {"input_id": "budget_currency", "kind": "input"},
+      "budget_limit": {"input_id": "budget_limit", "kind": "input"},
+      "cost_monitoring_mode": {"input_id": "cost_monitoring_mode", "kind": "input"},
+      "availability_target": {"input_id": "availability_target", "kind": "input"},
+      "recovery_profile": {"input_id": "recovery_profile", "kind": "input"},
+      "performance_target": {"input_id": "performance_target", "kind": "input"},
+      "iac_tool": {"input_id": "iac_tool", "kind": "input"},
+      "target_region": {"input_id": "target_region", "kind": "input"},
+      "private_client_access": {"input_id": "private_client_access", "kind": "input"},
+      "authentication_requirement": {"input_id": "authentication_requirement", "kind": "input"}
+    }
+  }
+}

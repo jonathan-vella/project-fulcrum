@@ -1,0 +1,21 @@
+{
+  "request_id": "fulcrum-requirements-review-extension-20261106-155540",
+  "request_id_source": "apex-local",
+  "phase": "material_revision_review_authority",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "authorize_bounded_extension",
+  "normalized_response": {
+    "requirements_residency_review_extension": "authorize_bounded_extension"
+  },
+  "authorized_scope": {
+    "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+    "previous_absolute_max_calls": 2,
+    "new_absolute_max_calls": 3,
+    "calls_already_consumed": 1,
+    "projection_sha256": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c"
+  },
+  "authority_boundary": "Authorize the supported same-cycle scope reconciliation and affected Requirements review for the already-approved narrow dev-only Entra exception. Preserve consumed calls and history. This does not approve revised Gate 1, any wider residency exception, Azure operations, spend, Production or deployment.",
+  "sdk_response_id_supplied": false
+}

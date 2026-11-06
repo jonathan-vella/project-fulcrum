@@ -1,0 +1,68 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-step2-residency-20261106-154059",
+  "request_id_source": "apex-local",
+  "phase": "phase_2_required_capability_feasibility",
+  "project": "fulcrum",
+  "environments": ["dev"],
+  "needed_inputs": ["residency_conflict_resolution"],
+  "form": {
+    "message": "Project Fulcrum — required identity conflicts with strict residency. Microsoft documents that Entra ID Core Store uses two or more Azure regions per geographic location; selecting a tenant country does not constrain it to Sweden Central. EU residency is not a Sweden Central-only guarantee. The approved requirements require both Entra workforce/external Volunteer identity and Sweden Central-only residency for identity/global dependencies. How should the Requirements owner handle this conflict? Keeping the boundary leaves implementation blocked. A revision request is not an approved exception or final Gate 2 approval; it must return to 02-Requirements before Architecture can adopt a changed requirement.",
+    "requestedSchema": {
+      "properties": {
+        "residency_conflict_resolution": {
+          "type": "string",
+          "title": "Project Fulcrum — resolve the Entra residency conflict",
+          "description": "Choose a route or give a custom response in this same field. If requesting a revision and the acceptable boundary is already known, describe it here without personal information or target identifiers. No legal/security waiver, Azure access, spending or deployment is authorized.",
+          "enum": [
+            "retain_strict_boundary",
+            "request_requirements_revision",
+            "stop"
+          ],
+          "enumNames": [
+            "Retain Sweden Central-only for every capability — keep implementation blocked",
+            "Request a Requirements-owner revision — determine an acceptable explicit boundary before continuing",
+            "Stop this delivery workflow"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "target_environments": ["dev"],
+      "target_region": "swedencentral",
+      "residency_requirement": "Single region — Sweden Central only",
+      "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts",
+      "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+      "monitoring_access_scope": "An existing platform/team handles monitoring access"
+    },
+    "fields": {
+      "residency_conflict_resolution": {
+        "input_id": "residency_conflict_resolution",
+        "kind": "follow_up",
+        "when": {
+          "input_id": "residency_requirement",
+          "equals": "Single region — Sweden Central only"
+        }
+      }
+    }
+  },
+  "applicability": {
+    "trigger": "Actual protected residency answer plus newly verified ARCH-FEAS-001; this asks for conflict resolution, not reconfirmation of the settled residency answer.",
+    "evidence": "agent-output/fulcrum/_meta/02-residency-evidence.json",
+    "full_ledger_locator": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+    "full_ledger_sha256": "4ac4c1894f9d654f82cff0b3ee531aa9fa9ab2cf14d80b4fbb199eeda7a815a8",
+    "recall_locator": "apex-recall show fulcrum --json -> session.decisions.material_inputs",
+    "settled_material_input_count": 51,
+    "approved_requirements_locator": "agent-output/fulcrum/01-requirements.md -> Identity and network baseline; Residency constraint",
+    "question_owner": "Interactive parent; delegated Architect does not ask_user",
+    "requirement_owner": "02-Requirements with Project Stakeholders"
+  },
+  "separate_later_prerequisites": [
+    "Implementation Gate 2 also needs current preliminary policy feasibility from Governance for an explicitly authorized target/read scope. No target, tenant/subscription reads or policy authorization is captured.",
+    "A residency-only exception would not automatically resolve monitoring, other global dependencies, network paths or policy feasibility; reassess the complete required capability boundary.",
+    "SKU confirmation, applicable VNet/address planning, supported usage inputs, worker pricing, budget decision and both independent reviews remain unperformed.",
+    "No assessment-only exit was selected. Delivery mode, implementation intent and all existing material answers remain unchanged."
+  ]
+}

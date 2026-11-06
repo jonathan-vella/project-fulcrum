@@ -1,0 +1,13 @@
+{
+  "input_id": "residency_requirement",
+  "value": {
+    "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies.",
+    "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
+    "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
+    "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver.",
+    "acceptance_scope": "Project Stakeholders accept this narrow exception as meeting their project GDPR requirements. This is not independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority."
+  },
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-entra-residency-user-decision-20261106-154915"
+}

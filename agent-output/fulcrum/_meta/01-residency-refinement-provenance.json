@@ -1,0 +1,44 @@
+{
+  "schema_version": "requirements-material-refinement-v1",
+  "project": "fulcrum",
+  "step": "1",
+  "execution_mode": "delegated",
+  "workflow_contract": "practical-v1",
+  "request_id": "fulcrum-entra-residency-user-decision-20261106-154915",
+  "request_id_source": "apex-local",
+  "receipt_path": "agent-output/fulcrum/_meta/02-entra-residency-exception-receipt.json",
+  "owner": "Project Stakeholders",
+  "environments": ["dev"],
+  "authorized_activity": "Requirements-owner material refinement, owned artifact validation and required independent affected-requirements review; no allowance extension is supplied.",
+  "changed_input_ids": ["residency_requirement"],
+  "unchanged_inputs": "All other 50 captured material inputs, original answer ledger and response receipts remain unchanged.",
+  "historical_state_before_reopen": {
+    "step_1": {
+      "status": "complete",
+      "started": "2026-11-06T13:39:54Z",
+      "completed": "2026-11-06T15:37:19Z",
+      "completed_environments": ["dev"],
+      "gate_receipt": "agent-output/fulcrum/_meta/01-gate1-response-receipt.json"
+    },
+    "step_2": {
+      "status": "in_progress",
+      "started": "2026-11-06T15:37:19Z",
+      "sub_step": "phase_1_prereqs",
+      "last_checkpoint": "2026-11-06T15:40:59Z",
+      "review_calls": 0,
+      "pricing_calls": 0
+    }
+  },
+  "historical_review": {
+    "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+    "initial_id": "fulcrum-requirements-comprehensive-20261106-152603",
+    "path": "agent-output/fulcrum/reviews/challenge-findings-requirements.json",
+    "verdict": "APPROVED",
+    "findings": 0,
+    "calls": 1,
+    "max_calls": 2,
+    "projection_sha256": "08f361797248f58a850cb8d4b9cb061c41fe5f5669bacb2007e9aa74d1dcccc9",
+    "authority": "Historical inputs only after this material revision; never restamp as current."
+  },
+  "boundary": "User acceptance of the qualified Entra behavior is a project requirement decision, not independent GDPR certification, optional-transfer permission, other-service exception, policy/security waiver, after-review Gate 1 approval or Azure authority."
+}

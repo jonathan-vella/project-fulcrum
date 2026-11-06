@@ -1,0 +1,262 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "phase": "phase_3_nfr",
+  "stage": "service_batches_A_B_with_independent_security",
+  "complete": false,
+  "request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+  "request_id_source": "apex-local",
+  "needed_inputs": [
+    "service_tier", "compute_host", "relational_db", "non_relational_store",
+    "storage_needs", "notification_channels", "residency_requirement",
+    "monitoring_network_requirement", "monitoring_access_scope", "monitoring_privacy_retention"
+  ],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "previous_response_receipt_path": "agent-output/fulcrum/_meta/01-workload-response-receipt.json",
+  "helper_provenance": {
+    "commands": [
+      "node tools/scripts/requirements-discovery.mjs --stage business --answers agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "node tools/scripts/requirements-discovery.mjs --stage workload --answers agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "node tools/scripts/requirements-discovery.mjs --stage access --answers agent-output/fulcrum/_meta/01-discovery-answers.json"
+    ],
+    "business_result": {"complete": true, "form": null},
+    "workload_result": {"complete": true, "form": null},
+    "access_helper_request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+    "access_helper_fields": ["monitoring_network_requirement", "monitoring_access_scope"],
+    "adaptations": [
+      "Retain the actual access helper request ID and its separate complete captured-answer context; add independent missing service-class and security/operations inputs from the current service menu.",
+      "Batch A asks only service_tier; availability and recovery are already answered. No implicit SLA is added from the Standard recovery label.",
+      "Batch B offers compatible container-host choices and explicit Architect-guidance routes. The database pattern does not select SQL or Cosmos; the two store fields distinguish a primary-store alternative from a justified additional store.",
+      "No application_layers field: a web/database planning pattern is not an N-Tier or microservices selection; modular-monolith preference is already captured.",
+      "Reuse fictional data, authentication populations, private-client access, mandatory privacy/security controls, compliance distinction and region. Residency boundary and diagnostic retention are separate missing requirements, not reconfirmations.",
+      "Notification-channel intent is independent and will determine applicable Batch C platform/integration questions. Do not select or price a notification service now.",
+      "Defer Batch C supporting services until host/channel answers exist, then 3i reconciliation and 3j per-class SKU preferences. Do not add a resource just to fill the menu.",
+      "No live emails, names, identities, images, endpoints, application rule matrices or future Production topology are requested. Unknown/recommend answers are valid planning inputs."
+    ]
+  },
+  "form": {
+    "message": "Project Fulcrum — remaining dev platform intent. Captured: containerized backend, fictional data, employees plus external Volunteers, a new secure remote-access path, Sweden Central, Bicep, USD 500–2,000/month soft target, minimal cost monitoring and the stated recovery/performance objectives. Choose only known service preferences below; Not sure / Architect guidance is valid. Candidates are not approved architecture. Private API/data access, private DNS and security/privacy controls remain mandatory. No real contacts, identities, domains or endpoints. Dependent supporting-service and SKU questions follow only after scope is known.",
+    "requestedSchema": {
+      "properties": {
+        "service_tier": {
+          "type": "string",
+          "title": "Dev platform — optimization profile",
+          "description": "Recommendation: cost-optimized for this small dev MVP, without weakening private access, security or captured recovery objectives. This is not a SKU selection or availability guarantee. A custom answer uses this same field.",
+          "enum": ["Cost-optimized", "Balanced", "Enterprise", "Not sure — guide me"]
+        },
+        "compute_host": {
+          "type": "string",
+          "title": "Containerized backend — hosting preference",
+          "description": "Managed container hosting fits the simplicity preference. App Service hosts web/API containers; Container Apps manages container execution/scaling; AKS adds cluster operations. No Kubernetes need is assumed. The Architect evaluates feasibility, private access and cost. A custom answer uses this same field.",
+          "enum": ["App Service — Linux containers", "Container Apps — managed containers", "AKS — Kubernetes is specifically required", "Functions — evaluate container compatibility", "No host preference — Architect compare suitable managed container hosts", "Not sure — guide me"]
+        },
+        "relational_db": {
+          "type": "string",
+          "title": "Primary application data — relational preference",
+          "description": "The captured web/database pattern does not require SQL. Select a known relational preference, or leave the primary data model to Architecture. No second database is implied. Application schema/design remains with the application team. A custom answer uses this same field.",
+          "enum": ["Azure SQL Database", "PostgreSQL Flexible Server", "MySQL Flexible Server", "SQL Managed Instance — specific compatibility need", "None — relational storage not required", "Not sure — Architect evaluate one suitable primary store"]
+        },
+        "non_relational_store": {
+          "type": "string",
+          "title": "Application data — non-relational or cache need",
+          "description": "Cosmos DB was a candidate, not a decision. A document store may be an alternative primary store, not an automatic addition to SQL. Redis is an additional cache only for a stated need; prefer no extra store without justification. A custom answer can identify alternative versus additional use here.",
+          "enum": ["Cosmos DB — preferred primary document store", "Azure Managed Redis — an additional cache is required", "Azure Table Storage — simple key/value need", "None — no non-relational store or cache required", "Not sure — evaluate as an alternative, not an automatic extra store"]
+        },
+        "storage_needs": {
+          "type": "array",
+          "title": "Dev content — storage beyond the operational database",
+          "description": "Select only known needs. Blob Storage was a candidate, not a confirmed requirement. Storage remains private with authenticated access; no public blobs. Choose None or Not sure alone when applicable. Custom needs use this same field.",
+          "items": {
+            "type": "string",
+            "enum": ["Blob storage — media or documents", "Azure Files — file-share compatibility", "Data Lake Storage Gen2 — analytics files", "None — no additional storage required", "Not sure — Architect evaluate the need without adding by default"]
+          }
+        },
+        "notification_channels": {
+          "type": "array",
+          "title": "Dev notifications — platform delivery intent",
+          "description": "Notification capability is in scope, but email/push were only candidates. Choose required channel capabilities, or a simulation/guidance route alone. All dev payloads and accounts remain fictional; real recipients or device identifiers are not requested. Transport selection, safe delivery controls and app integration are later prerequisites.",
+          "items": {
+            "type": "string",
+            "enum": ["Email capability — fictional/dev testing only", "Mobile push capability — fictional/dev testing only", "Dev simulation only — no outbound delivery", "Not sure — recommend suitable dev channel support"]
+          }
+        },
+        "residency_requirement": {
+          "type": "string",
+          "title": "Dev data — geographic boundary beyond the region preference",
+          "description": "Sweden Central is captured as the target region, not a confirmed residency boundary. A single-region boundary excludes cross-region replication. Identity, notifications and other global services need separate EU Data Boundary validation where relevant. No compliance certification is implied. A custom answer uses this same field.",
+          "enum": ["Single region — Sweden Central only", "Sweden only — other Swedish regions may be evaluated", "EU/EEA boundary — suitable European regions may be evaluated", "No additional residency constraint beyond applicable law and effective policy", "Not sure — identify implications and recommend"]
+        },
+        "monitoring_network_requirement": {
+          "type": "string",
+          "title": "Azure Monitor — connectivity requirement",
+          "description": "This choice applies only to Log Analytics and workspace-based Application Insights, not API/data/Storage/Key Vault/registry access. Effective policy may require private monitoring. Authentication, TLS and least privilege remain mandatory. A custom answer uses this same field.",
+          "enum": ["Authenticated public monitoring permitted if policy allows", "Private-only monitoring is a known requirement", "Not sure — follow policy and recommend"]
+        },
+        "monitoring_access_scope": {
+          "type": "string",
+          "title": "Dev monitoring — access responsibility",
+          "description": "Capture platform scope only; operational alerts remain with minimal cost monitoring. No team/contact names, group IDs or exact alert bindings are needed during discovery. A custom answer uses this same field.",
+          "enum": ["Include suitable monitoring access in this project", "An existing platform/team handles monitoring access", "Not decided — carry this to Architecture"]
+        },
+        "monitoring_privacy_retention": {
+          "type": "string",
+          "title": "Dev diagnostics — retention intent",
+          "description": "No real personal data, credentials or sensitive payloads may enter dev logs; minimization, redaction and restricted access are mandatory for every option. Choose a known diagnostic retention preference or request a justified recommendation. Audit/legal requirements and cost must be reconciled later. A custom answer uses this same field.",
+          "enum": ["7 days for sanitized dev diagnostics", "30 days for sanitized dev diagnostics", "90 days for sanitized dev diagnostics", "Use mandatory policy retention — duration not yet known", "Not sure — recommend short-lived sanitized diagnostics"]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "project_name": "fulcrum",
+      "project_display_name": "Project Fulcrum",
+      "industry": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+      "scenario": "Greenfield — new workload",
+      "company_size": "Startup / small business",
+      "target_environments": ["dev"],
+      "timeline": "Within 2 weeks",
+      "review_depth": "default",
+      "workload_pattern": "Web application with a database",
+      "daily_users": "Up to 50",
+      "peak_concurrent_users": "10–100",
+      "monthly_budget": "500–2,000/month",
+      "budget_currency": "USD",
+      "budget_limit": "Planning target — optimize and highlight overruns",
+      "cost_monitoring_mode": "minimal",
+      "availability_target": "Dev/test — occasional downtime acceptable",
+      "recovery_profile": "Standard — recover within 4 hours; up to 1 hour of data loss",
+      "performance_target": "Typical API responses under 2 seconds — planning goal to validate",
+      "iac_tool": "Bicep",
+      "target_region": "swedencentral",
+      "private_client_access": "A new secure remote-access path is needed",
+      "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts",
+      "current_delivery_scope": "New dev-only hosting-platform MVP; first usable infrastructure within two weeks. Future Production is outside this delivery.",
+      "current_delivery_data_constraint": "Development uses fictional data only. Mandatory security/privacy baseline applies in dev; future Production GDPR requirement remains outside this dev delivery, with no compliance certification.",
+      "system_description": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+      "business_objective": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+      "delivery_context": "New MVP; pro bono initiative for The Organization. Existing coordination relies on calls, email, instant messaging, spreadsheets and manual approvals/follow-ups, causing overhead, low visibility and poor scalability. This is business context, not a migration request.",
+      "infrastructure_scope": [
+        "Hosting support for a containerized backend; backend code excluded",
+        "Cloud-hosted data",
+        "Identity and access management",
+        "Notification platform capabilities, with channels still to evaluate",
+        "Monitoring and operations",
+        "Infrastructure-as-code",
+        "Infrastructure testing and deployment automation",
+        "Store anonymous resulting documentation in this repository"
+      ],
+      "application_scope_exclusions": [
+        "Cross-platform mobile application development",
+        "Backend application code",
+        "Application tests",
+        "Application permission implementation",
+        "Detailed business workflow, escalation and reporting implementation"
+      ],
+      "initial_application_roles": ["Volunteer", "Coordinator", "Manager", "Administrator"],
+      "application_role_constraints": "Initial permission boundaries require Project Stakeholders validation. Manager is a functional role, not an identifiable party. Exact permissions and application implementation belong to another team.",
+      "volunteer_workflow_intent": [
+        "Registration and profiles",
+        "Opportunity discovery",
+        "Registering interest",
+        "Assignments and participation status",
+        "Notifications"
+      ],
+      "unconfirmed_application_features": [
+        "Skills-based matching",
+        "Availability management",
+        "Exact configurable rules and escalation",
+        "Detailed reports and impact metrics"
+      ],
+      "opportunity_workflow_intent": {
+        "authorized_staff_actions": [
+          "Create and publish",
+          "Specify requirements, location and timing",
+          "Manage registrations",
+          "Review and approve",
+          "Track status",
+          "Update and cancel"
+        ],
+        "example_categories": ["Community visits", "Event support", "Training", "Outreach", "Other assignments"]
+      },
+      "configurable_workflow_intent": "Volunteer registration, participation approval, assignment confirmation, cancellations and changes. Exact rules and escalation remain undefined, belong to the application team, and do not block platform intake.",
+      "notification_intent": {
+        "events": [
+          "New opportunities",
+          "Registration confirmations",
+          "Approval decisions",
+          "Assignment changes",
+          "Upcoming activities"
+        ],
+        "candidate_channels_only": ["Email", "Push", "Other channels"],
+        "mandatory_channel_confirmed": false
+      },
+      "operational_reporting_intent": "Opportunities, registrations, assignment status, completed activities and participation. Detailed reports and impact metrics require application stakeholder confirmation.",
+      "cloud_preference": "Azure preferred; architecture not finalized",
+      "candidate_technologies_only": [
+        "App Service Linux Containers",
+        "Cosmos DB",
+        "Microsoft Entra ID",
+        "Azure Container Registry",
+        "Blob Storage",
+        "Key Vault",
+        "Azure Monitor/Application Insights",
+        "Application Gateway"
+      ],
+      "technology_evaluation_constraints": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+      "design_preferences_not_decisions": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+      "engineering_principles": [
+        "Security and privacy",
+        "Mobile-first",
+        "API-first",
+        "Cloud-native",
+        "Infrastructure-as-code",
+        "Automated testing and deployment",
+        "Least privilege",
+        "Observability",
+        "Cost consciousness",
+        "Simplicity and maintainability"
+      ],
+      "data_sensitivity": ["Personal / customer data", "Internal business data", "Synthetic test data"],
+      "data_processing_constraints": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+      "security_privacy_requirements": [
+        "Secure authentication and role-based access control",
+        "Encryption in transit and at rest",
+        "Secrets management",
+        "Audit logging",
+        "Data minimization",
+        "Retention and deletion",
+        "Privacy-aware monitoring",
+        "Mandatory security and privacy baseline"
+      ],
+      "compliance": [
+        "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+      ],
+      "anonymity_requirements": [
+        "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+        "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+        "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+        "Do not request real names, personal emails, domains or identities during discovery",
+        "Do not publish repository remote URLs or account identities in project documentation",
+        "Author attribution uses agent role only; no people",
+        "Fictional sample data only"
+      ],
+      "recommendation_provenance_requirement": "Reasonable recommendations must be labelled Assumption/Recommendation, never represented as user-confirmed values or permission.",
+      "sku_pin_evidence": "No SKU locks were volunteered. This is not an explicit no-preference response and does not complete SKU elicitation.",
+      "authorized_current_activity": "Bounded Step 1 requirements discovery, anonymous documentation, validation and the required independent review through the interactive parent. No Azure reads or writes, credential operations, deployment, infrastructure code, application scaffolding, commits or pushes are authorized."
+    },
+    "fields": {
+      "service_tier": {"input_id": "service_tier", "kind": "input"},
+      "compute_host": {"input_id": "compute_host", "kind": "input"},
+      "relational_db": {"input_id": "relational_db", "kind": "input"},
+      "non_relational_store": {"input_id": "non_relational_store", "kind": "input"},
+      "storage_needs": {"input_id": "storage_needs", "kind": "input"},
+      "notification_channels": {"input_id": "notification_channels", "kind": "input"},
+      "residency_requirement": {"input_id": "residency_requirement", "kind": "input"},
+      "monitoring_network_requirement": {"input_id": "monitoring_network_requirement", "kind": "input"},
+      "monitoring_access_scope": {"input_id": "monitoring_access_scope", "kind": "input"},
+      "monitoring_privacy_retention": {"input_id": "monitoring_privacy_retention", "kind": "input"}
+    }
+  }
+}

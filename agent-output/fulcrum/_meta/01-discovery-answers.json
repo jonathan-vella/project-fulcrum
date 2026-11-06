@@ -1,0 +1,165 @@
+{
+  "project_name": "fulcrum",
+  "project_display_name": "Project Fulcrum",
+  "industry": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+  "scenario": "Greenfield — new workload",
+  "company_size": "Startup / small business",
+  "target_environments": ["dev"],
+  "timeline": "Within 2 weeks",
+  "review_depth": "default",
+  "workload_pattern": "Web application with a database",
+  "daily_users": "Up to 50",
+  "peak_concurrent_users": "10–100",
+  "monthly_budget": "500–2,000/month",
+  "budget_currency": "USD",
+  "budget_limit": "Planning target — optimize and highlight overruns",
+  "cost_monitoring_mode": "minimal",
+  "availability_target": "Dev/test — occasional downtime acceptable",
+  "recovery_profile": "Standard — recover within 4 hours; up to 1 hour of data loss",
+  "performance_target": "Typical API responses under 2 seconds — planning goal to validate",
+  "iac_tool": "Bicep",
+  "target_region": "swedencentral",
+  "private_client_access": "A new secure remote-access path is needed",
+  "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts",
+  "service_tier": "Balanced",
+  "compute_host": "App Service — Linux containers",
+  "relational_db": "None — relational storage not required",
+  "non_relational_store": "Cosmos DB — preferred primary document store",
+  "storage_needs": ["Blob storage — media or documents"],
+  "notification_channels": [
+    "Email capability — fictional/dev testing only",
+    "Mobile push capability — fictional/dev testing only",
+    "Dev simulation only — no outbound delivery"
+  ],
+  "residency_requirement": "Single region — Sweden Central only",
+  "monitoring_network_requirement": "Authenticated public monitoring permitted if policy allows",
+  "monitoring_access_scope": "An existing platform/team handles monitoring access",
+  "monitoring_privacy_retention": "30 days for sanitized dev diagnostics",
+  "notification_delivery_scope": "Simulation-only MVP — defer email/push transports, retain functional channel intent",
+  "messaging_events": ["None — no separate messaging/event service required"],
+  "supporting_services": [
+    "Azure Monitor + Application Insights + Log Analytics — preferred diagnostics products",
+    "Key Vault — preferred secrets/certificates service",
+    "Azure Container Registry — preferred container image registry"
+  ],
+  "sku_app_service": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+  "sku_nosql": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+  "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+  "sku_commitment": "On-demand only — no reserved commitment",
+  "sku_env_override": "No dev-specific SKU override — apply these preferences to dev only",
+  "current_notification_scope_resolution": "The original notification_channels and brief notification_intent remain historical answers. The actual subsequent notification_delivery_scope explicitly resolves them: application simulation only in dev MVP; no email/push transport provisioning or outbound delivery; email/push functional intent deferred, not discarded. Simulation implementation is application-team scope.",
+  "current_delivery_scope": "New dev-only hosting-platform MVP; first usable infrastructure within two weeks. Future Production is outside this delivery.",
+  "current_delivery_data_constraint": "Development uses fictional data only. Mandatory security/privacy baseline applies in dev; future Production GDPR requirement remains outside this dev delivery, with no compliance certification.",
+  "system_description": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+  "business_objective": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+  "delivery_context": "New MVP; pro bono initiative for The Organization. Existing coordination relies on calls, email, instant messaging, spreadsheets and manual approvals/follow-ups, causing overhead, low visibility and poor scalability. This is business context, not a migration request.",
+  "infrastructure_scope": [
+    "Hosting support for a containerized backend; backend code excluded",
+    "Cloud-hosted data",
+    "Identity and access management",
+    "Notification platform capabilities, with channels still to evaluate",
+    "Monitoring and operations",
+    "Infrastructure-as-code",
+    "Infrastructure testing and deployment automation",
+    "Store anonymous resulting documentation in this repository"
+  ],
+  "application_scope_exclusions": [
+    "Cross-platform mobile application development",
+    "Backend application code",
+    "Application tests",
+    "Application permission implementation",
+    "Detailed business workflow, escalation and reporting implementation"
+  ],
+  "initial_application_roles": ["Volunteer", "Coordinator", "Manager", "Administrator"],
+  "application_role_constraints": "Initial permission boundaries require Project Stakeholders validation. Manager is a functional role, not an identifiable party. Exact permissions and application implementation belong to another team.",
+  "volunteer_workflow_intent": [
+    "Registration and profiles",
+    "Opportunity discovery",
+    "Registering interest",
+    "Assignments and participation status",
+    "Notifications"
+  ],
+  "unconfirmed_application_features": [
+    "Skills-based matching",
+    "Availability management",
+    "Exact configurable rules and escalation",
+    "Detailed reports and impact metrics"
+  ],
+  "opportunity_workflow_intent": {
+    "authorized_staff_actions": [
+      "Create and publish",
+      "Specify requirements, location and timing",
+      "Manage registrations",
+      "Review and approve",
+      "Track status",
+      "Update and cancel"
+    ],
+    "example_categories": ["Community visits", "Event support", "Training", "Outreach", "Other assignments"]
+  },
+  "configurable_workflow_intent": "Volunteer registration, participation approval, assignment confirmation, cancellations and changes. Exact rules and escalation remain undefined, belong to the application team, and do not block platform intake.",
+  "notification_intent": {
+    "events": [
+      "New opportunities",
+      "Registration confirmations",
+      "Approval decisions",
+      "Assignment changes",
+      "Upcoming activities"
+    ],
+    "candidate_channels_only": ["Email", "Push", "Other channels"],
+    "mandatory_channel_confirmed": false
+  },
+  "operational_reporting_intent": "Opportunities, registrations, assignment status, completed activities and participation. Detailed reports and impact metrics require application stakeholder confirmation.",
+  "cloud_preference": "Azure preferred; architecture not finalized",
+  "candidate_technologies_only": [
+    "App Service Linux Containers",
+    "Cosmos DB",
+    "Microsoft Entra ID",
+    "Azure Container Registry",
+    "Blob Storage",
+    "Key Vault",
+    "Azure Monitor/Application Insights",
+    "Application Gateway"
+  ],
+  "technology_evaluation_constraints": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+  "design_preferences_not_decisions": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+  "engineering_principles": [
+    "Security and privacy",
+    "Mobile-first",
+    "API-first",
+    "Cloud-native",
+    "Infrastructure-as-code",
+    "Automated testing and deployment",
+    "Least privilege",
+    "Observability",
+    "Cost consciousness",
+    "Simplicity and maintainability"
+  ],
+  "data_sensitivity": ["Personal / customer data", "Internal business data", "Synthetic test data"],
+  "data_processing_constraints": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+  "security_privacy_requirements": [
+    "Secure authentication and role-based access control",
+    "Encryption in transit and at rest",
+    "Secrets management",
+    "Audit logging",
+    "Data minimization",
+    "Retention and deletion",
+    "Privacy-aware monitoring",
+    "Mandatory security and privacy baseline"
+  ],
+  "compliance": [
+    "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+  ],
+  "anonymity_requirements": [
+    "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+    "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+    "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+    "Do not request real names, personal emails, domains or identities during discovery",
+    "Do not publish repository remote URLs or account identities in project documentation",
+    "Author attribution uses agent role only; no people",
+    "Fictional sample data only"
+  ],
+  "recommendation_provenance_requirement": "Reasonable recommendations must be labelled Assumption/Recommendation, never represented as user-confirmed values or permission.",
+  "initial_sku_pin_evidence": "No SKU locks were volunteered in the original brief; this was not an explicit no-preference response.",
+  "sku_pin_evidence": "Completed applicable Phase 3j: LRS is the sole exact pin; explicit no-SKU-preference answers for App Service and Cosmos; on-demand only; dev only with no override. Supporting-product preferences add no creative-SKU class under the service-menu mapping.",
+  "authorized_current_activity": "Bounded Step 1 requirements discovery, anonymous documentation, validation and the required independent review through the interactive parent. No Azure reads or writes, credential operations, deployment, infrastructure code, application scaffolding, commits or pushes are authorized."
+}

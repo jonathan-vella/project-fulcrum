@@ -1,0 +1,26 @@
+{
+  "project": "fulcrum",
+  "step": 1,
+  "capture_mode": "recovered",
+  "request_id": "requirements-brief-capture-20261106-134127",
+  "request_id_source": "apex-local",
+  "captured_at": "2026-11-06T13:41:27Z",
+  "respondent": "Project Stakeholders",
+  "relayed_by": "01-Orchestrator",
+  "source_locator": "Authoritative supplied original user brief in the delegated Step 1 request",
+  "actual_response_snapshot": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "source_brief_copy": "agent-output/fulcrum/README.md#supplied-source-briefing",
+  "recovery_reason": "The explicit brief contains actual supplied requirements but no retained input request ID. This local ID identifies capture now, not a past native question or approval.",
+  "applicable_environments": null,
+  "environment_scope_status": "Not yet supplied; do not infer environments from template state or Production compliance intent",
+  "authority_scope": "Requirements discovery and anonymous project documentation only; no Azure scope or operations",
+  "gate_1_approval": null,
+  "material_input_adoption": "No scoped recall input records were adopted before actual environment answers. On this continuation, explicitly supplied applicable brief inputs are adopted for dev only through recall, retaining this original brief-capture ID.",
+  "subsequent_environment_scope": {
+    "environments": ["dev"],
+    "source_request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+    "response_receipt_path": "agent-output/fulcrum/_meta/01-business-response-receipt.json",
+    "recorded_at": "2026-11-06T13:48:06Z",
+    "meaning": "Actual discovery environment answer, not Gate 1 or Azure authorization; original pre-response scope above is preserved."
+  }
+}

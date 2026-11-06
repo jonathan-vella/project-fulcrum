@@ -1,0 +1,61 @@
+{
+  "project": "fulcrum",
+  "step": 1,
+  "phase": "phase_3_nfr",
+  "capture_mode": "returned",
+  "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
+  "request_id_source": "apex-local",
+  "captured_at": "2026-11-06T14:31:25.802Z",
+  "respondent": "Project Stakeholders",
+  "relayed_by": "01-Orchestrator",
+  "source_locator": "Current delegated continuation: actual native ask_user response to the saved unchanged platform/SKU envelope; parent reports validate_payload(require_context=True) => [] and actual invocation of that form. Receipt time identifies this continuation, not a claimed SDK event timestamp.",
+  "request_envelope_path": "agent-output/fulcrum/_meta/01-platform-sku-input-request.json",
+  "actual_response": {
+    "notification_delivery_scope": "Simulation-only MVP — defer email/push transports, retain functional channel intent",
+    "messaging_events": "None — no separate messaging/event service required",
+    "supporting_services": "Azure Monitor + Application Insights + Log Analytics — preferred diagnostics products, Key Vault — preferred secrets/certificates service, Azure Container Registry — preferred container image registry",
+    "sku_app_service": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+    "sku_nosql": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+    "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+    "sku_commitment": "On-demand only — no reserved commitment",
+    "sku_env_override": "No dev-specific SKU override — apply these preferences to dev only"
+  },
+  "normalized_explicit_values": {
+    "notification_delivery_scope": "Simulation-only MVP — defer email/push transports, retain functional channel intent",
+    "messaging_events": ["None — no separate messaging/event service required"],
+    "supporting_services": [
+      "Azure Monitor + Application Insights + Log Analytics — preferred diagnostics products",
+      "Key Vault — preferred secrets/certificates service",
+      "Azure Container Registry — preferred container image registry"
+    ],
+    "sku_app_service": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+    "sku_nosql": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+    "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+    "sku_commitment": "On-demand only — no reserved commitment",
+    "sku_env_override": "No dev-specific SKU override — apply these preferences to dev only"
+  },
+  "normalizations": [
+    "messaging_events exactly matches one displayed selection; normalize to a one-element array.",
+    "supporting_services exactly matches the three displayed labels separated by commas; normalize to an array without dropping or adding a selection.",
+    "Original strings remain in actual_response; no SDK response ID was supplied."
+  ],
+  "resolution": {
+    "historical_request_id": "requirements-08a85866-d663-4ab3-9820-495b5acb49e8",
+    "historical_input_id": "notification_channels",
+    "status": "resolved",
+    "current_scope": "Simulation-only application notifications. No email/push transport provisioning or outbound delivery in the dev MVP. Email/push functional intent remains deferred; simulation implementation belongs to the application team.",
+    "dependent_scope": "Do not add notification transports, transport SKUs or a broker. Messaging answer explicitly requires no separate messaging/event service."
+  },
+  "interpretation_constraints": [
+    "LRS is the sole exact volunteered creative SKU/replication pin. No account performance tier, capacity, price or resource name was supplied.",
+    "App Service and Cosmos preferences explicitly delegate suitable least-cost tier selection to Architecture; Balanced and security/residency/recovery constraints remain.",
+    "Diagnostics, Key Vault and ACR are product preferences, not SKU pins. These do not introduce another creative-SKU class in the mandatory service-menu mapping.",
+    "No reserved commitments; preferences apply to dev only with no dev-specific override. Production has no inherited approval.",
+    "Existing notification_channels and original brief candidate wording remain historical evidence; this explicit resolution controls current delivery scope."
+  ],
+  "applicable_environments": ["dev"],
+  "answer_snapshot_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "sdk_response_id_supplied": false,
+  "authority_scope": "Authorized anonymous local Step 1 requirements, checks and required independent review only. No Azure operations, deployment, spend, outbound delivery, Production or gate approval.",
+  "gate_1_approval": null
+}

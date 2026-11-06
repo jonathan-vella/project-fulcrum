@@ -1,0 +1,14 @@
+{
+  "project": "fulcrum",
+  "step": "1",
+  "scope_file": "agent-output/fulcrum/_meta/01-phase-scope.json",
+  "request_id": "requirements-brief-capture-20261106-134127",
+  "request_id_source": "apex-local",
+  "source": "Existing original user request, retained in the complete discovery ledger as authorized_current_activity; reaffirmed by the actual current delegated continuation from interactive parent 01-Orchestrator.",
+  "original_authorized_current_activity": "Bounded Step 1 requirements discovery, anonymous documentation, validation and the required independent review through the interactive parent. No Azure reads or writes, credential operations, deployment, infrastructure code, application scaffolding, commits or pushes are authorized.",
+  "environment_source_request_id": "requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e",
+  "meaning": "Records the actual existing Step 1 work authorization over its captured dev inputs; not a new approval supplied by a capture ID, receipt, worker or tool. Individual input owner/request provenance is unchanged. Earlier notification answers are historical and must be consumed with the current explicit simulation-only resolution.",
+  "review_allowance": "practical-v1 initial comprehensive plus at most one closure within the granted scope; no attempts reset or additional permission.",
+  "human_gate_1": "Not supplied; remains a separate decision after valid independent review.",
+  "azure_permission": "None supplied."
+}
