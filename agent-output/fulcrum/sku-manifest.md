@@ -80,7 +80,7 @@ _No services declare environment overrides._
 
 | `rev` | Step | Agent | Created (UTC) | Summary | Changed `id`s | Commit | Checkpoint |
 | ----- | ---- | ----- | ------------- | ------- | ------------- | ------ | ---------- |
-| `1` | `1` | `02-Requirements` | `2026-11-06T14:34:00Z` | Draft Step 1 capture: sole explicit creative pin is LRS replication. App Service and Cosmos explicitly have no SKU preference. On-demand only, dev only, no environment override. No architecture-derived configuration or prices. Validation and checkpoint success are tracked separately. | `storage-blob-replication` | — | `fulcrum:1:phase_5_artifact` |
+| `1` | `1` | `02-Requirements` | `2026-11-06T14:34:00Z` | Draft Step 1 capture: sole explicit creative pin is LRS replication. App Service and Cosmos explicitly have no SKU preference. On-demand only, dev only, no environment override. No architecture-derived configuration or prices. Validation and checkpoint success are tracked separately. | `storage-blob-replication` | `16cd2c7` | `fulcrum:1:phase_5_artifact` |
 
 ## Open Substitutions
 
