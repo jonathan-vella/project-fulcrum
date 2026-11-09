@@ -27,6 +27,21 @@ is Well-Architected, governed, and documented.
 tools pre-installed, and an optional weekly sync workflow that keeps your agents and skills up to date with
 the [upstream APEX project](https://github.com/jonathan-vella/apex).
 
+### Policy evidence and existing projects
+
+The shared `.github/data/alz-corp-policy-baseline.json.gz` describes standard Azure Landing Zones Corp assumptions,
+not this tenant's actual policy assignments. Architecture can use it after explicit owner acceptance.
+Current target-verified evidence remains required before planning completion, CodeGen and deployment.
+Private tenant snapshots remain excluded from upstream sync.
+See the [policy-source procedure](.github/skills/apex-azure-governance-discovery/references/policy-source.md).
+
+Updating the kit does not migrate an existing workflow or authorize Azure reads.
+For an existing project on a feature branch, first incorporate the approved runtime-update commit into that branch
+while preserving its working changes. Reload VS Code to load the updated agent definitions.
+Then select the policy source through the interactive Architecture/Orchestrator owner and resume the existing project.
+Do not rerun `apex-recall init`, reset completed steps, rewrite reviewed artifacts, or manufacture scope/request IDs.
+Any new source choice must retain actual owner provenance and the existing review/approval history.
+
 ---
 
 ## Prerequisites
