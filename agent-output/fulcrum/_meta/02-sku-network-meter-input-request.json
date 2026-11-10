@@ -1,0 +1,75 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+  "request_id_source": "apex-local",
+  "created_at": "2026-11-09T13:49:39.118854+00:00",
+  "execution_mode": "delegated",
+  "project": "fulcrum",
+  "step": "2",
+  "phase": "phase_3_sku_confirmation_pending",
+  "needed_inputs": ["sku_confirmation_status", "vnet_mode", "dev_access_restore_dns_meter_profile"],
+  "full_material_input_ledger_path": "_meta/02-current-material-input-ledger.json",
+  "form": {
+    "message": "Project Fulcrum — current SKU confirmation and two independent remaining planning choices. All 60 recorded answers are reused; the six private-usage answers are not being repeated. Assumed Corp policies—not tenant-verified; DEV Architecture-only. Locked user pin (not an answer option): Blob LRS. Architect-derived selections in manifest rev 2: one Linux App Service B1 at 730 hours/month, Cosmos NoSQL Serverless with paid continuous 30-day backup, and one Linux D2as_v5 private client/runner at 80 hours/month. Actual comparison-only worker costs (USD/month): B1 13.14 vs B2 26.28; Cosmos Serverless 12.10 vs manual shared 1000 RU/s 64.40 (both include live storage, paid backup and monthly restore event); D2as_v5 compute 7.36 vs D2s_v5 8.16. These are NOT a full workload total. ACR Premium and Standard GPv2 Hot block Blob with unchanged LRS are capability-forced supporting shapes. Proposed private access is ephemeral Bastion Standard/native Entra SSH, one private Linux VM, managed OS disk, NAT and two service-owned public IPs, all deleted after bounded sessions in the planning envelope. No public NIC, project VPN, public API/data/image access or physical-phone ingress is promised. Approving SKUs does not approve Gate 2, deployment, spending, deletion or tenant verification. VNet addresses/subnets require a subsequent triggered confirmation; no real target IDs are requested here.",
+    "requestedSchema": {
+      "properties": {
+        "sku_confirmation_status": {
+          "type": "string",
+          "title": "Confirm the three current architect-derived DEV SKUs",
+          "description": "Approve all current architect-derived rows: App Service B1, Cosmos NoSQL Serverless with continuous 30-day recovery, and Standard_D2as_v5 ephemeral runner. All are one-instance, single Sweden Central, on-demand selections. Blob LRS is locked, not subject to this choice. Runtime sizing/latency/recovery remain Unverified. Custom text in this field may identify a desired revision; no default approval is selected.",
+          "enum": ["Approve all", "Revise SKUs", "Discuss"]
+        },
+        "vnet_mode": {
+          "type": "string",
+          "title": "Choose the DEV network planning origin",
+          "description": "create-new means plan a new isolated DEV VNet; proposed RFC1918 containing CIDR and App Service integration/private-endpoint/runner/Bastion subnets will be confirmed next in guided mode. Non-overlap and central DNS/link ownership remain tenant-unverified until later Governance. use-existing triggers separate authorized validation before reliance; it does not authorize live reads or require entering identifying IDs in this form.",
+          "enum": ["create-new", "use-existing"]
+        },
+        "dev_access_restore_dns_meter_profile": {
+          "type": "string",
+          "title": "Close access, restore and central-DNS pricing quantities",
+          "description": "Proposed additional planning envelope, not telemetry: 20 GB/month runner download/bootstrap plus 5 GB upload/other outbound through NAT (25 GB total NAT processing); 5 GB/month Bastion data transfer out; the already adopted 1 GB combined workspace ingestion remains aggregate, not a second copy. One 64 GiB Premium SSD P6 OS disk and two Standard static IPv4 public IPs are provisioned only inside the existing 80-hour sessions, together with Standard Bastion's two base scale units and NAT. Reserve up to 4 hours within those same 80 hours for the already selected monthly restore exercise: one temporary Sweden Central Cosmos serverless account with 10 GB live data, 1 million extra exercise RU, paid 30-day backup on that temporary account while provisioned, and one additional PE for 4 hours with 1 GB toward/10 GB from service; remove it after the exercise only under future scoped authority. Blob's 20 GB in-place restore exercise adds a capped 10,000 read and 10,000 write operation envelope to the adopted baseline; no new Blob account. All retained Blob versions/deletions stay the adopted aggregate 10 GB, change feed 0.5 GB, with PITR 30 days and supporting retention at least 31 days; these are storage assumptions, not seven-day protection. For central DNS, include a conservative budget allocation equivalent to four required private-zone units at the verified highest applicable published commercial tier and the already adopted 1 million DNS queries. This is an allocated planning cost, NOT evidence of zone ownership, actual billing or approval to duplicate/deploy central zones. Shared Defender/policy workspace costs remain outside project-deployed scope and disclosed qualitatively, not assumed free. Adopt this envelope, or use custom text here to revise quantities/state a different allocation. No spending or resource-operation permission.",
+          "enum": ["Adopt the proposed capped access/restore and DNS allocation scenario", "Discuss supporting meters before committed pricing"]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "dev_client_access_profile": "Ephemeral VNet-hosted DEV client/runner sessions",
+      "dev_compute_demand_profile": "Adopt the proposed compute planning envelope",
+      "dev_data_meter_profile": "Adopt the proposed data and meter planning profile",
+      "dev_access_provisioned_hours_per_month": 80,
+      "dev_recovery_failure_coverage": "Recoverable logical/deletion/application faults; regional recovery is provider-dependent",
+      "dev_backup_retention_profile": "Thirty-day application recovery profile",
+      "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+      "cost_monitoring_mode": "minimal",
+      "budget_limit": "Planning target — optimize and highlight overruns",
+      "monitoring_access_scope": "An existing platform/team handles monitoring access",
+      "policy_source": {
+        "kind": "assumed-corp",
+        "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"
+      }
+    },
+    "fields": {
+      "sku_confirmation_status": {"input_id": "sku_confirmation_status", "kind": "approval"},
+      "vnet_mode": {"input_id": "vnet_mode", "kind": "input"},
+      "dev_access_restore_dns_meter_profile": {"input_id": "dev_access_restore_dns_meter_profile", "kind": "input"}
+    }
+  },
+  "context_scope": "Stored context contains the directly relevant actual answers; preflight must also consume the complete 60-record ledger referenced above to check all proposed input IDs against current authority.",
+  "pricing_evidence_paths": [
+    "contracts/02-cost-candidates-app-host.json",
+    "contracts/02-cost-candidates-document-store.json",
+    "contracts/02-cost-candidates-access-compute.json"
+  ],
+  "counts": {
+    "recorded_material_inputs": 60,
+    "comparison_pricing_dispatches": 3,
+    "comparison_mcp_calls": 7,
+    "comparison_direct_api_calls": 0,
+    "committed_pricing_dispatches": 0,
+    "architecture_review_dispatches": 0,
+    "cost_review_dispatches": 0
+  }
+}

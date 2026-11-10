@@ -1,0 +1,18 @@
+{
+  "request_id": "fulcrum-formal-governance-target-20261109",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "governance_target_and_read_scope",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "read_authorization_response": "authorize_scoped_dev_policy_reads",
+  "identifying_answers": "Captured only through the supported policy-source managed private store; deliberately not copied into this repository.",
+  "scope_ref": "8e02286b466548f4b011ea06560abf93",
+  "capture_result": "recorded",
+  "current_tenant_verification": "tenant_matches: true",
+  "authorized_reads": "Verify current authenticated tenant and collect deterministic effective subscription policy assignments, definitions/initiatives, parameters and exemptions, including applicable management-group inheritance, for the captured DEV target.",
+  "current_readiness": "The actual source replaces Architecture assumptions for subsequent target verification. Existing completed steps and approval history remain preserved, but target-backed review freshness requires current full-scope evidence and reconciliation.",
+  "authority_boundary": "No credential changes, Azure resource/policy writes, remediation, spending, deletion, Production or deployment authority. Raw scope, snapshots and identifying diagnostics remain private; public artifacts use only opaque references.",
+  "sdk_response_id_supplied": false
+}

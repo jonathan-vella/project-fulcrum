@@ -1,0 +1,39 @@
+{
+  "schema_version": "fulcrum-design-completion-receipt-v1",
+  "project": "fulcrum",
+  "first_attempt": {
+    "command": "apex-recall complete-step fulcrum 3 --json",
+    "exit_code": 2,
+    "actual_error": "challenger_findings_invalid",
+    "actual_reason": "Explicit phase scope is required",
+    "step_completed": false,
+    "interpretation": "The practical-v1 consumed-input phase binding was absent. This is not an ADR review failure; no ADR review was requested or dispatched."
+  },
+  "authorized_mechanical_recovery": {
+    "existing_request_id": "fulcrum-optional-design-selection-20261109",
+    "actual_response_receipt": "_meta/02-optional-design-response-receipt.json",
+    "scope": "Both design branches documenting the current Gate 2 approved DEV architecture, consuming all 69 unchanged material inputs.",
+    "phase_scope_file": "_meta/03-des-phase-scope.json",
+    "supported_commands": [
+      "apex-recall decide fulcrum --phase-scope agent-output/fulcrum/_meta/03-des-phase-scope.json --step 3 --json",
+      "apex-recall checkpoint fulcrum 3 phase_4_artifact --sync-assessment --json"
+    ],
+    "new_approval": false,
+    "review_dispatch": false,
+    "allowance_reset": false,
+    "bypass_or_force": false
+  },
+  "final_attempt": {
+    "command": "apex-recall complete-step fulcrum 3 --json",
+    "exit_code": 0,
+    "actual_response": {
+      "project": "fulcrum",
+      "step": "3",
+      "status": "complete",
+      "completed": "2026-11-09T21:16:25Z"
+    },
+    "bypass_or_force": false,
+    "next_step_started": false
+  },
+  "final_outcome": "STEP_COMPLETE"
+}

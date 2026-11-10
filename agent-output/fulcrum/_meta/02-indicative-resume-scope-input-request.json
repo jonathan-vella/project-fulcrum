@@ -1,0 +1,42 @@
+{
+  "request_id": "fulcrum-indicative-resume-scope-20261109-174506",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_3_cost_scope_hold",
+  "needed_inputs": ["architecture_resume_scope"],
+  "form": {
+    "message": "Fulcrum's state is recovered. The indicative transfer-rate request is complete, but your latest scope restriction keeps monthly totals, manifest writeback and Architecture approval blocked while app transfer usage is unknown. The saved pricing ledger is 34/34; no further queries are authorized. Choose whether to keep that pause or explicitly return to monthly-cost planning. No traffic volume will be assumed, and existing evidence will be reused before considering any additional pricing requests.",
+    "requestedSchema": {
+      "properties": {
+        "architecture_resume_scope": {
+          "type": "string",
+          "title": "Fulcrum resume — retain indicative-only scope or reopen monthly planning",
+          "description": "Reopening planning changes the indicative-only restriction; it does not supply a traffic quantity, reset the pricing allowance, approve Architecture or authorize Azure operations. Only genuinely missing inputs would follow. No option is preselected.",
+          "enum": ["keep_indicative_only_and_pause", "resume_monthly_cost_planning", "stop"],
+          "enumNames": [
+            "Keep indicative rates only; leave the workflow paused",
+            "Resume monthly-cost planning using existing verified evidence",
+            "Stop this workflow"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "project_name": "fulcrum",
+      "latest_scope": "Indicative transfer-rate request only; monthly usage must not be assumed.",
+      "indicative_rate_verification": "Complete from saved evidence; no new requests.",
+      "monthly_app_transfer_volume": "Unknown",
+      "pricing_requests_consumed": 34,
+      "pricing_absolute_limit": 34,
+      "architecture_approval": "Blocked"
+    },
+    "fields": {
+      "architecture_resume_scope": {
+        "input_id": "architecture_resume_scope",
+        "kind": "input"
+      }
+    }
+  }
+}

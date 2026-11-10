@@ -1,0 +1,188 @@
+{
+  "project": "fulcrum",
+  "evidence_date": "2026-11-09",
+  "status": "BLOCKED_REQUIRED_CAPABILITY",
+  "phase": "phase_2_required_capability_feasibility",
+  "finding_id": "ARCH-FEAS-003",
+  "finding_origin": "03-Architect public research; not an independent review",
+  "step_complete": false,
+  "gate2_ready": false,
+  "azure_reads_performed": false,
+  "azure_writes_performed": false,
+  "consumed_response": {
+    "request_id": "fulcrum-step2-secret-capability-20261109-075300",
+    "receipt": "agent-output/fulcrum/_meta/02-secret-capability-response-receipt.json",
+    "input_records": [
+      "agent-output/fulcrum/_meta/inputs/02-dev-secret-certificate-profile.json",
+      "agent-output/fulcrum/_meta/inputs/02-policy-feasibility-read-intent.json"
+    ],
+    "recording_result": "Both actual values recorded through apex-recall decide --input-record; permission_granted=false.",
+    "authority": "Dev planning requirements and read-scope intent only; not an image, SDK, connectivity test, secure target binding, residency exception or Azure authorization."
+  },
+  "secret_capability": {
+    "required_scope": "Secure credential and certificate handling, not mandatory ownership of a particular vault product.",
+    "key_vault_preference_preserved": true,
+    "key_vault_selected": false,
+    "key_vault_exclusion_evidence": "agent-output/fulcrum/_meta/02-key-vault-feasibility-evidence.json",
+    "reason": "Documented automatic paired-region vault replication conflicts with the unchanged non-Entra Sweden Central boundary.",
+    "candidate_design": "Managed identities for supported service calls; short-lived Entra tokens; platform-provided HTTPS; no invented long-lived application secrets or custom certificates.",
+    "design_status": "Designed for the confirmed credential categories; whole dependency closure remains unresolved.",
+    "runtime_status": "Unverified",
+    "app_team_boundary": "Application team must implement supported token/SDK paths and demonstrate that the supplied image does not introduce another credential requirement. No code or test evidence has been supplied.",
+    "baseline_preserved": true,
+    "requirements_bytes_changed": false
+  },
+  "required_image_delivery_blocker": {
+    "requirements": ["FR-01", "FR-07"],
+    "required_capability": "Private authenticated delivery of the application team's Linux container image to the required App Service host.",
+    "preferred_product": "Azure Container Registry",
+    "is_user_pin": false,
+    "documented_fact": "ACR may also store registry data in a paired region in all regions except Brazil South and Southeast Asia.",
+    "meaning": "This is a documented permitted storage behavior, not evidence that any actual registry has replicated, and not the automatic-replication claim made for Key Vault.",
+    "effect": "A Sweden Central ACR selection cannot presently establish the required Sweden Central-only registry-data boundary.",
+    "zone_redundancy_does_not_resolve": "The reliability guidance describes in-region availability-zone replication. It does not withdraw the separate paired-region storage qualification.",
+    "geo_replication_disabled_does_not_resolve": "Optional customer-configured geo-replication is documented separately from the provider's regional-storage qualification.",
+    "bounded_fallback_result": "Storage-page fetch plus targeted regional-storage/zone-redundancy searches did not establish a supported setting that forbids paired-region storage.",
+    "candidate_status": "Excluded from compliant committed selection pending authoritative containment evidence.",
+    "confidence": {
+      "documented_qualification": "High",
+      "existence_of_a_compliant_alternative": "Not established"
+    },
+    "whole_workload_impossible_claimed": false
+  },
+  "alternative_screen": [
+    {
+      "candidate": "ACR Basic or Standard",
+      "result": "Excluded",
+      "reason": "Private Link requires Premium; lowering the tier also does not resolve the residency qualification."
+    },
+    {
+      "candidate": "ACR Premium without geo-replication, with availability-zone redundancy",
+      "result": "Not established as residency-compliant",
+      "reason": "In-region zones and absence of configured geo-replicas do not establish prohibition of provider paired-region storage."
+    },
+    {
+      "candidate": "ACR in Brazil South or Southeast Asia",
+      "result": "Excluded",
+      "reason": "The documented single-region exceptions are outside the approved workload region."
+    },
+    {
+      "candidate": "Generic private or self-hosted registry",
+      "result": "Unresolved; not a selected substitute",
+      "reason": "App Service's documented generic private-registry path requires login/password. No supported same-boundary managed-identity and platform-HTTPS alternative was established. Do not invent a credential/token broker, custom certificate, application component or tested registry."
+    },
+    {
+      "candidate": "Public or external image registry",
+      "result": "Excluded as an assumed substitute",
+      "reason": "Does not establish the required private image path and unchanged non-Entra residency boundary."
+    },
+    {
+      "candidate": "Remove container hosting or private image delivery",
+      "result": "Not authorized",
+      "reason": "This would materially remove required functional scope, unlike declining an unneeded preferred vault product."
+    }
+  ],
+  "candidate_sets": [],
+  "candidate_sets_reason": "No complete required-capability design currently passes the private image/residency filter. Component options are research only, not approved winners or pricing requests.",
+  "sources": [
+    {
+      "id": "ACR-STORAGE",
+      "url": "https://learn.microsoft.com/azure/container-registry/container-registry-storage",
+      "retrieved": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search followed by microsoft_docs_fetch",
+      "excerpt": "In all regions except Brazil South and Southeast Asia, Azure may also store registry data in a paired region in the same geography.",
+      "supports": "Paired-region storage qualification; optional geo-replication and in-region zone redundancy are separate features."
+    },
+    {
+      "id": "ACR-TIERS",
+      "url": "https://learn.microsoft.com/azure/container-registry/container-registry-skus",
+      "retrieved": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search",
+      "supports": "Premium adds Private Link/private endpoints; Basic and Standard do not meet that capability."
+    },
+    {
+      "id": "ACR-ZONES",
+      "url": "https://learn.microsoft.com/azure/reliability/reliability-container-registry#resilience-to-availability-zone-failures",
+      "retrieved": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search",
+      "supports": "Automatically zone-redundant in supported regions; zone redundancy cannot be disabled. Does not establish an exception to paired-region storage."
+    },
+    {
+      "id": "APP-ACR-MI",
+      "url": "https://learn.microsoft.com/azure/app-service/configure-custom-container#use-managed-identity-to-pull-an-image-from-azure-container-registry",
+      "retrieved": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search",
+      "supports": "App Service managed-identity ACR image pulls; ARM-audience tokens must be allowed. Private network reachability is a separate prerequisite."
+    },
+    {
+      "id": "APP-REGISTRY",
+      "url": "https://learn.microsoft.com/azure/app-service/deploy-ci-cd-custom-container#configure-registry-settings",
+      "retrieved": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search followed by microsoft_docs_fetch",
+      "excerpt": "In the Login and Password fields, type your sign-in credentials for your private registry.",
+      "supports": "Documented generic private-registry credential requirement; no universal MI substitute inferred."
+    }
+  ],
+  "dependency_closure": [
+    {
+      "dimension": "Consumer and owner",
+      "status": "Unresolved",
+      "evidence": "App Service consumes an application-team image; Technology Contributors own infrastructure delivery. Required private source cannot yet be selected compliantly."
+    },
+    {
+      "dimension": "Identity",
+      "status": "Designed",
+      "evidence": "ACR-specific App Service MI image pull is documented; identity/grants and ARM-audience setting would need later binding. Generic registry MI is not established."
+    },
+    {
+      "dimension": "Network and DNS",
+      "status": "Unresolved",
+      "evidence": "Separate App Service integration and private endpoint subnets; private API/SCM, data and image DNS; actual secure client/runner route, VNet, CIDRs and central DNS ownership not selected or verified."
+    },
+    {
+      "dimension": "Outbound dependencies",
+      "status": "Unresolved",
+      "evidence": "Private registry login/data endpoints plus MI/Entra token dependencies; image pull over VNet integration and egress controls must be designed together. No external registry exception."
+    },
+    {
+      "dimension": "Observability",
+      "status": "Unresolved",
+      "evidence": "Sanitized image-pull/startup failures and registry access denials require workspace routing and operational alerts; supported authenticated SDK, log volumes, policy and actual recipient binding remain unverified."
+    },
+    {
+      "dimension": "Recovery",
+      "status": "Unresolved",
+      "evidence": "An immutable image digest and same-boundary retained image must permit re-pull/redeployment. A cached running container does not establish cold-start recovery or RTO."
+    },
+    {
+      "dimension": "Cost and handoff",
+      "status": "Unresolved",
+      "evidence": "Registry, private endpoint/data traffic/DNS, secure client/runner access, monitoring and recovery usage are required cost scope. No approved complete design, usage model or worker pricing exists."
+    }
+  ],
+  "runtime_status": "Unverified",
+  "policy_feasibility": {
+    "current_recall_status": "provisional_no_authorized_target",
+    "new_answer_is_intent_only": true,
+    "target_binding_supplied": false,
+    "parent_owned_secure_scope_recovery": true,
+    "governance_dispatched": false,
+    "implementation_gate2_hold": true
+  },
+  "next_action": {
+    "owner": "Interactive parent",
+    "technical_resolution": "Obtain authoritative supported ACR configuration/commitment confining registry data to Sweden Central, or a supported private identity-authenticated same-boundary image-delivery alternative; return bounded evidence to 03-Architect.",
+    "material_scope_change_owner": "02-Requirements, only if resolution changes required functional scope or the residency requirement.",
+    "no_automatic_exception": "No new Key Vault, ACR or other-service residency exception is adopted or requested as routine consent.",
+    "pending_user_form": null,
+    "why_no_new_form": "The current blocker is supported capability/residency evidence, not an unanswered preference. The two actually asked questions are answered. SKU/VNet confirmation cannot approve an unverified required image path.",
+    "gate_requirements": "Full capability closure, current SKU and VNet decisions, supported usage, worker COMPLETE pricing, full artifacts/charts, both independent reviews and securely authorized current policy feasibility still precede final Gate 2."
+  },
+  "dispatch_accounting": {
+    "step2_pricing_calls": 0,
+    "step2_architecture_review_calls": 0,
+    "step2_cost_review_calls": 0,
+    "histories_reset": false,
+    "no_pricing_reason": "Required image capability is unresolved; supported complete candidate and usage scope are absent, not a pricing-tool failure or assessment-only exit."
+  }
+}

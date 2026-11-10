@@ -1,0 +1,12 @@
+{
+ "query":{"serviceName":"Azure Monitor","armRegionName":"Global","productName":"Azure Monitor","skuName":"Alerts","meterName":"Alerts Metric Monitored","priceType":"Consumption","currencyCode":"USD"},
+ "remaining_requests":2,
+ "mcp_failure":{"kind":"missing_tier_metadata","recorded_at":"2026-11-09T16:02:21.471208+00:00",
+ "full_native_response_path":"agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q13-global-alerts.native.json",
+ "extraction_qualification":"All two exact raw matching metric rows; whole actual native response preserved separately. Timestamp is the actual post-query clock observation shared with q14, not an effectiveStartDate.",
+ "attempts":[{"query":{"serviceName":"Azure Monitor","priceType":"Consumption","currencyCode":"USD"},
+ "response":{"status":200,"message":"Success","results":{"prices":[
+ {"armSkuName":"","skuName":"Alerts","productName":"Azure Monitor","serviceName":"Azure Monitor","serviceFamily":"ManagementAndGovernance","region":"Global","location":"Global","retailPrice":0,"unitPrice":0,"currencyCode":"USD","unitOfMeasure":"1/Month","priceType":"Consumption","effectiveStartDate":"2018-02-01T00:00:00+00:00","meterName":"Alerts Metric Monitored","meterId":"6860c782-bbcc-41ed-a218-fb308dd0942e","isPrimaryMeterRegion":true},
+ {"armSkuName":"","skuName":"Alerts","productName":"Azure Monitor","serviceName":"Azure Monitor","serviceFamily":"ManagementAndGovernance","region":"Global","location":"Global","retailPrice":0.1,"unitPrice":0.1,"currencyCode":"USD","unitOfMeasure":"1/Month","priceType":"Consumption","effectiveStartDate":"2018-02-01T00:00:00+00:00","meterName":"Alerts Metric Monitored","meterId":"6860c782-bbcc-41ed-a218-fb308dd0942e","isPrimaryMeterRegion":true}
+ ]},"duration":0}}]}
+}

@@ -1,0 +1,172 @@
+{
+  "request_id": "fulcrum-gate1-acr-revision-20261109-130200",
+  "request_id_source": "apex-local",
+  "execution_mode": "delegated",
+  "project": "fulcrum",
+  "step": "1",
+  "phase": "gate_1_revised",
+  "needed_inputs": ["gate1_acr_revision_decision"],
+  "answer_ledger_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "consumed_projection_path": "agent-output/fulcrum/_meta/assessment-step-1.json",
+  "acr_revision_receipt_path": "agent-output/fulcrum/_meta/02-acr-residency-response-receipt.json",
+  "entra_exception_receipt_path": "agent-output/fulcrum/_meta/02-entra-residency-exception-receipt.json",
+  "policy_source_receipt_path": "agent-output/fulcrum/_meta/02-assumed-corp-acceptance-receipt.json",
+  "requirements_path": "agent-output/fulcrum/01-requirements.md",
+  "requirements_sha256": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+  "projection_sha256": "4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b",
+  "review_path": "agent-output/fulcrum/reviews/challenge-findings-requirements-acr-revision.json",
+  "review_receipt_path": "agent-output/fulcrum/_meta/01-review-recording-acr-revision.json",
+  "review_request_id": "fulcrum-requirements-acr-revision-20261109-125300",
+  "review_summary": {
+    "overall_assessment": "APPROVED",
+    "risk_level": "low",
+    "must_fix": 0,
+    "should_fix": 0,
+    "suggestion": 0,
+    "strict_validation": "PASS: zero errors and warnings; supported recall confirms current effective review and gate readiness, not human approval",
+    "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+    "calls_consumed": 3,
+    "maximum_calls": 4
+  },
+  "form": {
+    "message": "Project Fulcrum — revised Gate 1. The actual independent comprehensive Requirements review is APPROVED, low risk, with 0 must-fix, 0 should-fix and 0 suggestions; recording, schema and strict freshness checks passed. Approve the current infrastructure-only, fictional-data dev requirements, including the already-authorized ACR-only acceptance of documented Microsoft-managed paired-region storage of registry artifacts within EU. This does not select optional customer geo-replication or guarantee regional disaster recovery. Workload compute, application data, Blob, backups, monitoring and other non-Entra/non-ACR dependencies remain Sweden Central only; the qualified Entra exception and all other requirements are unchanged. This does not re-ask ACR or policy, certify GDPR compliance, approve Architecture, or grant Azure reads/writes, spend, Production or deployment authority. The accepted Assumed Corp policies remain not tenant-verified and DEV Architecture-only; current target verification is mandatory before planning completion/CodeGen/deployment. Choose approval and next action, revision or stop; include any requested change in a custom response.",
+    "requestedSchema": {
+      "properties": {
+        "gate1_acr_revision_decision": {
+          "type": "string",
+          "title": "Project Fulcrum — reviewed ACR-only Requirements approval and next action",
+          "description": "Separate human approval of these current reviewed bytes is required; earlier Gate 1 approvals are historical. No option is preselected. Approve-and-continue also authorizes the parent to return to 03-Architect now; neither approval option authorizes Azure operations.",
+          "enum": ["approve_and_continue", "approve_and_pause", "revise", "stop"],
+          "enumNames": [
+            "Approve and continue — parent completes Step 1 and returns to 03-Architect",
+            "Approve and pause — parent completes Step 1, then pauses",
+            "Revise — specify the Requirements change in your response",
+            "Stop — do not complete or continue"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "anonymity_requirements": [
+        "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+        "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+        "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+        "Do not request real names, personal emails, domains or identities during discovery",
+        "Do not publish repository remote URLs or account identities in project documentation",
+        "Author attribution uses agent role only; no people",
+        "Fictional sample data only"
+      ],
+      "application_scope_exclusions": [
+        "Cross-platform mobile application development",
+        "Backend application code",
+        "Application tests",
+        "Application permission implementation",
+        "Detailed business workflow, escalation and reporting implementation"
+      ],
+      "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts",
+      "availability_target": "Dev/test — occasional downtime acceptable",
+      "budget_currency": "USD",
+      "budget_limit": "Planning target — optimize and highlight overruns",
+      "business_objective": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+      "company_size": "Startup / small business",
+      "compliance": [
+        "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+      ],
+      "compute_host": "App Service — Linux containers",
+      "cost_monitoring_mode": "minimal",
+      "daily_users": "Up to 50",
+      "data_processing_constraints": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+      "data_sensitivity": ["Personal / customer data", "Internal business data", "Synthetic test data"],
+      "design_preferences_not_decisions": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+      "iac_tool": "Bicep",
+      "industry": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+      "infrastructure_scope": [
+        "Hosting support for a containerized backend; backend code excluded",
+        "Cloud-hosted data",
+        "Identity and access management",
+        "Notification platform capabilities, with channels still to evaluate",
+        "Monitoring and operations",
+        "Infrastructure-as-code",
+        "Infrastructure testing and deployment automation",
+        "Store anonymous resulting documentation in this repository"
+      ],
+      "messaging_events": ["None — no separate messaging/event service required"],
+      "monitoring_access_scope": "An existing platform/team handles monitoring access",
+      "monitoring_network_requirement": "Authenticated public monitoring permitted if policy allows",
+      "monitoring_privacy_retention": "30 days for sanitized dev diagnostics",
+      "monthly_budget": "500–2,000/month",
+      "non_relational_store": "Cosmos DB — preferred primary document store",
+      "notification_channels": [
+        "Email capability — fictional/dev testing only",
+        "Mobile push capability — fictional/dev testing only",
+        "Dev simulation only — no outbound delivery"
+      ],
+      "notification_delivery_scope": "Simulation-only MVP — defer email/push transports, retain functional channel intent",
+      "notification_intent": {
+        "events": ["New opportunities", "Registration confirmations", "Approval decisions", "Assignment changes", "Upcoming activities"],
+        "candidate_channels_only": ["Email", "Push", "Other channels"],
+        "mandatory_channel_confirmed": false
+      },
+      "peak_concurrent_users": "10–100",
+      "performance_target": "Typical API responses under 2 seconds — planning goal to validate",
+      "private_client_access": "A new secure remote-access path is needed",
+      "project_name": "fulcrum",
+      "recovery_profile": "Standard — recover within 4 hours; up to 1 hour of data loss",
+      "relational_db": "None — relational storage not required",
+      "residency_requirement": {
+        "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies, except the narrow ACR registry-artifact behavior explicitly accepted below.",
+        "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
+        "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
+        "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception beyond the explicitly accepted ACR registry-artifact behavior; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver. No optional customer-configured ACR geo-replication, arbitrary replicas or other-service paired-region storage is authorized.",
+        "acceptance_scope": "Project Stakeholders accept the existing narrow Entra exception as meeting their project GDPR requirements; that acceptance is unchanged. The additional DEV-only ACR acceptance covers only the documented Microsoft-managed paired-region storage of container images and registry artifacts within the EU residency boundary. Neither acceptance is independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority; no new review allowance or regional disaster-recovery guarantee is granted.",
+        "acr_registry_artifact_exception": "Accept the documented Microsoft-managed ACR paired-region storage behavior within the EU residency boundary for container images and registry artifacts only, per https://learn.microsoft.com/azure/container-registry/container-registry-storage. Sweden Central remains the registry creation/workload region; its documented Sweden South pair lies within the accepted EU boundary. Actual replication and regional recovery remain unverified. Workload compute, application data, Blob, backups, monitoring, non-ACR dependencies and the existing Entra exception remain unchanged."
+      },
+      "review_depth": "default",
+      "scenario": "Greenfield — new workload",
+      "security_privacy_requirements": [
+        "Secure authentication and role-based access control",
+        "Encryption in transit and at rest",
+        "Secrets management",
+        "Audit logging",
+        "Data minimization",
+        "Retention and deletion",
+        "Privacy-aware monitoring",
+        "Mandatory security and privacy baseline"
+      ],
+      "service_tier": "Balanced",
+      "sku_app_service": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+      "sku_commitment": "On-demand only — no reserved commitment",
+      "sku_env_override": "No dev-specific SKU override — apply these preferences to dev only",
+      "sku_nosql": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+      "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+      "storage_needs": ["Blob storage — media or documents"],
+      "supporting_services": [
+        "Azure Monitor + Application Insights + Log Analytics — preferred diagnostics products",
+        "Key Vault — preferred secrets/certificates service",
+        "Azure Container Registry — preferred container image registry"
+      ],
+      "system_description": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+      "target_environments": ["dev"],
+      "target_region": "swedencentral",
+      "technology_evaluation_constraints": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+      "timeline": "Within 2 weeks",
+      "workload_pattern": "Web application with a database",
+      "dev_secret_certificate_profile": "managed identities plus platform-provided HTTPS can cover every required dev connection",
+      "policy_feasibility_read_intent": "provide_secure_scope_for_governance_read_only",
+      "policy_source": {
+        "kind": "assumed-corp",
+        "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"
+      }
+    },
+    "fields": {
+      "gate1_acr_revision_decision": {
+        "input_id": "gate1_acr_revision_decision",
+        "kind": "approval"
+      }
+    }
+  },
+  "context_provenance": "All 54 current material values recovered through supported recall. The 51 consumed Step 1 values equal the current frozen projection. The other 50 Step 1 values and all historical/custom answers are preserved; only the actual ACR receipt supersedes the prior residency subset. Step 2 policy_source remains excluded from the Step 1 projection; old scope-file intent is retained historical context but its questionnaire is superseded by actual accepted Assumed Corp policies and must not be re-asked.",
+  "parent_action": "Present the actual APPROVED low-risk result, all zero totals and current sidecar. Preflight this form with its complete separate context and strict review freshness, then display only form.message and form.requestedSchema unchanged using native ask_user. Preserve this APEX-local request ID with the actual human response receipt. No defaults or historical Gate 1 approval apply. approve_and_continue permits the parent to record current Gate 1 approval, complete Step 1 via supported recall, update index/handoff after success and return to 03-Architect; approve_and_pause permits completion then pause. Revise requires the actual material change and affected validation/review within this same remaining bound. Stop/cancellation does not approve or complete. Do not re-ask ACR, policy or the questionnaire; no Azure operations or Gate 2 approval are granted."
+}

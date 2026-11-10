@@ -1,0 +1,48 @@
+{
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "output_path": "agent-output/fulcrum/contracts/02-cost-candidates-app-host.json",
+  "overwrite": false,
+  "manifest_writeback": false,
+  "compare_regions": false,
+  "include_ri_savings": false,
+  "scope_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only. Comparison-only base host costs, not committed workload total. Only dev, one instance, no zones, on-demand Consumption, Linux container. No final SKU approval.",
+  "candidate_sets": [
+    {
+      "decision_id": "app-host",
+      "candidates": [
+        {
+          "label": "app-host-B1-dev-swedencentral",
+          "service_name": "Azure App Service",
+          "sku": "B1",
+          "region": "swedencentral",
+          "quantity": 1,
+          "usage": {
+            "amount": 730,
+            "unit": "hours",
+            "scope": "per-instance",
+            "hours_per_month": 730
+          },
+          "meter_name": "B1 App",
+          "notes": "Select Consumption USD Linux Azure App Service Basic Plan B1 App, not Windows, DevTest, reservation or container execution meters. Official Linux specs: 1 vCPU, 1.75 GB RAM, 10 GB platform storage; private endpoint and separate outbound VNet integration supported. Peak 768 MiB application memory plus at least 40% platform headroom needs 1280 MiB total, below 1792 MiB. 20 RPS concentrated peak and 10–100 concurrent users are adopted planning assumptions, not validated capacity; tests by application team later. Candidate excludes common supporting resources which must be included in committed estimate. Price-only, no manifest writeback."
+        },
+        {
+          "label": "app-host-B2-dev-swedencentral",
+          "service_name": "Azure App Service",
+          "sku": "B2",
+          "region": "swedencentral",
+          "quantity": 1,
+          "usage": {
+            "amount": 730,
+            "unit": "hours",
+            "scope": "per-instance",
+            "hours_per_month": 730
+          },
+          "meter_name": "B2 App",
+          "notes": "Select Consumption USD Linux Azure App Service Basic Plan B2 App, not Windows, DevTest or reservation. Official Linux specs: 2 vCPU, 3.50 GB RAM, 10 GB platform storage; same private endpoint and outbound VNet capabilities. Extra CPU/memory headroom is an alternative, not an approved floor. Same 730 monthly hours, one dev instance, no availability-zone claim. Excludes common supporting resources; not workload total."
+        }
+      ]
+    }
+  ]
+}

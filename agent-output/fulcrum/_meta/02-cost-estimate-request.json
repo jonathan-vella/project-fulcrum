@@ -1,0 +1,259 @@
+{
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "manifest_path": "agent-output/fulcrum/contracts/sku-manifest.json",
+  "manifest_writeback": true,
+  "output_path": "agent-output/fulcrum/contracts/02-cost-estimate.json",
+  "overwrite": false,
+  "compare_regions": false,
+  "include_ri_savings": false,
+  "scope_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only. Complete approved project planning scope, including explicit conservative central-DNS allocation. Not a tenant bill, spend/deletion/deployment approval or tested implementation. No PROD, independent stamps, reservation, Spot or DevTest pricing.",
+  "approved_input_paths": [
+    "agent-output/fulcrum/_meta/02-current-material-input-ledger.json",
+    "agent-output/fulcrum/_meta/assessment-step-2.json",
+    "agent-output/fulcrum/_meta/02-sku-network-meter-normalization.json",
+    "agent-output/fulcrum/_meta/02-private-usage-normalization.json",
+    "agent-output/fulcrum/_meta/02-confirmed-network-binding.json",
+    "agent-output/fulcrum/_meta/02-final-dependency-closure.md",
+    "agent-output/fulcrum/_meta/02-final-official-evidence.json"
+  ],
+  "reuse_evidence_paths": [
+    "agent-output/fulcrum/contracts/02-cost-candidates-app-host.json",
+    "agent-output/fulcrum/contracts/02-cost-candidates-document-store.json",
+    "agent-output/fulcrum/contracts/02-cost-candidates-access-compute.json"
+  ],
+  "prior_accounting": {
+    "comparison_dispatches": 3,
+    "comparison_mcp_calls": 7,
+    "comparison_direct_api_calls": 0,
+    "committed_dispatches_before_this_request": 0,
+    "architecture_review_dispatches": 0,
+    "cost_review_dispatches": 0,
+    "allowances_reset": false
+  },
+  "manifest_usage": {
+    "app-host": {
+      "hours_per_month": 730,
+      "scope": "aggregate",
+      "meter_name": "B1 App",
+      "notes": "Linux Basic B1, one instance; reuse exact current successful comparison product Azure App Service Basic Plan - Linux. One container, 512 MiB steady, 768 MiB peak and 40% platform headroom; no extra worker, slot or paid filesystem backup. App private data/image traffic uses PEs below. Public platform egress is identity/control/combined telemetry, not runner NAT."
+    },
+    "document-store": {
+      "request_units_per_month": 20000000,
+      "peak_request_units_per_second": 1000,
+      "live_storage_gb": 10,
+      "continuous_backup_storage_gb": 10,
+      "backup_retention_days": 30,
+      "region_count": 1,
+      "restore_gb_per_event": 10,
+      "restore_events_per_month": 1,
+      "scope": "aggregate",
+      "notes": "One NoSQL Serverless account, three containers/one database, 2 KiB items. Reuse current exact MCP serverless RU, Data Stored, Cont 30D Bckp Continuous Backup and Data Restore records. Backup monthly basis is live GB times region count, not 30 copies. One source-account restore event; do not duplicate restore fee in temporary target line. Temporary target storage/RU/backup below remains paid."
+    },
+    "access-compute": {
+      "hours_per_month": 80,
+      "scope": "aggregate",
+      "notes": "One Linux Standard_D2as_v5 x86 runner. Reuse current exact Consumption Linux comparison meter, not Spot/Windows/DevTest. Eighty provisioned hours including restore sessions. OS disk/Bastion/NAT/IP/transfer priced below. Future authorized deletion required for billed lifetime; no present deletion authority."
+    },
+    "storage-blob-replication": {
+      "live_hot_gb": 20,
+      "retained_versions_and_soft_deleted_gb": 10,
+      "change_feed_gb": 0.5,
+      "total_hot_stored_gb": 30.5,
+      "read_operations_per_month": 110000,
+      "write_operations_per_month": 20000,
+      "list_operations_per_month": 10000,
+      "restore_events_per_month": 1,
+      "logical_blob_restored_gb": 20,
+      "restore_change_feed_processed_gb": 0.5,
+      "pitr_retention_days": 30,
+      "supporting_retention_days_min": 31,
+      "scope": "aggregate",
+      "notes": "LRS sole user lock unchanged. Provider Standard_LRS, Standard GPv2 Hot block blobs, no HNS. Include live/protected/change-feed Hot storage, reads/writes/list, eligible Blob PITR restore processing plus transactions. 110k reads = approved 100k + 10k restore; 20k writes = approved 10k + 10k restore; list 10k. Operations are the approved aggregate envelopes, not duplicated per GB or per container. Official PITR meter bills change-feed data processed, not logical Blob bytes restored: full retained 0.5GB change feed is the conservative input-equivalent bound for the one 20GB logical in-place restore. No second Blob account, vault, egress copy or seven-day fallback. Verify exact storage products and tiers/minima; operation-free/PITR-free claims require explicit published evidence. Thirty-one-day protection bytes are adopted planning volumes, not measured churn or multiplied by retention."
+    }
+  },
+  "supplemental_resources": [
+    {
+      "name": "acr-premium-dev-swedencentral",
+      "service_name": "Container Registry",
+      "sku": "Premium",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "billable_days_per_month": 30.416666666666668,
+        "image_storage_gb": 10,
+        "scope": "aggregate",
+        "notes": "Premium Registry Unit daily charge, 365/12 planning days. Verify Premium included image storage and billable overage against official evidence, not a guessed zero. No ACR Tasks/builds/optional replication; app image build owned elsewhere. ACR may store provider-paired EU artifacts under the narrow accepted exception, not other workload data or customer geo-replica. Private Link endpoint accounted below."
+      }
+    },
+    {
+      "name": "steady-private-endpoints-dev-swedencentral",
+      "service_name": "Virtual Network",
+      "sku": "Standard Private Endpoint",
+      "region": "swedencentral",
+      "quantity": 4,
+      "usage": {
+        "hours_per_month": 730,
+        "inbound_gb": 40,
+        "outbound_gb": 130,
+        "scope": "aggregate",
+        "notes": "Four app/Cosmos/Blob/ACR PEs; 730 hours EACH; data aggregate across ALL FOUR, never multiply by four again: API20/50 Cosmos5/20 Blob10/50 ACR5/10 towards/from service GB. Generic Private Link uses Global billing region, not deployment relocation. Query exact Virtual Network Private Link product once, select Standard Private Endpoint, Standard Data Processed - Ingress/Egress and applicable tier bands. Missing tierMinimumUnits may require documented constrained fallback. Endpoint multiple private IP configurations do not mean multiple charged PE resources."
+      }
+    },
+    {
+      "name": "central-private-dns-allocation-dev",
+      "service_name": "Azure DNS",
+      "sku": "Private",
+      "region": "swedencentral",
+      "quantity": 1,
+      "upper_bound_ok": true,
+      "usage": {
+        "zone_equivalents": 4,
+        "queries_per_month": 1000000,
+        "scope": "aggregate",
+        "notes": "Explicitly adopted conservative shared-cost allocation, NOT project duplicate zones, ownership or actual billed allocation. Four central service-correct zones with records/SCM/ACR data and links assumed; owner verified later. Query Azure DNS Private Zone/Private Queries without ARM region/SKU filters; exact Azure DNS product Private SKU global/empty commercial region. Use verified highest applicable published commercial tier as adopted, preserve tiers and minimums; Private Zone unit '1' is zone-month, Private Queries '1M'. Do not invent DNS Private Resolver/security policy/extra hosted public zone or per-record surcharge without documented applicability."
+      }
+    },
+    {
+      "name": "log-analytics-app-insights-combined-dev",
+      "service_name": "Log Analytics",
+      "sku": "Analytics Logs",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "ingestion_gb_per_month": 1,
+        "retention_days": 30,
+        "scope": "aggregate",
+        "notes": "Single 1GB sanitized combined envelope for workspace-based App Insights, app/access/data/registry/platform diagnostics, not 1GB per resource. Price published paid Analytics ingestion; no shared free entitlement assumed. Thirty-day table retention, no archival/search/export/dedicated cluster/commitment. Verify included retention; workspace-based App Insights uses this same ingestion, not second ingestion billing. Central Defender/policy-owned external workspace/transfer costs not project-billed; disclose unavailable allocation, not free."
+      }
+    },
+    {
+      "name": "operational-metric-alerts-dev",
+      "service_name": "Azure Monitor",
+      "sku": "Metric Alerts",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "metric_alert_rules": 4,
+        "time_series": 4,
+        "evaluation_frequency": "1 minute",
+        "scope": "aggregate",
+        "notes": "Four rules/four total paid monitored series. No subscription-free ten-series entitlement assumed. No dynamic thresholds or extra series. Operational routing is existing authorized team, no notification transport submeter added."
+      }
+    },
+    {
+      "name": "operational-scheduled-log-alert-dev",
+      "service_name": "Azure Monitor",
+      "sku": "Scheduled Query Alerts",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "rules": 1,
+        "monitored_resources": 1,
+        "evaluation_frequency": "5 minutes",
+        "scope": "aggregate",
+        "notes": "One five-minute scheduled log alert on combined workspace; select exact applicable monthly frequency meter, not one-minute/dynamic alerts. No email/webhook billing scope, operational action routing remains existing team."
+      }
+    },
+    {
+      "name": "ephemeral-bastion-standard-dev",
+      "service_name": "Azure Bastion",
+      "sku": "Standard",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "hours_per_month": 80,
+        "base_scale_units": 2,
+        "outbound_internet_gb": 5,
+        "scope": "aggregate",
+        "notes": "Standard base hourly price INCLUDES two base units: do not multiply base by two or add extra scale units. Native Entra SSH to private VM, no tunnels-as-Entra, Premium/session-recording. Future authorized delete after total80h, not deallocation. Five GB Internet outbound transfer belongs in Bandwidth line below, not duplicated."
+      }
+    },
+    {
+      "name": "ephemeral-nat-standard-dev",
+      "service_name": "NAT Gateway",
+      "sku": "Standard",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "hours_per_month": 80,
+        "processed_gb_per_month": 25,
+        "return_download_gb": 20,
+        "outbound_gb": 5,
+        "scope": "aggregate",
+        "notes": "Standard NAT hourly plus25GB processed (20download/return +5upload/other outbound). Attached only to runner subnet; no 730h app dependency. Additional5GB Internet transfer separately in Bandwidth below. Static service IP separately billed. Not StandardV2 or all-traffic app egress."
+      }
+    },
+    {
+      "name": "ephemeral-runner-os-disk-dev",
+      "service_name": "Storage",
+      "sku": "P6 LRS",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "provisioned_size_gib": 64,
+        "provisioned_hours_per_month": 80,
+        "scope": "aggregate",
+        "notes": "Premium SSD managed disk P6 LRS64GiB, no snapshot/data disk/paid bursting/additional transaction charge without applicable evidence. Official disks-types managed billing permits hourly proration from monthly provisioned size when deleted. Verify exact current meter/unit; eighty billable hours, not730. Deallocation leaves disk billable; future authorized disk deletion required."
+      }
+    },
+    {
+      "name": "ephemeral-service-public-ipv4-dev",
+      "service_name": "Virtual Network",
+      "sku": "Standard IPv4",
+      "region": "swedencentral",
+      "quantity": 2,
+      "usage": {
+        "hours_per_month": 80,
+        "scope": "aggregate",
+        "notes": "Two Standard static IPv4 addresses, one Bastion and one NAT, each80h. Never VM NIC or Public IP Prefix. Select exact applicable Standard IPv4 hourly commercial meter; no unused retained IP beyond approved provisioned profile."
+      }
+    },
+    {
+      "name": "internet-outbound-allocation-dev",
+      "service_name": "Bandwidth",
+      "sku": "Internet Data Transfer Out",
+      "region": "swedencentral",
+      "quantity": 1,
+      "upper_bound_ok": true,
+      "usage": {
+        "internet_outbound_gb_per_month": 10,
+        "scope": "aggregate",
+        "notes": "Complete explicitly quantified access Internet transfer5GB NAT outbound +5GB Bastion outbound. Conservative paid marginal allocation at applicable European commercial billing tier, not assumption of shared subscription100GB/free entitlement. Verify tier/minimum semantics. No chargeable inbound transfer assumed only with official evidence. Private workload bytes separately costed under PEs. Approved app telemetry ingestion envelope is1GB; platform Internet telemetry/control flows may be covered by published exemptions rather than silently set to zero. Flag any unsupported required meter/usage instead of claiming full cost."
+      }
+    },
+    {
+      "name": "temporary-cosmos-restore-target-dev",
+      "service_name": "Azure Cosmos DB",
+      "sku": "Serverless",
+      "region": "swedencentral",
+      "quantity": 1,
+      "upper_bound_ok": true,
+      "usage": {
+        "provisioned_hours_per_month": 4,
+        "request_units_per_month": 1000000,
+        "live_storage_gb": 10,
+        "continuous_backup_storage_gb": 10,
+        "backup_retention_days": 30,
+        "region_count": 1,
+        "scope": "aggregate",
+        "notes": "One monthly restore target in same region for4h inside eighty-hour session. Reuse current source-account serverless/data/backup meters. No second restore API charge. Verify storage and paid30daybackup minimum/granularity: if four-hour proration is unverified, cost full10GB monthly units as conservative approved meter bound and label it, never unsupported80/730 or4/730. Extra1mRU paid. No forever-preserved backup free claim after deletion."
+      }
+    },
+    {
+      "name": "temporary-cosmos-restore-private-endpoint-dev",
+      "service_name": "Virtual Network",
+      "sku": "Standard Private Endpoint",
+      "region": "swedencentral",
+      "quantity": 1,
+      "usage": {
+        "hours_per_month": 4,
+        "inbound_gb": 1,
+        "outbound_gb": 10,
+        "scope": "aggregate",
+        "notes": "One temporary PE four billable hours,1GB towards and10GB from target, added once to steady PE170GB. Reuse same exact Global Generic Private Link endpoint/processing tiers; existing central Cosmos zone/records/link, no fifth hosted zone. Future deletion separately authorized."
+      }
+    }
+  ]
+}

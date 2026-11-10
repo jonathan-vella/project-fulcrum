@@ -1,0 +1,77 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "phase": "phase_3_cost_missing_usage_and_applicability",
+  "needed_inputs": [
+    "dev_app_monthly_wire_planning_profile",
+    "dev_mgn_transfer_cost_profile",
+    "dev_bastion_transfer_cost_profile"
+  ],
+  "context_path": "agent-output/fulcrum/_meta/02-monthly-planning-question-context.json",
+  "settled_ledger_path": "agent-output/fulcrum/_meta/02-current-material-input-ledger.json",
+  "evidence_inventory_path": "agent-output/fulcrum/_meta/02-monthly-planning-missing-inputs.json",
+  "scope_receipt_path": "agent-output/fulcrum/_meta/02-indicative-resume-scope-response-receipt.json",
+  "form": {
+    "message": "Monthly-cost planning is reopened. Only three remaining transfer choices need your input; the 66 settled inputs remain unchanged. LOW/MVP/GROWTH below are proposed planning envelopes, not measurements, forecasts or adopted traffic. For each service's unknown sharing/allowances, you can approve a CONSERVATIVE BUDGET BOUND instead of supplying billing facts: reserve against that service's highest verified paid native unit rate, without free allowances or volume discounts. This is a planning allocation, NOT an applicable-tier claim or invoice prediction; the pricing owner must validate its coverage before calculation. Alternatively, supply anonymous facts already known to your billing team in the relevant field. Unknown is valid and does not approve an assumption. No choice is preselected. Existing evidence will be reused first; pricing requests remain 34/34 consumed, with zero new requests authorized. This form does not authorize queries, Architecture approval, spending or Azure operations.",
+    "requestedSchema": {
+      "properties": {
+        "dev_app_monthly_wire_planning_profile": {
+          "type": "string",
+          "title": "App public outbound wire — proposed monthly planning envelope",
+          "description": "Choose an illustrative envelope for the app's entire 730-hour month, including SDK telemetry, identity/control HTTPS traffic, protocol overhead and retries. This is ADDITIONAL to settled NAT 5 GB and Bastion 5 GB outbound. The 1 GB log-ingestion allowance is not wire volume; do not duplicate Private Endpoint traffic or downloads. These envelopes are sensitivity scenarios, not validated workload sizing. You may instead type a custom nonnegative decimal GB/month envelope or 'unknown' in this same field. GB means decimal gigabytes, not GB of ingested logs or Tb.",
+          "enum": [
+            "proposed_low_1_gb_per_month",
+            "proposed_mvp_5_gb_per_month",
+            "proposed_growth_20_gb_per_month",
+            "unknown_no_envelope_adopted"
+          ],
+          "enumNames": [
+            "Approve proposed LOW envelope: 1 GB/month of additional app wire",
+            "Approve proposed MVP envelope: 5 GB/month of additional app wire",
+            "Approve proposed GROWTH envelope: 20 GB/month of additional app wire",
+            "App wire remains unknown; do not adopt an envelope"
+          ]
+        },
+        "dev_mgn_transfer_cost_profile": {
+          "type": "string",
+          "title": "App and NAT transfer — shared Microsoft-network billing context",
+          "description": "The original paid access-allocation rule is retained. The proposed bound extends it to the new app envelope plus unchanged NAT 5 GB, excluding Bastion. It ignores shared free allowances and discounts; it does NOT assert these project bytes occupy a paid band or that every public service flow is chargeable. For qualification-aware costing instead, report an anonymous known monthly sharing profile in this same field, such as other same-pool transfer GB excluding Fulcrum and any known allowance restrictions; the pricing owner, not you, verifies Azure aggregation and exemptions. 'No other use expected' alone does not establish entitlement. No account IDs, tenant/subscription IDs or contacts.",
+          "enum": [
+            "approve_proposed_mgn_paid_budget_bound",
+            "no_other_shared_mgn_use_expected_verify_eligibility",
+            "mgn_sharing_unknown_no_budget_bound_adopted"
+          ],
+          "enumNames": [
+            "Approve proposed CONSERVATIVE BUDGET BOUND for app + NAT; shared eligibility stays unknown",
+            "No other shared MGN usage expected; verify eligibility before applying any allowance",
+            "Sharing/eligibility unknown; do not adopt the proposed paid bound"
+          ]
+        },
+        "dev_bastion_transfer_cost_profile": {
+          "type": "string",
+          "title": "Bastion transfer — service-specific inclusion and sharing",
+          "description": "Bastion outbound remains the settled 5 GB/month. Saved official documentation describes a first-5-GB monthly inclusion, but its available shared balance is not established. The proposed bound reserves against Bastion's OWN highest verified paid transfer rate, without claiming inclusion or an applicable paid tier; it does not substitute the MGN meter or double-count Bastion. For qualification-aware costing, type any anonymous known sharing/consumption profile in this same field. No other use expected still requires eligibility verification. Saved Bastion rates lack tier boundaries: those are a pricing-evidence issue, not a fact you must certify. Unknown is acceptable.",
+          "enum": [
+            "approve_proposed_bastion_paid_budget_bound",
+            "no_other_bastion_inclusion_use_expected_verify_eligibility",
+            "bastion_sharing_unknown_no_budget_bound_adopted"
+          ],
+          "enumNames": [
+            "Approve proposed CONSERVATIVE BUDGET BOUND for Bastion; inclusion stays unverified",
+            "No other use of the Bastion inclusion expected; verify eligibility before using it",
+            "Sharing/eligibility unknown; do not adopt the proposed paid bound"
+          ]
+        }
+      }
+    }
+  },
+  "dispatch_boundary": {
+    "new_pricing_requests_authorized": 0,
+    "pricing_or_review_dispatch_in_this_slice": false,
+    "parent_action": "Validate again if edited, then send only form.message and form.requestedSchema to native ask_user. Keep this request_id with the actual response receipt.",
+    "after_response": "Record only actual supplied choices. Return the matching response to Architect for bounded evidence/input-equivalence assessment before any pricing-owner calculation. This pending request is not an approval or a leaf dispatch authorization."
+  }
+}

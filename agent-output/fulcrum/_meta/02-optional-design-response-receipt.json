@@ -1,0 +1,13 @@
+{
+  "request_id": "fulcrum-optional-design-selection-20261109",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "post_gate_2_optional_design_selection",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "both",
+  "selected_scope": "Optional 04-Design step: architecture diagram and ADRs reproducing the current approved Architecture.",
+  "authority_boundary": "Documentation only; no redesign, Azure resource reads/writes, spending, deployment or tenant-verification bypass. Existing default review depth remains unchanged; no optional ADR review is newly requested.",
+  "sdk_response_id_supplied": false
+}

@@ -1,0 +1,31 @@
+{
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_3_cost_missing_usage_and_applicability",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": {
+    "dev_app_monthly_wire_planning_profile": "proposed_low_1_gb_per_month",
+    "dev_mgn_transfer_cost_profile": "approve_proposed_mgn_paid_budget_bound",
+    "dev_bastion_transfer_cost_profile": "approve_proposed_bastion_paid_budget_bound"
+  },
+  "adopted_planning_scenario": {
+    "additional_app_wire_gb_per_month": 1,
+    "existing_nat_outbound_gb_per_month": 5,
+    "existing_bastion_outbound_gb_per_month": 5,
+    "mgn_cost_treatment": "Conservative planning bound for app plus NAT using that service's highest verified paid native unit rate; no shared free allowance or volume discount assumed.",
+    "bastion_cost_treatment": "Separate conservative planning bound using Bastion's own highest verified paid native transfer rate; no inclusion claimed and no double-counting under MGN.",
+    "nature": "Explicitly adopted planning allocation, not measured usage, an applicable-tier assertion, invoice prediction or actual entitlement."
+  },
+  "pricing_authority": {
+    "requests_consumed": 34,
+    "absolute_request_limit": 34,
+    "new_queries_authorized": 0,
+    "reuse": "Recalculate from existing verified evidence where source coverage and input applicability validate under the supported pricing contract.",
+    "essential_new_queries": "Explain the exact evidence gap and obtain a bounded extension before dispatch."
+  },
+  "authority_boundary": "No SKU or approved Requirements change, review-history reset, Architecture approval, Azure operations, spending, Production or deployment authority.",
+  "sdk_response_id_supplied": false
+}

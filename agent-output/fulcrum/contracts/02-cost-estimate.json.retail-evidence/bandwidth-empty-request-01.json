@@ -1,0 +1,45 @@
+{
+  "query": {
+    "serviceName": "Bandwidth",
+    "meterName": "Data Transfer Out",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "remaining_requests": 8,
+  "mcp_failure": {
+    "kind": "empty_result",
+    "recorded_at": "2026-11-09T14:22:50.200Z",
+    "timestamp_note": "Recorded after receiving both current invocation MCP responses, not a restamped historical failure.",
+    "attempts": [
+      {
+        "query": {
+          "serviceName": "Bandwidth",
+          "armRegionName": "swedencentral",
+          "meterName": "Data Transfer Out",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {"prices": []},
+          "duration": 0
+        }
+      },
+      {
+        "query": {
+          "serviceName": "Bandwidth",
+          "meterName": "Data Transfer Out",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {"prices": []},
+          "duration": 0
+        }
+      }
+    ]
+  }
+}

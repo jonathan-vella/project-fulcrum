@@ -1,0 +1,100 @@
+{
+  "schema_version": "retail-price-evidence-v1",
+  "data_source": "Azure Retail Prices API (direct fallback)",
+  "query": {
+    "serviceName": "Log Analytics",
+    "armRegionName": "swedencentral",
+    "productName": "Log Analytics",
+    "skuName": "Analytics Logs",
+    "meterName": "Analytics Logs Data Ingestion",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "mcp_failure": {
+    "kind": "missing_tier_metadata",
+    "recorded_at": "2026-11-09T15:58:04.356405+00:00",
+    "full_native_response_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q04-logs.native.json",
+    "attempts": [
+      {
+        "query": {
+          "serviceName": "Log Analytics",
+          "armRegionName": "swedencentral",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {
+            "prices": [
+              {
+                "armSkuName": "",
+                "skuName": "Analytics Logs",
+                "productName": "Log Analytics",
+                "serviceName": "Log Analytics",
+                "serviceFamily": "ManagementAndGovernance",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0,
+                "unitPrice": 0,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+                "meterName": "Analytics Logs Data Ingestion",
+                "meterId": "e3669cc9-19b6-55fc-b9fe-782ab83615ab",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Analytics Logs",
+                "productName": "Log Analytics",
+                "serviceName": "Log Analytics",
+                "serviceFamily": "ManagementAndGovernance",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 2.99,
+                "unitPrice": 2.99,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+                "meterName": "Analytics Logs Data Ingestion",
+                "meterId": "e3669cc9-19b6-55fc-b9fe-782ab83615ab",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Analytics Logs",
+                "productName": "Log Analytics",
+                "serviceName": "Log Analytics",
+                "serviceFamily": "ManagementAndGovernance",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.13,
+                "unitPrice": 0.13,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB/Month",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+                "meterName": "Analytics Logs Data Retention",
+                "meterId": "eccb9d04-6c73-5e3e-8f45-4298156f1a5e",
+                "isPrimaryMeterRegion": true
+              }
+            ]
+          },
+          "duration": 0
+        }
+      }
+    ]
+  },
+  "requests_used": 1,
+  "pages": [
+    {
+      "url": "https://prices.azure.com/api/retail/prices?%24filter=serviceName+eq+%27Log+Analytics%27+and+armRegionName+eq+%27swedencentral%27+and+productName+eq+%27Log+Analytics%27+and+skuName+eq+%27Analytics+Logs%27+and+meterName+eq+%27Analytics+Logs+Data+Ingestion%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+      "queried_at": "2026-11-09T16:02:38.978Z",
+      "response_sha256": "01c1cbbd349ec20a7be23c30283777cad6f417d44fd45c04d1fa4b02af5164bf",
+      "raw_response": "{\"BillingCurrency\":\"USD\",\"CustomerEntityId\":\"Default\",\"CustomerEntityType\":\"Retail\",\"Items\":[{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.0,\"unitPrice\":0.0,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2021-06-08T00:00:00Z\",\"meterId\":\"e3669cc9-19b6-55fc-b9fe-782ab83615ab\",\"meterName\":\"Analytics Logs Data Ingestion\",\"productId\":\"DZH318Z0BQD2\",\"skuId\":\"DZH318Z0BQD2/007V\",\"productName\":\"Log Analytics\",\"skuName\":\"Analytics Logs\",\"serviceName\":\"Log Analytics\",\"serviceId\":\"DZH3140GXVMF\",\"serviceFamily\":\"Management and Governance\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":5.0,\"retailPrice\":2.99,\"unitPrice\":2.99,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2021-06-08T00:00:00Z\",\"meterId\":\"e3669cc9-19b6-55fc-b9fe-782ab83615ab\",\"meterName\":\"Analytics Logs Data Ingestion\",\"productId\":\"DZH318Z0BQD2\",\"skuId\":\"DZH318Z0BQD2/007V\",\"productName\":\"Log Analytics\",\"skuName\":\"Analytics Logs\",\"serviceName\":\"Log Analytics\",\"serviceId\":\"DZH3140GXVMF\",\"serviceFamily\":\"Management and Governance\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"}],\"NextPageLink\":null,\"Count\":2}"
+    }
+  ]
+}

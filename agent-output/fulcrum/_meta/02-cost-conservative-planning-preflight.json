@@ -1,0 +1,41 @@
+{
+  "request_id": "fulcrum-conservative-planning-zero-query-20261109",
+  "request_path": "_meta/02-cost-conservative-planning-request.json",
+  "scope": "Calculation-only source reuse; no catalog/network permission.",
+  "actual_static_preflight": {
+    "command": "node tools/scripts/cost-estimate.mjs preflight --request agent-output/fulcrum/_meta/02-cost-conservative-planning-request.json",
+    "status": "PREFLIGHT_FAILED",
+    "mode": "manifest_path",
+    "line_count": 17,
+    "estimated_query_groups": 13,
+    "unresolved_items": ["remaining_requests must be an integer between 1 and 20"]
+  },
+  "interpretation": "The helper's static fresh-query allowance check has no zero-query reuse branch. It was not passed, changed or used to authorize a catalog restart. All other normalized request checks passed. The pricing owner must determine whether the existing calculation/publication contract supports this source-reuse scenario, with zero requests; otherwise return the exact blocker.",
+  "actual_other_checks": {
+    "manifest_validator_errors": 0,
+    "manifest_validator_warnings": 0,
+    "current_material_input_count": 69,
+    "all_original_66_records_unchanged": true,
+    "three_new_records_equal_actual_receipt": true,
+    "phase_scope_contains_all_69": true,
+    "fourteen_protected_hashes_unchanged": true,
+    "original_four_manifest_structured_usages_equal": true,
+    "twelve_unaffected_supplement_structured_inputs_equal": true,
+    "only_structured_delta": "Internet allocation now11GB with1GB additional app,5GB NAT under6GB MGN allocation and5GB separate Bastion; current approved paid budget bounds, no entitlement/tier claim.",
+    "bastion_five_transfer_rows_match_exact_service_product_sku_meter_region_currency_consumption_unit": true,
+    "new_output_absent": true
+  },
+  "owner_checks_still_required": [
+    "Captured native Bastion rate-set completeness and applicable conservative ceiling without tier-placement claim",
+    "Supported contract treatment of explicit upper_bound_ok allocation versus mandatory missing-tier fallback",
+    "Full original notes, source hashes/timestamps, semantic path coverage, arithmetic and all17 lines"
+  ],
+  "new_mcp_requests": 0,
+  "new_direct_api_requests": 0,
+  "new_network_requests": 0,
+  "cumulative_requests": 34,
+  "absolute_limit": 34,
+  "remaining_requests": 0,
+  "allowances_reset": false,
+  "gate2_ready": false
+}

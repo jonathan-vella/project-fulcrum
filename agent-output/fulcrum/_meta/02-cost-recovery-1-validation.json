@@ -1,0 +1,71 @@
+{
+  "recorded_at": "2026-11-09T15:29:02.385241+00:00",
+  "actual_status": "BLOCKED_PRICING_FAILED",
+  "worker": "cost-estimate-subagent",
+  "diagnostic_path": "contracts/02-cost-estimate.recovery-1.json",
+  "diagnostic_sha256": "161afe9beaac525ccfa9154f26179e982eb104c1aba568797444bb73005d4d33",
+  "estimate_revision": 2,
+  "recovery_revision": 1,
+  "validation_command": "node tools/scripts/cost-estimate.mjs validate --input agent-output/fulcrum/contracts/02-cost-estimate.recovery-1.json",
+  "diagnostic_shape_valid": true,
+  "validation_errors": [],
+  "validation_warnings": [],
+  "full_complete_estimate": false,
+  "resource_count": 17,
+  "unresolved_count": 13,
+  "monthly_total": null,
+  "yearly_total": null,
+  "original_request_scope_unchanged": true,
+  "manifest_writeback": [],
+  "protected_hashes_unchanged": {
+    "_meta/02-cost-estimate.failed-attempt-1.json": "7984f1f3c9574efee99b09dec94aebab710885df19ed73c17e2d86b325c08586",
+    "contracts/sku-manifest.json": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+    "01-requirements.md": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+    "_meta/02-cost-estimate-request.json": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8"
+  },
+  "actual_accounting": {
+    "original_shared_ceiling": 20,
+    "initial_committed_mcp": 12,
+    "initial_committed_direct_api": 1,
+    "recovery_mcp": 1,
+    "recovery_direct_api": 0,
+    "cumulative_requests": 14,
+    "remaining_original_requests": 6,
+    "historical_comparison_dispatches": 3,
+    "historical_comparison_mcp": 7,
+    "historical_comparison_direct_api": 0,
+    "allowances_reset": false,
+    "exhausted": false
+  },
+  "actual_native_bandwidth_evidence": {
+    "diagnostic_excerpt_path": "contracts/02-cost-estimate.recovery-1.json.retail-evidence/bandwidth-discovery-01.json",
+    "query": {
+      "filter": "serviceName eq 'Bandwidth'",
+      "price-type": "Consumption",
+      "currency": "USD"
+    },
+    "status": 200,
+    "returned_rows": 1437,
+    "observed_regional_meter_name": "Standard Data Transfer Out",
+    "billing_product_or_tier_selected": false,
+    "temporary_original_transcript_path": "/tmp/1794237746674-copilot-tool-output-f0cd13a821c84982ba74819b480fd236.txt",
+    "preserved_exact_transcript_path": "_meta/02-cost-recovery-1-bandwidth-native-response.txt",
+    "transcript_sha256": "b421829c3f0df4464aadfb8ef0a419b81227d9f6f8901567c5182e9986942371",
+    "transcript_bytes": 909319,
+    "archive_byte_equivalence_verified": true,
+    "archive_is_native_evidence_not_direct_helper_envelope": true,
+    "not_proof_of_catalog_completeness_or_applicability": true
+  },
+  "blockers": [
+    "Original committed q1-q10 retain summarized result strings and observed selections, not full actual MCP response objects. Summaries cannot authorize missing-tier fallback or complete verified reuse.",
+    "Actual Bandwidth discovery found Sweden Central Standard Data Transfer Out under two routing products. Applicability, tier boundaries and required transfer/exemption semantics remain unverified.",
+    "Worker's bounded service-specific provenance/tier repair lower bound for Private Link, DNS, Logs and Blob alone is eight further requests versus six remaining; other meters/semantics and pagination are excluded from that lower bound.",
+    "Worker reported that documentation discovery exposed only azure-mcp-documentation, outside its pricing-only Azure MCP permission; no permitted native non-Azure public-documentation tool was exposed."
+  ],
+  "next_owner": "Interactive parent",
+  "next_action": "Resolve actual native documentation capability and recover original raw provenance if available. Any further pricing dispatch needs a new explicitly bounded recovery authorization retaining this same fourteen-of-twenty attempt history; any required extension must be explicit, not a new default allowance.",
+  "no_automatic_retry": true,
+  "no_step2_review_no_gate2_no_completion": true,
+  "policy_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+  "runtime": "Unverified"
+}

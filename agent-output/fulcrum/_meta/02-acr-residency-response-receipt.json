@@ -1,0 +1,30 @@
+{
+  "request_id": "fulcrum-acr-residency-only-20261109-124406",
+  "request_id_source": "apex-local",
+  "phase": "phase_2_required_capability_feasibility",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "This is a non-issue. The paired region will still be within the EU residency boundary.",
+  "captured_material_decision": "Accept the documented ACR paired-region storage behavior within the EU residency boundary for registry artifacts.",
+  "scope": {
+    "service": "Azure Container Registry",
+    "data": "Container images and registry artifacts",
+    "behavior": "Microsoft-managed paired-region storage",
+    "accepted_boundary": "EU residency boundary",
+    "existing_workload_region": "Sweden Central",
+    "other_requirements": "Unchanged; no general EU-wide substitution for workload compute, application data, Blob storage, backups, monitoring or other services.",
+    "entra_exception": "Unchanged"
+  },
+  "not_inferred": [
+    "Optional customer-configured geo-replication",
+    "Any particular configured replica",
+    "Automatic regional disaster recovery",
+    "Independent GDPR compliance certification",
+    "Azure reads, writes, deployment or tenant verification",
+    "Review approval or renewed review allowance"
+  ],
+  "next_owner": "02-Requirements",
+  "next_action": "Reconcile this actual ACR-only material acceptance with the approved residency requirement and required independent review through the supported existing workflow; do not repeat the answered question.",
+  "sdk_response_id_supplied": false
+}

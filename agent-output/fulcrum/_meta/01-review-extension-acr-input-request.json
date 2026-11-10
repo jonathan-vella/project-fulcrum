@@ -1,0 +1,60 @@
+{
+  "request_id": "fulcrum-requirements-acr-review-extension-20261109-125400",
+  "request_id_source": "apex-local",
+  "execution_mode": "delegated",
+  "project": "fulcrum",
+  "step": "1",
+  "phase": "material_revision_review_authority",
+  "needed_inputs": ["requirements_acr_review_extension"],
+  "answer_ledger_path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+  "consumed_projection_path": "agent-output/fulcrum/_meta/assessment-step-1.json",
+  "review_request_path": "agent-output/fulcrum/_meta/01-review-request-acr-revision.json",
+  "accounting": {
+    "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+    "initial_id": "fulcrum-requirements-comprehensive-20261106-152603",
+    "actual_calls_consumed": 2,
+    "current_max_calls": 3,
+    "current_projection_sha256": "4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b",
+    "existing_cycle_projection_sha256": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c",
+    "requested_absolute_max_calls": 4,
+    "new_dispatches": 0,
+    "preflight": "PASS",
+    "start_audit": "BLOCKED before dispatch; no started attempt persisted",
+    "exact_error": "Material scope changed; owner-led cycle revision required, not an allowance reset"
+  },
+  "form": {
+    "message": "Project Fulcrum — authority for the affected ACR-only Requirements review. Your actual ACR answer is captured and incorporated; it is not being asked again. The existing review cycle has used 2 of its absolute maximum 3 calls. Although one slot remains, the supported writer blocks changed material scope. Its only supported scope-reconciliation operation requires an explicit increase of that same cycle's absolute limit; the smallest is 4, retaining the two consumed calls and all history. Authorize this exact DEV-only revision's bounded same-cycle extension, or pause? This is not revised Gate 1 approval, a broader residency exception, Azure authority or permission to reset accounting. Only the required affected review will be dispatched now; no automatic extra review is promised.",
+    "requestedSchema": {
+      "properties": {
+        "requirements_acr_review_extension": {
+          "type": "string",
+          "title": "Project Fulcrum — ACR revision same-cycle review authority",
+          "description": "Bind projection 4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b in existing cycle 271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd, raising absolute max_calls 3 to 4 while retaining 2 consumed calls. No choice is preselected. Independent review and separate revised Gate 1 remain required.",
+          "enum": ["authorize_bounded_extension", "pause"],
+          "enumNames": [
+            "Authorize — bind this ACR-only DEV revision in the same cycle, absolute maximum 4 calls",
+            "Pause — do not dispatch the affected review"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "target_environments": ["dev"],
+      "target_region": "swedencentral",
+      "acr_residency_request_id": "fulcrum-acr-residency-only-20261109-124406",
+      "acr_residency_actual_response": "This is a non-issue. The paired region will still be within the EU residency boundary.",
+      "residency_requirement": "Sweden Central-only workload and non-Entra/non-ACR dependencies; retained qualified Entra identity exception and documented Microsoft-managed ACR paired registry-artifact storage within EU only. No other-service or optional geo-replication exception.",
+      "review_cycle_calls_consumed": 2,
+      "review_cycle_current_max_calls": 3
+    },
+    "fields": {
+      "requirements_acr_review_extension": {
+        "input_id": "requirements_acr_review_extension",
+        "kind": "approval"
+      }
+    }
+  },
+  "parent_action": "Relay only form.message and form.requestedSchema through native ask_user after current applicability preflight; retain this local request ID and context separately. Preserve actual human response in a separate receipt. Only explicit authorization permits apex-recall decide --review-extension with the same cycle_id, max_calls 4, current projection_sha256 and this actual approval request_id. Do not substitute ACR acceptance, prior Gate 1 or task success for extension authority. Then reuse the exact preflighted review request, rerun start with --closure-of the original invocation, dispatch the actual allowlisted leaf, record attributed result and strict --verify-cache, select supported current review, and present findings before a separate revised Gate 1. No manual Challenger, inline review, new cycle, reset, additional discovery or policy-source question. Pause/decline/ambiguous response grants nothing; cancellation stops."
+}

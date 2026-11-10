@@ -42,6 +42,25 @@ Then select the policy source through the interactive Architecture/Orchestrator 
 Do not rerun `apex-recall init`, reset completed steps, rewrite reviewed artifacts, or manufacture scope/request IDs.
 Any new source choice must retain actual owner provenance and the existing review/approval history.
 
+### Pricing and documentation evidence
+
+The pricing update retains exact native retail API responses for verified meter selection, arithmetic and replay.
+Git preserves artifact bytes without line-ending normalization so staged captures retain their evidence hashes.
+Product documentation is different: retain the actual source URL/date, a short original billing conclusion,
+applicability and limitations, rather than copying entire pricing pages into Git.
+Necessary full-text research captures stay private unless redistribution rights and attribution are established.
+See the [documentation evidence contract](.github/skills/apex-azure-defaults/references/cost-estimate-parent-contract.md#product-documentation-and-publication).
+
+Fulcrum's historical App Service page capture has an owner-authorized publication-safe replacement notice.
+The original is retained privately; its old digest and review records are preserved.
+The [repair record](agent-output/fulcrum/_meta/02-documentation-publication-repair.json) identifies the affected evidence.
+Affected reviews require revalidation before current approval. This repair does not restamp historical prices,
+complete Governance, restore workflow readiness or authorize deployment.
+The [historical Learn captures](agent-output/fulcrum/_meta/02-public-documentation-attribution.json) retain their
+separate attribution and license; the commercial-page original is not included.
+The existing Fulcrum estimate remains a historical `cost-estimate-v1` conditional planning scenario.
+Updating the pricing implementation does not upgrade that artifact, reprice the workload or renew approval.
+
 ---
 
 ## Prerequisites

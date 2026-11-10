@@ -1,0 +1,90 @@
+{
+  "request_id": "fulcrum-conservative-planning-zero-query-20261109",
+  "execution_mode": "delegated",
+  "workspace_root": "/workspaces/project-fulcrum",
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "manifest_path": "agent-output/fulcrum/contracts/sku-manifest.json",
+  "manifest_writeback": true,
+  "output_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v1.json",
+  "overwrite": false,
+  "compare_regions": false,
+  "include_ri_savings": false,
+  "scope_qualification": "Full seventeen-line DEV conservative planning scenario, conditional on the actual adopted usage allocation and separate highest-native-paid-rate MGN/Bastion budget bounds. Not an actual charged-tier calculation, entitlement, physical measurement or tenant invoice prediction. Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+  "original_request_path": "agent-output/fulcrum/_meta/02-cost-estimate-request.json",
+  "original_request_sha256": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8",
+  "original_notes_rule": "Read and preserve ALL full original notes, quantities, units, placement and semantic inputs. Short notes below are locators, not replacements. Only the Internet line's approved additional app envelope and separate service-specific conservative paid-bound treatment change; the Bastion hourly line remains gateway-only. Historical unknown-volume/indicative-only limits are superseded for this new explicitly adopted scenario only, not rewritten.",
+  "authorization": {
+    "scope_receipt_path": "agent-output/fulcrum/_meta/02-indicative-resume-scope-response-receipt.json",
+    "actual_answer_receipt_path": "agent-output/fulcrum/_meta/02-monthly-planning-response-receipt.json",
+    "answer_request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+    "normalization_path": "agent-output/fulcrum/_meta/02-monthly-planning-normalization.json",
+    "phase_scope_path": "agent-output/fulcrum/_meta/02-monthly-planning-phase-scope.json",
+    "dispatches_authorized_this_continuation": 1,
+    "calculation_only": true,
+    "network_requests_authorized": 0,
+    "pricing_requests_authorized": 0,
+    "prior_requests_consumed": 34,
+    "absolute_request_limit": 34,
+    "remaining_requests": 0,
+    "allowances_reset": false,
+    "history": "Original committed 12 MCP+1 direct; recovery1 1 MCP; recovery2 0; recovery3 14 MCP+6 direct =34. Historical comparison3 dispatches/7 MCP is separate. This arithmetic-only continuation must report new0 MCP/new0 direct separately without restamping source evidence."
+  },
+  "recovery": {
+    "remaining_requests": 0,
+    "prior_attempt": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json",
+    "evidence_paths": [
+      "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence",
+      "agent-output/fulcrum/contracts/02-cost-candidates-app-host.json",
+      "agent-output/fulcrum/contracts/02-cost-candidates-document-store.json",
+      "agent-output/fulcrum/contracts/02-cost-candidates-access-compute.json",
+      "agent-output/fulcrum/_meta/02-cost-recovery-3-validation.json",
+      "agent-output/fulcrum/_meta/02-cost-recovery-3-archive-receipt.json",
+      "agent-output/fulcrum/_meta/02-pricing-public-docs",
+      "agent-output/fulcrum/_meta/02-final-dependency-closure.md"
+    ]
+  },
+  "contract_boundary": "Normalize and validate all substantive fields using existing helpers. The current static preflight estimates a fresh catalog run and rejects remaining_requests=0; retain/report those budget-only diagnostics accurately, never populate a fictitious positive allowance. Existing raw-meter reuse with changed quantities is permitted by pricing-guidance Evidence reuse. Zero-network execution is mandatory regardless of that static heuristic. Use existing calculation/publication validators, no source changes or invented tariff tier boundaries. If the supported contract or captured source coverage cannot justify this explicit budget bound, return the exact essential evidence/contract gap with zero queries; do not silently retry or execute fallback.",
+  "approved_input_paths": [
+    "agent-output/fulcrum/_meta/02-current-material-input-ledger.json",
+    "agent-output/fulcrum/_meta/assessment-step-2.json",
+    "agent-output/fulcrum/_meta/02-private-usage-normalization.json",
+    "agent-output/fulcrum/_meta/02-sku-network-meter-normalization.json",
+    "agent-output/fulcrum/_meta/02-confirmed-network-binding.json",
+    "agent-output/fulcrum/_meta/02-monthly-planning-response-receipt.json",
+    "agent-output/fulcrum/_meta/02-monthly-planning-normalization.json"
+  ],
+  "evidence_checks": {
+    "mgn_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d01-bandwidth.json",
+    "mgn_sha256": "c27714517225f58d52d905087b68349ea491dc0e3994120db4ab4493aaf1348a",
+    "mgn_raw_sha256": "d18334bee4f62582699c23126249542813d41a0be2ee611802759c55171bdaa5",
+    "bastion_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q06-bastion.native.json",
+    "bastion_sha256": "2818f85c8ff4657258ca617dbee3462806f12df76ad208f04de451ba64945882",
+    "bastion_query_metadata": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json#query_ledger[id=q06]",
+    "fixed_equations_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/fixed-scope-calculations.json",
+    "fixed_equations_sha256": "10638b1e56e6dfb4ddd8d6d45e74c41decaca1d0a35b03b92e2fcc9d7051bc40",
+    "coverage_rule": "Verify exact service/product/Standard/meter/Sweden Central/USD/Consumption/native 1 GB and complete source coverage independently. Bastion's saved native response includes two gateway rows and five transfer rows; four transfer rows are paid, all same exact meter. No tier minima are present there. Do not equate complete rate coverage with tier/entitlement knowledge. Missing minima alone need not prevent a supported explicit maximum-rate budget ceiling, but incomplete rate coverage or mandatory contract restrictions do. Do not guess missing rates, completeness, boundaries or actual tenant applicability. Read captured service-semantic evidence and maintain default Microsoft routing, never switch transport or price Bastion as MGN."
+  },
+  "manifest_usage": {
+    "app-host": {"hours_per_month":730,"scope":"aggregate","meter_name":"B1 App","notes":"Original full app-host notes apply unchanged. Independent 730h platform egress; not runner NAT. New additional app public wire envelope is included separately in Internet allocation."},
+    "document-store": {"request_units_per_month":20000000,"peak_request_units_per_second":1000,"live_storage_gb":10,"continuous_backup_storage_gb":10,"backup_retention_days":30,"region_count":1,"restore_gb_per_event":10,"restore_events_per_month":1,"scope":"aggregate","notes":"Original full document-store notes apply unchanged; paid backup live GB times one region, not thirty copies; source restore once."},
+    "access-compute": {"hours_per_month":80,"scope":"aggregate","notes":"Original full access-compute notes apply unchanged; Linux Standard_D2as_v5 Consumption eighty provisioned hours includes restore."},
+    "storage-blob-replication": {"live_hot_gb":20,"retained_versions_and_soft_deleted_gb":10,"change_feed_gb":0.5,"total_hot_stored_gb":30.5,"read_operations_per_month":110000,"write_operations_per_month":20000,"list_operations_per_month":10000,"restore_events_per_month":1,"logical_blob_restored_gb":20,"restore_change_feed_processed_gb":0.5,"pitr_retention_days":30,"supporting_retention_days_min":31,"scope":"aggregate","notes":"Original full Blob notes apply unchanged. Hot GPv2 LRS user pin; restore processes0.5GB feed; operation envelopes already include recovery."}
+  },
+  "supplemental_resources": [
+    {"name":"acr-premium-dev-swedencentral","service_name":"Container Registry","sku":"Premium","region":"swedencentral","quantity":1,"usage":{"billable_days_per_month":30.416666666666668,"image_storage_gb":10,"scope":"aggregate","notes":"Original full ACR notes apply unchanged; paid Premium base/included storage; no optional replica/tasks."}},
+    {"name":"steady-private-endpoints-dev-swedencentral","service_name":"Virtual Network","sku":"Standard Private Endpoint","region":"swedencentral","quantity":4,"usage":{"hours_per_month":730,"inbound_gb":40,"outbound_gb":130,"scope":"aggregate","notes":"Original full steady PE notes apply unchanged; four endpoint-hours, aggregate traffic once; Global billing, exact bands."}},
+    {"name":"central-private-dns-allocation-dev","service_name":"Azure DNS","sku":"Private","region":"swedencentral","quantity":1,"upper_bound_ok":true,"usage":{"zone_equivalents":4,"queries_per_month":1000000,"scope":"aggregate","notes":"Original full central DNS notes apply unchanged; adopted highest commercial shared allocation, not ownership/invoice/duplicate zones."}},
+    {"name":"log-analytics-app-insights-combined-dev","service_name":"Log Analytics","sku":"Analytics Logs","region":"swedencentral","quantity":1,"usage":{"ingestion_gb_per_month":1,"retention_days":30,"scope":"aggregate","notes":"Original full combined monitoring notes apply unchanged; one paid ingestion envelope, not measured wire or shared-free credit."}},
+    {"name":"operational-metric-alerts-dev","service_name":"Azure Monitor","sku":"Metric Alerts","region":"swedencentral","quantity":1,"usage":{"metric_alert_rules":4,"time_series":4,"evaluation_frequency":"1 minute","scope":"aggregate","notes":"Original full metric alert notes apply unchanged; four static paid series, no free-series assumption."}},
+    {"name":"operational-scheduled-log-alert-dev","service_name":"Azure Monitor","sku":"Scheduled Query Alerts","region":"swedencentral","quantity":1,"usage":{"rules":1,"monitored_resources":1,"evaluation_frequency":"5 minutes","scope":"aggregate","notes":"Original full scheduled log alert notes apply unchanged; one five-minute rule/resource; transport submeter excluded."}},
+    {"name":"ephemeral-bastion-standard-dev","service_name":"Azure Bastion","sku":"Standard","region":"swedencentral","quantity":1,"usage":{"hours_per_month":80,"base_scale_units":2,"outbound_internet_gb":5,"scope":"aggregate","notes":"Original full Bastion notes apply, except current approved Internet allocation treats its5GB separately with Bastion's OWN highest verified native paid rate bound. This line is gateway base80h including2 units, not multiplied or transfer doubled."}},
+    {"name":"ephemeral-nat-standard-dev","service_name":"NAT Gateway","sku":"Standard","region":"swedencentral","quantity":1,"usage":{"hours_per_month":80,"processed_gb_per_month":25,"return_download_gb":20,"outbound_gb":5,"scope":"aggregate","notes":"Original full NAT notes apply unchanged; runner only80h/25GB process,5GB outbound separately. No app NAT reroute."}},
+    {"name":"ephemeral-runner-os-disk-dev","service_name":"Storage","sku":"P6 LRS","region":"swedencentral","quantity":1,"usage":{"provisioned_size_gib":64,"provisioned_hours_per_month":80,"scope":"aggregate","notes":"Original full disk notes apply unchanged;64GiB P6 LRS80h future deletion required; official proration evidence retained."}},
+    {"name":"ephemeral-service-public-ipv4-dev","service_name":"Virtual Network","sku":"Standard IPv4","region":"swedencentral","quantity":2,"usage":{"hours_per_month":80,"scope":"aggregate","notes":"Original full IP notes apply unchanged; two service Standard IPv4 addresses80h each, not public VM NIC."}},
+    {"name":"internet-outbound-allocation-dev","service_name":"Bandwidth","sku":"Internet Data Transfer Out","region":"swedencentral","quantity":1,"upper_bound_ok":true,"usage":{"internet_outbound_gb_per_month":11,"additional_app_wire_gb_per_month":1,"nat_outbound_gb_per_month":5,"bastion_outbound_gb_per_month":5,"mgn_outbound_gb_per_month":6,"scope":"aggregate","notes":"Current actual user-adopted LOW scenario: additional1 decimalGB/month app wire across730h PLUS unchanged5GB NAT under MGN bound; SEPARATE5GB Bastion under its OWN maximum verified native paid rate. No shared free entitlement/discount/inclusion asserted, no tier placement or monthly invoice prediction. Full known-path conservative planning allocation conditional on approved envelopes, not actual traffic. Never count Bastion twice, equate ingestion with wire or adopt suggested5GB app. Verify all rate/semantic/coverage evidence before supported COMPLETE publication; exact missing band thresholds alone are not used in maximum-rate arithmetic."}},
+    {"name":"temporary-cosmos-restore-target-dev","service_name":"Azure Cosmos DB","sku":"Serverless","region":"swedencentral","quantity":1,"upper_bound_ok":true,"usage":{"provisioned_hours_per_month":4,"request_units_per_month":1000000,"live_storage_gb":10,"continuous_backup_storage_gb":10,"backup_retention_days":30,"region_count":1,"scope":"aggregate","notes":"Original full temporary target notes apply unchanged;1m RU plus full monthly10GB live/backup conservative paid bound, not unsupported four-hour proration; no second source-restore charge."}},
+    {"name":"temporary-cosmos-restore-private-endpoint-dev","service_name":"Virtual Network","sku":"Standard Private Endpoint","region":"swedencentral","quantity":1,"usage":{"hours_per_month":4,"inbound_gb":1,"outbound_gb":10,"scope":"aggregate","notes":"Original full temporary PE notes apply unchanged;4h1GB towards10GB from, same exact Global bands and existing central DNS, no fifth zone."}}
+  ]
+}

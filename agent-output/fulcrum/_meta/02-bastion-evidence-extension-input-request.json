@@ -1,0 +1,69 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-bastion-native-evidence-extension-20261109-181000",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "phase": "phase_3_cost_exact_bastion_evidence_gap",
+  "needed_inputs": ["dev_bastion_native_evidence_extension"],
+  "context_path": "agent-output/fulcrum/_meta/02-bastion-evidence-extension-question-context.json",
+  "settled_ledger_path": "agent-output/fulcrum/_meta/assessment-step-2.json",
+  "actual_worker_output_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v1.json",
+  "form": {
+    "message": "Your three planning choices are recorded: additional app wire 1 decimal GB/month, app+NAT 6 GB under the conservative MGN paid-rate bound, and separate Bastion 5 GB under its own conservative paid-rate bound. The original 66 inputs remain unchanged. The pricing owner ran the authorized calculation-only continuation with ZERO new requests, verified the other 16 components, and returned FAILED: the saved Bastion response omits native tier and pagination metadata, so its underlying complete rate set cannot be proven. The existing pricing contract requires raw missing-tier evidence; upper_bound_ok does not waive that requirement. This is not a request to change your usage or certify tariff facts. May the pricing owner make exactly ONE narrow public Retail Prices API request for Sweden Central Bastion Standard Data Transfer Out, then recalculate from existing evidence in one same-history continuation? This would extend the cumulative request cap from 34 to 35, not reset the 34 already consumed. No broad catalog lookup, new MCP discovery, retry, extra page, other service lookup or Azure-resource operation is allowed. If one response is incomplete, stop and report it. No choice approves Architecture, spending, deletion, deployment or any change to Requirements/SKUs.",
+    "requestedSchema": {
+      "properties": {
+        "dev_bastion_native_evidence_extension": {
+          "type": "string",
+          "title": "Bastion transfer evidence — one-request bounded extension",
+          "description": "Authorize at most one exact USD Consumption GET for Azure Bastion / Azure Bastion / Standard / Standard Data Transfer Out / swedencentral, preserving native unit, meter identity, all returned rates, tierMinimumUnits and NextPageLink. Existing q06 is the missing-tier trigger; no MCP repetition. Also authorize one bounded pricing-owner continuation to use that response plus existing evidence for the unchanged 17-line approved conservative planning scenario. Stop if pagination, retry or further evidence is needed. Alternatively pause without another request, or stop monthly planning. Custom restrictions can be entered in this same field and must be validated before dispatch.",
+          "enum": [
+            "authorize_one_bastion_request_and_one_same_history_continuation",
+            "pause_without_new_requests",
+            "stop_monthly_planning"
+          ],
+          "enumNames": [
+            "Authorize one exact Bastion evidence request and one same-history recalculation; cap 35",
+            "Pause; keep all approved choices and issue no new request",
+            "Stop monthly planning; issue no new request"
+          ]
+        }
+      }
+    }
+  },
+  "exact_gap": {
+    "serviceName": "Azure Bastion",
+    "productName": "Azure Bastion",
+    "skuName": "Standard",
+    "meterName": "Standard Data Transfer Out",
+    "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+    "armRegionName": "swedencentral",
+    "currencyCode": "USD",
+    "priceType": "Consumption",
+    "unitOfMeasure": "1 GB",
+    "captured_response": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q06-bastion.native.json",
+    "captured_response_sha256": "2818f85c8ff4657258ca617dbee3462806f12df76ad208f04de451ba64945882",
+    "missing": "Native tierMinimumUnits plus complete raw catalog response and pagination termination; five captured matching rates do not prove the underlying complete rate set.",
+    "why_indispensable": "pricing-guidance.md Monthly calculations / Multi-band meters missing tierMinimumUnits requires the narrow raw fallback and forbids an upper-bound approximation from stripped-tier evidence. The owner found no supported upper_bound_ok exception. Taking a maximum itself does not need thresholds; source coverage/publication contract remains insufficient.",
+    "exact_filter": "serviceName eq 'Azure Bastion' and productName eq 'Azure Bastion' and skuName eq 'Standard' and meterName eq 'Standard Data Transfer Out' and armRegionName eq 'swedencentral' and priceType eq 'Consumption'",
+    "currency_parameter": "USD",
+    "fields_to_preserve": ["serviceName","productName","skuName","armRegionName","meterName","meterId","currencyCode","type","unitOfMeasure","retailPrice","tierMinimumUnits","NextPageLink"],
+    "source": "Existing documented constrained Retail Prices API fallback; exact q06 status200 missing-tier trigger, no fresh MCP request."
+  },
+  "proposed_extension": {
+    "current_consumed": 34,
+    "current_absolute_limit": 34,
+    "current_remaining": 0,
+    "additional_direct_requests_max": 1,
+    "additional_mcp_requests_max": 0,
+    "proposed_absolute_limit": 35,
+    "pricing_owner_dispatches_max": 1,
+    "retry_allowed": false,
+    "pagination_allowed": false,
+    "catalog_restart_allowed": false,
+    "automatic_followup_allowed": false,
+    "authority_granted_by_this_pending_request": false,
+    "preserve_all_history": true
+  },
+  "dispatch_boundary": "Interactive parent validates and sends only form.message/form.requestedSchema to native ask_user. Save the actual response with this correlation ID. No request or continuation may be dispatched until actual bounded approval. Cancel stops; pause/stop/custom ambiguity grants no default permission."
+}

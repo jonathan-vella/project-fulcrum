@@ -1,0 +1,24 @@
+{
+  "message": "Gate2 — Project Fulcrum DEV Architecture. The complete architecture, cost report, SKU comparison/manifest view and all three PNG/SVG chart pairs are ready for your stage decision. The unchanged69 inputs are preserved; no settled usage, SKU, residency, network or policy-source choice is being repeated.\n\nWAF design scores/confidence: Security7/10 Medium; Reliability5/10 Medium; Performance6/10 Low; Cost Optimization8/10 Medium; Operational Excellence6/10 Medium. These are design scores, not deployed-control measurements.\n\nVerified full17-line conservative planning scenario: USD168.104995/month; USD2017.25994/year. It is below your USD500–2,000/month soft planning range, not a hard-cap/spend authorization or invoice prediction. Current adopted transfer remains app1decimalGB + NAT5GB = MGN6GB at its own highest verified paid native rate, separateBastion5GB at Bastion's own highest verified paid native rate; no shared free entitlement or discount. The last authorized continuation used exactly0MCP/1direct, cumulative35/35; no request allowance remains.\n\nBoth actual independent reviews are APPROVED, riskMedium, strict-cache valid: cost-feasibility0findings; architecture comprehensive0findings. There are no reviewer findings requiring disposition and no closure call was used.\n\nAssumed Corp policies—not tenant-verified; DEV Architecture-only. Remaining explicit design limitations: single-region/non-zonal/single-workerDEV exposure; runtime identity/SDK/image/privateDNS/alert bindings and performance/recovery objectives remain Unverified. Actual target policies, centralDNS ownership and applicable dependency reconciliation are mandatory before planning completion, CodeGen or deployment. Shared corporate-policy costs outside this17-line project scenario are unknown, not free. Minimal cost monitoring retains budget and operational alerts; its effective human Owner recipient must be verified later. Qualified Entra-European and ACR-managed pairedEU-artifact exceptions remain narrow and unchanged.\n\nApprove and continue authorizes completing this Architecture stage and continuing only through the existing owner/routing process; the parent must collect the still-unset optionalDesign selection before dispatch. Approve and pause approves only the current stage and stops continuation. Revise returns your requested changes to the proper owner. Stop/cancel grants no approval. None of these choices authorizes spending, Azure operations, deployment, deletion, Production or an individual remediation.",
+  "requestedSchema": {
+    "properties": {
+      "architecture_gate2_decision": {
+        "type": "string",
+        "title": "Fulcrum Gate2 — current DEV Architecture stage decision",
+        "description": "Choose the current stage outcome. Approval covers the exact reviewed bundle and its conservative scenario/Corp qualifications, not deployment or spending. You may enter custom revision instructions in this same field; ambiguity must be resolved rather than treated as approval.",
+        "enum": [
+          "approve_and_continue",
+          "approve_and_pause",
+          "revise",
+          "stop"
+        ],
+        "enumNames": [
+          "Approve current Architecture and continue via the existing optional Design / Governance routing",
+          "Approve current Architecture and pause; do not dispatch the next owner",
+          "Revise; do not approve the current stage",
+          "Stop; no Architecture approval or continuation"
+        ]
+      }
+    }
+  }
+}

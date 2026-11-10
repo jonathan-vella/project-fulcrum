@@ -1,0 +1,141 @@
+{
+  "project": "fulcrum",
+  "validation_date": "2026-11-09",
+  "status": "VALIDATED_MATERIAL_INPUT_CUTOFF",
+  "step_complete": false,
+  "gate2_ready": false,
+  "checkpoint": {
+    "step": "2",
+    "phase": "phase_1_prereqs",
+    "recorded_at": "2026-11-09T07:48:30Z",
+    "original_step2_start_preserved": "2026-11-06T16:24:10Z",
+    "phase2_complete": false
+  },
+  "actual_checks": {
+    "new_evidence_and_request_json_parse": "PASS",
+    "validate_payload_require_context": {
+      "result": "PASS",
+      "errors": [],
+      "request": "agent-output/fulcrum/_meta/02-secret-capability-input-request.json"
+    },
+    "current_projection_equals_recall_material_values": true,
+    "current_material_input_count": 51,
+    "included_context_answers": 11,
+    "included_context_answers_equal_current_values": true,
+    "needed_inputs_equal_form_properties_and_context_fields": true,
+    "needed_inputs_not_already_settled": true,
+    "manifest_validation": {
+      "command": "node tools/scripts/validate-sku-manifest.mjs fulcrum",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0
+    },
+    "manifest_renderer": {
+      "command": "node tools/scripts/render-sku-manifest-md.mjs fulcrum",
+      "exit_code": 0,
+      "actual_result": "already up-to-date"
+    },
+    "current_predecessor_review_strict_cache": {
+      "command": "node tools/scripts/validate-challenger-findings.mjs --path agent-output/fulcrum/reviews/challenge-findings-requirements-entra-revision.json --verify-cache",
+      "exit_code": 0,
+      "errors": 0,
+      "warnings": 0,
+      "new_review_dispatch": false
+    },
+    "README_required_H2_order": "PASS: 5/5",
+    "handoff_canonical_H2s": "PASS: 6/6, no extra H2",
+    "root_markdown_only": true,
+    "markdown_lint": "Not run; no direct Markdown lint or lint:artifact-templates against agent-output.",
+    "current_step1_effective_review": "current / APPROVED",
+    "current_step1_gate": "current",
+    "current_step2_status": "in_progress",
+    "current_assessment_exit": "implementation",
+    "current_policy_feasibility": "provisional_no_authorized_target"
+  },
+  "preserved_inputs": {
+    "all_current_review_supporting_input_hashes": "PASS, every supporting input returned by current recall matches its recorded SHA-256",
+    "requirements": {
+      "path": "agent-output/fulcrum/01-requirements.md",
+      "sha256": "14fbcba64659e5f498037ee05f7871ee3a2a5f3db6d908d742e306a5fc8306be"
+    },
+    "current_material_projection": {
+      "path": "agent-output/fulcrum/_meta/assessment-step-1.json",
+      "sha256": "fd192768c919f9f1828d266cfb6158ed1d7db6297693494d1a50ea4b66d10ac0"
+    },
+    "original_ledger": {
+      "path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "sha256": "4ac4c1894f9d654f82cff0b3ee531aa9fa9ab2cf14d80b4fbb199eeda7a815a8"
+    },
+    "entra_exception_receipt": {
+      "path": "agent-output/fulcrum/_meta/02-entra-residency-exception-receipt.json",
+      "sha256": "aede5b0b1388721399ae5a96087c0d2c3ab910dd7769987c7aa769ad632fbf7a"
+    },
+    "current_review": {
+      "path": "agent-output/fulcrum/reviews/challenge-findings-requirements-entra-revision.json",
+      "sha256": "9d8b01fe8f0d0f5f7bbb6f8ea51c41635b03854c3ef8b3f0b1a5567f7ecefc46"
+    },
+    "current_gate1_receipt": {
+      "path": "agent-output/fulcrum/_meta/01-gate1-entra-revision-response-receipt.json",
+      "sha256": "96d3048f8520b3ae67569e5eeddba529f2a18d04ca1e49c6f4536d10744d2777"
+    },
+    "manifest": {
+      "path": "agent-output/fulcrum/contracts/sku-manifest.json",
+      "sha256": "e268aa317aa10bf5427d6daf9ec4efc975725de9dd96738de18cd3f886d69e5f",
+      "revision": 1,
+      "user_pin": "LRS",
+      "source_step": "1",
+      "commit_stamp": "16cd2c7"
+    },
+    "manifest_view": {
+      "path": "agent-output/fulcrum/sku-manifest.md",
+      "sha256": "678da92dd435b249095d9206d1848e205015fbededd1a31ac6a080856f21a269"
+    },
+    "pre_resume_index_and_handoff": "Historical contents retained under _meta/02-pre-resume-readme.md and _meta/02-pre-resume-handoff.md; current index/handoff now derive actual resumed state.",
+    "preexisting_state_backup_and_lock": "Not directly read or edited.",
+    "session_access": "apex-recall only; no direct state JSON read or write."
+  },
+  "dispatch_accounting": {
+    "step1_calls_preserved": 2,
+    "step1_existing_absolute_maximum": 3,
+    "step1_remaining": 1,
+    "step2_review_dispatches": 0,
+    "step2_pricing_dispatches": 0,
+    "budget_or_history_reset": false,
+    "native_task_failure": "None; no pricing or reviewer invocation occurred at this material-input cutoff."
+  },
+  "corrected_nonconsequential_diagnostics": [
+    "Two initial parsers treated saved MCP search output as a single JSON document and returned Extra data. Using the first actual JSON document recovered the search results; no service fact, pricing failure or new invocation was inferred.",
+    "A guessed handoff-template path was absent. The actual existing handoff supplied its six canonical H2s; the current full README template was read. No required worker capability failure was inferred.",
+    "An empty move-only apply_patch hunk failed before mutation. The corrected contextual move preserved the original index/handoff, followed by writing current replacements. No upstream artifact was changed."
+  ],
+  "write_scope": {
+    "actual_tracked_changes": [
+      "agent-output/fulcrum/README.md",
+      "agent-output/fulcrum/00-handoff.md",
+      "agent-output/fulcrum/_meta/00-session-state.json through apex-recall"
+    ],
+    "new_owned_files": [
+      "agent-output/fulcrum/_meta/02-key-vault-feasibility-evidence.json",
+      "agent-output/fulcrum/_meta/02-key-vault-feasibility-research.md",
+      "agent-output/fulcrum/_meta/02-secret-capability-input-request.json",
+      "agent-output/fulcrum/_meta/02-resume-validation.json",
+      "agent-output/fulcrum/_meta/02-pre-resume-readme.md",
+      "agent-output/fulcrum/_meta/02-pre-resume-handoff.md"
+    ],
+    "source_requirements_governance_iac_app_changes": "None",
+    "azure_reads_or_writes": "None",
+    "git_commit_push_or_pr_operations": "None"
+  },
+  "next_action": {
+    "status": "USER_INPUT_REQUIRED",
+    "request_id": "fulcrum-step2-secret-capability-20261109-075300",
+    "phase": "phase_2_required_capability_feasibility",
+    "request_path": "agent-output/fulcrum/_meta/02-secret-capability-input-request.json",
+    "needed_inputs": [
+      "dev_secret_certificate_profile",
+      "policy_feasibility_read_intent"
+    ],
+    "owner": "Interactive parent",
+    "after_actual_answers": "Return matching actual receipt/material answers to 03-Architect for full continuation. Requirements owns any requested residency change; Governance owns authorized preliminary policy feasibility. No next-main dispatch or final Gate 2 is authorized here."
+  }
+}

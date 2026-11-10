@@ -1,0 +1,45 @@
+{
+  "project": "fulcrum",
+  "request": "Create the architecture diagrams for fulcrum",
+  "scope": "Diagram-only regeneration of the previously approved DEV design; no Governance continuation or redesign.",
+  "date": "2026-11-10",
+  "generator": "assets/03-des-diagram.py",
+  "actual_command": "python3 agent-output/fulcrum/assets/03-des-diagram.py",
+  "generation_exit_code": 0,
+  "overflow_warnings": 0,
+  "views": [
+    {
+      "name": "Architecture overview",
+      "png": "assets/03-des-diagram.png",
+      "svg": "assets/03-des-diagram.svg",
+      "png_dimensions": [3840, 2160],
+      "svg_viewbox": "0 0 1920 1080",
+      "embedded_icon_symbols": 14,
+      "png_sha256": "a6f01b6470cb497078b9d31b2cb299019e795c7c4f48df6940c6da4d24ae4766",
+      "svg_sha256": "3d6c517ea8c9f4c6da4d3c072b7027de33921e22e3cf6f9b57568b9a9e0158db"
+    },
+    {
+      "name": "Private network and DNS detail",
+      "png": "assets/03-des-diagram-network.png",
+      "svg": "assets/03-des-diagram-network.svg",
+      "png_dimensions": [3840, 2160],
+      "svg_viewbox": "0 0 1920 1080",
+      "embedded_icon_symbols": 10,
+      "png_sha256": "01c9210bcb0b7a1f175d09d17620257a87498c04d12e1f1208eca6ad6d5cba1f",
+      "svg_sha256": "76c0d111f6c7cf2f0cc1c2a49221bd9eb10af184ded34cfd52b8e4940dca0d97"
+    }
+  ],
+  "checks": {
+    "byte_identical_reproduction": true,
+    "requirements_architecture_manifest_generator_and_existing_adrs_unchanged": true,
+    "nonempty_png_and_svg_siblings": true,
+    "external_icon_file_references": false,
+    "visual_inspection": "Both PNG previews and separately rasterized actual SVG masters were directly inspected at 1920x1080.",
+    "visual_result": "PASS: rendered icons, legible labels, distinct workload/VNet/PaaS boundaries, private ingress versus integration, conditional recovery, and independent app/runner egress remain faithful to the source design."
+  },
+  "qualification": "These diagrams reproduce the previously approved assumed-Corp DEV design. Actual target-backed Governance and Architecture review readiness remain blocked by missing policy-rule evidence; this regeneration does not certify tenant compatibility or deployment.",
+  "new_pricing_queries": 0,
+  "new_review_dispatches": 0,
+  "azure_operations": 0,
+  "workflow_transitions": 0
+}

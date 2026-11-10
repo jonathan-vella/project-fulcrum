@@ -1,0 +1,44 @@
+{
+  "kind": "owner-authorized-documentation-publication-repair",
+  "recorded_at": "2026-11-10T09:44:57Z",
+  "owner_authorization": {
+    "interaction": "native ask_user",
+    "response": true,
+    "scope": "Retain the original privately outside the repository; replace the repository full-page copy with a provenance notice. Preserve historical review records and hashes. No commit or push."
+  },
+  "repository_path": "_meta/02-pricing-public-docs/appservice-linux-applicability-fetch.native.txt",
+  "replacement_kind": "provenance-notice-not-native-response",
+  "original": {
+    "sha256": "ac9bcc7914b5d9f6d3e1b44bf5cdfd19b1586100b6cfb4e4e83bbc274b2454e6",
+    "bytes": 19261,
+    "source_url": null,
+    "retrieved_at": null,
+    "redistribution_permission": "not-established",
+    "retention": "owner-controlled-private-storage-outside-repository",
+    "full_text_published": false
+  },
+  "historical_purpose": "Investigate Linux App Service B1 outbound and telemetry transfer billing applicability during Step 2 pricing recovery.",
+  "historical_validation_record": "contracts/02-cost-estimate.recovery-2.json.retail-evidence/recovery-validation-01.json",
+  "billing_conclusion": "The historical recovery did not establish a blanket outbound-transfer exemption. Neither this repair record nor its replacement notice is current billing-rule proof.",
+  "affected_evidence": [
+    "_meta/02-pricing-public-docs",
+    "_meta/03-des-protected-snapshot.json"
+  ],
+  "affected_reviews": [
+    "reviews/challenge-findings-architecture-archive-closure.json",
+    "reviews/challenge-findings-cost-estimate-archive-closure.json"
+  ],
+  "historical_review_records_modified": false,
+  "protected_snapshot_modified": false,
+  "pricing_artifacts_modified": false,
+  "review_allowances_reset": false,
+  "current_review_status": "REVALIDATION_REQUIRED",
+  "current_approval_granted": false,
+  "required_follow_up": [
+    "The affected owners must reconcile the changed supporting evidence and privately retained original within authorized access.",
+    "Affected independent review evidence must be revalidated under existing allowances before current approval. Do not restamp historical review hashes or reset exhausted allowances.",
+    "The Design owner must reconcile protected-input drift prospectively; the historical protected snapshot remains unchanged.",
+    "Existing policy-evidence blockers and human approval requirements remain in force."
+  ],
+  "publication_status": "The full-page copy is no longer in the repository worktree. Full-publication checks remain pending; this repair does not authorize commit, push or workflow continuation."
+}

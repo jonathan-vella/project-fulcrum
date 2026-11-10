@@ -1,0 +1,57 @@
+{
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "output_path": "agent-output/fulcrum/contracts/02-cost-candidates-document-store.json",
+  "overwrite": false,
+  "manifest_writeback": false,
+  "compare_regions": false,
+  "include_ri_savings": false,
+  "scope_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only. Comparison-only primary account charges, not committed workload total. NoSQL, one Sweden Central region, non-zonal, no free-tier entitlement, no reservation. Include live storage, paid continuous thirty-day backup and one monthly restore charge in each alternative. Private endpoints and temporary restore-target resources are separate committed-estimate dependencies, excluded equally from this comparison.",
+  "candidate_sets": [
+    {
+      "decision_id": "document-store",
+      "candidates": [
+        {
+          "label": "document-store-serverless-dev-swedencentral",
+          "service_name": "Azure Cosmos DB",
+          "sku": "Serverless",
+          "region": "swedencentral",
+          "quantity": 1,
+          "usage": {
+            "request_units_per_month": 20000000,
+            "peak_request_units_per_second": 1000,
+            "live_storage_gb": 10,
+            "continuous_backup_storage_gb": 10,
+            "backup_retention_days": 30,
+            "region_count": 1,
+            "restore_gb_per_event": 10,
+            "restore_events_per_month": 1,
+            "scope": "aggregate"
+          },
+          "notes": "Exact NoSQL Consumption USD meters: Serverless request units, Data Stored, Continuous Backup storage (30-day tier) and Point in Time Restore. Resolve exact current meter names through documented service-specific discovery; do not price periodic backup or substitute free 7-day retention. Official continuous-backup pricing basis is live data GB * account region count (10 GB * 1), not 30 copies of live data. Serverless containers have the same capabilities as provisioned containers except the documented serverless limitations; one region, no shared provisioned throughput, one database/three containers with 2 KiB items. The 1000 RU/s peak is an application sizing objective, not a serverless reservation or achieved SLA. No free-tier subtraction. Restore charge is 10 GB once monthly; exclude temporary account/PE lifetime costs from this comparison only, not final pricing."
+        },
+        {
+          "label": "document-store-manual-1000rus-dev-swedencentral",
+          "service_name": "Azure Cosmos DB",
+          "sku": "Manual 1000 RU/s",
+          "region": "swedencentral",
+          "quantity": 1,
+          "usage": {
+            "provisioned_request_units_per_second": 1000,
+            "hours_per_month": 730,
+            "request_units_per_month": 20000000,
+            "live_storage_gb": 10,
+            "continuous_backup_storage_gb": 10,
+            "backup_retention_days": 30,
+            "region_count": 1,
+            "restore_gb_per_event": 10,
+            "restore_events_per_month": 1,
+            "scope": "aggregate"
+          },
+          "notes": "Exact NoSQL single-region manual provisioned-throughput Consumption USD meter for 100 RU/s/hour; price 1000 RU/s for all 730 hours, not autoscale, multi-master or serverless. Shared database throughput 1000 RU/s across three containers, not 1000 RU/s per container. Include Data Stored 10 GB, paid Continuous Backup storage 10 GB * one account region at 30-day tier, and one Point in Time Restore of 10 GB/month. Same live data and monthly workload demand as serverless alternative. No free-tier entitlement. Supporting endpoints and restore-target lifetime charges excluded equally from candidate-only comparison and mandatory in committed scope."
+        }
+      ]
+    }
+  ]
+}

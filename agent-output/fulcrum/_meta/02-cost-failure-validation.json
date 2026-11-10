@@ -1,0 +1,82 @@
+{
+  "recorded_at": "2026-11-09T14:30:24.966665+00:00",
+  "actual_status": "BLOCKED_PRICING_FAILED",
+  "original_worker_output": "contracts/02-cost-estimate.json",
+  "preserved_worker_output": "_meta/02-cost-estimate.failed-attempt-1.json",
+  "preserved_output_sha256": "7984f1f3c9574efee99b09dec94aebab710885df19ed73c17e2d86b325c08586",
+  "preserved_bytes_unchanged": true,
+  "diagnostic_shape_valid": true,
+  "full_COMPLETE_estimate": false,
+  "resource_count": 17,
+  "unresolved_count": 9,
+  "unresolved_items": [
+    {
+      "resource_name": "internet-outbound-allocation-dev",
+      "kind": "required_meter_failure",
+      "reason": "q11/q12 ConsumptionUSD Data Transfer Out MCP queries both returned status200 prices[]; exact documented direct helper issued1HTTPrequest and failed No retail meters returned. No valid direct meter/evidence or alternative price selected. Bastion paid transfer tierMinimumUnits and app platform outbound exemption applicability also unverified.",
+      "failure_request_path": "agent-output/fulcrum/contracts/02-cost-estimate.json.retail-evidence/bandwidth-empty-request-01.json"
+    },
+    {
+      "resource_name": "storage-blob-replication (dev, swedencentral)",
+      "kind": "missing_tier_metadata_and_restore_meter",
+      "reason": "q10 Hot LRS Data Stored multiple prices omit tierMinimumUnits; no validated fallback. Applicable0.5GB processed-change-feed PITR meter not established before required-meter stop. Preserve30.5GB/110kreads/20kwrites/10klists/30dayPITR/31supporting retention."
+    },
+    {
+      "resource_name": "acr-premium-dev-swedencentral",
+      "kind": "included_feature_semantics_unverified",
+      "reason": "Premium base and Data Stored rates returned, but supplied official sources do not establish included-storage allowance for10GBimages; no assumed-free or guessed-overage pricing."
+    },
+    {
+      "resource_name": "steady-private-endpoints-dev-swedencentral",
+      "kind": "missing_tier_metadata",
+      "reason": "q1 ingress/egress each return0.01/0.006/0.004USD without bands. Fallback not issued after real failure;730hEACH4PEs and40/130GBaggregate retained."
+    },
+    {
+      "resource_name": "central-private-dns-allocation-dev",
+      "kind": "missing_tier_metadata",
+      "reason": "q2 Private Zone0.5/0.1USD unit1 omits bands. Highest applicable commercial tier allocation cannot be finalized without validated metadata;4zone/1mquery retained."
+    },
+    {
+      "resource_name": "log-analytics-app-insights-combined-dev",
+      "kind": "missing_tier_metadata",
+      "reason": "q4 Analytics Logs Data Ingestion0/2.99USD omits bands; paid1GBaggregate allocation cannot assume shared free entitlement. Combined workspace/AppInsights billed once;30dayretention retained."
+    },
+    {
+      "resource_name": "operational-metric-alerts-dev",
+      "kind": "meter_selection_unresolved",
+      "reason": "q5 returned frequency/resource-monitoring alert meters, not established paid static metric4series billing. Do not substitute log-resource frequency or free dynamic threshold meters. Additional discovery unissued at stop."
+    },
+    {
+      "resource_name": "operational-scheduled-log-alert-dev",
+      "kind": "meter_applicability_unverified",
+      "reason": "q5 observed Alerts Resource Monitored at5MinuteFrequency0.15USD/month; service-specific scheduled-query applicability not verified before stop. One rule/one resource5minutes retained; no notification meter."
+    },
+    {
+      "resource_name": "temporary-cosmos-restore-private-endpoint-dev",
+      "kind": "missing_tier_metadata",
+      "reason": "Shares unresolved q1 ingress/egress bands;4h1PE1GBtowards10GBfrom remains included exactly once; no fifth DNS zone or duplicate restore fee."
+    }
+  ],
+  "budget_accounting": {
+    "shared_ceiling": 20,
+    "requests_issued_this_invocation": 13,
+    "remaining_requests": 7,
+    "stopped_for": "required_meter_failure, not budget exhaustion",
+    "transient_retries_used": 0,
+    "empty_discovery_corrections_used": 1,
+    "prior_comparison_dispatches": 3,
+    "prior_comparison_mcp_calls": 7,
+    "prior_comparison_direct_api_calls": 0,
+    "prior_committed_dispatches": 0,
+    "allowances_reset": false,
+    "history_note": "Initial committed run. No prior committed attempt or interrupted retry. Historical raw candidate evidence reused without new network requests; seven historical requests are provenance only and not added to12 current MCP requests."
+  },
+  "requirements_sha256": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+  "manifest_sha256": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+  "proposal_sha256": "6db7a4494c5c2f619632f9ab4e5f4dad2febb26800a3d59d271f3b3cc0ad8bd2",
+  "current_material_inputs": 66,
+  "runtime": "Unverified",
+  "tenant_policy": "assumed_corp_not_tenant_verified",
+  "next_owner": "Interactive parent for bounded pricing-owner recovery, retaining seven remaining requests",
+  "no_gate2_no_complete_step_no_reviews_no_azure_operations": true
+}

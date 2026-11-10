@@ -1,0 +1,13 @@
+{
+ "query":{"serviceName":"Azure DNS","armRegionName":"","productName":"Azure DNS","skuName":"Private","priceType":"Consumption","currencyCode":"USD"},
+ "remaining_requests":4,
+ "mcp_failure":{"kind":"missing_tier_metadata","recorded_at":"2026-11-09T15:58:04.356405+00:00",
+ "full_native_response_path":"agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q03-dns.native.json",
+ "extraction_qualification":"All exact empty-region raw matching rows extracted from the actual full response; native commercial query and zone representations are not additive; government rows rejected.",
+ "attempts":[{"query":{"serviceName":"Azure DNS","productName":"Azure DNS","skuName":"Private","priceType":"Consumption","currencyCode":"USD"},
+ "response":{"status":200,"message":"Success","results":{"prices":[
+ {"armSkuName":"","skuName":"Private","productName":"Azure DNS","serviceName":"Azure DNS","serviceFamily":"Networking","region":"","location":"","retailPrice":0.5,"unitPrice":0.5,"currencyCode":"USD","unitOfMeasure":"1","priceType":"Consumption","effectiveStartDate":"2019-12-01T00:00:00+00:00","meterName":"Private Zone","meterId":"0b608a26-f611-4232-8192-ce81b6b57194","isPrimaryMeterRegion":true},
+ {"armSkuName":"","skuName":"Private","productName":"Azure DNS","serviceName":"Azure DNS","serviceFamily":"Networking","region":"","location":"","retailPrice":0.1,"unitPrice":0.1,"currencyCode":"USD","unitOfMeasure":"1","priceType":"Consumption","effectiveStartDate":"2019-12-01T00:00:00+00:00","meterName":"Private Zone","meterId":"0b608a26-f611-4232-8192-ce81b6b57194","isPrimaryMeterRegion":true},
+ {"armSkuName":"","skuName":"Private","productName":"Azure DNS","serviceName":"Azure DNS","serviceFamily":"Networking","region":"","location":"","retailPrice":0.4,"unitPrice":0.4,"currencyCode":"USD","unitOfMeasure":"1M","priceType":"Consumption","effectiveStartDate":"2019-12-01T00:00:00+00:00","meterName":"Private Queries","meterId":"46cff9cb-4b15-4af0-bf41-25143827fef8","isPrimaryMeterRegion":true}
+ ]},"duration":0}}]}
+}

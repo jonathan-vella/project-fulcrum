@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "phase": "phase_2_material_inputs_pending",
+  "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+  "actual_execution": "functions.bash shellId 468; completed exit code 0",
+  "current_inputs": 54,
+  "pending_fields": 6,
+  "checks": [
+    "validate_payload(form, context, require_context=True): PASS",
+    "Complete current ledger and question answers equal supported recall: PASS",
+    "Six generated JSON documents parse: PASS",
+    "Requirements/shared baseline/Step 1 projection hashes unchanged: PASS",
+    "Sole LRS user pin/revision/source/commit stamp preserved: PASS",
+    "Current Step 1 completion and Step 2 pending-input checkpoint: PASS",
+    "No Step 2 review attempts or pricing evidence: PASS",
+    "Earlier manifest validator: PASS, 0 errors, 0 warnings",
+    "Earlier manifest renderer: already up-to-date"
+  ],
+  "step2_dispatches": {
+    "pricing": 0,
+    "architecture_review": 0,
+    "cost_review": 0
+  },
+  "step1_existing_review_calls_used": 3,
+  "step1_existing_review_absolute_cap": 4,
+  "step2_projection_sha256": "cfaf96d43d5481bf92f06e7348c8ca025e2f3a5b1dc2d56c3f09d4082658d6c2",
+  "authority_boundary": "Validation only, not user input, phase completion, review, approval, tenant verification or Azure permission."
+}

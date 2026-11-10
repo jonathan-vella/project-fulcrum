@@ -4,8 +4,8 @@
   "project": "fulcrum",
   "default_region": "swedencentral",
   "created_at": "2026-11-06T14:34:00Z",
-  "updated_at": "2026-11-06T14:34:00Z",
-  "current_revision": 1,
+  "updated_at": "2026-11-09T13:48:00Z",
+  "current_revision": 2,
   "environments": [
     "dev"
   ],
@@ -21,6 +21,20 @@
         "storage-blob-replication"
       ],
       "commit_sha": "16cd2c7"
+    },
+    {
+      "rev": 2,
+      "created_at": "2026-11-09T13:48:00Z",
+      "agent": "03-Architect",
+      "step": "2",
+      "apex_recall_checkpoint": "fulcrum:2:phase_2_waf",
+      "summary": "Current DEV architect selections from three COMPLETE comparison-only pricing results; original LRS lock and Step 1 commit metadata preserved. Supporting access/network/recovery scope remains subject to confirmation; no prices written into manifest and no SKU or Architecture approval inferred.",
+      "changed_ids": [
+        "storage-blob-replication",
+        "app-host",
+        "document-store",
+        "access-compute"
+      ]
     }
   ],
   "services": [
@@ -34,10 +48,130 @@
       "commitment": {
         "type": "on-demand"
       },
-      "notes": "Explicit LRS replication-only user pin from requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac; Project Stakeholders, dev only. No account performance tier, capacity, numeric SLA, zoning design or IaC logical names supplied. This is not a full provider SKU. No dev-specific override. Baseline requires private Blob access, DNS, Entra/managed identity and disabled shared/public access; detailed implementation belongs to later owners.",
       "source": "user-pin",
       "source_step": "1",
-      "last_modified_rev": 1
+      "last_modified_rev": 2,
+      "iac_logical_names": {
+        "bicep": "blobStorage",
+        "terraform": "module.blob_storage"
+      },
+      "capacity": {
+        "mode": "fixed",
+        "default": 1
+      },
+      "zonal": false,
+      "sla_target": "Dev/test — occasional downtime acceptable",
+      "sla_achieved": "99.9% service-credit availability threshold for Standard Hot LRS; November 2026 Microsoft Online Services SLA. Not achieved workload availability.",
+      "requires": [
+        "private-endpoints",
+        "managed-identity",
+        "blob-point-in-time-restore",
+        "standard-gpv2"
+      ],
+      "notes": "Explicit LRS replication-only user pin from requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac; Project Stakeholders, dev only. Original lock/source_step/commit provenance unchanged. Architecture completes one Standard GPv2 account with provider SKU Standard_LRS, Hot block blobs, no HNS, private endpoint, shared/public access disabled, Entra/MI and TLS. This is an eligibility-forced performance/account shape for Blob PITR, not a change to the replication lock or an invented premium alternative. Actual selected recovery is PITR 30 days; soft delete and change feed at least 31 days, version lifecycle must retain all required recoverable versions. Adopted aggregate retained versions/soft-deletions 10 GB and change-feed 0.5 GB are planning assumptions from the displayed data profile, not a seven-day fallback or measured churn; explicitly re-evaluate over-retention and actual churn at planning/testing. No project geo-replication. Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+      "cost_estimate_monthly_usd": 10.7552,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    },
+    {
+      "id": "app-host",
+      "service": "Azure App Service",
+      "size": "B1",
+      "regions": [
+        "swedencentral"
+      ],
+      "capacity": {
+        "mode": "fixed",
+        "default": 1
+      },
+      "zonal": false,
+      "commitment": {
+        "type": "on-demand"
+      },
+      "iac_logical_names": {
+        "bicep": "appServicePlan",
+        "terraform": "module.app_service_plan"
+      },
+      "sla_target": "Dev/test — occasional downtime acceptable",
+      "sla_achieved": "99.95% non-zone-redundant paid App Service service-credit uptime threshold; November 2026 Microsoft Online Services SLA. Not tested availability or an end-to-end guarantee.",
+      "requires": [
+        "private-endpoints",
+        "vnet-integration",
+        "managed-identity",
+        "private-container-image-pull"
+      ],
+      "notes": "Linux container, one B1 host at 730 hours/month. Selected from COMPLETE app-host comparison; B2 is supported scale-up alternative. Peak app memory 768 MiB plus 40% platform headroom fits 1792 MiB; CPU/concurrency/20 RPS and API latency require application-team load verification. Always On; no slots, autoscale, zone redundancy, built-in filesystem-backup or Production availability promised. ACR Premium MI image pull uses configuration routing through VNet; runtime private data uses integration subnet. Do not depend on eighty-hour access NAT for 730-hour host operation. Final SKU confirmation pending. Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+      "source": "architect-derived",
+      "source_step": "2",
+      "last_modified_rev": 2,
+      "cost_estimate_monthly_usd": 13.14,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    },
+    {
+      "id": "document-store",
+      "service": "Azure Cosmos DB",
+      "size": "Serverless",
+      "regions": [
+        "swedencentral"
+      ],
+      "capacity": {
+        "mode": "fixed",
+        "default": 1
+      },
+      "zonal": false,
+      "commitment": {
+        "type": "on-demand"
+      },
+      "iac_logical_names": {
+        "bicep": "cosmosAccount",
+        "terraform": "module.cosmos_account"
+      },
+      "sla_target": "Dev/test — occasional downtime acceptable",
+      "sla_achieved": "99.99% single-region service-credit availability threshold; November 2026 Microsoft Online Services SLA. Serverless throughput/latency and application recovery are not guaranteed by this number.",
+      "requires": [
+        "private-endpoints",
+        "managed-identity",
+        "continuous-backup-30-days"
+      ],
+      "notes": "NoSQL single-region, three serverless containers in one database, 10 GB live data, 20 million RU/month, 1000 RU/s planning peak; no free-tier entitlement assumed. Paid continuous thirty-day backup storage and monthly 10 GB restore are included in comparison; temporary restore-target account/PE lifetime must be included in committed pricing. Native data-plane RBAC, disabled local keys, Gateway HTTPS SDK mode preferred for explicit TCP 443 private path; SDK binding remains application-team owned and runtime Unverified. Restore into a new Sweden Central account for corruption recovery and reapply grants/network/DNS; do not claim regional-loss recovery. Final SKU confirmation pending. Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+      "source": "architect-derived",
+      "source_step": "2",
+      "last_modified_rev": 2,
+      "cost_estimate_monthly_usd": 12.1,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    },
+    {
+      "id": "access-compute",
+      "service": "Virtual Machines",
+      "size": "Standard_D2as_v5",
+      "regions": [
+        "swedencentral"
+      ],
+      "capacity": {
+        "mode": "fixed",
+        "default": 1
+      },
+      "zonal": false,
+      "commitment": {
+        "type": "on-demand"
+      },
+      "iac_logical_names": {
+        "bicep": "devRunner",
+        "terraform": "module.dev_runner"
+      },
+      "sla_target": "Dev/test — occasional downtime acceptable",
+      "sla_achieved": "Not assessed for the complete ephemeral access path; VM/disk service-credit conditions require reconciliation with confirmed supporting configuration. No runtime availability claim.",
+      "requires": [
+        "vnet-integration",
+        "managed-identity",
+        "bastion-native-entra-ssh",
+        "explicit-outbound-access"
+      ],
+      "notes": "One non-burstable x86 Linux client/runner with 2 vCPU/8 GiB, 80 provisioned monthly hours. D2s_v5 is equivalent alternate CPU platform; D2as_v5 selected from COMPLETE comparison-only compute pricing. Private NIC, no IP forwarding, Trusted Launch eligible Gen2 supported Ubuntu image, managed OS disk, Entra SSH login extension, minimal login/data/registry roles, no long-lived login secret. Controlled test clients/publishers run inside VNet; not a physical-phone VPN or Bastion tunnel-as-Entra promise. Supporting Bastion Standard, NAT and two service-owned Standard IPv4 IPs have eighty-hour planning lifecycles only. OS disk and session transfer/egress charges must be included in committed pricing. Final SKU confirmation pending. Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+      "source": "architect-derived",
+      "source_step": "2",
+      "last_modified_rev": 2,
+      "cost_estimate_monthly_usd": 7.36,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
     }
   ]
 }

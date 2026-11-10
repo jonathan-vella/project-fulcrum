@@ -1,0 +1,42 @@
+{
+  "status": "PASS_READY_FOR_PARENT_GATE2_QUESTION",
+  "project": "fulcrum",
+  "step": "2",
+  "checkpoint": "phase_6_gate2_pending",
+  "step_status": "in_progress",
+  "original_step2_started": "2026-11-09T13:13:22Z",
+  "material_records": 69,
+  "recall_open_findings": [],
+  "effective_step2_reviews": "current",
+  "strict_cache": {
+    "architecture": {"errors": 0, "warnings": 0},
+    "cost_estimate": {"errors": 0, "warnings": 0}
+  },
+  "native_form": {
+    "request_id": "fulcrum-gate2-current69-20261109-184300",
+    "path": "_meta/02-gate2-native-form.json",
+    "context_path": "_meta/02-gate2-question-context.json",
+    "require_context_validation": "PASS",
+    "errors": []
+  },
+  "final_cost_validator": "PASS_COMPLETE_CURRENT69_SCENARIO",
+  "cost_output_sha256": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb",
+  "cost_monthly_usd": 168.104995,
+  "cost_yearly_usd": 2017.25994,
+  "readme_h2": "5 required,6 total; PASS",
+  "handoff_h2": "6 required,6 total; PASS",
+  "local_final_check_diagnostic": {
+    "observed": "One concurrent final validator's apex-recall show subprocess exited2 while separate recall writes were running; the command did not complete successfully.",
+    "cause": "Not established; concurrent read/write timing was present, not proof of corruption.",
+    "recovery": "After recall writes completed, the same read-only full validator was rerun sequentially and passed. No state-file access, source edit, pricing request, worker retry or reviewed-input mutation.",
+    "unresolved": false
+  },
+  "reviewed_input_edits_after_reviews": false,
+  "gate2_actual_answer": null,
+  "step2_completion_called": false,
+  "next_main_dispatched": false,
+  "optional_design_choice": null,
+  "pricing_requests": {"prior": 34, "new_mcp": 0, "new_direct": 1, "cumulative": 35, "limit": 35, "remaining": 0},
+  "next_owner": "Interactive parent",
+  "next_action": "Present exact saved native Gate2 form; preserve request ID and actual response. No approval or deployment authority inferred."
+}

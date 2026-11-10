@@ -1,0 +1,21 @@
+{
+  "request_id": "fulcrum-assumed-corp-owner-acceptance-20261109-124406",
+  "request_id_source": "apex-local",
+  "capture_mode": "recovered",
+  "source": "Explicit user message in the current conversation at 2026-11-09T12:44:06.902Z; not a response to an unasked form",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_acceptance": "I explicitly accept the standard ALZ Corp baseline as assumed, tenant-unverified policy evidence for DEV Architecture only.",
+  "baseline_path": ".github/data/alz-corp-policy-baseline.json.gz",
+  "requested_recording": "Supported apex-recall policy-source --assumed-corp command with the actual owner, request ID and dev scope.",
+  "scope": "DEV Architecture assumptions only, including pricing qualifications, independent reviews and Gate 2.",
+  "label": "Assumed Corp policies — not tenant-verified",
+  "superseded_question": {
+    "request_id": "fulcrum-registry-and-private-scope-20261109",
+    "field": "private_governance_scope_file",
+    "disposition": "Explicitly superseded; no path or live-read authorization is required or inferred for the assumed route."
+  },
+  "unresolved_acr_decision": "No ACR residency exception is approved. The interrupted form and highlighted option supply no answer.",
+  "authority_boundary": "No Azure reads, deployment, tenant discovery, law or policy waiver, approval-history reconstruction or verification bypass. Current tenant evidence remains mandatory before implementation readiness under the policy-source contract.",
+  "sdk_response_id_supplied": false
+}

@@ -1,0 +1,28 @@
+{
+ "validation_status":"VALIDATED_FAILED",
+ "request_path":"agent-output/fulcrum/_meta/02-cost-recovery-3-request.json",
+ "output_path":"agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json",
+ "schema_validation":{"ok":true,"errors":[],"warnings":[],"method":"Canonical cost-estimate.mjs validate plus Ajv2020 cost-estimate.schema.json with formats"},
+ "scope_validation":"PASS: all17 original names/SKU/quantity/region/stamp/subscription/source-kind/service mappings; four manifest lines and13supplements. Supplemental DEV is explicit original scope; helper omits environment on supplements. First custom check rejected helper-null environment; corrected validation comparison to explicit original DEV, no request/output values changed.",
+ "usage_validation":"PASS exact original non-note structured usage equality. All original full notes read and honored, shortened locator notes not substituted. No suggested5GB app, monthlyTB default, zero app volume, omitted line, second restore/ingestion/traffic multiplier or approval inferred.",
+ "source_validation":"PASS full native JSON row counts and file hashes at recorded paths, six helper envelope hashes and every raw response page hash, original failure categories/timestamps and exact extracted MCP-row membership in full preserved sources. Native q11 full source read/hash at native /tmp path; exact-byte directory archival is FAILED, no copy claimed.",
+ "arithmetic_validation":"PASS sixteen verified component equations and their six-decimal published values; qualified fixed-scope-only subtotal167.147995 excludes entire unresolved Internet line and is not a workload total. Six native1GB MGN bands match direct source exactly; paid illustrative1TB=1000GB conversions87/83/70/50/50 correct. Full monthly_total/yearly_total null.",
+ "terminal_validation":"FAILED; confidenceLow; one unresolved resource line plus one independent native archive blocker; manifest_writeback empty; no false COMPLETE/PARTIAL/NOT_ASSESSED or zero.",
+ "protected_hashes_validation":"PASS all caller-protected Requirements/manifest/initialfailure/recovery1/recovery2/nativeBandwitharchive hashes unchanged. Original request32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8 unchanged.",
+ "request_accounting":{"mcp_calls_used":14,"direct_api_calls_used":6,"new_total":20,"prior_original_mcp":12,"prior_original_direct":1,"prior_recovery1_mcp":1,"prior_recovery2_total":0,"prior_total":14,"cumulative_total":34,"absolute_limit":34,"remaining":0,"historical_candidates_dispatches":3,"historical_candidates_mcp":7,"historical_candidates_direct":0,"review_dispatches":0,"review_requests":0,"allowances_reset":false,"automatic_retry_or_extra_dispatch_authorized":false},
+ "publication_ownership":"Preflight target/tmp/evidence absent. This invocation owns draft and new evidence files. Versioned output overwritefalse; canonical output must be rechecked absent by publish before atomic rename. No protected files may be replaced. No manifest writeback on FAILED.",
+ "official_semantic_archives":[
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/routing-search.native.txt","sha256":"9ddc367a8e979dc0c048872b05007b0ea34e8263d493b2452a9fd3277a6f8923"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/acr-skus-fetch.native.txt","sha256":"d1b5ba5be2bd19e6df66ebdd44de60a8c4c1c6073d1db2c1d87b485877f02c18"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/alerts-search.native.txt","sha256":"986ba53f395f84e4895c588218de959079e2a2ab777df43f26b82f9d23b88db1"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/outbound-monitor-search.native.txt","sha256":"e4eaf377d0968178cf571e22783a75a03a2416e0a0b9920177ac14a5e8bc350c"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-outbound-search.native.txt","sha256":"40d59128ec84433583a34530d8a5c33053e674d4205c0aa6caf085e53195b58d"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/monitor-cost-usage-fetch.native.txt","sha256":"b40f8329ffbadccf9e063f7322c19002727301b61124461c39b2dd3fde7a83c8"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-hosting-plans-fetch.native.txt","sha256":"02b037ce9ba115ba773abe7388f234307f3b3df1ecea4e7110526b27f8838883"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-linux-applicability-fetch.native.txt","sha256":"ac9bcc7914b5d9f6d3e1b44bf5cdfd19b1586100b6cfb4e4e83bbc274b2454e6"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-bandwidth-search.native.txt","sha256":"9afe335394c17323d201b35a673b1aefbdb0279a4886bad67a7c2258b57a4bc4"},
+  {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/bastion-unit-inclusions-recovery-3.native.txt","sha256":"b9b3b720ab5bd1667c9d365ed9064c5202630023174846cfe07092cd5a869a00"}
+ ],
+ "official_source_rule":"All10 actual archives read and hashes checked; semantics only. Documentation monetary values, Q&A, training/calculator/examples never used as retail rates. No documentation or other Azure tool called.",
+ "gate_2_hold":"Full-scope pricing FAILED: required monthly app wire volume or verified exact exemption missing; native q11 exact-byte archive unresolved. No full workload total/writeback, Gate2 approval or implementation continuation. Independent reviews/final human approval remain required."
+}

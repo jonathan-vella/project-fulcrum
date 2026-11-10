@@ -1,0 +1,16 @@
+{
+  "request_id": "fulcrum-step2-cost-bounded-recovery-3-20261109",
+  "source_kind": "Actual pricing worker q11 native tool offload; public catalog data",
+  "source_path": "/tmp/1794239898155-copilot-tool-output-b1c22c6ed0e443738931131e08d28e92.txt",
+  "archive_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q11-alert-discovery.native.txt",
+  "bytes": 35241,
+  "sha256": "b075afabd8cc2425494b56dc72574d1415c7ffac9de23e6d5df8fa740caf423d",
+  "status": "EXACT_BYTE_ARCHIVE_RECOVERED",
+  "method": "Main copied the exact available native bytes into a previously nonexistent owned evidence file, then verified source/archive byte equality, byte count and hash. No query, rate selection or recalculation occurred.",
+  "raw_response_status": 200,
+  "expected_rows": 52,
+  "selected_meters": [],
+  "new_pricing_requests": 0,
+  "worker_outputs_unchanged": true,
+  "boundary": "The worker FAILED diagnostic and its historical archival limitation remain unchanged. This receipt resolves persistence only; unknown app monthly usage still prevents a COMPLETE full-scope estimate. No new pricing dispatch or approval."
+}

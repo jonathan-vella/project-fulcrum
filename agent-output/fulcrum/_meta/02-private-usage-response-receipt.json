@@ -1,0 +1,20 @@
+{
+  "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+  "request_id_source": "apex-local",
+  "phase": "phase_2_material_inputs_pending",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": {
+    "dev_client_access_profile": "Ephemeral VNet-hosted DEV client/runner sessions",
+    "dev_compute_demand_profile": "Adopt the proposed compute planning envelope",
+    "dev_data_meter_profile": "Adopt the proposed data and meter planning profile",
+    "dev_access_provisioned_hours_per_month": " 80 for bounded sessions with billable access resources deleted afterward",
+    "dev_recovery_failure_coverage": "Recoverable logical/deletion/application faults; regional recovery is provider-dependent",
+    "dev_backup_retention_profile": "Thirty-day application recovery profile"
+  },
+  "normalized_access_hours_per_month": 80,
+  "adopted_proposals": "Only the compute and data-meter profiles actually displayed in the matching saved request are adopted as planning assumptions; preserve their complete quantities and explicit recovery-retention selection.",
+  "authority_boundary": "Planning inputs only. Resource deletion after bounded access sessions is a proposed billing lifecycle, not current deletion or deployment authority. No final SKU, VNet, Gate 2, spending, Azure read/write, Production or tenant-verification approval is granted.",
+  "sdk_response_id_supplied": false
+}

@@ -1,0 +1,50 @@
+{
+  "status": "MECHANICAL_CHECKS_PASS",
+  "protected_files_unchanged": 286,
+  "git_index_unchanged": true,
+  "python_compile": "PASS",
+  "overflow_warnings": 0,
+  "deterministic_rerender": "PASS",
+  "current_material_input_equality": "69/69",
+  "manifest_choices_unchanged": true,
+  "adr_source_quotes": "7/7 verbatim",
+  "step3_status": "complete",
+  "step3_completed": "2026-11-09T21:16:25Z",
+  "step3_scope_binding": "Actual Design selection / same 69 inputs / DEV only",
+  "renders": [
+    {
+      "stem": "03-des-diagram",
+      "png_dimensions": [
+        3840,
+        2160
+      ],
+      "svg_embedded_symbols": 14,
+      "svg_rasterized_for_visual_inspection": true,
+      "svg_sha256": "3d6c517ea8c9f4c6da4d3c072b7027de33921e22e3cf6f9b57568b9a9e0158db",
+      "png_sha256": "a6f01b6470cb497078b9d31b2cb299019e795c7c4f48df6940c6da4d24ae4766"
+    },
+    {
+      "stem": "03-des-diagram-network",
+      "png_dimensions": [
+        3840,
+        2160
+      ],
+      "svg_embedded_symbols": 10,
+      "svg_rasterized_for_visual_inspection": true,
+      "svg_sha256": "76c0d111f6c7cf2f0cc1c2a49221bd9eb10af184ded34cfd52b8e4940dca0d97",
+      "png_sha256": "01c9210bcb0b7a1f175d09d17620257a87498c04d12e1f1208eca6ad6d5cba1f"
+    }
+  ],
+  "adrs": [
+    "03-des-adr-0001-managed-linux-container-host.md",
+    "03-des-adr-0002-serverless-document-primary.md",
+    "03-des-adr-0003-ephemeral-private-access-and-egress.md",
+    "03-des-adr-0004-secretless-private-integration.md",
+    "03-des-adr-0005-qualified-single-region-residency.md",
+    "03-des-adr-0006-same-region-logical-recovery.md",
+    "03-des-adr-0007-conservative-on-demand-planning.md"
+  ],
+  "owned_local_links_checked": 163,
+  "independent_adr_review": "NOT_REQUESTED",
+  "visual_inspection": "PASS: directly inspected PNG and actual rasterized SVG for both hash-bound views; not independent runtime verification"
+}

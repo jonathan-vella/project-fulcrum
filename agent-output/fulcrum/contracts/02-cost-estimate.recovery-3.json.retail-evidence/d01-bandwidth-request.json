@@ -1,0 +1,23 @@
+{
+  "query":{"serviceName":"Bandwidth","armRegionName":"swedencentral","productName":"Rtn Preference: MGN","skuName":"Standard","meterName":"Standard Data Transfer Out","priceType":"Consumption","currencyCode":"USD"},
+  "remaining_requests":6,
+  "mcp_failure":{
+    "kind":"missing_tier_metadata",
+    "recorded_at":"2026-11-09T15:22:57.239Z",
+    "full_native_response_path":"agent-output/fulcrum/_meta/02-cost-recovery-1-bandwidth-native-response.txt",
+    "full_native_response_sha256":"b421829c3f0df4464aadfb8ef0a419b81227d9f6f8901567c5182e9986942371",
+    "full_native_response_rows":1437,
+    "extraction_qualification":"The response below contains all six exact raw matching rows, copied without changing row metadata from the actual full native response at the immutable hash/path above. It is not a reconstructed original-attempt summary and is not labelled the complete broad catalog. Full source bytes remain available at that existing archive. Reuse count zero this invocation.",
+    "attempts":[{
+      "query":{"serviceName":"Bandwidth","priceType":"Consumption","currencyCode":"USD"},
+      "response":{"status":200,"message":"Success","results":{"prices":[
+        {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0,"unitPrice":0,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+        {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.087,"unitPrice":0.087,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+        {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.083,"unitPrice":0.083,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+        {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.05,"unitPrice":0.05,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+        {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.05,"unitPrice":0.05,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+        {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.07,"unitPrice":0.07,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false}
+      ]},"duration":0}
+    }]
+  }
+}

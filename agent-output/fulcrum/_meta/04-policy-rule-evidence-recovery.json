@@ -1,0 +1,180 @@
+{
+  "schema_version": "policy-rule-evidence-recovery-receipt-v1",
+  "record_kind": "Bounded Governance owner investigation; not L0 authority, independent review or approval",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "status": "BLOCKED_TOOLING_CAPABILITY",
+  "blocker_id": "POLICY_RULE_BODIES_NOT_PERSISTED",
+  "checked_at_runtime_utc": "2026-11-10T07:17:10.761087+00:00",
+  "scope_ref": "8e02286b466548f4b011ea06560abf93",
+  "authorization": {
+    "receipt": "_meta/04-governance-scope-receipt.json",
+    "existing_request_id": "fulcrum-formal-governance-target-20261109",
+    "read_scope": "Existing authorized DEV subscription policy plus inheritance only",
+    "managed_private_scope_resolved": true,
+    "new_scope_or_consent_requested": false,
+    "tenant_check": "Prior actual tenant-match evidence reused; no Azure call in this investigation"
+  },
+  "preserved_source": {
+    "index_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+    "index_sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+    "snapshot_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+    "snapshot_sha256": "98edd9c9aa613ce65a3e8dd86f3cfc30fd640dccacb0208c3ccd13f5fd9e3dff",
+    "discovery_signature": "sha256:7c229c364db863e37de347eb2a53726f0de4d7566e3d1ddf5c4d178556d82292",
+    "discovered_at": "2026-11-10T06:51:00Z",
+    "ttl_days": 7,
+    "expires_at": "2026-11-17T06:51:00+00:00",
+    "collection_status": "COMPLETE",
+    "feasibility_binding": "current",
+    "full_defender_coverage": true,
+    "index_and_snapshot_original_hashes_match": true,
+    "scope_binding_matches": true,
+    "signature_verified_with_shared_canonical_algorithm": true,
+    "timezone_aware_positive_current_ttl": true,
+    "canonical_validate_only": {"exit_code": 0, "status": "CURRENT", "read_only": true},
+    "schema_validation": "PASS: repository shared Ajv2020 with ajv-formats",
+    "rule_body_completeness": "INSUFFICIENT; assignment coverage is not semantic-body coverage",
+    "new_snapshot_index_signature_or_binding_created": false
+  },
+  "existing_private_cache_inspection": {
+    "files_scanned": 44,
+    "json_files": 26,
+    "utf8_non_json_files": 18,
+    "binary_files": 0,
+    "owner_only_files": 44,
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "symlinks": 0,
+    "full_policyRule_if_then_bodies_found": 0,
+    "json_deployment_bodies_found": 0,
+    "json_existence_conditions_found": 0,
+    "json_modify_operation_arrays_found": 0,
+    "non_json_policyRule_literal_occurrences": 0,
+    "non_json_existenceCondition_literal_occurrences": 0,
+    "non_json_operations_literal_occurrences": 0,
+    "non_json_deployment_literal_occurrences": 21,
+    "non_json_deployment_word_is_not_a_rule_archive": true,
+    "absolute_private_paths_or_identifying_payload_published": false
+  },
+  "coverage": {
+    "assignments": {"total": 9, "subscription": 3, "inherited": 6},
+    "deny_records_retained": 13,
+    "deploy_if_not_exists": {
+      "effective_records": 45,
+      "retained_if_conditions": 45,
+      "full_then_details_available": 0,
+      "missing_full_bodies": 45,
+      "missing": "Deployment templates, existence conditions, deployment/existence scope, ownership and permission details"
+    },
+    "modify": {
+      "effective_records": 13,
+      "retained_if_conditions": 0,
+      "complete_operations_available": 0,
+      "missing_full_bodies": 13,
+      "missing": "Complete applicability, operation targets, conditions, operations and associated details"
+    },
+    "audit_or_audit_if_not_exists": {
+      "effective_occurrences_counted": 245,
+      "individual_records_retained": 0,
+      "missing_full_bodies": 245,
+      "individual_assignment_member_parameter_bindings_recoverable": false,
+      "unique_definition_count": null
+    },
+    "missing_effective_record_bodies_total": 303,
+    "total_semantics": "Effective record occurrences, not unique definitions or deployed-resource violations",
+    "disabled_occurrences_counted": 15,
+    "exemptions_collected": 0,
+    "member_policy_index": "Identifiers only; not full definitions or an effective Audit-record mapping",
+    "full_original_definition_initiative_assignment_parameter_lineage_archive_available": false,
+    "full_rule_evidence_bundle_created": false
+  },
+  "capability_cause": [
+    {
+      "source": ".github/skills/apex-azure-governance-discovery/scripts/discover.py",
+      "sha256": "3da890e2bf8b61693730a2810c762197d1ec90be6e69d83014df42fc89852f27",
+      "functions": [
+        "discover:731-810 collects original definitions and initiatives into process-local dictionaries",
+        "discover:864-893 resolves initiative/member/default/assignment parameters in memory",
+        "discover:894-902 counts Audit/Disabled and continues without persisting individual records",
+        "_required_value:317-347 reduces selected Modify operations to a value",
+        "discover:914-956 emits normalized fields and conditionally retains only if",
+        "discover:1005-1052 returns normalized envelope plus definition identifiers, not full raw objects",
+        "main:1125-1154 exposes no raw-definition retention/export flag",
+        "main:1280-1287 writes only that envelope and its preview"
+      ],
+      "limitation": "No supported persistent raw-definition cache or full-rule archive output; verbose diagnostics do not provide one"
+    },
+    {
+      "source": ".github/skills/apex-azure-governance-discovery/scripts/render_cached_governance.py",
+      "sha256": "412628ad0fbd7fa18ab5a97b2c18425c3397f26aa6cddab8fc53fb77660a03bc",
+      "function": "main",
+      "limitation": "Offline rendering consumes an existing envelope; it cannot recover bodies already discarded by collection"
+    }
+  ],
+  "bounded_stop": {
+    "live_refresh_attempted": false,
+    "reason": "Identical canonical collection cannot persist the required missing bodies; further Azure reads would not repair the evidenced output-contract limitation",
+    "improvised_rest_cli_discovery_or_source_substitution_used": false,
+    "source_changes": 0,
+    "new_private_evidence_or_rebinding": false,
+    "required_next_authorized_owner": "Interactive parent, then discovery tooling/code owner under separate source-change authorization",
+    "required_capability": "Canonical owner-only full raw definition/initiative/assignment/exemption archive, effective member/parameter lineage and provenance/coverage contract, followed by separately authorized bounded collection",
+    "blocking_skill_requirement": {
+      "path": ".github/skills/apex-azure-governance-discovery/references/reconciliation-disposition.md",
+      "quotation": "A deterministic extraction defect must be corrected in its owning discovery code and regenerated from verified policy evidence; do not hand-edit a generated envelope from a suggested replacement alone."
+    }
+  },
+  "architect_handoff": {
+    "existing_comparison": "_meta/04-target-architecture-reconciliation.json",
+    "existing_comparison_sha256": "f0f2a8271b31c1bb997048c665323c65292ec7747a9adc6d63a87c9ae75c67ad",
+    "opaque_non_deny_refs": "Existing comparison remediation_screen retains the 58 opaque record references and source ordinals",
+    "new_full_rule_source_ready": false,
+    "location_unresolved_refs": ["policy-4330c156074e93cf", "policy-04d8e79fd35652b4"],
+    "location_qualification": "Existing WestUS2 parameter values alone prove neither foreign workload-data deployment nor a central-resource exception; deployment/existence bodies remain unavailable",
+    "confirmed_design_conflicts_added": 0,
+    "material_user_decisions_justified_by_this_recovery": 0,
+    "architecture_cost_manifest_and_residency_changes": 0
+  },
+  "preservation_and_readiness": {
+    "private_protected_baseline_sha256": "490ddd7f5cbea027ff01f66c1ab6327e392159d0b3db979e8fd8f4a0328618a3",
+    "baseline_project_relative_artifacts_checked": 316,
+    "baseline_project_relative_artifacts_unchanged": 316,
+    "comparison_receipt_named_source_hashes_checked": 15,
+    "comparison_receipt_named_source_hashes_unchanged": 15,
+    "baseline_recall_digest_labels_not_treated_as_paths": 5,
+    "direct_session_state_reads_or_edits": false,
+    "review_attempt_count": 14,
+    "new_review_dispatches": 0,
+    "architecture_and_cost_allowances": "Existing 2/2 each preserved; not reset or extended",
+    "architecture_selected_review": "reviews/challenge-findings-architecture-archive-closure.json",
+    "cost_selected_review": "reviews/challenge-findings-cost-estimate-archive-closure.json",
+    "independent_verify_cache": {
+      "architecture": {"exit_code": 1, "status": "STALE"},
+      "cost": {"exit_code": 1, "status": "STALE"},
+      "reason": "Required private policy evidence is not frozen in supporting inputs"
+    },
+    "step_3_5": "pending; neither started nor completed",
+    "new_human_approval_inferred": false,
+    "governance_review_findings_created": 0,
+    "blocker_closure": "BLOCKED; no full-body recovery",
+    "structure": {
+      "readme_headings": "PASS: 5 required, 6 total",
+      "handoff_headings": "PASS: 6 required, 6 total",
+      "handoff_lines": 53,
+      "formal_governance_headings": "NOT PRODUCED: explicit check reports artifact not found; not a passing formal-artifact check",
+      "formal_governance_json_and_decision_sidecars": "NOT PRODUCED in this preliminary evidence-only slice"
+    }
+  },
+  "operations": {
+    "types": ["Managed local scope resolution", "Recall show", "Local cache/source inspection", "Offline integrity/schema/TTL validation", "Existing review-cache freshness checks"],
+    "live_azure_reads": 0,
+    "resource_inventory_reads": 0,
+    "azure_or_policy_writes": 0,
+    "pricing_queries": 0,
+    "new_reviews": 0,
+    "upstream_artifact_edits": 0,
+    "only_new_output": "_meta/04-policy-rule-evidence-recovery.json"
+  },
+  "next_owner": "Interactive parent",
+  "next_action": "Resolve the canonical tooling capability gap under separate authorization; retain the current evidence and stale review/budget blockers. Do not retry unchanged discovery, infer residency outcomes, or proceed to formal Governance/planning."
+}

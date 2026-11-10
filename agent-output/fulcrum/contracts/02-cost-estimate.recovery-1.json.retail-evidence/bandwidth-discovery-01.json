@@ -1,0 +1,44 @@
+{
+  "evidence_kind": "MCP discovery diagnostic; exact excerpts, NOT a reconstructed full response or validated direct-API evidence",
+  "source": "Azure MCP pricing_get",
+  "recorded_at": "2026-11-09T15:22:57.239Z",
+  "timestamp_semantics": "Actual observation timestamp recorded after receipt of the recovery MCP response.",
+  "command": "pricing_get",
+  "learn": false,
+  "parameters": {
+    "filter": "serviceName eq 'Bandwidth'",
+    "price-type": "Consumption",
+    "currency": "USD"
+  },
+  "response_status": 200,
+  "response_message": "Success",
+  "response_duration": 0,
+  "returned_rows": 1437,
+  "full_response_transcript": "/tmp/1794237746674-copilot-tool-output-f0cd13a821c84982ba74819b480fd236.txt",
+  "full_response_sha256": "b421829c3f0df4464aadfb8ef0a419b81227d9f6f8901567c5182e9986942371",
+  "full_response_bytes": 909319,
+  "full_response_retention": "Tool-managed transcript, potentially temporary. Only the following exact response excerpts are persisted alongside the diagnostic. This file is not an evidence-ready helper envelope and makes no full-response completeness claim.",
+  "pagination_metadata": "Count and NextPageLink not exposed by MCP. Completeness of the broad discovery is unverified.",
+  "excerpt_selection": "Every received row with region swedencentral and meterName Standard Data Transfer Out; source row order preserved, including duplicate rate rows. No price/product/tier selected for billing.",
+  "response_row_excerpts": [
+    {"armSkuName":"","skuName":"Standard","productName":"Bandwidth - Routing Preference: Internet","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0,"unitPrice":0,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-03-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"6bd64e8e-5cb9-49d3-893d-800c9b28dca3","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Bandwidth - Routing Preference: Internet","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.08,"unitPrice":0.08,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-03-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"6bd64e8e-5cb9-49d3-893d-800c9b28dca3","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Bandwidth - Routing Preference: Internet","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.065,"unitPrice":0.065,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-03-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"6bd64e8e-5cb9-49d3-893d-800c9b28dca3","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Bandwidth - Routing Preference: Internet","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.04,"unitPrice":0.04,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-03-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"6bd64e8e-5cb9-49d3-893d-800c9b28dca3","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Bandwidth - Routing Preference: Internet","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.06,"unitPrice":0.06,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-03-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"6bd64e8e-5cb9-49d3-893d-800c9b28dca3","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0,"unitPrice":0,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.087,"unitPrice":0.087,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.083,"unitPrice":0.083,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.05,"unitPrice":0.05,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.05,"unitPrice":0.05,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false},
+    {"armSkuName":"","skuName":"Standard","productName":"Rtn Preference: MGN","serviceName":"Bandwidth","serviceFamily":"Networking","region":"swedencentral","location":"SE Central","retailPrice":0.07,"unitPrice":0.07,"currencyCode":"USD","unitOfMeasure":"1 GB","priceType":"Consumption","effectiveStartDate":"2022-05-01T00:00:00+00:00","meterName":"Standard Data Transfer Out","meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4","isPrimaryMeterRegion":false}
+  ],
+  "observations": [
+    "Bandwidth service has actual regional commercial Consumption/USD Internet-outbound meter rows. Prior q11/q12/d1 retained the wrong exact meter string Data Transfer Out; their empty responses do not prove service unavailability.",
+    "Two distinct routing products returned. The requested architecture does not establish applicability of Internet routing preference versus MGN. No guessed alias, routing change or lowest-rate selection.",
+    "Every outbound excerpt omits tierMinimumUnits; neither paid marginal bands nor free allowance can be calculated. Actual current multiband response could support a correctly narrowed missing_tier_metadata fallback after product applicability is established, but none was issued.",
+    "No free entitlement, European billing-zone substitution, chargeable service exemption, or Bastion-transfer applicability was inferred. Approved paid marginal allocation remains 10 GB, comprising NAT 5 GB and Bastion 5 GB once.",
+    "Discovery only: no completed line cost, no selected billing meters, no direct-API evidence and no claim that the broad catalog response is complete."
+  ],
+  "requests_issued": {"mcp":1,"direct_api":0}
+}

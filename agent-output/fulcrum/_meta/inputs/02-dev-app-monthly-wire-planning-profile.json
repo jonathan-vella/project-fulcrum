@@ -1,0 +1,7 @@
+{
+  "input_id": "dev_app_monthly_wire_planning_profile",
+  "value": "proposed_low_1_gb_per_month",
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347"
+}

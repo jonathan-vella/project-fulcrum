@@ -1,0 +1,67 @@
+{
+  "request_id": "fulcrum-registry-and-private-scope-20261109",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_2_required_capability_feasibility",
+  "needed_inputs": [
+    "registry_residency_resolution",
+    "private_governance_scope_file"
+  ],
+  "evidence_path": "agent-output/fulcrum/_meta/02-container-image-feasibility-evidence.json",
+  "evidence_url": "https://learn.microsoft.com/azure/container-registry/container-registry-storage",
+  "current_input_sources": [
+    "apex-recall show fulcrum --json",
+    "agent-output/fulcrum/_meta/assessment-step-1.json",
+    "agent-output/fulcrum/_meta/02-secret-capability-response-receipt.json"
+  ],
+  "form": {
+    "message": "Project Fulcrum — registry residency and private Governance scope. Microsoft documents that ACR may store registry artifacts in its paired region; a Sweden Central registry therefore has no established Sweden Central-only guarantee. Recommendation: request a narrow registry-artifact exception for Microsoft-managed paired-region storage within Sweden, while retaining Sweden Central-only for application data, Blob storage, compute and backups. This needs the Requirements owner's revision and review; it is not a general replication, GDPR or deployment approval. Separately, you requested arranging read-only Governance scope. Provide only a private local file path, not identifiers or credentials in chat. Neither field authorizes live Azure reads yet.",
+    "requestedSchema": {
+      "properties": {
+        "registry_residency_resolution": {
+          "type": "string",
+          "title": "Container images — resolve the ACR residency constraint",
+          "description": "The Entra exception stays unchanged. A narrow ACR exception covers registry artifacts only, not application data or optional customer-configured geo-replication. It does not imply automatic regional recovery. A custom response may specify another exact requirement without identifying parties.",
+          "enum": [
+            "request_narrow_acr_exception",
+            "retain_single_region_and_pause",
+            "stop"
+          ],
+          "enumNames": [
+            "Request a registry-only exception for Microsoft-managed paired-region storage within Sweden",
+            "Retain strict single-region registry storage — pause implementation pending a supported alternative",
+            "Stop this delivery workflow"
+          ]
+        },
+        "private_governance_scope_file": {
+          "type": "string",
+          "title": "Governance target — private local scope-file location",
+          "description": "Provide an absolute path outside this repository to a privately prepared JSON file identifying the intended dev tenant/subscription and proposed subscription-plus-inherited-policy read scope, or answer Not ready. Do not include tokens, keys or passwords in the file. Supplying its path authorizes reading that file for scope validation only. Exact live-read authorization will be bound separately; real identifiers and raw identifying evidence must stay out of repository artifacts."
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "target_environments": ["dev"],
+      "target_region": "swedencentral",
+      "current_non_entra_residency": "Sweden Central-only; no ACR exception has been approved.",
+      "dev_secret_certificate_profile": "managed identities plus platform-provided HTTPS can cover every required dev connection",
+      "policy_feasibility_read_intent": "provide_secure_scope_for_governance_read_only"
+    },
+    "fields": {
+      "registry_residency_resolution": {
+        "input_id": "registry_residency_resolution",
+        "kind": "input"
+      },
+      "private_governance_scope_file": {
+        "input_id": "private_governance_scope_file",
+        "kind": "follow_up",
+        "when": {
+          "input_id": "policy_feasibility_read_intent",
+          "equals": "provide_secure_scope_for_governance_read_only"
+        }
+      }
+    }
+  }
+}

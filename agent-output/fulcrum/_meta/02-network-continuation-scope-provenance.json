@@ -1,0 +1,12 @@
+{
+  "request_id": "fulcrum-step2-network-scope-capture-31c7b5e3-c954-4083-bae3-ace2601b31e2",
+  "request_id_source": "apex-local",
+  "capture_mode": "recovered",
+  "source": "Current explicit delegated FULLArchitecture same-Step-2 continuation instruction, including three actual native inputs now captured",
+  "actual_prior_start": "2026-11-09T13:13:22Z",
+  "prior_scope_path": "_meta/02-current-continuation-phase-scope.json",
+  "new_scope_path": "_meta/02-network-continuation-phase-scope.json",
+  "actual_input_receipt": "_meta/02-sku-network-meter-response-receipt.json",
+  "scope": "All prior sixty captured inputs plus three explicitly supplied actual answers; ordinary owned Step 2 work through full pricing/artifacts/both independent lenses to the next genuine parent-owned input or final Gate 2",
+  "authority_boundary": "This local ID captures existing explicit continuation authority, not an SDK/native response ID, new answer, new step, review cycle/allowance, human Gate 2 approval or Azure operation permission."
+}

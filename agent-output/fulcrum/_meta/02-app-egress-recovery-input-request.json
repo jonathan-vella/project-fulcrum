@@ -1,0 +1,50 @@
+{
+  "request_id": "fulcrum-app-egress-recovery-20261109-151603",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_3_cost_material_input",
+  "needed_inputs": ["dev_app_wire_transfer_gb_per_month", "resume_pricing_after_transfer_input"],
+  "form": {
+    "message": "The original internet-transfer allowance covers 5 GB NAT plus 5 GB Bastion, but no app telemetry/identity/control wire-transfer quantity was adopted. The latest recovery stopped before issuing any new pricing query; 14 requests remain consumed out of the approved absolute limit of 34. Provide an additional monthly app-transfer planning allowance and authorize one continuation within the same 20 unused requests, or pause. Recommendation: 5 GB/month as an explicitly conservative MVP planning assumption—not measured traffic or a proven cap. No pricing exemption, free entitlement or zero-cost claim is assumed.",
+    "requestedSchema": {
+      "properties": {
+        "dev_app_wire_transfer_gb_per_month": {
+          "type": "number",
+          "title": "App platform egress — additional monthly wire-transfer allowance",
+          "description": "Positive GB/month for app SDK telemetry, identity and control traffic on its independent platform route, including protocol overhead. This is additional to the adopted NAT/Bastion allocation; private endpoint traffic and workspace ingestion remain separate and unchanged. The recommendation is 5 GB/month; enter another value or an explicit unknown if needed.",
+          "default": 5
+        },
+        "resume_pricing_after_transfer_input": {
+          "type": "string",
+          "title": "Pricing recovery — continuation within the unchanged request limit",
+          "description": "Authorize one pricing-owner continuation after recording this input. Preserve 14 consumed requests, absolute maximum 34 and at most 20 new requests. The previous authorized dispatch used zero new requests. This does not authorize further retries, SKU changes, review-allowance resets, Azure operations, spending or deployment.",
+          "enum": ["authorize_one_continuation", "pause"],
+          "enumNames": [
+            "Authorize one continuation with the supplied transfer allowance",
+            "Pause; preserve evidence and unused requests"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "target_environments": ["dev"],
+      "current_pricing_status": "FAILED",
+      "pricing_requests_consumed": 14,
+      "pricing_absolute_request_limit": 34,
+      "previous_recovery_queries": 0,
+      "existing_nat_and_bastion_transfer_gb": 10
+    },
+    "fields": {
+      "dev_app_wire_transfer_gb_per_month": {
+        "input_id": "dev_app_wire_transfer_gb_per_month",
+        "kind": "input"
+      },
+      "resume_pricing_after_transfer_input": {
+        "input_id": "resume_pricing_after_transfer_input",
+        "kind": "approval"
+      }
+    }
+  }
+}

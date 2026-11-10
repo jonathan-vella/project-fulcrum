@@ -1,0 +1,65 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+  "request_id_source": "apex-local",
+  "execution_mode": "delegated",
+  "project": "fulcrum",
+  "step": "2",
+  "phase": "phase_3_new_vnet_confirmation_pending",
+  "needed_inputs": ["vnet_plan_decision"],
+  "full_material_input_ledger_path": "_meta/02-current-material-input-ledger.json",
+  "proposal_path": "_meta/02-proposed-new-vnet-subnet-plan.json",
+  "proposed_vnet_address_space": "10.42.0.0/22",
+  "proposed_vnet_region": "swedencentral",
+  "form": {
+    "message": "Project Fulcrum — guided confirmation of the new DEV VNet. The 63 recorded inputs are reused; SKUs, create-new origin and capped usage are already settled. **Assumed Corp policies—not tenant-verified; DEV Architecture-only.**\n\nProposed isolated Sweden Central VNet: **10.42.0.0/22** (RFC1918). No peering, project VPN/P2S or public VM NIC. This proposal is internally non-overlapping; overlap with eventual tenant networks is not verified.\n\n| Purpose | SKU-derived size | Address prefix | Delegation | NSG-attached | Route table |\n| --- | --- | --- | --- | --- | --- |\n| Standard Bastion; AzureBastionSubnet | /24; minimum /26 | 10.42.0.0/24 | none | yes | none |\n| B1 outbound integration | /26 | 10.42.1.0/26 | Microsoft.Web/serverFarms | yes | none |\n| App/Cosmos/Blob/ACR private endpoints; temporary restore PE | /27 | 10.42.1.64/27 | none | yes | none |\n| Private D2as_v5 client/runner | /27 | 10.42.1.96/27 | none | yes | none |\n\nReserve **10.42.1.128/27** unused for growth; it is not a fifth deployed subnet. NAT attaches only to the runner subnet, with no dedicated NAT subnet. Bastion/runner/NAT/disk/two service-owned IPs remain the adopted 80-hour provisioned lifecycle; future authorized removal is required, not deallocation-as-free. The 730-hour app uses independent platform egress for approved identity/monitoring and VNet routing for private image/data; it does not depend on session NAT. Dedicated integration and PE subnets remain separate. NSGs must include Bastion-required control rules, Bastion-to-runner SSH and intended HTTPS data paths; no Internet management rule. PE network policies are Disabled in the proposed canonical row, so do not claim its attached subnet NSG filters PE traffic.\n\nCentral service-correct DNS zones/records/VNet links must be verified by Governance/platform owners before planning completion; the adopted four-zone cost allocation is not ownership, actual billing or duplicate-zone deployment approval. All runtime paths remain Unverified. Confirm the entire displayed CIDR/subnet plan, or revise it using this same field. A changed CIDR requires a revalidated, contained subnet plan. This is not Gate 2, spend, tenant verification, Azure read/write/deletion or deployment approval.",
+    "requestedSchema": {
+      "properties": {
+        "vnet_plan_decision": {
+          "type": "string",
+          "title": "Confirm or revise the proposed DEV VNet CIDR and four-subnet plan",
+          "description": "Confirm binds 10.42.0.0/22 and all four displayed canonical rows, their NSG/route/delegation settings, runner-only NAT association and unused growth reservation as the DEV planning proposal. Choose Revise, or enter custom replacement CIDR/row values here; only genuinely unresolved edits will trigger a follow-up. No approval is preselected and no tenant compatibility or resource-operation permission is implied.",
+          "enum": ["Confirm proposed CIDR and subnet plan", "Revise CIDR or subnet plan"]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "sku_confirmation_status": "approved",
+      "vnet_mode": "create-new",
+      "vnet_planning_mode": "guided",
+      "dev_access_restore_dns_meter_profile": "Adopt the proposed capped access/restore and DNS allocation scenario",
+      "dev_client_access_profile": "Ephemeral VNet-hosted DEV client/runner sessions",
+      "dev_access_provisioned_hours_per_month": 80,
+      "dev_backup_retention_profile": "Thirty-day application recovery profile",
+      "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+      "target_environments": ["dev"],
+      "target_region": "swedencentral",
+      "policy_source": {"kind": "assumed-corp", "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"}
+    },
+    "fields": {
+      "vnet_plan_decision": {
+        "input_id": "vnet_plan_decision",
+        "kind": "approval",
+        "when": {"input_id": "vnet_mode", "equals": "create-new"}
+      }
+    }
+  },
+  "context_scope": "Validate this exact native form against saved relevant context and again with all 63 actual values from the complete ledger merged into answers; ledger must equal current recall. The proposed CIDR/subnet array are not answered inputs and must not be recorded as confirmed before actual native response.",
+  "on_actual_confirmation": {
+    "canonical_vnet_plan_decision": "confirmed",
+    "vnet_address_space": "10.42.0.0/22",
+    "subnet_plan_path": "_meta/02-proposed-new-vnet-subnet-plan.json",
+    "recording": "Use actual receipt/request provenance for the expressly confirmed plan/containing CIDR/subnet rows; preserve every prior answer. Do not record this anticipated branch now."
+  },
+  "counts": {
+    "recorded_material_inputs": 63,
+    "comparison_pricing_dispatches": 3,
+    "comparison_mcp_calls": 7,
+    "comparison_direct_api_calls": 0,
+    "committed_pricing_dispatches": 0,
+    "architecture_review_dispatches": 0,
+    "cost_review_dispatches": 0
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "schema_version": "retail-price-evidence-v1",
+  "data_source": "Azure Retail Prices API (direct fallback)",
+  "query": {
+    "serviceName": "Azure Bastion",
+    "productName": "Azure Bastion",
+    "skuName": "Standard",
+    "meterName": "Standard Data Transfer Out",
+    "armRegionName": "swedencentral",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "mcp_failure": {
+    "kind": "missing_tier_metadata",
+    "recorded_at": "2026-11-09T15:58:04.356405+00:00",
+    "attempts": [
+      {
+        "parameters": {
+          "filter": "serviceName eq 'Azure Bastion' and armRegionName eq 'swedencentral' and skuName eq 'Standard'",
+          "price-type": "Consumption",
+          "currency": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {
+            "prices": [
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.29,
+                "unitPrice": 0.29,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 Hour",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2022-12-01T00:00:00+00:00",
+                "meterName": "Standard Gateway",
+                "meterId": "4836590f-078a-5184-b23a-63ad1c7979cc",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.14,
+                "unitPrice": 0.14,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 Hour",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2022-12-01T00:00:00+00:00",
+                "meterName": "Standard Additional Gateway",
+                "meterId": "bd08452f-cf67-539c-baa1-1ef7d6fb13d0",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0,
+                "unitPrice": 0,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2024-05-01T00:00:00+00:00",
+                "meterName": "Standard Data Transfer Out",
+                "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.082998,
+                "unitPrice": 0.082998,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2024-05-01T00:00:00+00:00",
+                "meterName": "Standard Data Transfer Out",
+                "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.049999,
+                "unitPrice": 0.049999,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2024-05-01T00:00:00+00:00",
+                "meterName": "Standard Data Transfer Out",
+                "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.087,
+                "unitPrice": 0.087,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2024-05-01T00:00:00+00:00",
+                "meterName": "Standard Data Transfer Out",
+                "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Azure Bastion",
+                "serviceName": "Azure Bastion",
+                "serviceFamily": "Networking",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.07,
+                "unitPrice": 0.07,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2024-05-01T00:00:00+00:00",
+                "meterName": "Standard Data Transfer Out",
+                "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+                "isPrimaryMeterRegion": false
+              }
+            ]
+          },
+          "duration": 0
+        }
+      }
+    ]
+  },
+  "requests_used": 1,
+  "pages": [
+    {
+      "url": "https://prices.azure.com/api/retail/prices?%24filter=serviceName+eq+%27Azure+Bastion%27+and+armRegionName+eq+%27swedencentral%27+and+productName+eq+%27Azure+Bastion%27+and+skuName+eq+%27Standard%27+and+meterName+eq+%27Standard+Data+Transfer+Out%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+      "queried_at": "2026-11-09T18:19:28.172Z",
+      "response_sha256": "ebd0816a80bb8b62723808a0cbae2a7fe321a0e3657bb76872bd1981269fc361",
+      "raw_response": "{\"BillingCurrency\":\"USD\",\"CustomerEntityId\":\"Default\",\"CustomerEntityType\":\"Retail\",\"Items\":[{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.0,\"unitPrice\":0.0,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2024-05-01T00:00:00Z\",\"meterId\":\"e31d6690-69c9-50a4-9c56-baeaf79edd56\",\"meterName\":\"Standard Data Transfer Out\",\"productId\":\"DZH318Z0CB56\",\"skuId\":\"DZH318Z0CB56/006W\",\"productName\":\"Azure Bastion\",\"skuName\":\"Standard\",\"serviceName\":\"Azure Bastion\",\"serviceId\":\"DZH3160859B7\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":10240.0,\"retailPrice\":0.082998,\"unitPrice\":0.082998,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2024-05-01T00:00:00Z\",\"meterId\":\"e31d6690-69c9-50a4-9c56-baeaf79edd56\",\"meterName\":\"Standard Data Transfer Out\",\"productId\":\"DZH318Z0CB56\",\"skuId\":\"DZH318Z0CB56/006W\",\"productName\":\"Azure Bastion\",\"skuName\":\"Standard\",\"serviceName\":\"Azure Bastion\",\"serviceId\":\"DZH3160859B7\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":153600.0,\"retailPrice\":0.049999,\"unitPrice\":0.049999,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2024-05-01T00:00:00Z\",\"meterId\":\"e31d6690-69c9-50a4-9c56-baeaf79edd56\",\"meterName\":\"Standard Data Transfer Out\",\"productId\":\"DZH318Z0CB56\",\"skuId\":\"DZH318Z0CB56/006W\",\"productName\":\"Azure Bastion\",\"skuName\":\"Standard\",\"serviceName\":\"Azure Bastion\",\"serviceId\":\"DZH3160859B7\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":5.0,\"retailPrice\":0.087,\"unitPrice\":0.087,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2024-05-01T00:00:00Z\",\"meterId\":\"e31d6690-69c9-50a4-9c56-baeaf79edd56\",\"meterName\":\"Standard Data Transfer Out\",\"productId\":\"DZH318Z0CB56\",\"skuId\":\"DZH318Z0CB56/006W\",\"productName\":\"Azure Bastion\",\"skuName\":\"Standard\",\"serviceName\":\"Azure Bastion\",\"serviceId\":\"DZH3160859B7\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":51200.0,\"retailPrice\":0.07,\"unitPrice\":0.07,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2024-05-01T00:00:00Z\",\"meterId\":\"e31d6690-69c9-50a4-9c56-baeaf79edd56\",\"meterName\":\"Standard Data Transfer Out\",\"productId\":\"DZH318Z0CB56\",\"skuId\":\"DZH318Z0CB56/006W\",\"productName\":\"Azure Bastion\",\"skuName\":\"Standard\",\"serviceName\":\"Azure Bastion\",\"serviceId\":\"DZH3160859B7\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"}],\"NextPageLink\":null,\"Count\":5}"
+    }
+  ]
+}

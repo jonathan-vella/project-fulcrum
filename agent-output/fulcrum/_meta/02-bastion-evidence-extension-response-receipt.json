@@ -1,0 +1,31 @@
+{
+  "request_id": "fulcrum-bastion-native-evidence-extension-20261109-181000",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_3_cost_exact_bastion_evidence_gap",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "authorize_one_bastion_request_and_one_same_history_continuation",
+  "authorized_scope": {
+    "existing_requests_consumed": 34,
+    "previous_absolute_request_limit": 34,
+    "absolute_request_limit": 35,
+    "additional_direct_requests_max": 1,
+    "additional_mcp_requests_max": 0,
+    "pricing_owner_continuations_max": 1,
+    "serviceName": "Azure Bastion",
+    "productName": "Azure Bastion",
+    "skuName": "Standard",
+    "meterName": "Standard Data Transfer Out",
+    "armRegionName": "swedencentral",
+    "currencyCode": "USD",
+    "priceType": "Consumption",
+    "retry_allowed": false,
+    "pagination_allowed": false,
+    "catalog_restart_allowed": false
+  },
+  "recalculation_scope": "The same approved 17-line conservative planning scenario using the single Bastion response and existing verified evidence. Stop if that response is incomplete or further queries are required.",
+  "authority_boundary": "No usage, SKU or Requirements change, history reset, Architecture approval, Azure-resource operations, spending, deletion, Production or deployment authority.",
+  "sdk_response_id_supplied": false
+}

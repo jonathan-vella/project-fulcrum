@@ -1,0 +1,21 @@
+{
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+  "receipt_path": "_meta/02-monthly-planning-response-receipt.json",
+  "scope_authority_receipt": "_meta/02-indicative-resume-scope-response-receipt.json",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "additional_app_wire_gb_per_month": 1,
+  "app_platform_hours_per_month": 730,
+  "existing_nat_outbound_gb_per_month": 5,
+  "existing_bastion_outbound_gb_per_month": 5,
+  "mgn_planning_volume_gb_per_month": 6,
+  "bastion_planning_volume_gb_per_month": 5,
+  "combined_transfer_allocation_gb_per_month": 11,
+  "unit": "Decimal GB; native catalog 1 GB",
+  "mgn_treatment": "User-adopted conservative allocation at the highest verified applicable native paid MGN unit rate, without free entitlement or discount, subject to pricing-owner source/coverage validation.",
+  "bastion_treatment": "Separate user-adopted conservative allocation at Bastion's own highest verified applicable native paid transfer rate, without claiming the first 5 GB are available, subject to pricing-owner source/coverage validation. Not added to MGN volume.",
+  "not_adopted": ["Suggested 5 GB app profile", "Telemetry ingestion equals wire", "Measured traffic", "Actual charged tier", "Invoice prediction", "Free allowance availability", "Transport model change"],
+  "scope_delta": "Only the three actual new material choices and their displayed conservative-planning semantics supersede the historical unknown-volume/indicative-only restriction for this current scenario. All original 66 material inputs, Requirements, SKUs and historical results remain unchanged.",
+  "authority_boundary": "No new network requests, Azure operations, spending, review reset, Architecture approval or next-step dispatch.",
+  "pricing_requests": {"prior_consumed":34,"absolute_limit":34,"remaining":0,"new_authorized":0,"reset":false}
+}

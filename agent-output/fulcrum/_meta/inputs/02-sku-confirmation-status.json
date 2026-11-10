@@ -1,0 +1,7 @@
+{
+  "input_id": "sku_confirmation_status",
+  "value": "approved",
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8"
+}

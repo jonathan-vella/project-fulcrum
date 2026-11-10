@@ -1,0 +1,24 @@
+APEX historical documentation capture - publication notice
+
+This is a publication-safe replacement notice, NOT the original native fetch response.
+The owner authorized retaining the original privately outside the repository and
+replacing this repository copy. No third-party page text is reproduced here.
+
+Original SHA-256:
+ac9bcc7914b5d9f6d3e1b44bf5cdfd19b1586100b6cfb4e4e83bbc274b2454e6
+Original size: 19261 bytes.
+Original source URL: not established from retained provenance.
+Original retrieval timestamp: not established from retained provenance.
+Redistribution permission: not established; the full text is not published.
+
+Historical purpose: investigate Linux App Service B1 outbound/telemetry transfer
+billing applicability during the Step 2 pricing recovery. That recovery did not
+establish a blanket outbound-transfer exemption. This notice is not current
+billing-rule proof and must not be used to assume free transfer.
+
+The original review records, digests and Design protected snapshot are unchanged.
+Their references to the original bytes do not match this replacement. Affected
+Architecture/cost reviews and Design evidence require owner revalidation under
+existing review allowances before current approval; no approval is renewed here.
+
+Repair record: ../02-documentation-publication-repair.json

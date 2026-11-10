@@ -1,0 +1,33 @@
+{
+  "request_id": "fulcrum-conservative-planning-v2-exact-bastion-20261109",
+  "worker": "cost-estimate-subagent",
+  "request_path": "_meta/02-cost-conservative-planning-v2-request.json",
+  "preflight_path": "_meta/02-cost-conservative-planning-v2-preflight.json",
+  "authority_receipt": "_meta/02-bastion-evidence-extension-response-receipt.json",
+  "state": "ACTUAL_NATIVE_TASK_RETURNED_COMPLETE",
+  "actual_dispatches_issued": 1,
+  "prior_consumed": 34,
+  "absolute_limit": 35,
+  "additional_direct_max": 1,
+  "additional_mcp_max": 0,
+  "retry_max": 0,
+  "pagination_max": 0,
+  "scope": "One exact Bastion missing-tier helper GET, then all17-line same-history approved scenario calculation; no automatic continuation.",
+  "output_path": "contracts/02-cost-estimate.conservative-planning-v2.json",
+  "actual_native_task": {
+    "agent_type": "cost-estimate-subagent",
+    "name": "bounded-bastion-pricing-owner",
+    "status": "COMPLETE",
+    "new_mcp_requests": 0,
+    "new_direct_requests": 1,
+    "cumulative_requests": 35,
+    "remaining": 0,
+    "resource_count": 17,
+    "unresolved_items": 0,
+    "monthly_total": 168.104995,
+    "yearly_total": 2017.25994,
+    "manifest_writeback_count": 4,
+    "sdk_invocation_id_supplied": false,
+    "error": null
+  }
+}

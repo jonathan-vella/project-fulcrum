@@ -1,0 +1,160 @@
+{
+  "schema_version": "fulcrum-bounded-missing-input-inventory-v1",
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+  "purpose": "Question preparation only; no pricing, totals, reviews or phase completion.",
+  "policy_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+  "runtime": "Unverified",
+  "sources": {
+    "current_material_ledger": "_meta/02-current-material-input-ledger.json",
+    "current_scope_receipt": "_meta/02-indicative-resume-scope-response-receipt.json",
+    "original_request": "_meta/02-cost-estimate-request.json",
+    "retained_worker_result": "contracts/02-cost-estimate.recovery-3.json",
+    "fixed_scope_equations": "contracts/02-cost-estimate.recovery-3.json.retail-evidence/fixed-scope-calculations.json",
+    "indicative_mgn_quote": "contracts/02-cost-estimate.recovery-3.json.retail-evidence/indicative-app-transfer-unit-quote.json",
+    "mgn_exact_band_evidence": "contracts/02-cost-estimate.recovery-3.json.retail-evidence/d01-bandwidth.json",
+    "bastion_native_evidence": "contracts/02-cost-estimate.recovery-3.json.retail-evidence/q06-bastion.native.json",
+    "bastion_inclusion_semantics": "_meta/02-pricing-public-docs/bastion-unit-inclusions-recovery-3.native.txt",
+    "app_monitor_transfer_semantics": "_meta/02-pricing-public-docs/outbound-monitor-search.native.txt",
+    "default_routing_semantics": "_meta/02-pricing-public-docs/routing-search.native.txt",
+    "prior_validation": "_meta/02-cost-recovery-3-validation.json",
+    "resolved_archival_issue_receipt": "_meta/02-cost-recovery-3-archive-receipt.json",
+    "request_accounting": "_meta/02-cost-recovery-3-invocation.json"
+  },
+  "coverage": {
+    "retained_lines": 17,
+    "finite_priced_components": 16,
+    "unresolved_line": "internet-outbound-allocation-dev",
+    "workload_monthly_total": null,
+    "workload_yearly_total": null,
+    "manifest_writeback": [],
+    "fixed_scope_not_requestioned": [
+      "storage-blob-replication (dev, swedencentral)",
+      "app-host (dev, swedencentral)",
+      "document-store (dev, swedencentral)",
+      "access-compute (dev, swedencentral)",
+      "acr-premium-dev-swedencentral",
+      "steady-private-endpoints-dev-swedencentral",
+      "central-private-dns-allocation-dev",
+      "log-analytics-app-insights-combined-dev",
+      "operational-metric-alerts-dev",
+      "operational-scheduled-log-alert-dev",
+      "ephemeral-bastion-standard-dev",
+      "ephemeral-nat-standard-dev",
+      "ephemeral-runner-os-disk-dev",
+      "ephemeral-service-public-ipv4-dev",
+      "temporary-cosmos-restore-target-dev",
+      "temporary-cosmos-restore-private-endpoint-dev"
+    ],
+    "settled_internet_usage_not_requestioned": "NAT outbound 5 GB and Bastion outbound 5 GB; NAT processing 25 GB includes 20 GB return/download. These do not supply app wire volume.",
+    "fixed_subtotal_boundary": "No subtotal reproduced as a monthly estimate. All Internet transfer, including known NAT/Bastion bytes, is outside the sixteen-component subtotal."
+  },
+  "missing_material_inputs": [
+    {
+      "input_id": "dev_app_monthly_wire_planning_profile",
+      "missing": "Approved monthly additional app public outbound wire envelope, including SDK, identity/control, overhead and retries.",
+      "proposed_scenarios_gb_per_month": {"LOW":1,"MVP":5,"GROWTH":20},
+      "scenario_status": "Proposed sensitivity envelopes only; none adopted. Custom nonnegative decimal GB/month or explicit unknown permitted.",
+      "not_equivalent_to_usage": ["1 GB monitoring ingestion", "prior per-Tb unit-price request", "NAT/Bastion transfer", "Private Endpoint traffic"],
+      "unit": "Decimal GB/month; native catalog unit 1 GB. No TB/Tb interpretation is needed to choose this envelope."
+    },
+    {
+      "input_id": "dev_mgn_transfer_cost_profile",
+      "missing": "Whether to extend the existing conservative paid access allocation to app transfer as a budget bound, or use a known anonymous shared-transfer billing profile.",
+      "unknown_facts_if_qualification_aware": "Other relevant monthly co-aggregated MGN usage and allowance availability/restrictions. Price queries do not reveal this private billing context.",
+      "bounded_option": "Use the maximum verified paid native MGN unit rate as a deliberately uncredited planning ceiling for the approved app envelope plus settled NAT 5 GB. Do not call it an applicable first-paid-band invoice calculation.",
+      "qualification": "Actual flow classification and tariff aggregation remain technical evidence responsibilities. Published free-band existence is not an entitlement claim; no-other-use does not alone establish eligibility."
+    },
+    {
+      "input_id": "dev_bastion_transfer_cost_profile",
+      "missing": "Whether to retain a conservative paid Bastion transfer budget bound or use known anonymous sharing facts when assessing the service-specific inclusion.",
+      "unknown_facts_if_qualification_aware": "Competing usage affecting Bastion's documented first-5-GB monthly inclusion; no shared balance is established.",
+      "bounded_option": "Use Bastion's own maximum evidenced paid native transfer rate as a conservative unit-rate ceiling, with no free credit or volume discount. This is not a claimed charged tier and is not substituted with the MGN meter.",
+      "qualification": "The settled project volume remains 5 GB. A documented service inclusion is not a generic MGN allowance or an app exemption."
+    }
+  ],
+  "technical_evidence_gaps_not_user_truth_questions": [
+    {
+      "id": "mgn-aggregate-position",
+      "evidence_status": "All six exact MGN bands already verified, including their boundaries and raw page hashes.",
+      "exact_catalog": {
+        "serviceName": "Bandwidth",
+        "productName": "Rtn Preference: MGN",
+        "skuName": "Standard",
+        "meterName": "Standard Data Transfer Out",
+        "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+        "armRegionName": "swedencentral",
+        "currencyCode": "USD",
+        "type": "Consumption",
+        "unitOfMeasure": "1 GB",
+        "tierMinimumUnits": [0,100,10335,51295,153695,512095]
+      },
+      "issue": "Project-only LOW/MVP/GROWTH app envelopes plus NAT do not themselves establish occupation of a paid band. A qualification-aware marginal calculation needs the correct shared monthly baseline/entitlement, not another price lookup.",
+      "additional_price_requests_needed": 0,
+      "bounded_resolution": "A supported maximum-paid-rate allocation may intentionally ignore credits/discounts under upper_bound_ok, with explicit budget-bound labelling and pricing-owner verification. Never subtract 100 GB as if available or flatten a marginal tier into an actual whole-volume tariff."
+    },
+    {
+      "id": "bastion-native-boundaries",
+      "evidence_status": "Saved q06 has five exact Standard Data Transfer Out rows, including a zero row and four paid rates, but no tierMinimumUnits. Documentation independently states first 5 GB/month included.",
+      "exact_catalog": {
+        "serviceName": "Azure Bastion",
+        "productName": "Azure Bastion",
+        "skuName": "Standard",
+        "meterName": "Standard Data Transfer Out",
+        "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+        "armRegionName": "swedencentral",
+        "currencyCode": "USD",
+        "type": "Consumption",
+        "unitOfMeasure": "1 GB"
+      },
+      "missing_technical_metadata": "Exact native tier minima/upper boundaries and any aggregation qualification needed for a charged marginal Bastion transfer calculation.",
+      "not_required_for": "A pricing-owner-validated maximum-of-all-evidenced-native-rates budget ceiling without claimed tier placement, or an independently qualified inclusion covering all settled 5 GB.",
+      "conditional_future_query": {
+        "when": "Qualification-aware paid Bastion marginal pricing is needed and the saved evidence cannot establish the applicable band.",
+        "owner": "cost-estimate-subagent",
+        "source": "Azure Retail Prices API constrained fallback after the already archived native missing-tier response",
+        "currency_parameter": "USD",
+        "filter": "serviceName eq 'Azure Bastion' and armRegionName eq 'swedencentral' and productName eq 'Azure Bastion' and skuName eq 'Standard' and meterName eq 'Standard Data Transfer Out' and type eq 'Consumption'",
+        "fields_needed": ["tierMinimumUnits","retailPrice","unitOfMeasure","meterId","effectiveStartDate","NextPageLink"],
+        "proposed_maximum_requests": 1,
+        "dispatch_authorized": false,
+        "stop_rule": "No broad lookup, fresh MCP repetition, pagination or retry beyond an explicitly granted bound. If one response is insufficient, stop with the actual gap; do not reset 34/34."
+      }
+    },
+    {
+      "id": "service-classification-and-entitlement-scope",
+      "evidence_status": "Default Microsoft routing is documented, not deployed routing verification. Saved Monitor FAQ makes some telemetry transfer treatment depend on collection-endpoint location, not simply resource region.",
+      "missing_technical_proof": "Actual applicable exemption/charge classification of app public telemetry/identity/control paths and the correct aggregation scope for any claimed shared MGN or service-specific Bastion inclusion.",
+      "user_not_asked_to_certify": ["Azure meter IDs", "Azure tariff rules", "endpoint topology or new principal/domain facts", "eligibility implied solely by a published zero band"],
+      "budget_bound_constraint": "User approval can authorize an assumption, not establish a tariff fact. A later pricing owner must verify the proposed bound covers the approved service/path scope from existing evidence; public HTTPS alone is not billability proof.",
+      "future_evidence_scope": "First reuse saved official semantic evidence. If still necessary, identify a narrow official-document semantic lookup separately from price requests. No exact private endpoint collection configuration is invented and no private Azure reads are authorized.",
+      "new_query_in_this_slice": false
+    }
+  ],
+  "future_calculation_contract": {
+    "native_pricing_owner": "cost-estimate-subagent",
+    "price_request_budget": {"consumed":34,"absolute_limit":34,"remaining":0,"new_authorized":0,"reset":false},
+    "calculation_only_route": "After actual answers, a separately bounded calculation-only continuation can reuse exact current raw evidence with zero new price requests if usage, scope, units, upper-bound semantics and complete applicability coverage validate. Exhausted query count alone does not prohibit arithmetic.",
+    "not_authorized_now": ["pricing leaf dispatch", "new network or pricing queries", "reviews", "canonical cost artifacts or charts", "manifest writeback", "phase or step completion"],
+    "future_request": "Create a new owned request referencing original/recovery inputs and actual answer receipt; do not rewrite immutable history or relabel FAILED as COMPLETE.",
+    "complete_gate": "Only the pricing owner can produce a full-scope result. Preserve explicit upper-bound qualifiers where supported; no fabricated COMPLETE invoice-equivalent total, assumed free entitlement or omitted required line.",
+    "unknown_answers": "Retain unknowns, with no invented approval. Resolve only the affected coverage after the consolidated response.",
+    "extension_gate": "Explain exact essential missing price evidence and ask for the smallest bounded same-history extension BEFORE any new request. No extension is requested merely because arithmetic remains."
+  },
+  "protected_hashes": {
+    "01-requirements.md": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+    "contracts/sku-manifest.json": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+    "sku-manifest.md": "95b7e342b081ecddb36065c261e55666c64f592c02ba577ae1d4bb5f937bbc9a",
+    "_meta/02-cost-estimate-request.json": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8",
+    "_meta/02-cost-recovery-3-request.json": "62726e7b8fd7a655d4e595f21a6251f6f52b009625d0f58e8a348181fac7f888",
+    "_meta/02-current-material-input-ledger.json": "abc05aa8dd3ed0cad42064de92a8ed0800dd960f46196093f81244f3829b86ab",
+    "contracts/02-cost-estimate.recovery-3.json": "1c290d30906a95beda21e2e607ddd48b8a6f4851f39597938e36d92a11e5ba82",
+    "contracts/02-cost-estimate.recovery-3.json.retail-evidence/fixed-scope-calculations.json": "10638b1e56e6dfb4ddd8d6d45e74c41decaca1d0a35b03b92e2fcc9d7051bc40",
+    "contracts/02-cost-estimate.recovery-3.json.retail-evidence/indicative-app-transfer-unit-quote.json": "48af6c3f89dd40e47169ba080f202c85f906e2364afe254c60c882e9a02d288d",
+    "contracts/02-cost-estimate.recovery-3.json.retail-evidence/d01-bandwidth.json": "c27714517225f58d52d905087b68349ea491dc0e3994120db4ab4493aaf1348a",
+    "contracts/02-cost-estimate.recovery-3.json.retail-evidence/q06-bastion.native.json": "2818f85c8ff4657258ca617dbee3462806f12df76ad208f04de451ba64945882",
+    "reviews/challenge-findings-requirements.json": "ba9dc91a1cb5c57c8bba6edc2e53d5e7e3d2bf53b4774899605e72ea821d15f1",
+    "reviews/challenge-findings-requirements-acr-revision.json": "db87ee7b070885da8ecd1ab86fc8c0dbc537b74e6527719a998febb0b4775bf8",
+    "reviews/challenge-findings-requirements-entra-revision.json": "9d8b01fe8f0d0f5f7bbb6f8ea51c41635b03854c3ef8b3f0b1a5567f7ecefc46"
+  },
+  "approval_boundary": "Monthly totals, manifest writeback and Architecture approval remain held until approved usage/evidence coverage, full pricing and both current independent reviews plus the separate human gate are satisfied. No approval or operation was performed by preparing this form."
+}

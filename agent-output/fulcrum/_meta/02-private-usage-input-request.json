@@ -1,0 +1,273 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+  "request_id_source": "apex-local",
+  "created_at": "2026-11-09T13:25:00.177961+00:00",
+  "execution_mode": "delegated",
+  "project": "fulcrum",
+  "step": "2",
+  "phase": "phase_2_material_inputs_pending",
+  "needed_inputs": [
+    "dev_client_access_profile",
+    "dev_compute_demand_profile",
+    "dev_data_meter_profile",
+    "dev_access_provisioned_hours_per_month",
+    "dev_recovery_failure_coverage",
+    "dev_backup_retention_profile"
+  ],
+  "form": {
+    "message": "Project Fulcrum — six remaining DEV planning inputs before comparison pricing. ACR EU paired-artifact acceptance, Entra exception, LRS pin, secretless profile, scope, monitoring ownership and soft budget are already settled and are not being reconfirmed. Assumed Corp policies—not tenant-verified; DEV Architecture-only. The accepted source denies project VPN/P2S gateways. Select the private client pattern and explicitly adopt or revise the proposed usage/recovery assumptions below. No answer approves final SKUs, VNet design, Gate 2, spending or Azure access.",
+    "requestedSchema": {
+      "properties": {
+        "dev_client_access_profile": {
+          "type": "string",
+          "title": "Private DEV client and runner origins",
+          "description": "Select the access pattern to investigate and price. The ephemeral option means controlled VNet-hosted development/test clients and runners, recreated for sessions; it does not promise direct physical-phone ingress. Persistent access is optional, not imposed. Direct mobile access needs separate technical feasibility under the unchanged private API and no-project-VPN Corp floor. This is not final SKU/topology approval.",
+          "enum": [
+            "Ephemeral VNet-hosted DEV client/runner sessions",
+            "Persistent DEV workstation access",
+            "Direct physical mobile-device access is required"
+          ]
+        },
+        "dev_compute_demand_profile": {
+          "type": "string",
+          "title": "Backend sizing envelope for comparison pricing",
+          "description": "Proposed assumption: one container, 512 MiB steady/768 MiB peak application memory with at least 40% platform memory headroom; 20 RPS for a 10-minute concentrated peak; 20,000 requests per active day, 22 active days/month; 730 billed host hours/month. The settled 10–100 concurrency range and under-2-second planning objective remain. This is sizing evidence for pricing, not measured performance or an approved SKU. Use custom text in this field to supply a different envelope or an explicit unknown.",
+          "enum": [
+            "Adopt the proposed compute planning envelope",
+            "Discuss sizing before pricing"
+          ]
+        },
+        "dev_data_meter_profile": {
+          "type": "string",
+          "title": "Data, diagnostics and private-traffic pricing assumptions",
+          "description": "Proposed monthly profile: Cosmos 10 GB/20 million RU, 1,000 RU/s peak, one database/three containers/2 KiB items; Hot Blob 20 GB live +10 GB protected versions/deletions +0.5 GB change feed, 100,000 reads/10,000 writes/10,000 lists, maximum object 10 MiB; ACR 10 GB stored images; one combined 1 GB sanitized workspace ingestion with the settled 30-day retention; four metric alert rules/four series and one 5-minute log alert; 1 million private DNS queries. Per private endpoint towards/from service GB: API 20/50, Cosmos 5/20, Blob 10/50, ACR 5/10. One monthly 10 GB Cosmos +20 GB Blob restore exercise; flat six-month scenario, not a growth forecast. Supporting access meters will be added for the selected path. No inherited central DNS/policy resource is silently treated as project-deployed or free. Full profile is saved alongside this form. Use custom text here for changed quantities or explicit unknowns.",
+          "enum": [
+            "Adopt the proposed data and meter planning profile",
+            "Discuss usage before pricing"
+          ]
+        },
+        "dev_access_provisioned_hours_per_month": {
+          "type": "number",
+          "title": "Billable private DEV access hours per month",
+          "description": "Supply provisioned hours, including idle time: for example 80 for bounded sessions with billable access resources deleted afterward, or 730 for persistent access. Deallocating a VM alone does not stop Bastion/NAT/public-IP/disk billing. A value greater than zero and no greater than 744 is required for the new required path. This does not authorize deployment or select infrastructure."
+        },
+        "dev_recovery_failure_coverage": {
+          "type": "string",
+          "title": "Failure coverage of the existing 4-hour RTO / 1-hour RPO",
+          "description": "LRS and Sweden Central-only application data/backups cannot guarantee recovery from permanent regional loss. Clarify whether the existing objectives apply to recoverable logical/deletion/application faults, while regional-outage recovery remains provider-dependent. Neither answer relaxes LRS, residency or security. If permanent regional loss is included, the conflict goes to the Requirements owner; Architecture will not silently redefine the targets.",
+          "enum": [
+            "Recoverable logical/deletion/application faults; regional recovery is provider-dependent",
+            "The 4-hour/1-hour targets must include permanent regional loss",
+            "Discuss recovery coverage"
+          ]
+        },
+        "dev_backup_retention_profile": {
+          "type": "string",
+          "title": "Cosmos and Blob application-recovery retention",
+          "description": "Choose a planning retention profile for application recovery, independently of the already settled 30-day sanitized diagnostics. Proposed seven-day protection uses supported Cosmos continuous backup and eligible Blob PITR/versioning/change feed/soft delete. Thirty days is an alternative with corresponding protected-data and backup meters; supporting soft-delete retention must exceed Blob PITR retention. Use custom text here for another requirement; capability and costs still need verification.",
+          "enum": [
+            "Seven-day application recovery profile",
+            "Thirty-day application recovery profile"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "company_size": "Startup / small business",
+      "target_environments": [
+        "dev"
+      ],
+      "timeline": "Within 2 weeks",
+      "review_depth": "default",
+      "project_name": "fulcrum",
+      "industry": "Nonprofit community support for vulnerable individuals and families; volunteer-led experiences and support",
+      "scenario": "Greenfield — new workload",
+      "system_description": "Infrastructure-only hosting platform and cloud services for a secure, intuitive, mobile-first Volunteer engagement MVP, including support for a containerized backend. All application development is handled by another team and is out of scope.",
+      "business_objective": "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration.",
+      "infrastructure_scope": [
+        "Hosting support for a containerized backend; backend code excluded",
+        "Cloud-hosted data",
+        "Identity and access management",
+        "Notification platform capabilities, with channels still to evaluate",
+        "Monitoring and operations",
+        "Infrastructure-as-code",
+        "Infrastructure testing and deployment automation",
+        "Store anonymous resulting documentation in this repository"
+      ],
+      "application_scope_exclusions": [
+        "Cross-platform mobile application development",
+        "Backend application code",
+        "Application tests",
+        "Application permission implementation",
+        "Detailed business workflow, escalation and reporting implementation"
+      ],
+      "technology_evaluation_constraints": "Candidates are not mandatory selections. Evaluate alternatives for suitability, security, simplicity, maintainability, scale and cost within limited nonprofit budgets; challenge complexity and avoid overengineering.",
+      "design_preferences_not_decisions": "Prefer managed services and a modular monolith; no microservices absent clear justification.",
+      "data_sensitivity": [
+        "Personal / customer data",
+        "Internal business data",
+        "Synthetic test data"
+      ],
+      "data_processing_constraints": "Personal Volunteer information and sensitive organizational activity may be processed. Beneficiary data is not assumed. Never use real personal information in development or testing; fictional sample data only.",
+      "security_privacy_requirements": [
+        "Secure authentication and role-based access control",
+        "Encryption in transit and at rest",
+        "Secrets management",
+        "Audit logging",
+        "Data minimization",
+        "Retention and deletion",
+        "Privacy-aware monitoring",
+        "Mandatory security and privacy baseline"
+      ],
+      "compliance": [
+        "GDPR required for Production. MVP must be GDPR-aligned; the supplied brief says MVP does not have to be compliant. This release distinction does not waive applicable legal duties or mandatory security/privacy controls. Do not certify compliance."
+      ],
+      "anonymity_requirements": [
+        "Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts",
+        "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information",
+        "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders",
+        "Do not request real names, personal emails, domains or identities during discovery",
+        "Do not publish repository remote URLs or account identities in project documentation",
+        "Author attribution uses agent role only; no people",
+        "Fictional sample data only"
+      ],
+      "notification_intent": {
+        "events": [
+          "New opportunities",
+          "Registration confirmations",
+          "Approval decisions",
+          "Assignment changes",
+          "Upcoming activities"
+        ],
+        "candidate_channels_only": [
+          "Email",
+          "Push",
+          "Other channels"
+        ],
+        "mandatory_channel_confirmed": false
+      },
+      "workload_pattern": "Web application with a database",
+      "daily_users": "Up to 50",
+      "peak_concurrent_users": "10–100",
+      "monthly_budget": "500–2,000/month",
+      "budget_currency": "USD",
+      "budget_limit": "Planning target — optimize and highlight overruns",
+      "cost_monitoring_mode": "minimal",
+      "availability_target": "Dev/test — occasional downtime acceptable",
+      "recovery_profile": "Standard — recover within 4 hours; up to 1 hour of data loss",
+      "performance_target": "Typical API responses under 2 seconds — planning goal to validate",
+      "iac_tool": "Bicep",
+      "target_region": "swedencentral",
+      "private_client_access": "A new secure remote-access path is needed",
+      "authentication_requirement": "Employees plus external Volunteers — fictional dev accounts",
+      "compute_host": "App Service — Linux containers",
+      "monitoring_access_scope": "An existing platform/team handles monitoring access",
+      "monitoring_network_requirement": "Authenticated public monitoring permitted if policy allows",
+      "monitoring_privacy_retention": "30 days for sanitized dev diagnostics",
+      "non_relational_store": "Cosmos DB — preferred primary document store",
+      "notification_channels": [
+        "Email capability — fictional/dev testing only",
+        "Mobile push capability — fictional/dev testing only",
+        "Dev simulation only — no outbound delivery"
+      ],
+      "relational_db": "None — relational storage not required",
+      "residency_requirement": {
+        "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies, except the narrow ACR registry-artifact behavior explicitly accepted below.",
+        "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
+        "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
+        "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception beyond the explicitly accepted ACR registry-artifact behavior; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver. No optional customer-configured ACR geo-replication, arbitrary replicas or other-service paired-region storage is authorized.",
+        "acceptance_scope": "Project Stakeholders accept the existing narrow Entra exception as meeting their project GDPR requirements; that acceptance is unchanged. The additional DEV-only ACR acceptance covers only the documented Microsoft-managed paired-region storage of container images and registry artifacts within the EU residency boundary. Neither acceptance is independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority; no new review allowance or regional disaster-recovery guarantee is granted.",
+        "acr_registry_artifact_exception": "Accept the documented Microsoft-managed ACR paired-region storage behavior within the EU residency boundary for container images and registry artifacts only, per https://learn.microsoft.com/azure/container-registry/container-registry-storage. Sweden Central remains the registry creation/workload region; its documented Sweden South pair lies within the accepted EU boundary. Actual replication and regional recovery remain unverified. Workload compute, application data, Blob, backups, monitoring, non-ACR dependencies and the existing Entra exception remain unchanged."
+      },
+      "service_tier": "Balanced",
+      "storage_needs": [
+        "Blob storage — media or documents"
+      ],
+      "notification_delivery_scope": "Simulation-only MVP — defer email/push transports, retain functional channel intent",
+      "messaging_events": [
+        "None — no separate messaging/event service required"
+      ],
+      "supporting_services": [
+        "Azure Monitor + Application Insights + Log Analytics — preferred diagnostics products",
+        "Key Vault — preferred secrets/certificates service",
+        "Azure Container Registry — preferred container image registry"
+      ],
+      "sku_app_service": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+      "sku_nosql": "No SKU preference — Architect choose least-cost suitable tier meeting captured requirements",
+      "sku_storage_repl": "LRS — explicit locally redundant replication pin",
+      "sku_commitment": "On-demand only — no reserved commitment",
+      "sku_env_override": "No dev-specific SKU override — apply these preferences to dev only",
+      "dev_secret_certificate_profile": "managed identities plus platform-provided HTTPS can cover every required dev connection",
+      "policy_feasibility_read_intent": "provide_secure_scope_for_governance_read_only",
+      "policy_source": {
+        "kind": "assumed-corp",
+        "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"
+      }
+    },
+    "fields": {
+      "dev_client_access_profile": {
+        "input_id": "dev_client_access_profile",
+        "kind": "input"
+      },
+      "dev_compute_demand_profile": {
+        "input_id": "dev_compute_demand_profile",
+        "kind": "input"
+      },
+      "dev_data_meter_profile": {
+        "input_id": "dev_data_meter_profile",
+        "kind": "input"
+      },
+      "dev_access_provisioned_hours_per_month": {
+        "input_id": "dev_access_provisioned_hours_per_month",
+        "kind": "input"
+      },
+      "dev_recovery_failure_coverage": {
+        "input_id": "dev_recovery_failure_coverage",
+        "kind": "input"
+      },
+      "dev_backup_retention_profile": {
+        "input_id": "dev_backup_retention_profile",
+        "kind": "input"
+      }
+    }
+  },
+  "complete_material_ledger": {
+    "path": "agent-output/fulcrum/_meta/02-current-material-input-ledger.json",
+    "sha256": "62c8505b838f82cc6db45bfa3d79031e22d35739878d4041a3b0fbd20c413814"
+  },
+  "proposed_profile": {
+    "path": "agent-output/fulcrum/_meta/02-proposed-dev-usage-profile.json",
+    "sha256": "fcdc36bef4e3fb9a0bceae63e3913de89a1c983788acb9eb268376df97a054b4"
+  },
+  "current_scope": {
+    "path": "agent-output/fulcrum/_meta/02-current-continuation-phase-scope.json",
+    "sha256": "9fd07d7632d6fb5121f2dfe1cba91c0c40a58dae802a2da959f0e6cd93edc537"
+  },
+  "requirements_sha256": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+  "policy_source": {
+    "kind": "assumed-corp",
+    "path": ".github/data/alz-corp-policy-baseline.json.gz",
+    "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed",
+    "environments": [
+      "dev"
+    ],
+    "label": "Assumed Corp policies—not tenant-verified; DEV Architecture-only",
+    "acceptance_receipt": "_meta/02-assumed-corp-acceptance-receipt.json"
+  },
+  "actual_usage_counts": {
+    "step2_pricing_dispatches": 0,
+    "step2_architecture_review_dispatches": 0,
+    "step2_cost_review_dispatches": 0,
+    "step1_existing_review_calls_used": 3,
+    "step1_existing_review_absolute_cap": 4
+  },
+  "validation": {
+    "validate_payload_require_context": "PASS",
+    "complete_current_answers": 54,
+    "previous_gate1_context_equivalent": true
+  },
+  "parent_action": "Display only saved form.message and form.requestedSchema through native ask_user. Keep the local request ID; preserve the actual response/owner/dev scope in a receipt and record only supplied material values. For explicit adoption, bind the exact proposed profile rather than inventing omitted values. Unknown/custom/declined responses require validation, not inferred defaults. Return this envelope, complete ledger and actual response to a fresh bounded Architect continuation. Then finish candidate feasibility/comparison pricing and the actual SKU/VNet gates before committed pricing and both reviews."
+}

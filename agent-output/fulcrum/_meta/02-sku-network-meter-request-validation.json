@@ -1,0 +1,27 @@
+{
+  "project": "fulcrum",
+  "step": "2",
+  "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+  "validated_at": "2026-11-09T13:52:50Z",
+  "request_path": "_meta/02-sku-network-meter-input-request.json",
+  "native_payload_check": "validate_payload(form, context, require_context=True)",
+  "errors": [],
+  "complete_ledger_payload_errors": [],
+  "full_ledger_exact_recall_match": true,
+  "material_input_count": 60,
+  "phase_scope_input_count": 60,
+  "scope_record_result": "recorded; permission_granted=false",
+  "scope_provenance": "_meta/02-usage-continuation-scope-provenance.json",
+  "step2_original_start_preserved": "2026-11-09T13:13:22Z",
+  "step1_review_calls_preserved": 3,
+  "step1_review_max_calls_preserved": 4,
+  "manifest_revision": 2,
+  "manifest_validation_errors": 0,
+  "manifest_validation_warnings": [
+    "VNet trigger holds but vnet_mode is absent. This is the actual pending VNet gate, not a skipped/approved gate."
+  ],
+  "manifest_renderer_result": "rev 2; already up-to-date",
+  "sku_confirmation_status": "not answered",
+  "new_fields": ["sku_confirmation_status", "vnet_mode", "dev_access_restore_dns_meter_profile"],
+  "approval_boundary": "Form saved/preflighted only; not displayed by this delegated owner and no answers inferred. No Gate 2, final artifacts, committed total or completion."
+}

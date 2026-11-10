@@ -1,0 +1,43 @@
+{
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+  "status": "PASS",
+  "scope": "Bounded consolidated question preparation only.",
+  "validated_files": {
+    "_meta/02-monthly-planning-input-request.json": "4c85dbe4d4222e38cca2607b4c9ca2c5eaaa77fbcde7cd75accbda439a16488b",
+    "_meta/02-monthly-planning-question-context.json": "7aabb63f22d3309cec849db3ace8c105e9b552399b9a064ca46564e634e2be07",
+    "_meta/02-monthly-planning-missing-inputs.json": "db6fd8545cb4c5b75cd493000e30e71b8d58f230cb6464036c8e53b025639393"
+  },
+  "actual_checks": [
+    "All three prepared files parsed as JSON.",
+    "tools/scripts/validate_question_batching.py validate_payload(envelope.form, separate_context, require_context=True) returned no errors.",
+    "All 66 material-input records in the retained ledger exactly equal current apex-recall show fulcrum --json session.material_inputs.",
+    "All 66 captured answer values in the separate full context exactly equal the current recall values.",
+    "Three distinct displayed fields equal needed_inputs and context.fields; no field repeats an answered material input, has a default, or adds an unconditional companion.",
+    "Scope context equals the actual resume-scope response receipt, and the matching decision exists in current recall.",
+    "Retained pricing is FAILED with 17 lines, 16 finite components, one unresolved Internet line, null monthly/yearly totals and empty writeback.",
+    "All sixteen finite component names are represented in the no-requestion coverage inventory.",
+    "All fourteen protected artifact/evidence/review hashes in the missing-input inventory remain unchanged.",
+    "Retained MGN source hash matches the pricing-owner quote; six native band minima are present in that quote.",
+    "Saved Bastion response contains five exact current service/product/Standard/region/USD/Consumption/1-GB transfer rows, four paid, all without tierMinimumUnits.",
+    "Actual request ledger remains 34/34 with zero remaining; Step 2 remains in_progress at phase_3_cost_recovery_3_indicative_failed."
+  ],
+  "new_pricing_queries": 0,
+  "new_network_queries": 0,
+  "new_pricing_worker_dispatches": 0,
+  "new_review_dispatches": 0,
+  "totals_calculated": false,
+  "manifest_writeback_performed": false,
+  "material_answers_or_approvals_recorded": false,
+  "recall_written": false,
+  "response_handling": [
+    "Interactive parent sends only envelope.form to native ask_user and retains the same local request_id with the actual response.",
+    "Map only an actually selected LOW/MVP/GROWTH option to its stated envelope. A suggestion, omitted value or explicit unknown supplies no numeric volume.",
+    "Validate any custom envelope as finite, nonnegative decimal GB/month; ambiguous units or scope require only a triggered clarification. Do not equate ingestion with wire or adopt Tb as TB.",
+    "Reuse custom sharing facts verbatim. No-other-use is a user fact, not evidence that an Azure allowance is applicable.",
+    "A selected conservative profile authorizes only the described planning-bound assumption. It cannot certify Azure tariff applicability or waive pricing-owner coverage checks.",
+    "No extension or leaf dispatch is approved by this pending form. A possible future exact Bastion query remains conditional and requires separate bounded authority."
+  ],
+  "next_owner": "Interactive parent",
+  "next_action": "Present this one validated native question batch, capture actual answers, then return the matching receipt for bounded continuation.",
+  "step_complete": false
+}

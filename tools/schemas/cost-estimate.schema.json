@@ -24,13 +24,59 @@
     "budget_exceeded"
   ],
   "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "required": ["schema_version"], "properties": { "schema_version": { "const": "cost-estimate-v2" } } },
+      "then": {
+        "required": ["purpose", "request_snapshot", "request_sha256", "evidence"],
+        "properties": { "purpose": { "const": "monthly-estimate" } }
+      }
+    }
+  ],
   "properties": {
+    "assumptions": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+    "assessment_basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["period", "normalization", "cost_view", "tax", "licensing"],
+      "properties": {
+        "period": { "type": "string", "minLength": 1 },
+        "normalization": { "type": "string", "minLength": 1 },
+        "cost_view": { "const": "Retail" },
+        "tax": { "type": "string", "minLength": 1 },
+        "licensing": { "type": "string", "minLength": 1 },
+        "source_unit": { "enum": ["month", "year"] },
+        "original_total": { "type": ["number", "string"] }
+      }
+    },
     "$schema": {
       "type": "string"
     },
     "schema_version": {
       "type": "string",
-      "const": "cost-estimate-v1"
+      "enum": ["cost-estimate-v1", "cost-estimate-v2"],
+      "description": "Historical v1 is shape-readable only; current publication/readiness requires verified v2."
+    },
+    "purpose": {
+      "const": "monthly-estimate"
+    },
+    "request_snapshot": {
+      "type": "object",
+      "description": "Exact normalized request consumed by deterministic request/evidence equivalence validation."
+    },
+    "request_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_path"],
+        "properties": {
+          "evidence_path": { "type": "string", "minLength": 1 }
+        }
+      }
     },
     "status": {
       "type": "string",
@@ -114,6 +160,11 @@
       "minimum": 0,
       "maximum": 20
     },
+    "unknown_request_reservations": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 20
+    },
     "budget_exceeded": {
       "type": "boolean"
     },
@@ -148,6 +199,22 @@
       "required": ["name", "service_name", "sku", "region", "quantity", "monthly_cost", "notes"],
       "additionalProperties": false,
       "properties": {
+        "resource_id": { "type": "string", "minLength": 1 },
+        "charge_id": { "type": "string", "minLength": 1 },
+        "usage": { "type": ["object", "array", "null"] },
+        "components": { "type": "array", "items": { "type": "object" } },
+        "calculation_basis": { "type": "object" },
+        "unit_of_measure": { "type": "string" },
+        "unitOfMeasure": { "type": "string" },
+        "usage_amount": { "type": "number", "minimum": 0 },
+        "usage_scope": { "enum": ["aggregate", "per-instance"] },
+        "hours_per_month": { "type": "number", "minimum": 0 },
+        "billable_days": { "type": "number", "minimum": 0 },
+        "free_grant_units": { "type": "number", "minimum": 0 },
+        "unit_interpretation": { "type": "string" },
+        "retail_price": { "type": "number", "minimum": 0 },
+        "retailPrice": { "type": "number", "minimum": 0 },
+        "tier_bands": { "type": "array", "items": { "type": "object" } },
         "name": {
           "type": "string",
           "minLength": 1

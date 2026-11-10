@@ -1,0 +1,14 @@
+{
+  "request_id": "fulcrum-gate2-current69-20261109-184300",
+  "status": "PASS",
+  "validate_payload_require_context_errors": [],
+  "current_material_record_count": 69,
+  "all_answers_exactly_equal_recall": true,
+  "required_reviews": "Both APPROVED,0findings, strict current",
+  "closure_calls": 0,
+  "stage_approved": false,
+  "schema_root_properties_only": true,
+  "default_approval": false,
+  "repeated_settled_inputs": false,
+  "unconditional_companion_fields": false
+}

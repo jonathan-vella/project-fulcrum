@@ -1,0 +1,172 @@
+{
+  "schema_version": "architecture-research-evidence-v1",
+  "project": "fulcrum",
+  "recorded_date": "2026-11-09",
+  "execution_mode": "delegated",
+  "workflow_contract": "practical-v1",
+  "assessment_exit": "implementation",
+  "status": "REQUIRED_CAPABILITY_INPUT_PENDING",
+  "independent_review_result": false,
+  "prerequisites": {
+    "requirements": {
+      "path": "agent-output/fulcrum/01-requirements.md",
+      "sha256": "14fbcba64659e5f498037ee05f7871ee3a2a5f3db6d908d742e306a5fc8306be"
+    },
+    "current_material_projection": {
+      "path": "agent-output/fulcrum/_meta/assessment-step-1.json",
+      "sha256": "fd192768c919f9f1828d266cfb6158ed1d7db6297693494d1a50ea4b66d10ac0",
+      "material_input_count": 51
+    },
+    "historical_ledger": {
+      "path": "agent-output/fulcrum/_meta/01-discovery-answers.json",
+      "sha256": "4ac4c1894f9d654f82cff0b3ee531aa9fa9ab2cf14d80b4fbb199eeda7a815a8",
+      "precedence": "The current projection, approved Requirements and explicit Entra exception supersede only the ledger's old residency answer."
+    },
+    "entra_exception": {
+      "path": "agent-output/fulcrum/_meta/02-entra-residency-exception-receipt.json",
+      "sha256": "aede5b0b1388721399ae5a96087c0d2c3ab910dd7769987c7aa769ad632fbf7a",
+      "status": "Accepted and incorporated in current approved Requirements; not reopened or extended to Key Vault."
+    },
+    "current_review": "agent-output/fulcrum/reviews/challenge-findings-requirements-entra-revision.json",
+    "current_gate1_receipt": "agent-output/fulcrum/_meta/01-gate1-entra-revision-response-receipt.json",
+    "step1_effective_review": "current / APPROVED / low risk / zero findings",
+    "step1_completion": "2026-11-06T16:24:10Z",
+    "step2_existing_start": "2026-11-06T16:24:10Z",
+    "completed_checkpoint": "fulcrum:2:phase_1_prereqs",
+    "checkpoint_time": "2026-11-09T07:48:30Z"
+  },
+  "sources": [
+    {
+      "id": "KV-RELIABILITY",
+      "url": "https://learn.microsoft.com/azure/reliability/reliability-key-vault",
+      "retrieved_date": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search, followed by microsoft_docs_fetch",
+      "fetch_response_sha256": "6e7e0fc40f5cffa4d975b120a81aba50553e98395775dc4d228053316722ebee",
+      "section": "Resilience to region-wide failures / Microsoft-managed failover to a paired region",
+      "excerpt": "The contents of your key vault are automatically replicated both within the region and, asynchronously, to the paired region.",
+      "documented_cross_region_replication_exceptions": [
+        "Brazil South",
+        "Brazil Southeast",
+        "West US 3",
+        "Any region that doesn't have a paired region"
+      ],
+      "supported_single_region_opt_out": "Not established by the fetched article or the bounded targeted official-documentation search.",
+      "additional_observation": "Microsoft-managed regional failover is best effort, can be significantly delayed, and is not proof of the project's recovery objectives."
+    },
+    {
+      "id": "REGION-PAIR",
+      "url": "https://learn.microsoft.com/azure/reliability/regions-list",
+      "retrieved_date": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search, followed by microsoft_docs_fetch",
+      "fetch_response_sha256": "82052c87da69cf759ad83f9d9cfcd338f95122d3f7f8b9e0f43b6071fc9634d5",
+      "section": "Azure regions list",
+      "observed_public_catalog_row": {
+        "region": "Sweden Central",
+        "programmatic_name": "swedencentral",
+        "geography": "Sweden",
+        "paired_region": "Sweden South",
+        "availability_zones": 3
+      },
+      "qualification": "Region-level zone availability is not evidence of any particular service or SKU's zone support. Sweden South's restricted-access marker does not establish an opt-out from service-managed replication."
+    },
+    {
+      "id": "APP-SECRETS",
+      "url": "https://learn.microsoft.com/azure/app-service/tutorial-connect-overview#connect-using-secrets",
+      "retrieved_date": "2026-11-09",
+      "method": "Azure MCP microsoft_docs_search, followed by microsoft_docs_fetch",
+      "fetch_response_sha256": "891e531a9abeae4a6c75d3e51fa382ee6fdf9b0583884bcab43e75f870f82014",
+      "section": "Connect with an app identity / Connect using secrets",
+      "supported_guidance": [
+        "A managed identity can remove connection secrets when the downstream resource supports Microsoft Entra authentication.",
+        "App Service supports encrypted-at-rest app settings as well as Key Vault references for connections requiring secrets.",
+        "Key Vault provides additional secret rotation, access control and audit-history capabilities."
+      ],
+      "qualification": "This does not establish that the application team's image is secretless, that app settings meet all required secret/certificate controls or residency, or that any private connection works. No alternative is selected."
+    }
+  ],
+  "findings": [
+    {
+      "id": "ARCH-FEAS-002",
+      "type": "architect_research",
+      "confidence": "High",
+      "claim": "The preferred Key Vault candidate in Sweden Central has documented automatic replication outside Sweden Central, to Sweden South.",
+      "constraint": "Current non-Entra dependencies, storage and backups must remain in Sweden Central only. The accepted Entra exception does not apply.",
+      "preferred_candidate_status": "Excluded from a single-region-compliant candidate set on the inspected evidence.",
+      "whole_workload_status": "Not proved impossible. Key Vault is a product preference, not a user SKU lock. Required secrets/certificate handling still needs a compliant design.",
+      "needed_material_input": "dev_secret_certificate_profile",
+      "reason_for_input": "The required categories and lifecycle of any non-managed-identity credentials or custom certificates are not captured. Assuming there are none, or replacing Key Vault with an unverified app-settings/custom store, could drop required capability or controls.",
+      "owner": "Interactive parent with Project Stakeholders/application team; 03-Architect evaluates the resulting capability. A requested residency change belongs to 02-Requirements.",
+      "runtime_status": "Unverified"
+    }
+  ],
+  "dependency_path_check": [
+    {
+      "dimension": "Consumer and owner",
+      "status": "Unresolved",
+      "evidence": "Application runtime, private image/configuration delivery and operator secret/certificate handling are required capability consumers. The application team owns the image and application integration; secret categories and lifecycle are unknown."
+    },
+    {
+      "dimension": "Identity",
+      "status": "Unresolved",
+      "evidence": "Managed identity and least privilege remain mandatory. Secretless access is a documented candidate method, not evidence that every required consumer supports it. No tenant, issuer, identity or grant is bound."
+    },
+    {
+      "dimension": "Network and DNS",
+      "status": "Unresolved",
+      "evidence": "Private endpoints, disabled public access and service-correct DNS remain mandatory. Private networking cannot stop Key Vault's documented service-managed cross-region replication. No client/runner routes or DNS have been verified."
+    },
+    {
+      "dimension": "Outbound dependencies",
+      "status": "Unresolved",
+      "evidence": "Identity, image bootstrap and any required credential/certificate consumers need explicit dependency closure. No optional application transports or new external integration is inferred."
+    },
+    {
+      "dimension": "Observability",
+      "status": "Unresolved",
+      "evidence": "Auditability and 30-day sanitized diagnostics remain requirements. The existing team's monitoring-access responsibility is settled; no recipient interrogation or configured routing is invented."
+    },
+    {
+      "dimension": "Recovery",
+      "status": "Unresolved",
+      "evidence": "RTO 4 hours and RPO 1 hour remain unverified planning objectives. Key Vault regional failover and Blob LRS do not establish recovery readiness; no cross-region permission is inferred."
+    },
+    {
+      "dimension": "Cost and handoff",
+      "status": "Unresolved",
+      "evidence": "No complete viable capability chain, usage basis or current SKU confirmation exists. No pricing task was invoked, no dependency is assumed free, and no canonical cost artifact is written."
+    }
+  ],
+  "other_research": {
+    "waf_service_guide_catalog": "Azure MCP wellarchitectedframework_serviceguide_get succeeded. In-scope listed guides include app-service-web-apps, cosmos-db, azure-blob-storage, application-insights, azure-log-analytics and virtual-network.",
+    "entra_product_search": "Official search distinguishes workforce tenants with external guests from external tenants for consumer/business-customer apps. Actual tenant creation/provisioning, exact chosen product's European commitment and workforce plus external Volunteer app applicability remain Unverified. No workforce-only assumption or re-questioning of the accepted exception.",
+    "material_selection_status": "No winner or revision 2. Preferred Key Vault exclusion is research, not an approved substitute or complete candidate comparison."
+  },
+  "policy_feasibility": {
+    "recall_status": "provisional_no_authorized_target",
+    "live_azure_operations": "None; no target/read scope granted.",
+    "needed_material_input": "policy_feasibility_read_intent",
+    "owner": "Interactive parent and 04g-Governance",
+    "before_gate2": "Securely bound authorized dev target/read scope and current preliminary policy feasibility are required for implementation continuation. Intent alone is not authorization.",
+    "assumed_floor": "Repository ALZ Corp floor plus stricter security baseline remain applicable until authorized effective-policy discovery replaces assumed facts. No project VPN permission, central DNS ownership or public-service exemption is inferred."
+  },
+  "unchanged_manifest": {
+    "path": "agent-output/fulcrum/contracts/sku-manifest.json",
+    "sha256": "e268aa317aa10bf5427d6daf9ec4efc975725de9dd96738de18cd3f886d69e5f",
+    "revision": 1,
+    "pin": "LRS",
+    "source": "user-pin",
+    "source_step": "1",
+    "commit_stamp": "16cd2c7",
+    "render_path": "agent-output/fulcrum/sku-manifest.md",
+    "render_sha256": "678da92dd435b249095d9206d1848e205015fbededd1a31ac6a080856f21a269"
+  },
+  "cutoff": {
+    "phase": "phase_2_required_capability_feasibility",
+    "request_path": "agent-output/fulcrum/_meta/02-secret-capability-input-request.json",
+    "step2_pricing_dispatches": 0,
+    "step2_review_dispatches": 0,
+    "phase2_completed": false,
+    "gate2_ready": false,
+    "step_complete": false
+  }
+}

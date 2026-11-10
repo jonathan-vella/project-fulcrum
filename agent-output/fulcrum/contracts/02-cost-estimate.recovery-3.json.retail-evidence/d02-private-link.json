@@ -1,0 +1,155 @@
+{
+  "schema_version": "retail-price-evidence-v1",
+  "data_source": "Azure Retail Prices API (direct fallback)",
+  "query": {
+    "serviceName": "Virtual Network",
+    "armRegionName": "Global",
+    "productName": "Virtual Network Private Link",
+    "skuName": "Standard",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "mcp_failure": {
+    "kind": "missing_tier_metadata",
+    "recorded_at": "2026-11-09T15:58:04.356405+00:00",
+    "full_native_response_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q02-private-link.native.json",
+    "extraction_qualification": "Exact matching raw rows from full preserved response; both traffic directions share this one product/SKU query, no invented tier metadata.",
+    "attempts": [
+      {
+        "query": {
+          "serviceName": "Virtual Network",
+          "armRegionName": "Global",
+          "productName": "Virtual Network Private Link",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {
+            "prices": [
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Virtual Network Private Link",
+                "serviceName": "Virtual Network",
+                "serviceFamily": "Networking",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.01,
+                "unitPrice": 0.01,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-11-01T00:00:00+00:00",
+                "meterName": "Standard Data Processed - Ingress",
+                "meterId": "10caa28b-6479-4852-9eb7-610870cb6417",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Virtual Network Private Link",
+                "serviceName": "Virtual Network",
+                "serviceFamily": "Networking",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.006,
+                "unitPrice": 0.006,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-11-01T00:00:00+00:00",
+                "meterName": "Standard Data Processed - Ingress",
+                "meterId": "10caa28b-6479-4852-9eb7-610870cb6417",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Virtual Network Private Link",
+                "serviceName": "Virtual Network",
+                "serviceFamily": "Networking",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.004,
+                "unitPrice": 0.004,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-11-01T00:00:00+00:00",
+                "meterName": "Standard Data Processed - Ingress",
+                "meterId": "10caa28b-6479-4852-9eb7-610870cb6417",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Virtual Network Private Link",
+                "serviceName": "Virtual Network",
+                "serviceFamily": "Networking",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.01,
+                "unitPrice": 0.01,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-11-01T00:00:00+00:00",
+                "meterName": "Standard Data Processed - Egress",
+                "meterId": "e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Virtual Network Private Link",
+                "serviceName": "Virtual Network",
+                "serviceFamily": "Networking",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.006,
+                "unitPrice": 0.006,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-11-01T00:00:00+00:00",
+                "meterName": "Standard Data Processed - Egress",
+                "meterId": "e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Standard",
+                "productName": "Virtual Network Private Link",
+                "serviceName": "Virtual Network",
+                "serviceFamily": "Networking",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.004,
+                "unitPrice": 0.004,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-11-01T00:00:00+00:00",
+                "meterName": "Standard Data Processed - Egress",
+                "meterId": "e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b",
+                "isPrimaryMeterRegion": true
+              }
+            ]
+          },
+          "duration": 0
+        }
+      }
+    ]
+  },
+  "requests_used": 1,
+  "pages": [
+    {
+      "url": "https://prices.azure.com/api/retail/prices?%24filter=serviceName+eq+%27Virtual+Network%27+and+armRegionName+eq+%27Global%27+and+productName+eq+%27Virtual+Network+Private+Link%27+and+skuName+eq+%27Standard%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+      "queried_at": "2026-11-09T16:02:22.717Z",
+      "response_sha256": "02c2db6aa3dbb9f28a7e89991cfbb31a750f78acf55b07bb8b981c534a5f8e8a",
+      "raw_response": "{\"BillingCurrency\":\"USD\",\"CustomerEntityId\":\"Default\",\"CustomerEntityType\":\"Retail\",\"Items\":[{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.01,\"unitPrice\":0.01,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2021-11-01T00:00:00Z\",\"meterId\":\"10caa28b-6479-4852-9eb7-610870cb6417\",\"meterName\":\"Standard Data Processed - Ingress\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":1000000.0,\"retailPrice\":0.006,\"unitPrice\":0.006,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2021-11-01T00:00:00Z\",\"meterId\":\"10caa28b-6479-4852-9eb7-610870cb6417\",\"meterName\":\"Standard Data Processed - Ingress\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":5000000.0,\"retailPrice\":0.004,\"unitPrice\":0.004,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2021-11-01T00:00:00Z\",\"meterId\":\"10caa28b-6479-4852-9eb7-610870cb6417\",\"meterName\":\"Standard Data Processed - Ingress\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.01,\"unitPrice\":0.01,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2020-02-01T00:00:00Z\",\"meterId\":\"e6ab7238-e433-4fe0-a2b2-2b2564df2cdb\",\"meterName\":\"Standard Private Endpoint\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 Hour\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.01,\"unitPrice\":0.01,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2021-11-01T00:00:00Z\",\"meterId\":\"e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b\",\"meterName\":\"Standard Data Processed - Egress\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":1000000.0,\"retailPrice\":0.006,\"unitPrice\":0.006,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2021-11-01T00:00:00Z\",\"meterId\":\"e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b\",\"meterName\":\"Standard Data Processed - Egress\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":5000000.0,\"retailPrice\":0.004,\"unitPrice\":0.004,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2021-11-01T00:00:00Z\",\"meterId\":\"e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b\",\"meterName\":\"Standard Data Processed - Egress\",\"productId\":\"DZH318Z0C0XP\",\"skuId\":\"DZH318Z0C0XP/0001\",\"productName\":\"Virtual Network Private Link\",\"skuName\":\"Standard\",\"serviceName\":\"Virtual Network\",\"serviceId\":\"DZH314HC0WV9\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1 GB\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"}],\"NextPageLink\":null,\"Count\":7}"
+    }
+  ]
+}

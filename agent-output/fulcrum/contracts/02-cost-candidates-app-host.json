@@ -1,0 +1,434 @@
+{
+  "status": "COMPLETE",
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "monthly_total": 0,
+  "yearly_total": 0,
+  "scope_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only. Comparison-only base host costs, not committed workload total. Only dev, one instance, no zones, on-demand Consumption, Linux container. No final SKU approval.",
+  "totals_semantics": "Candidate alternatives are not additive. Top-level totals are comparison-mode sentinels, not zero-cost resources or a committed workload estimate. Actual costs are persisted per resource and decision candidate.",
+  "request_path": "/workspaces/project-fulcrum/agent-output/fulcrum/_meta/02-cost-candidates-app-host-request.json",
+  "manifest_writeback": false,
+  "resources": [
+    {
+      "name": "app-host-B1-dev-swedencentral",
+      "service_name": "Azure App Service",
+      "sku": "B1",
+      "region": "swedencentral",
+      "subscription": null,
+      "quantity": 1,
+      "environment": "dev",
+      "stamp": null,
+      "source_kind": "candidate",
+      "decision_id": "app-host",
+      "operating_system": "Linux",
+      "commitment": "on-demand",
+      "price_type": "Consumption",
+      "currency": "USD",
+      "usage": {
+        "amount": 730,
+        "unit": "hours",
+        "scope": "per-instance",
+        "hours_per_month": 730
+      },
+      "hours_per_month": 730,
+      "retail_price": 0.018,
+      "hourly_rate": 0.018,
+      "monthly_cost": 13.14,
+      "yearly_cost": 157.68,
+      "selected_meter": {
+        "armSkuName": "",
+        "skuName": "B1",
+        "productName": "Azure App Service Basic Plan - Linux",
+        "meterName": "B1",
+        "meterId": "87a319c7-c1cc-56a0-a6c2-a043cd34225d",
+        "region": "swedencentral",
+        "unitOfMeasure": "1 Hour",
+        "priceType": "Consumption",
+        "currencyCode": "USD",
+        "retailPrice": 0.018,
+        "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+        "isPrimaryMeterRegion": true,
+        "tierMinimumUnits": null
+      },
+      "queried_at": "2026-11-09T13:38:13.526Z",
+      "notes": "Source: Azure MCP pricing_get, query q3, collected 2026-11-09T13:38:13.526Z. Selected productName=Azure App Service Basic Plan - Linux; skuName=B1; armSkuName is empty, so exact product/SKU/meter evidence establishes deployment SKU B1; meterName=B1; meterId=87a319c7-c1cc-56a0-a6c2-a043cd34225d; unitOfMeasure=1 Hour; priceType=Consumption; returned currency=USD; retailPrice=0.018; tierMinimumUnits not projected by MCP; one unambiguous hourly row, not a multi-band meter. Request meter_name=B1 App returned only the non-Linux product and was rejected. Canonical pricing-guidance.md Candidate meter hints explicitly normalizes Basic Linux to B1 without App suffix; input request was not changed. Environment=DEV, stamp=none, deployment and billing region=swedencentral, subscription=null (not supplied), one Linux container host instance, on-demand Consumption, no zone claim. Explicit usage=730 hours/month per instance, not aggregate; calculation=0.018 USD/hour * 730 hours * 1 instance = 13.14 USD/month; yearly=13.14 * 12 = 157.68 USD. Platform-included storage is not priced as an extra resource. Base host only; excludes common supporting resources, separate storage, networking, monitoring and transfer. No final SKU approval; workload capacity assumptions are not load-test validated.",
+      "calculation_basis": {
+        "name": "app-host-B1-dev-swedencentral",
+        "service_name": "Azure App Service",
+        "sku": "B1",
+        "region": "swedencentral",
+        "subscription": null,
+        "quantity": 1,
+        "environment": "dev",
+        "stamp": null,
+        "source_kind": "candidate",
+        "decision_id": "app-host",
+        "operating_system": "Linux",
+        "commitment": "on-demand",
+        "price_type": "Consumption",
+        "currency": "USD",
+        "usage": {
+          "amount": 730,
+          "unit": "hours",
+          "scope": "per-instance",
+          "hours_per_month": 730
+        },
+        "hours_per_month": 730,
+        "retail_price": 0.018,
+        "unit_of_measure": "1 Hour",
+        "hourly_rate": 0.018,
+        "monthly_cost": 13.14,
+        "yearly_cost": 157.68,
+        "selected_meter": {
+          "armSkuName": "",
+          "skuName": "B1",
+          "productName": "Azure App Service Basic Plan - Linux",
+          "meterName": "B1",
+          "meterId": "87a319c7-c1cc-56a0-a6c2-a043cd34225d",
+          "region": "swedencentral",
+          "unitOfMeasure": "1 Hour",
+          "priceType": "Consumption",
+          "currencyCode": "USD",
+          "retailPrice": 0.018,
+          "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+          "isPrimaryMeterRegion": true,
+          "tierMinimumUnits": null
+        },
+        "queried_at": "2026-11-09T13:38:13.526Z",
+        "notes": "Source: Azure MCP pricing_get, query q3, collected 2026-11-09T13:38:13.526Z. Selected productName=Azure App Service Basic Plan - Linux; skuName=B1; armSkuName is empty, so exact product/SKU/meter evidence establishes deployment SKU B1; meterName=B1; meterId=87a319c7-c1cc-56a0-a6c2-a043cd34225d; unitOfMeasure=1 Hour; priceType=Consumption; returned currency=USD; retailPrice=0.018; tierMinimumUnits not projected by MCP; one unambiguous hourly row, not a multi-band meter. Request meter_name=B1 App returned only the non-Linux product and was rejected. Canonical pricing-guidance.md Candidate meter hints explicitly normalizes Basic Linux to B1 without App suffix; input request was not changed. Environment=DEV, stamp=none, deployment and billing region=swedencentral, subscription=null (not supplied), one Linux container host instance, on-demand Consumption, no zone claim. Explicit usage=730 hours/month per instance, not aggregate; calculation=0.018 USD/hour * 730 hours * 1 instance = 13.14 USD/month; yearly=13.14 * 12 = 157.68 USD. Platform-included storage is not priced as an extra resource. Base host only; excludes common supporting resources, separate storage, networking, monitoring and transfer. No final SKU approval; workload capacity assumptions are not load-test validated."
+      }
+    },
+    {
+      "name": "app-host-B2-dev-swedencentral",
+      "service_name": "Azure App Service",
+      "sku": "B2",
+      "region": "swedencentral",
+      "subscription": null,
+      "quantity": 1,
+      "environment": "dev",
+      "stamp": null,
+      "source_kind": "candidate",
+      "decision_id": "app-host",
+      "operating_system": "Linux",
+      "commitment": "on-demand",
+      "price_type": "Consumption",
+      "currency": "USD",
+      "usage": {
+        "amount": 730,
+        "unit": "hours",
+        "scope": "per-instance",
+        "hours_per_month": 730
+      },
+      "hours_per_month": 730,
+      "retail_price": 0.036,
+      "hourly_rate": 0.036,
+      "monthly_cost": 26.28,
+      "yearly_cost": 315.36,
+      "selected_meter": {
+        "armSkuName": "",
+        "skuName": "B2",
+        "productName": "Azure App Service Basic Plan - Linux",
+        "meterName": "B2",
+        "meterId": "781dcb8d-5878-5503-b26b-ed532f8a6564",
+        "region": "swedencentral",
+        "unitOfMeasure": "1 Hour",
+        "priceType": "Consumption",
+        "currencyCode": "USD",
+        "retailPrice": 0.036,
+        "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+        "isPrimaryMeterRegion": true,
+        "tierMinimumUnits": null
+      },
+      "queried_at": "2026-11-09T13:38:13.526Z",
+      "notes": "Source: Azure MCP pricing_get, query q4, collected 2026-11-09T13:38:13.526Z. Selected productName=Azure App Service Basic Plan - Linux; skuName=B2; armSkuName is empty, so exact product/SKU/meter evidence establishes deployment SKU B2; meterName=B2; meterId=781dcb8d-5878-5503-b26b-ed532f8a6564; unitOfMeasure=1 Hour; priceType=Consumption; returned currency=USD; retailPrice=0.036; tierMinimumUnits not projected by MCP; one unambiguous hourly row, not a multi-band meter. Request meter_name=B2 App returned only the non-Linux product and was rejected. Canonical pricing-guidance.md Candidate meter hints explicitly normalizes Basic Linux to B2 without App suffix; input request was not changed. Environment=DEV, stamp=none, deployment and billing region=swedencentral, subscription=null (not supplied), one Linux container host instance, on-demand Consumption, no zone claim. Explicit usage=730 hours/month per instance, not aggregate; calculation=0.036 USD/hour * 730 hours * 1 instance = 26.28 USD/month; yearly=26.28 * 12 = 315.36 USD. Base host only; excludes common supporting resources, separate storage, networking, monitoring and transfer. Extra CPU/memory headroom is an alternative, not an approved floor. Same workload assumptions as B1; no validated capacity or final SKU approval.",
+      "calculation_basis": {
+        "name": "app-host-B2-dev-swedencentral",
+        "service_name": "Azure App Service",
+        "sku": "B2",
+        "region": "swedencentral",
+        "subscription": null,
+        "quantity": 1,
+        "environment": "dev",
+        "stamp": null,
+        "source_kind": "candidate",
+        "decision_id": "app-host",
+        "operating_system": "Linux",
+        "commitment": "on-demand",
+        "price_type": "Consumption",
+        "currency": "USD",
+        "usage": {
+          "amount": 730,
+          "unit": "hours",
+          "scope": "per-instance",
+          "hours_per_month": 730
+        },
+        "hours_per_month": 730,
+        "retail_price": 0.036,
+        "unit_of_measure": "1 Hour",
+        "hourly_rate": 0.036,
+        "monthly_cost": 26.28,
+        "yearly_cost": 315.36,
+        "selected_meter": {
+          "armSkuName": "",
+          "skuName": "B2",
+          "productName": "Azure App Service Basic Plan - Linux",
+          "meterName": "B2",
+          "meterId": "781dcb8d-5878-5503-b26b-ed532f8a6564",
+          "region": "swedencentral",
+          "unitOfMeasure": "1 Hour",
+          "priceType": "Consumption",
+          "currencyCode": "USD",
+          "retailPrice": 0.036,
+          "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+          "isPrimaryMeterRegion": true,
+          "tierMinimumUnits": null
+        },
+        "queried_at": "2026-11-09T13:38:13.526Z",
+        "notes": "Source: Azure MCP pricing_get, query q4, collected 2026-11-09T13:38:13.526Z. Selected productName=Azure App Service Basic Plan - Linux; skuName=B2; armSkuName is empty, so exact product/SKU/meter evidence establishes deployment SKU B2; meterName=B2; meterId=781dcb8d-5878-5503-b26b-ed532f8a6564; unitOfMeasure=1 Hour; priceType=Consumption; returned currency=USD; retailPrice=0.036; tierMinimumUnits not projected by MCP; one unambiguous hourly row, not a multi-band meter. Request meter_name=B2 App returned only the non-Linux product and was rejected. Canonical pricing-guidance.md Candidate meter hints explicitly normalizes Basic Linux to B2 without App suffix; input request was not changed. Environment=DEV, stamp=none, deployment and billing region=swedencentral, subscription=null (not supplied), one Linux container host instance, on-demand Consumption, no zone claim. Explicit usage=730 hours/month per instance, not aggregate; calculation=0.036 USD/hour * 730 hours * 1 instance = 26.28 USD/month; yearly=26.28 * 12 = 315.36 USD. Base host only; excludes common supporting resources, separate storage, networking, monitoring and transfer. Extra CPU/memory headroom is an alternative, not an approved floor. Same workload assumptions as B1; no validated capacity or final SKU approval."
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "app-host",
+      "winner_label": "app-host-B1-dev-swedencentral",
+      "delta_monthly_usd": 13.14,
+      "notes": "Lowest complete retail base-host estimate only. Delta is B2 minus B1. Does not approve a SKU or establish committed workload costs or capacity.",
+      "candidates": [
+        {
+          "label": "app-host-B1-dev-swedencentral",
+          "resource_name": "app-host-B1-dev-swedencentral",
+          "status": "COMPLETE",
+          "service_name": "Azure App Service",
+          "sku": "B1",
+          "region": "swedencentral",
+          "subscription": null,
+          "environment": "dev",
+          "quantity": 1,
+          "usage": {
+            "amount": 730,
+            "unit": "hours",
+            "scope": "per-instance",
+            "hours_per_month": 730
+          },
+          "meter_name": "B1",
+          "hourly_rate": 0.018,
+          "monthly_cost": 13.14,
+          "yearly_cost": 157.68,
+          "notes": "Consumption USD; Azure App Service Basic Plan - Linux; B1; 1 Hour. 0.018 * 730 * 1 = 13.14 monthly. See resources[] and q3 for full evidence."
+        },
+        {
+          "label": "app-host-B2-dev-swedencentral",
+          "resource_name": "app-host-B2-dev-swedencentral",
+          "status": "COMPLETE",
+          "service_name": "Azure App Service",
+          "sku": "B2",
+          "region": "swedencentral",
+          "subscription": null,
+          "environment": "dev",
+          "quantity": 1,
+          "usage": {
+            "amount": 730,
+            "unit": "hours",
+            "scope": "per-instance",
+            "hours_per_month": 730
+          },
+          "meter_name": "B2",
+          "hourly_rate": 0.036,
+          "monthly_cost": 26.28,
+          "yearly_cost": 315.36,
+          "notes": "Consumption USD; Azure App Service Basic Plan - Linux; B2; 1 Hour. 0.036 * 730 * 1 = 26.28 monthly. See resources[] and q4 for full evidence."
+        }
+      ]
+    }
+  ],
+  "optimization_notes": [
+    "B1 is the lower retail base-host comparison candidate, not a SKU approval. No region recommendation or capacity validation performed.",
+    "Initial request App-suffix meters returned Windows products and were rejected; documented Basic Linux meter normalization resolved both candidates without fallback.",
+    "Assumed Corp policies—not tenant-verified; DEV Architecture-only. Supporting resources are excluded; no committed cost total."
+  ],
+  "savings_status": "NOT_APPLICABLE",
+  "savings_reason": "Comparison-only on-demand Consumption host pricing. include_ri_savings=false; no reservation or savings-plan benefit analysis requested. Candidate price difference is recorded in decisions[], not as committed savings.",
+  "eligible_strategies": [],
+  "data_source": "Azure MCP pricing_get",
+  "queried_at": "2026-11-09T13:38:13.526Z",
+  "timestamp_semantics": "queried_at and query ledger recorded_at are the actual collection timestamp obtained immediately after both Linux MCP responses; not catalog effectiveStartDate or reused evidence.",
+  "confidence": "High",
+  "unresolved_items": [],
+  "mcp_calls_used": 4,
+  "direct_api_calls_used": 0,
+  "budget_exceeded": false,
+  "query_ledger": [
+    {
+      "id": "q1",
+      "command": "pricing_get",
+      "learn": false,
+      "recorded_at": "2026-11-09T13:38:13.526Z",
+      "parameters": {
+        "filter": "serviceName eq 'Azure App Service' and armRegionName eq 'swedencentral' and meterName eq 'B1 App'",
+        "price-type": "Consumption",
+        "currency": "USD"
+      },
+      "resource_names": [
+        "app-host-B1-dev-swedencentral"
+      ],
+      "result": "rejected_product_os_mismatch",
+      "notes": "Successful catalog query but not usable for Linux. No API error, empty result, retry or fallback. Corrected once to the guidance's exact Basic Linux meter B1 with Linux product filter.",
+      "response": {
+        "status": 200,
+        "message": "Success",
+        "results": {
+          "prices": [
+            {
+              "armSkuName": "",
+              "skuName": "B1",
+              "productName": "Azure App Service Basic Plan",
+              "serviceName": "Azure App Service",
+              "serviceFamily": "Compute",
+              "region": "swedencentral",
+              "location": "SE Central",
+              "retailPrice": 0.075,
+              "unitPrice": 0.075,
+              "currencyCode": "USD",
+              "unitOfMeasure": "1 Hour",
+              "priceType": "Consumption",
+              "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+              "meterName": "B1 App",
+              "meterId": "ba302f7a-078b-4141-a636-a76315ba44ce",
+              "isPrimaryMeterRegion": false
+            }
+          ]
+        },
+        "duration": 0
+      }
+    },
+    {
+      "id": "q2",
+      "command": "pricing_get",
+      "learn": false,
+      "recorded_at": "2026-11-09T13:38:13.526Z",
+      "parameters": {
+        "filter": "serviceName eq 'Azure App Service' and armRegionName eq 'swedencentral' and meterName eq 'B2 App'",
+        "price-type": "Consumption",
+        "currency": "USD"
+      },
+      "resource_names": [
+        "app-host-B2-dev-swedencentral"
+      ],
+      "result": "rejected_product_os_mismatch",
+      "notes": "Successful catalog query but not usable for Linux. No API error, empty result, retry or fallback. Corrected once to the guidance's exact Basic Linux meter B2 with Linux product filter.",
+      "response": {
+        "status": 200,
+        "message": "Success",
+        "results": {
+          "prices": [
+            {
+              "armSkuName": "",
+              "skuName": "B2",
+              "productName": "Azure App Service Basic Plan",
+              "serviceName": "Azure App Service",
+              "serviceFamily": "Compute",
+              "region": "swedencentral",
+              "location": "SE Central",
+              "retailPrice": 0.15,
+              "unitPrice": 0.15,
+              "currencyCode": "USD",
+              "unitOfMeasure": "1 Hour",
+              "priceType": "Consumption",
+              "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+              "meterName": "B2 App",
+              "meterId": "4f1fa8fe-ffed-48fa-9969-26a150775b60",
+              "isPrimaryMeterRegion": false
+            }
+          ]
+        },
+        "duration": 0
+      }
+    },
+    {
+      "id": "q3",
+      "command": "pricing_get",
+      "learn": false,
+      "recorded_at": "2026-11-09T13:38:13.526Z",
+      "parameters": {
+        "filter": "serviceName eq 'Azure App Service' and armRegionName eq 'swedencentral' and productName eq 'Azure App Service Basic Plan - Linux' and meterName eq 'B1'",
+        "price-type": "Consumption",
+        "currency": "USD"
+      },
+      "resource_names": [
+        "app-host-B1-dev-swedencentral"
+      ],
+      "result": "selected_unambiguous_linux_hourly_meter",
+      "response": {
+        "status": 200,
+        "message": "Success",
+        "results": {
+          "prices": [
+            {
+              "armSkuName": "",
+              "skuName": "B1",
+              "productName": "Azure App Service Basic Plan - Linux",
+              "serviceName": "Azure App Service",
+              "serviceFamily": "Compute",
+              "region": "swedencentral",
+              "location": "SE Central",
+              "retailPrice": 0.018,
+              "unitPrice": 0.018,
+              "currencyCode": "USD",
+              "unitOfMeasure": "1 Hour",
+              "priceType": "Consumption",
+              "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+              "meterName": "B1",
+              "meterId": "87a319c7-c1cc-56a0-a6c2-a043cd34225d",
+              "isPrimaryMeterRegion": true
+            }
+          ]
+        },
+        "duration": 0
+      }
+    },
+    {
+      "id": "q4",
+      "command": "pricing_get",
+      "learn": false,
+      "recorded_at": "2026-11-09T13:38:13.526Z",
+      "parameters": {
+        "filter": "serviceName eq 'Azure App Service' and armRegionName eq 'swedencentral' and productName eq 'Azure App Service Basic Plan - Linux' and meterName eq 'B2'",
+        "price-type": "Consumption",
+        "currency": "USD"
+      },
+      "resource_names": [
+        "app-host-B2-dev-swedencentral"
+      ],
+      "result": "selected_unambiguous_linux_hourly_meter",
+      "response": {
+        "status": 200,
+        "message": "Success",
+        "results": {
+          "prices": [
+            {
+              "armSkuName": "",
+              "skuName": "B2",
+              "productName": "Azure App Service Basic Plan - Linux",
+              "serviceName": "Azure App Service",
+              "serviceFamily": "Compute",
+              "region": "swedencentral",
+              "location": "SE Central",
+              "retailPrice": 0.036,
+              "unitPrice": 0.036,
+              "currencyCode": "USD",
+              "unitOfMeasure": "1 Hour",
+              "priceType": "Consumption",
+              "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+              "meterName": "B2",
+              "meterId": "781dcb8d-5878-5503-b26b-ed532f8a6564",
+              "isPrimaryMeterRegion": true
+            }
+          ]
+        },
+        "duration": 0
+      }
+    }
+  ]
+}

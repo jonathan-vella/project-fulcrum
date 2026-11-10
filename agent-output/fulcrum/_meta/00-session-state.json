@@ -4,8 +4,8 @@
   "iac_tool": "Bicep",
   "region": "swedencentral",
   "branch": "main",
-  "updated": "2026-11-06T16:24:10Z",
-  "current_step": 2,
+  "updated": "2026-11-10T09:46:33Z",
+  "current_step": 3,
   "decisions": {
     "region": "swedencentral",
     "compliance": "Dev MVP GDPR-aligned; fictional data only; future Production GDPR-required and out of scope. No legal/baseline waiver or certification.",
@@ -476,18 +476,19 @@
       "residency_requirement": {
         "input_id": "residency_requirement",
         "value": {
-          "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies.",
+          "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies, except the narrow ACR registry-artifact behavior explicitly accepted below.",
           "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
           "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
-          "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver.",
-          "acceptance_scope": "Project Stakeholders accept this narrow exception as meeting their project GDPR requirements. This is not independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority."
+          "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception beyond the explicitly accepted ACR registry-artifact behavior; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver. No optional customer-configured ACR geo-replication, arbitrary replicas or other-service paired-region storage is authorized.",
+          "acceptance_scope": "Project Stakeholders accept the existing narrow Entra exception as meeting their project GDPR requirements; that acceptance is unchanged. The additional DEV-only ACR acceptance covers only the documented Microsoft-managed paired-region storage of container images and registry artifacts within the EU residency boundary. Neither acceptance is independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority; no new review allowance or regional disaster-recovery guarantee is granted.",
+          "acr_registry_artifact_exception": "Accept the documented Microsoft-managed ACR paired-region storage behavior within the EU residency boundary for container images and registry artifacts only, per https://learn.microsoft.com/azure/container-registry/container-registry-storage. Sweden Central remains the registry creation/workload region; its documented Sweden South pair lies within the accepted EU boundary. Actual replication and regional recovery remain unverified. Workload compute, application data, Blob, backups, monitoring, non-ACR dependencies and the existing Entra exception remain unchanged."
         },
         "environments": [
           "dev"
         ],
         "owner": "Project Stakeholders",
-        "request_id": "fulcrum-entra-residency-user-decision-20261106-154915",
-        "recorded_at": "2026-11-06T15:53:38Z"
+        "request_id": "fulcrum-acr-residency-only-20261109-124406",
+        "recorded_at": "2026-11-09T12:51:56Z"
       },
       "service_tier": {
         "input_id": "service_tier",
@@ -596,6 +597,243 @@
         "owner": "Project Stakeholders",
         "request_id": "requirements-96146349-03a9-41ce-b41a-d78c77f2f5ac",
         "recorded_at": "2026-11-06T14:33:26Z"
+      },
+      "dev_secret_certificate_profile": {
+        "input_id": "dev_secret_certificate_profile",
+        "value": "managed identities plus platform-provided HTTPS can cover every required dev connection",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-secret-capability-20261109-075300",
+        "recorded_at": "2026-11-09T08:07:11Z"
+      },
+      "policy_feasibility_read_intent": {
+        "input_id": "policy_feasibility_read_intent",
+        "value": "provide_secure_scope_for_governance_read_only",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-secret-capability-20261109-075300",
+        "recorded_at": "2026-11-09T08:07:11Z"
+      },
+      "policy_source": {
+        "input_id": "policy_source",
+        "value": {
+          "kind": "tenant"
+        },
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-formal-governance-target-20261109",
+        "recorded_at": "2026-11-10T06:46:45Z"
+      },
+      "dev_client_access_profile": {
+        "input_id": "dev_client_access_profile",
+        "value": "Ephemeral VNet-hosted DEV client/runner sessions",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "dev_compute_demand_profile": {
+        "input_id": "dev_compute_demand_profile",
+        "value": "Adopt the proposed compute planning envelope",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "dev_data_meter_profile": {
+        "input_id": "dev_data_meter_profile",
+        "value": "Adopt the proposed data and meter planning profile",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "dev_access_provisioned_hours_per_month": {
+        "input_id": "dev_access_provisioned_hours_per_month",
+        "value": 80,
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "dev_recovery_failure_coverage": {
+        "input_id": "dev_recovery_failure_coverage",
+        "value": "Recoverable logical/deletion/application faults; regional recovery is provider-dependent",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "dev_backup_retention_profile": {
+        "input_id": "dev_backup_retention_profile",
+        "value": "Thirty-day application recovery profile",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:48Z"
+      },
+      "sku_confirmation_status": {
+        "input_id": "sku_confirmation_status",
+        "value": "approved",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+        "recorded_at": "2026-11-09T14:05:28Z"
+      },
+      "vnet_mode": {
+        "input_id": "vnet_mode",
+        "value": "create-new",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+        "recorded_at": "2026-11-09T14:05:28Z"
+      },
+      "dev_access_restore_dns_meter_profile": {
+        "input_id": "dev_access_restore_dns_meter_profile",
+        "value": "Adopt the proposed capped access/restore and DNS allocation scenario",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+        "recorded_at": "2026-11-09T14:05:28Z"
+      },
+      "vnet_plan_decision": {
+        "input_id": "vnet_plan_decision",
+        "value": "confirmed",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+        "recorded_at": "2026-11-09T14:15:16Z"
+      },
+      "vnet_address_space": {
+        "input_id": "vnet_address_space",
+        "value": "10.42.0.0/22",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+        "recorded_at": "2026-11-09T14:15:16Z"
+      },
+      "subnet_plan": {
+        "input_id": "subnet_plan",
+        "value": [
+          {
+            "name": "AzureBastionSubnet",
+            "address_prefix": "10.42.0.0/24",
+            "purpose": "bastion",
+            "delegation": "none",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Enabled"
+          },
+          {
+            "name": "snet-app-integration",
+            "address_prefix": "10.42.1.0/26",
+            "purpose": "app-service-integration",
+            "delegation": "Microsoft.Web/serverFarms",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Enabled"
+          },
+          {
+            "name": "snet-private-endpoints",
+            "address_prefix": "10.42.1.64/27",
+            "purpose": "private-endpoint",
+            "delegation": "none",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Disabled"
+          },
+          {
+            "name": "snet-dev-runner",
+            "address_prefix": "10.42.1.96/27",
+            "purpose": "vm",
+            "delegation": "none",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Enabled"
+          }
+        ],
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+        "recorded_at": "2026-11-09T14:15:16Z"
+      },
+      "dev_app_monthly_wire_planning_profile": {
+        "input_id": "dev_app_monthly_wire_planning_profile",
+        "value": "proposed_low_1_gb_per_month",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "recorded_at": "2026-11-09T18:01:48Z"
+      },
+      "dev_mgn_transfer_cost_profile": {
+        "input_id": "dev_mgn_transfer_cost_profile",
+        "value": "approve_proposed_mgn_paid_budget_bound",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "recorded_at": "2026-11-09T18:01:48Z"
+      },
+      "dev_bastion_transfer_cost_profile": {
+        "input_id": "dev_bastion_transfer_cost_profile",
+        "value": "approve_proposed_bastion_paid_budget_bound",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "recorded_at": "2026-11-09T18:01:48Z"
+      },
+      "azure_read_scope": {
+        "input_id": "azure_read_scope",
+        "value": {
+          "scope_ref": "8e02286b466548f4b011ea06560abf93",
+          "scope_sha256": "63629d36c67e12e97aa47cc4624d2d9d60ba140876ef914503252fba5b7844e8",
+          "policy_read_scope": "subscription-and-inherited"
+        },
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-formal-governance-target-20261109",
+        "recorded_at": "2026-11-10T06:46:45Z"
       }
     },
     "review_depth": "default",
@@ -662,15 +900,179 @@
         "environments": [
           "dev"
         ]
+      },
+      "2": {
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "dev_access_restore_dns_meter_profile",
+          "vnet_plan_decision",
+          "vnet_address_space",
+          "subnet_plan",
+          "dev_app_monthly_wire_planning_profile",
+          "dev_mgn_transfer_cost_profile",
+          "dev_bastion_transfer_cost_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "3": {
+        "request_id": "fulcrum-optional-design-selection-20261109",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_client_access_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "dev_secret_certificate_profile",
+          "dev_access_restore_dns_meter_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "vnet_address_space",
+          "vnet_plan_decision",
+          "subnet_plan",
+          "dev_app_monthly_wire_planning_profile",
+          "dev_mgn_transfer_cost_profile",
+          "dev_bastion_transfer_cost_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
       }
     },
-    "sku_manifest_status": "draft",
-    "sku_manifest_revision": "1",
+    "sku_manifest_status": "reviewed",
+    "sku_manifest_revision": "2",
     "assessment_views": {
       "1": {
-        "projection_sha256": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c",
+        "projection_sha256": "4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b",
         "path": "assessment-step-1.json",
         "markdown": "assessment-step-1.md"
+      },
+      "2": {
+        "projection_sha256": "9ecc1ef96f5ad0c3f9f557129b95534f897ed295b06088536c30377392427707",
+        "path": "assessment-step-2.json",
+        "markdown": "assessment-step-2.md"
+      },
+      "3": {
+        "projection_sha256": "19cfcae33d2a13ea34796a591e8c15356b8068f1a6cf9453cf2b3a3b5daf14ac",
+        "path": "assessment-step-3.json",
+        "markdown": "assessment-step-3.md"
       }
     },
     "review_cycles": {
@@ -681,15 +1083,65 @@
         "pass_number": 1,
         "canonical_path": "agent-output/fulcrum/reviews/challenge-findings-requirements.json",
         "initial_id": "fulcrum-requirements-comprehensive-20261106-152603",
-        "projection": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c",
-        "calls": 2,
-        "max_calls": 3,
-        "current_path": "challenge-findings-requirements-entra-revision.json",
+        "projection": "4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b",
+        "calls": 3,
+        "max_calls": 4,
+        "current_path": "challenge-findings-requirements-acr-revision.json",
         "current_artifact": "agent-output/fulcrum/01-requirements.md"
+      },
+      "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba": {
+        "step": "2",
+        "artifact": "agent-output/fulcrum/02-architecture-assessment.md",
+        "lens": "comprehensive",
+        "pass_number": 1,
+        "canonical_path": "agent-output/fulcrum/reviews/challenge-findings-architecture.json",
+        "initial_id": "fulcrum-step2-architecture-initial-20261109",
+        "projection": "9ecc1ef96f5ad0c3f9f557129b95534f897ed295b06088536c30377392427707",
+        "calls": 2,
+        "max_calls": 2,
+        "current_path": "challenge-findings-architecture-archive-closure.json",
+        "current_artifact": "agent-output/fulcrum/02-architecture-assessment.md"
+      },
+      "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba": {
+        "step": "2",
+        "artifact": "agent-output/fulcrum/03-des-cost-estimate.md",
+        "lens": "cost-feasibility",
+        "pass_number": 1,
+        "canonical_path": "agent-output/fulcrum/reviews/challenge-findings-cost-estimate.json",
+        "initial_id": "fulcrum-step2-cost-estimate-initial-20261109",
+        "projection": "9ecc1ef96f5ad0c3f9f557129b95534f897ed295b06088536c30377392427707",
+        "calls": 2,
+        "max_calls": 2,
+        "current_path": "challenge-findings-cost-estimate-archive-closure.json",
+        "current_artifact": "agent-output/fulcrum/03-des-cost-estimate.md"
       }
-    }
+    },
+    "assessment_exit": "implementation",
+    "policy_evidence_contract": "corp-policy-v1",
+    "vnet_planning_mode": "guided",
+    "sku_confirmation_status": "approved",
+    "vnet_mode": "create-new",
+    "vnet_plan_decision": "confirmed",
+    "vnet_address_space": "10.42.0.0/22",
+    "subnet_plan": "[{\"name\": \"AzureBastionSubnet\", \"address_prefix\": \"10.42.0.0/24\", \"purpose\": \"bastion\", \"delegation\": \"none\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Enabled\"}, {\"name\": \"snet-app-integration\", \"address_prefix\": \"10.42.1.0/26\", \"purpose\": \"app-service-integration\", \"delegation\": \"Microsoft.Web/serverFarms\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Enabled\"}, {\"name\": \"snet-private-endpoints\", \"address_prefix\": \"10.42.1.64/27\", \"purpose\": \"private-endpoint\", \"delegation\": \"none\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Disabled\"}, {\"name\": \"snet-dev-runner\", \"address_prefix\": \"10.42.1.96/27\", \"purpose\": \"vm\", \"delegation\": \"none\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Enabled\"}]",
+    "cost_estimate_status": "failed",
+    "cost_estimate_failure_path": "_meta/02-cost-estimate.failed-attempt-1.json",
+    "cost_estimate_request_path": "_meta/02-cost-estimate-request.json",
+    "cost_estimate_attempt_accounting": "{\"comparison_dispatches\":3,\"comparison_mcp_calls\":7,\"comparison_direct_api_calls\":0,\"committed_dispatches\":1,\"committed_mcp_calls\":12,\"committed_direct_api_calls\":1,\"initial_committed_shared_ceiling\":20,\"initial_committed_remaining_after_initial\":7,\"recovery1_dispatches\":1,\"recovery1_mcp_calls\":1,\"recovery1_direct_api_calls\":0,\"recovery2_dispatches\":1,\"recovery2_mcp_calls\":0,\"recovery2_direct_api_calls\":0,\"recovery3_dispatches\":1,\"recovery3_mcp_calls\":14,\"recovery3_direct_api_calls\":6,\"current_calculation_only_dispatches\":1,\"current_calculation_only_mcp_calls\":0,\"current_calculation_only_direct_api_calls\":0,\"cumulative_committed_requests\":34,\"absolute_request_limit\":34,\"committed_attempt_remaining_requests\":0,\"architecture_review_dispatches\":0,\"cost_review_dispatches\":0,\"allowances_reset\":false}",
+    "cost_estimate_current_failure_path": "contracts/02-cost-estimate.conservative-planning-v1.json",
+    "step2_material_input_ledger_path": "_meta/02-monthly-planning-material-input-ledger.json",
+    "step2_pending_input_request_path": "_meta/02-bastion-evidence-extension-input-request.json",
+    "current_cost_estimate_path": "contracts/02-cost-estimate.conservative-planning-v2.json",
+    "cost_feasibility_review": "run",
+    "step2_pending_input_request": "_meta/02-gate2-input-request.json",
+    "skip_design": "false",
+    "design_scope": "both",
+    "diagram_tool": "python",
+    "discovery_signature": "sha256:7c229c364db863e37de347eb2a53726f0de4d7566e3d1ddf5c4d178556d82292"
   },
-  "open_findings": [],
+  "open_findings": [
+    "Owner-authorized documentation publication repair: the full App Service page capture was retained privately outside Git and its repository path replaced by an explicit provenance notice. Original SHA256 ac9bcc7914b5d9f6d3e1b44bf5cdfd19b1586100b6cfb4e4e83bbc274b2454e6. See _meta/02-documentation-publication-repair.json. Historical review records and protected snapshot remain unchanged; affected Architecture/cost review inputs and Design protected evidence require owner revalidation under existing allowances before current approval. No review budget reset, price restamping, workflow completion, commit or push authorized by this repair."
+  ],
   "decision_log": [
     {
       "decision": "Step 1 captured the anonymous supplied Project Fulcrum brief and persisted the complete answer ledger and pending business request requirements-2d5dbd4c-5a7a-4bd5-a4e7-13e1c5ee3d0e. Infrastructure-only MVP, containerized backend hosting required; all application development excluded. Company footprint, environments, timeline and review depth await actual answers. Initialized swedencentral is an unconfirmed fallback, not residency approval.",
@@ -1828,6 +2280,1274 @@
       "timestamp": "2026-11-06T16:24:10Z",
       "rationale": "Actual native ask_user result for fulcrum-gate1-entra-revision-20261106-162007; receipt _meta/01-gate1-entra-revision-response-receipt.json. Revised review APPROVED and strict freshness verified; preserve all accounting. Do not dispatch 03-Architect or grant Azure, spend, Production or deployment authority.",
       "step": "1"
+    },
+    {
+      "decision": "assessment_exit=implementation",
+      "timestamp": "2026-11-09T07:55:03Z",
+      "step": "2"
+    },
+    {
+      "decision": "Step 2 resumed under the current delegated local/public-only authority. Preferred Sweden Central Key Vault candidate excluded on documented paired-region replication; required secret/certificate profile is pending in fulcrum-step2-secret-capability-20261109-075300. No user pin, approved Requirement or Azure permission changed.",
+      "timestamp": "2026-11-09T07:55:03Z",
+      "rationale": "Explicit current caller request retains implementation intent. Microsoft official documentation identifies a non-Entra candidate conflict; application-team secret categories and parent-owned secure policy-scope intent are missing. This records research and a pending form, not user approval, a selected substitute or an independent review.",
+      "step": "2"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_secret_certificate_profile",
+      "record": {
+        "input_id": "dev_secret_certificate_profile",
+        "value": "managed identities plus platform-provided HTTPS can cover every required dev connection",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-secret-capability-20261109-075300",
+        "recorded_at": "2026-11-09T08:07:11Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T08:07:11Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "policy_feasibility_read_intent",
+      "record": {
+        "input_id": "policy_feasibility_read_intent",
+        "value": "provide_secure_scope_for_governance_read_only",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-secret-capability-20261109-075300",
+        "recorded_at": "2026-11-09T08:07:11Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T08:07:11Z"
+    },
+    {
+      "decision": "Captured the two actual dev secret-profile and policy-read-intent answers from fulcrum-step2-secret-capability-20261109-075300; no further permission granted",
+      "timestamp": "2026-11-09T08:15:42Z",
+      "rationale": "Existing parent receipt and exact validated Step 2 input records; requirement evidence only, no runtime/image or secure target binding",
+      "step": "2"
+    },
+    {
+      "decision": "Evaluate required secure credential handling through managed identities and platform-provided HTTPS without a project Key Vault dependency; preserve the Key Vault product preference and its paired-region exclusion",
+      "timestamp": "2026-11-09T08:15:42Z",
+      "rationale": "Actual dev secret profile establishes no required long-lived app secret/custom certificate category. Baseline and approved Requirements are unchanged; supported SDK/identity paths and runtime remain unverified",
+      "step": "2"
+    },
+    {
+      "decision": "ARCH-FEAS-003: do not commit or price an ACR-based image-delivery selection without supported Sweden Central-only registry-data containment evidence",
+      "timestamp": "2026-11-09T08:15:42Z",
+      "rationale": "Current Microsoft Learn ACR storage documentation permits paired-region storage. In-region zone redundancy and no configured geo-replication do not establish containment; no compliant generic MI registry substitute has been established. Required FR-01/FR-07 remain; return precise capability blocker to parent without adopting another exception",
+      "step": "2"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "policy_source",
+      "record": {
+        "input_id": "policy_source",
+        "value": {
+          "kind": "assumed-corp",
+          "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"
+        },
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-assumed-corp-owner-acceptance-20261109-124406",
+        "recorded_at": "2026-11-09T12:45:13Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T12:45:13Z"
+    },
+    {
+      "decision": "Actual ACR residency response accepts documented paired-region registry-artifact storage within the EU residency boundary; other residency requirements remain unchanged",
+      "timestamp": "2026-11-09T12:47:47Z",
+      "rationale": "Native ask_user custom answer to fulcrum-acr-residency-only-20261109-124406: This is a non-issue. The paired region will still be within the EU residency boundary. Receipt _meta/02-acr-residency-response-receipt.json. Route material reconciliation to Requirements; no general-service exception, optional geo-replication, review approval or Azure authority inferred.",
+      "step": "2"
+    },
+    {
+      "decision": "Authorized narrow ACR material refinement: preserve prior completed Requirements and approval as historical evidence before supported reopen",
+      "timestamp": "2026-11-09T12:51:46Z",
+      "rationale": "Actual ACR answer fulcrum-acr-residency-only-20261109-124406 and parent-authorized bounded Requirements-owner revision. Prior Step 1 completion 2026-11-06T16:24:10Z and Step 2 original start 2026-11-06T16:24:10Z preserved in _meta/01-acr-refinement-provenance.json; exact approved bytes/projection archived. Existing reviews, receipts, attempts and 2/3 same-cycle allowance remain immutable; new bytes require review and separate Gate 1.",
+      "step": "1"
+    },
+    {
+      "decision": "Step 1 reopened; steps marked stale: 2",
+      "timestamp": "2026-11-09T12:51:52Z",
+      "rationale": "Reopening a step invalidates what was built on it; re-complete each stale step in order",
+      "step": "1"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "residency_requirement",
+      "record": {
+        "input_id": "residency_requirement",
+        "value": {
+          "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies, except the narrow ACR registry-artifact behavior explicitly accepted below.",
+          "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
+          "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
+          "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception beyond the explicitly accepted ACR registry-artifact behavior; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver. No optional customer-configured ACR geo-replication, arbitrary replicas or other-service paired-region storage is authorized.",
+          "acceptance_scope": "Project Stakeholders accept the existing narrow Entra exception as meeting their project GDPR requirements; that acceptance is unchanged. The additional DEV-only ACR acceptance covers only the documented Microsoft-managed paired-region storage of container images and registry artifacts within the EU residency boundary. Neither acceptance is independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority; no new review allowance or regional disaster-recovery guarantee is granted.",
+          "acr_registry_artifact_exception": "Accept the documented Microsoft-managed ACR paired-region storage behavior within the EU residency boundary for container images and registry artifacts only, per https://learn.microsoft.com/azure/container-registry/container-registry-storage. Sweden Central remains the registry creation/workload region; its documented Sweden South pair lies within the accepted EU boundary. Actual replication and regional recovery remain unverified. Workload compute, application data, Blob, backups, monitoring, non-ACR dependencies and the existing Entra exception remain unchanged."
+        },
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-acr-residency-only-20261109-124406",
+        "recorded_at": "2026-11-09T12:51:56Z"
+      },
+      "supersedes": "07720172f6a5b72725302056e0b24f5974bcf5cb416560aff8978d4ae14f5a36",
+      "timestamp": "2026-11-09T12:51:56Z"
+    },
+    {
+      "decision": "ACR-only Requirements revision validated; affected review blocked before dispatch pending explicit same-cycle material-scope extension",
+      "timestamp": "2026-11-09T12:55:56Z",
+      "rationale": "Actual supported review-audit error: Material scope changed; owner-led cycle revision required, not an allowance reset. Same cycle retains 2 consumed calls and absolute max 3. Only supported extension requires actual owner approval for absolute max 4 bound to projection 4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b. No new invocation, findings or Gate 1. Single parent form _meta/01-review-extension-acr-input-request.json; exact checks _meta/01-acr-revision-validation.json. Prior approvals/reviews/completion archived and original receipts unchanged; only residency among 51 consumed inputs changed.",
+      "step": "1"
+    },
+    {
+      "decision": "Explicit bounded review extension",
+      "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+      "max_calls": 4,
+      "projection_sha256": "4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b",
+      "request_id": "fulcrum-requirements-acr-review-extension-20261109-125400",
+      "consumed": 2,
+      "timestamp": "2026-11-09T12:57:16Z"
+    },
+    {
+      "decision": "ACR-only Step 1 revision: actual same-cycle comprehensive review APPROVED, low risk, zero findings; recorded, strictly verified and selected current; separate revised Gate 1 awaits human response.",
+      "timestamp": "2026-11-09T13:05:46Z",
+      "rationale": "Authorized extension retained all prior attempts; exactly one new reviewer dispatch, calls 3/4. Frozen requirements/projection and other 50 inputs preserved. Validated gate form/context at _meta/01-gate1-acr-revision-input-request.json. This note records checks, not approval or permission.",
+      "step": "1"
+    },
+    {
+      "decision": "Revised ACR Gate 1 actual response approve_and_continue: approve current reviewed Requirements, complete Step 1 and return immediately to Architecture",
+      "timestamp": "2026-11-09T13:13:22Z",
+      "rationale": "Actual native ask_user result for fulcrum-gate1-acr-revision-20261109-130200, preserved in _meta/01-gate1-acr-revision-response-receipt.json. Review APPROVED and strict freshness verified; current Corp assumptions accepted only for tenant-unverified DEV Architecture. No Azure operations or verification bypass.",
+      "step": "1"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_client_access_profile",
+      "record": {
+        "input_id": "dev_client_access_profile",
+        "value": "Ephemeral VNet-hosted DEV client/runner sessions",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T13:35:47Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_compute_demand_profile",
+      "record": {
+        "input_id": "dev_compute_demand_profile",
+        "value": "Adopt the proposed compute planning envelope",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T13:35:47Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_data_meter_profile",
+      "record": {
+        "input_id": "dev_data_meter_profile",
+        "value": "Adopt the proposed data and meter planning profile",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T13:35:47Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_access_provisioned_hours_per_month",
+      "record": {
+        "input_id": "dev_access_provisioned_hours_per_month",
+        "value": 80,
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T13:35:47Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_recovery_failure_coverage",
+      "record": {
+        "input_id": "dev_recovery_failure_coverage",
+        "value": "Recoverable logical/deletion/application faults; regional recovery is provider-dependent",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:47Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T13:35:47Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_backup_retention_profile",
+      "record": {
+        "input_id": "dev_backup_retention_profile",
+        "value": "Thirty-day application recovery profile",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+        "recorded_at": "2026-11-09T13:35:48Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T13:35:48Z"
+    },
+    {
+      "decision": "Explicit phase scope revision without resetting review history",
+      "step": "2",
+      "before": {
+        "request_id": "fulcrum-step2-continuation-capture-092d8802-9ed6-4c02-8a3e-31a31bee3c16",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "after": {
+        "request_id": "fulcrum-step2-usage-scope-9aa29601-42cb-4cbe-ba00-cdf3eeadfda1",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "timestamp": "2026-11-09T13:52:02Z"
+    },
+    {
+      "decision": "sku_manifest_status=reviewed",
+      "timestamp": "2026-11-09T13:52:50Z",
+      "step": "2"
+    },
+    {
+      "decision": "sku_manifest_revision=2",
+      "timestamp": "2026-11-09T13:52:50Z",
+      "step": "2"
+    },
+    {
+      "decision": "vnet_planning_mode=guided",
+      "timestamp": "2026-11-09T13:52:50Z",
+      "step": "2"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "sku_confirmation_status",
+      "record": {
+        "input_id": "sku_confirmation_status",
+        "value": "approved",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+        "recorded_at": "2026-11-09T14:05:28Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T14:05:28Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "vnet_mode",
+      "record": {
+        "input_id": "vnet_mode",
+        "value": "create-new",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+        "recorded_at": "2026-11-09T14:05:28Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T14:05:28Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_access_restore_dns_meter_profile",
+      "record": {
+        "input_id": "dev_access_restore_dns_meter_profile",
+        "value": "Adopt the proposed capped access/restore and DNS allocation scenario",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+        "recorded_at": "2026-11-09T14:05:28Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T14:05:28Z"
+    },
+    {
+      "decision": "sku_confirmation_status=approved",
+      "timestamp": "2026-11-09T14:05:28Z",
+      "rationale": "Actual Approve all label in matching native receipt; canonical approved applies only current rev-2 manifest hash 211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf and three architect-derived rows; LRS pin unchanged. No Gate 2 authority.",
+      "step": "2"
+    },
+    {
+      "decision": "vnet_mode=create-new",
+      "timestamp": "2026-11-09T14:05:29Z",
+      "rationale": "Actual native response in _meta/02-sku-network-meter-response-receipt.json; CIDR/subnet plan remains pending; no Azure reads authorized.",
+      "step": "2"
+    },
+    {
+      "decision": "Explicit phase scope revision without resetting review history",
+      "step": "2",
+      "before": {
+        "request_id": "fulcrum-step2-usage-scope-9aa29601-42cb-4cbe-ba00-cdf3eeadfda1",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "after": {
+        "request_id": "fulcrum-step2-network-scope-capture-31c7b5e3-c954-4083-bae3-ace2601b31e2",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "dev_access_restore_dns_meter_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "timestamp": "2026-11-09T14:07:09Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "vnet_plan_decision",
+      "record": {
+        "input_id": "vnet_plan_decision",
+        "value": "confirmed",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+        "recorded_at": "2026-11-09T14:15:16Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T14:15:16Z"
+    },
+    {
+      "decision": "vnet_plan_decision=confirmed",
+      "timestamp": "2026-11-09T14:15:16Z",
+      "rationale": "Actual confirmed complete proposal; receipt _meta/02-new-vnet-plan-response-receipt.json; DEV planning only",
+      "step": "2"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "vnet_address_space",
+      "record": {
+        "input_id": "vnet_address_space",
+        "value": "10.42.0.0/22",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+        "recorded_at": "2026-11-09T14:15:16Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T14:15:16Z"
+    },
+    {
+      "decision": "vnet_address_space=10.42.0.0/22",
+      "timestamp": "2026-11-09T14:15:16Z",
+      "rationale": "Actual confirmed complete proposal; receipt _meta/02-new-vnet-plan-response-receipt.json; DEV planning only",
+      "step": "2"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "subnet_plan",
+      "record": {
+        "input_id": "subnet_plan",
+        "value": [
+          {
+            "name": "AzureBastionSubnet",
+            "address_prefix": "10.42.0.0/24",
+            "purpose": "bastion",
+            "delegation": "none",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Enabled"
+          },
+          {
+            "name": "snet-app-integration",
+            "address_prefix": "10.42.1.0/26",
+            "purpose": "app-service-integration",
+            "delegation": "Microsoft.Web/serverFarms",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Enabled"
+          },
+          {
+            "name": "snet-private-endpoints",
+            "address_prefix": "10.42.1.64/27",
+            "purpose": "private-endpoint",
+            "delegation": "none",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Disabled"
+          },
+          {
+            "name": "snet-dev-runner",
+            "address_prefix": "10.42.1.96/27",
+            "purpose": "vm",
+            "delegation": "none",
+            "nsg": "auto",
+            "route_table": "none",
+            "service_endpoints": [],
+            "private_endpoint_network_policies": "Enabled"
+          }
+        ],
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+        "recorded_at": "2026-11-09T14:15:16Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T14:15:16Z"
+    },
+    {
+      "decision": "subnet_plan=[{\"name\": \"AzureBastionSubnet\", \"address_prefix\": \"10.42.0.0/24\", \"purpose\": \"bastion\", \"delegation\": \"none\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Enabled\"}, {\"name\": \"snet-app-integration\", \"address_prefix\": \"10.42.1.0/26\", \"purpose\": \"app-service-integration\", \"delegation\": \"Microsoft.Web/serverFarms\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Enabled\"}, {\"name\": \"snet-private-endpoints\", \"address_prefix\": \"10.42.1.64/27\", \"purpose\": \"private-endpoint\", \"delegation\": \"none\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Disabled\"}, {\"name\": \"snet-dev-runner\", \"address_prefix\": \"10.42.1.96/27\", \"purpose\": \"vm\", \"delegation\": \"none\", \"nsg\": \"auto\", \"route_table\": \"none\", \"service_endpoints\": [], \"private_endpoint_network_policies\": \"Enabled\"}]",
+      "timestamp": "2026-11-09T14:15:17Z",
+      "rationale": "Actual confirmed complete proposal; receipt _meta/02-new-vnet-plan-response-receipt.json; DEV planning only",
+      "step": "2"
+    },
+    {
+      "decision": "Explicit phase scope revision without resetting review history",
+      "step": "2",
+      "before": {
+        "request_id": "fulcrum-step2-network-scope-capture-31c7b5e3-c954-4083-bae3-ace2601b31e2",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "dev_access_restore_dns_meter_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "after": {
+        "request_id": "fulcrum-step2-confirmed-network-continuation-20261109",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "dev_access_restore_dns_meter_profile",
+          "vnet_plan_decision",
+          "vnet_address_space",
+          "subnet_plan"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "timestamp": "2026-11-09T14:15:17Z"
+    },
+    {
+      "decision": "cost_estimate_status=failed",
+      "timestamp": "2026-11-09T14:30:24Z",
+      "rationale": "Actual initial committed pricing failure; native result and exact diagnostic retained; no retry or phase completion",
+      "step": "2"
+    },
+    {
+      "decision": "cost_estimate_failure_path=_meta/02-cost-estimate.failed-attempt-1.json",
+      "timestamp": "2026-11-09T14:30:24Z",
+      "rationale": "Actual initial committed pricing failure; native result and exact diagnostic retained; no retry or phase completion",
+      "step": "2"
+    },
+    {
+      "decision": "cost_estimate_request_path=_meta/02-cost-estimate-request.json",
+      "timestamp": "2026-11-09T14:30:24Z",
+      "rationale": "Actual initial committed pricing failure; native result and exact diagnostic retained; no retry or phase completion",
+      "step": "2"
+    },
+    {
+      "decision": "cost_estimate_attempt_accounting={\"comparison_dispatches\": 3, \"comparison_mcp_calls\": 7, \"comparison_direct_api_calls\": 0, \"committed_dispatches\": 1, \"committed_mcp_calls\": 12, \"committed_direct_api_calls\": 1, \"committed_attempt_remaining_requests\": 7, \"committed_shared_ceiling\": 20, \"architecture_review_dispatches\": 0, \"cost_review_dispatches\": 0, \"allowances_reset\": false}",
+      "timestamp": "2026-11-09T14:30:24Z",
+      "rationale": "Actual initial committed pricing failure; native result and exact diagnostic retained; no retry or phase completion",
+      "step": "2"
+    },
+    {
+      "decision": "Authorized bounded Step2 pricing recovery prepared; original seven requests remain",
+      "timestamp": "2026-11-09T15:20:10Z",
+      "rationale": "Actual user resume 2026-11-09T15:16:03.018Z and delegated recovery instruction permit one unresolved-evidence recovery under _meta/02-cost-recovery-1-request.json. Preserve original Step2 start 2026-11-09T13:13:22Z, initial FAILED diagnostic SHA7984f1f3c9574efee99b09dec94aebab710885df19ed73c17e2d86b325c08586, original12MCP+1direct of20, historical comparison7MCP separately. No new allowance, scope change, approval or completion. Actual q1-q10 retained summaries are not raw responses; pricing owner must verify reuse/fallback provenance without fabricating it.",
+      "step": "2"
+    },
+    {
+      "decision": "Bounded pricing recovery1 actually FAILED; six original requests remain",
+      "timestamp": "2026-11-09T15:31:15Z",
+      "rationale": "Named native cost-estimate-subagent published contracts/02-cost-estimate.recovery-1.json revision2 FAILED17lines13unresolved. Recovery1MCP0direct plus original12MCP1direct equals14of20; no reset. Broad Bandwidth discovery found actual Standard Data Transfer Out, but product/tiers/transfer applicability unverified. Originalq1-q10raw provenance absent; worker documented at least8additional requests for4scopes alone versus6remaining and unavailable permitted public-documentation capability. Validator0errors0warnings is not COMPLETE. Initial diagnostic/manifest/requirements/request hashes unchanged; exact native transcript archived. No automatic retry/reviews/Gate2/completion; return actual capability/provenance blocker to interactive parent.",
+      "step": "2"
+    },
+    {
+      "decision": "Actual authorization for one bounded pricing recovery: preserve 14 spent requests and permit at most 20 new requests, absolute total maximum 34",
+      "timestamp": "2026-11-09T15:33:53Z",
+      "rationale": "Native response authorize_bounded_recovery to fulcrum-pricing-recovery-extension-20261109-151603. Exact receipt _meta/02-pricing-extension-response-receipt.json. Same approved estimate scope; no resets, new SKUs, reviews or Azure operations. Parent-supplied verified public documentation enables pricing-only interpretation.",
+      "step": "2"
+    },
+    {
+      "decision": "Actual single authorized pricing recovery2 returned FAILED before network queries; preserved cumulative14of34 and stopped",
+      "timestamp": "2026-11-09T15:46:45Z",
+      "rationale": "Native cost-estimate-subagent published contracts/02-cost-estimate.recovery-2.json SHA47714c1d6043af62ab41312cd01b07ad8cdfc693c4a13386e242cca9b4f90b25. Zero new MCP/direct requests. Required app telemetry/control transfer lacks exact verified exemption or approved usage. Actual validation _meta/02-cost-recovery-2-validation.json; no manifest writeback, reviews, Gate2 or retry. Unused20 requests are not further-dispatch authority.",
+      "step": "2"
+    },
+    {
+      "decision": "App-transfer response requests indicative per-Tb unit pricing only; no monthly app wire-transfer quantity accepted. One bounded pricing continuation authorized within existing 14/34 request history.",
+      "timestamp": "2026-11-09T15:52:21Z",
+      "rationale": "Actual custom native response to fulcrum-app-egress-recovery-20261109-151603, receipt _meta/02-app-egress-recovery-response-receipt.json. Preserve native catalog units, explicitly label conversion and do not infer suggested 5 GB or a full monthly workload total. No further retries, review reset or Azure authority.",
+      "step": "2"
+    },
+    {
+      "decision": "Actual authorized recovery3 returned full-scope FAILED with sixteen resolved fixed-scope lines and verified indicative app-transfer unit bands; no app volume adopted",
+      "timestamp": "2026-11-09T16:14:16Z",
+      "rationale": "Authority fulcrum-app-egress-recovery-20261109-151603 and actual receipt preserved. Named native cost-estimate-subagent produced contracts/02-cost-estimate.recovery-3.json SHA1c290d30906a95beda21e2e607ddd48b8a6f4851f39597938e36d92a11e5ba82. Actual14MCP+6direct new, prior14 unchanged, cumulative34/34 remaining0; one continuation consumed, no retry/reset. Null workload totals/empty writeback; original17 lines/current66 inputs unchanged. Indicative unit quote and qualified fixed evidence in output retail-evidence; parent validation _meta/02-cost-recovery-3-validation.json. Main archived exact q11 bytes without worker edits/new query; receipt _meta/02-cost-recovery-3-archive-receipt.json. Full-cost coverage remains unresolved; reviews0/0 and Gate2 HOLD. Parent presents requested unit-only result, no automatic volume interview, scope migration, extra pricing or Azure authority.",
+      "step": "2"
+    },
+    {
+      "decision": "Actual user resumes monthly-cost planning: first consolidate genuinely missing usage/applicability inputs and seek explicit scenario approval; reuse verified evidence without new queries where possible",
+      "timestamp": "2026-11-09T17:50:01Z",
+      "rationale": "Native custom response to fulcrum-indicative-resume-scope-20261109-174506; receipt _meta/02-indicative-resume-scope-response-receipt.json. Preserve 34/34 pricing history, SKUs, requirements and reviews. Any essential pricing extension requires exact explanation and separate bounded authorization; no Architecture or Azure-operation approval.",
+      "step": "2"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_app_monthly_wire_planning_profile",
+      "record": {
+        "input_id": "dev_app_monthly_wire_planning_profile",
+        "value": "proposed_low_1_gb_per_month",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "recorded_at": "2026-11-09T18:01:48Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T18:01:48Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_mgn_transfer_cost_profile",
+      "record": {
+        "input_id": "dev_mgn_transfer_cost_profile",
+        "value": "approve_proposed_mgn_paid_budget_bound",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "recorded_at": "2026-11-09T18:01:48Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T18:01:48Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "dev_bastion_transfer_cost_profile",
+      "record": {
+        "input_id": "dev_bastion_transfer_cost_profile",
+        "value": "approve_proposed_bastion_paid_budget_bound",
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "recorded_at": "2026-11-09T18:01:48Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-09T18:01:48Z"
+    },
+    {
+      "decision": "Explicit phase scope revision without resetting review history",
+      "step": "2",
+      "before": {
+        "request_id": "fulcrum-step2-confirmed-network-continuation-20261109",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "dev_access_restore_dns_meter_profile",
+          "vnet_plan_decision",
+          "vnet_address_space",
+          "subnet_plan"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "after": {
+        "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+        "input_ids": [
+          "company_size",
+          "target_environments",
+          "timeline",
+          "review_depth",
+          "project_name",
+          "industry",
+          "scenario",
+          "system_description",
+          "business_objective",
+          "infrastructure_scope",
+          "application_scope_exclusions",
+          "technology_evaluation_constraints",
+          "design_preferences_not_decisions",
+          "data_sensitivity",
+          "data_processing_constraints",
+          "security_privacy_requirements",
+          "compliance",
+          "anonymity_requirements",
+          "notification_intent",
+          "workload_pattern",
+          "daily_users",
+          "peak_concurrent_users",
+          "monthly_budget",
+          "budget_currency",
+          "budget_limit",
+          "cost_monitoring_mode",
+          "availability_target",
+          "recovery_profile",
+          "performance_target",
+          "iac_tool",
+          "target_region",
+          "private_client_access",
+          "authentication_requirement",
+          "compute_host",
+          "monitoring_access_scope",
+          "monitoring_network_requirement",
+          "monitoring_privacy_retention",
+          "non_relational_store",
+          "notification_channels",
+          "relational_db",
+          "residency_requirement",
+          "service_tier",
+          "storage_needs",
+          "notification_delivery_scope",
+          "messaging_events",
+          "supporting_services",
+          "sku_app_service",
+          "sku_nosql",
+          "sku_storage_repl",
+          "sku_commitment",
+          "sku_env_override",
+          "dev_secret_certificate_profile",
+          "policy_feasibility_read_intent",
+          "policy_source",
+          "dev_client_access_profile",
+          "dev_compute_demand_profile",
+          "dev_data_meter_profile",
+          "dev_access_provisioned_hours_per_month",
+          "dev_recovery_failure_coverage",
+          "dev_backup_retention_profile",
+          "sku_confirmation_status",
+          "vnet_mode",
+          "dev_access_restore_dns_meter_profile",
+          "vnet_plan_decision",
+          "vnet_address_space",
+          "subnet_plan",
+          "dev_app_monthly_wire_planning_profile",
+          "dev_mgn_transfer_cost_profile",
+          "dev_bastion_transfer_cost_profile"
+        ],
+        "environments": [
+          "dev"
+        ]
+      },
+      "timestamp": "2026-11-09T18:01:48Z"
+    },
+    {
+      "decision": "cost_estimate_current_failure_path=contracts/02-cost-estimate.conservative-planning-v1.json",
+      "timestamp": "2026-11-09T18:12:45Z",
+      "rationale": "Actual native cost-estimate-subagent zero-query continuation returned FAILED; schema valid,17lines16verifiedcomponents,null workload totals,empty writeback; exact Bastion native coverage/contract gap remains.",
+      "step": "2"
+    },
+    {
+      "decision": "cost_estimate_attempt_accounting={\"comparison_dispatches\":3,\"comparison_mcp_calls\":7,\"comparison_direct_api_calls\":0,\"committed_dispatches\":1,\"committed_mcp_calls\":12,\"committed_direct_api_calls\":1,\"initial_committed_shared_ceiling\":20,\"initial_committed_remaining_after_initial\":7,\"recovery1_dispatches\":1,\"recovery1_mcp_calls\":1,\"recovery1_direct_api_calls\":0,\"recovery2_dispatches\":1,\"recovery2_mcp_calls\":0,\"recovery2_direct_api_calls\":0,\"recovery3_dispatches\":1,\"recovery3_mcp_calls\":14,\"recovery3_direct_api_calls\":6,\"current_calculation_only_dispatches\":1,\"current_calculation_only_mcp_calls\":0,\"current_calculation_only_direct_api_calls\":0,\"cumulative_committed_requests\":34,\"absolute_request_limit\":34,\"committed_attempt_remaining_requests\":0,\"architecture_review_dispatches\":0,\"cost_review_dispatches\":0,\"allowances_reset\":false}",
+      "timestamp": "2026-11-09T18:12:45Z",
+      "rationale": "Current cumulative ledger preserves every historical dispatch and all34 consumed requests; latest actual arithmetic/source-validation invocation issued0new requests. Comparison allowance/history remains separate; no further permission granted.",
+      "step": "2"
+    },
+    {
+      "decision": "step2_material_input_ledger_path=_meta/02-monthly-planning-material-input-ledger.json",
+      "timestamp": "2026-11-09T18:12:45Z",
+      "rationale": "Actual three choices recorded through input-record writers; current69-record projection synchronized, original66 ledger/records unchanged.",
+      "step": "2"
+    },
+    {
+      "decision": "step2_pending_input_request_path=_meta/02-bastion-evidence-extension-input-request.json",
+      "timestamp": "2026-11-09T18:12:45Z",
+      "rationale": "One exact missing native Bastion evidence permission request; pending only, no approval or query allowance granted. Form/context validated with all69 captured values.",
+      "step": "2"
+    },
+    {
+      "decision": "Actual authorization: one exact Bastion transfer native-evidence GET and one same-history planning recalculation; preserve 34 consumed, absolute cap 35, no MCP/retry/pagination",
+      "timestamp": "2026-11-09T18:15:24Z",
+      "rationale": "Native response authorize_one_bastion_request_and_one_same_history_continuation to fulcrum-bastion-native-evidence-extension-20261109-181000. Receipt _meta/02-bastion-evidence-extension-response-receipt.json binds exact service/product/Standard meter/Sweden Central/USD scope. Preserve SKUs, Requirements and reviews; no Architecture or Azure-operation approval.",
+      "step": "2"
+    },
+    {
+      "decision": "current_cost_estimate_path=contracts/02-cost-estimate.conservative-planning-v2.json",
+      "timestamp": "2026-11-09T18:35:24Z",
+      "step": "2"
+    },
+    {
+      "decision": "cost_feasibility_review=run",
+      "timestamp": "2026-11-09T18:43:08Z",
+      "step": "2"
+    },
+    {
+      "decision": "step2_pending_input_request=_meta/02-gate2-input-request.json",
+      "timestamp": "2026-11-09T18:45:04Z",
+      "step": "2"
+    },
+    {
+      "decision": "Gate 2 actual response approve_and_continue: approve the current reviewed conservative DEV Architecture bundle and continue after explicit optional Design selection",
+      "timestamp": "2026-11-09T20:48:08Z",
+      "rationale": "Native result for fulcrum-gate2-current69-20261109-184300, receipt _meta/02-gate2-response-receipt.json. Full 17-line scenario COMPLETE; both reviews APPROVED and strict freshness verified. Corp assumptions tenant-unverified DEV Architecture-only; no Azure operations, spend or later verification bypass.",
+      "step": "2"
+    },
+    {
+      "decision": "ADR-0001: One managed Linux B1 container host",
+      "timestamp": "2026-11-09T21:15:21Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0001-managed-linux-container-host.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "ADR-0002: Cosmos NoSQL Serverless as the primary store",
+      "timestamp": "2026-11-09T21:15:22Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0002-serverless-document-primary.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "ADR-0003: Ephemeral private DEV access with independent app egress",
+      "timestamp": "2026-11-09T21:15:22Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0003-ephemeral-private-access-and-egress.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "ADR-0004: Secretless identity-based private service integration",
+      "timestamp": "2026-11-09T21:15:22Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0004-secretless-private-integration.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "ADR-0005: Sweden Central workload with only two narrow residency exceptions",
+      "timestamp": "2026-11-09T21:15:22Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0005-qualified-single-region-residency.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "ADR-0006: Same-region logical recovery within the LRS constraint",
+      "timestamp": "2026-11-09T21:15:22Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0006-same-region-logical-recovery.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "ADR-0007: Conservative on-demand planning with minimal DEV cost monitoring",
+      "timestamp": "2026-11-09T21:15:23Z",
+      "rationale": "Recorded existing Gate 2 approved DEV decision; exact source quote, rejected alternatives, consequences and five WAF trade-offs in 03-des-adr-0007-conservative-on-demand-planning.md. No redesign or deployment acceptance.",
+      "step": "3"
+    },
+    {
+      "decision": "Step 3 optional independent ADR review: NOT REQUESTED / SKIPPED",
+      "timestamp": "2026-11-09T21:15:23Z",
+      "rationale": "Current review_depth=default and actual optional Design receipt selected both without review opt-in; zero review dispatches, no approval verdict or findings sidecar.",
+      "step": "3"
+    },
+    {
+      "decision": "Step 3 completion first attempt refused missing practical phase scope",
+      "timestamp": "2026-11-09T21:16:25Z",
+      "rationale": "Actual exit 2: challenger_findings_invalid / Explicit phase scope is required. Recovered the already-authorized Design selection receipt into the supported 69-input DEV scope and recall-owned projection; no new review, approval or bypass.",
+      "step": "3"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "azure_read_scope",
+      "record": {
+        "input_id": "azure_read_scope",
+        "value": {
+          "scope_ref": "8e02286b466548f4b011ea06560abf93",
+          "scope_sha256": "63629d36c67e12e97aa47cc4624d2d9d60ba140876ef914503252fba5b7844e8",
+          "policy_read_scope": "subscription-and-inherited"
+        },
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-formal-governance-target-20261109",
+        "recorded_at": "2026-11-10T06:46:45Z"
+      },
+      "supersedes": null,
+      "timestamp": "2026-11-10T06:46:45Z"
+    },
+    {
+      "decision": "Record scoped material input",
+      "input_id": "policy_source",
+      "record": {
+        "input_id": "policy_source",
+        "value": {
+          "kind": "tenant"
+        },
+        "environments": [
+          "dev"
+        ],
+        "owner": "Project Stakeholders",
+        "request_id": "fulcrum-formal-governance-target-20261109",
+        "recorded_at": "2026-11-10T06:46:45Z"
+      },
+      "supersedes": "d6605f4105b5a0332a6c827117ff7ced796df073f631705cad40aff9df093057",
+      "timestamp": "2026-11-10T06:46:45Z"
     }
   ],
   "review_audit": {
@@ -1886,8 +3606,8 @@
       "agent": "02-Requirements",
       "status": "complete",
       "sub_step": null,
-      "started": "2026-11-06T15:53:30Z",
-      "completed": "2026-11-06T16:24:10Z",
+      "started": "2026-11-09T12:51:52Z",
+      "completed": "2026-11-09T13:13:22Z",
       "artifacts": [
         "01-requirements.md"
       ],
@@ -1899,22 +3619,61 @@
     "2": {
       "name": "Architecture",
       "agent": "03-Architect",
-      "status": "in_progress",
-      "sub_step": null,
-      "started": "2026-11-06T16:24:10Z",
-      "completed": null,
-      "artifacts": [],
-      "context_files_used": []
+      "status": "complete",
+      "sub_step": "policy_feasibility",
+      "started": "2026-11-09T13:13:22Z",
+      "completed": "2026-11-09T21:03:01Z",
+      "artifacts": [
+        "_meta/02-cost-estimate.failed-attempt-1.json",
+        "_meta/02-cost-recovery-1-validation.json",
+        "contracts/02-cost-estimate.recovery-1.json",
+        "contracts/02-cost-estimate.recovery-2.json",
+        "contracts/02-cost-estimate.recovery-3.json",
+        "_meta/02-indicative-pricing-recovery-3.md",
+        "contracts/02-cost-estimate.conservative-planning-v1.json",
+        "_meta/02-monthly-planning-material-input-ledger.json",
+        "_meta/02-cost-conservative-planning-validation.json",
+        "_meta/02-bastion-evidence-extension-input-request.json",
+        "contracts/02-cost-estimate.conservative-planning-v2.json",
+        "03-des-cost-estimate.md",
+        "reviews/challenge-findings-architecture.json",
+        "reviews/challenge-findings-cost-estimate.json",
+        "02-architecture-assessment.md",
+        "_meta/02-gate2-input-request.json"
+      ],
+      "context_files_used": [],
+      "completed_environments": [
+        "dev"
+      ]
     },
     "3": {
       "name": "Design",
       "agent": "04-Design",
-      "status": "pending",
+      "status": "complete",
       "sub_step": null,
-      "started": null,
-      "completed": null,
-      "artifacts": [],
-      "context_files_used": []
+      "started": "2026-11-09T21:03:01Z",
+      "completed": "2026-11-09T21:16:25Z",
+      "artifacts": [
+        "assets/03-des-diagram.py",
+        "assets/03-des-diagram.png",
+        "assets/03-des-diagram.svg",
+        "assets/03-des-diagram-network.png",
+        "assets/03-des-diagram-network.svg",
+        "03-des-adr-0001-managed-linux-container-host.md",
+        "03-des-adr-0002-serverless-document-primary.md",
+        "03-des-adr-0003-ephemeral-private-access-and-egress.md",
+        "03-des-adr-0004-secretless-private-integration.md",
+        "03-des-adr-0005-qualified-single-region-residency.md",
+        "03-des-adr-0006-same-region-logical-recovery.md",
+        "03-des-adr-0007-conservative-on-demand-planning.md",
+        "03-des-design-traceability.md",
+        "_meta/03-des-validation.json",
+        "_meta/03-des-visual-checks.json"
+      ],
+      "context_files_used": [],
+      "completed_environments": [
+        "dev"
+      ]
     },
     "3_5": {
       "name": "Governance",
@@ -2014,6 +3773,132 @@
       "retry_of": null,
       "recorded_at": "2026-11-06T16:19:28Z",
       "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-requirements-acr-revision-20261109-125300",
+      "step": "1",
+      "kind": "invocation",
+      "input_digest": "2ca816f1159e10d3df9732c24306928df00ff29aebd2afc31d0ab57243c2ca6d",
+      "outcome": "started",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T12:58:48Z",
+      "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-requirements-acr-revision-20261109-125300",
+      "step": "1",
+      "kind": "invocation",
+      "input_digest": "2ca816f1159e10d3df9732c24306928df00ff29aebd2afc31d0ab57243c2ca6d",
+      "outcome": "completed",
+      "review_output": "nonempty",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T13:01:29Z",
+      "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-architecture-initial-20261109",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "a46f06cac8e5f612974ef6c225c5d3e2e26a4a7eeec37ceed055c68016c01566",
+      "outcome": "started",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T18:36:32Z",
+      "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-cost-estimate-initial-20261109",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "a46f06cac8e5f612974ef6c225c5d3e2e26a4a7eeec37ceed055c68016c01566",
+      "outcome": "started",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T18:36:33Z",
+      "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-architecture-initial-20261109",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "a46f06cac8e5f612974ef6c225c5d3e2e26a4a7eeec37ceed055c68016c01566",
+      "outcome": "completed",
+      "review_output": "nonempty",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T18:41:31Z",
+      "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-cost-estimate-initial-20261109",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "a46f06cac8e5f612974ef6c225c5d3e2e26a4a7eeec37ceed055c68016c01566",
+      "outcome": "completed",
+      "review_output": "nonempty",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T18:41:31Z",
+      "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-cost-estimate-archive-closure-20261109-2052",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "e1702bf778d8cfcdc0e8e9064666b7ac69032cb65f64f9547cfeed80aa59d789",
+      "outcome": "started",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T20:54:09Z",
+      "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-architecture-archive-closure-20261109-2052",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "e1702bf778d8cfcdc0e8e9064666b7ac69032cb65f64f9547cfeed80aa59d789",
+      "outcome": "started",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T20:54:09Z",
+      "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-cost-estimate-archive-closure-20261109-2052",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "e1702bf778d8cfcdc0e8e9064666b7ac69032cb65f64f9547cfeed80aa59d789",
+      "outcome": "completed",
+      "review_output": "nonempty",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T21:00:24Z",
+      "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba"
+    },
+    {
+      "schema_version": "review-attempt-v1",
+      "id": "fulcrum-step2-architecture-archive-closure-20261109-2052",
+      "step": "2",
+      "kind": "invocation",
+      "input_digest": "e1702bf778d8cfcdc0e8e9064666b7ac69032cb65f64f9547cfeed80aa59d789",
+      "outcome": "completed",
+      "review_output": "nonempty",
+      "retry_of": null,
+      "recorded_at": "2026-11-09T21:00:24Z",
+      "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba"
     }
-  ]
+  ],
+  "metadata": {
+    "policy_feasibility": {
+      "path": "04-policy-feasibility.json",
+      "sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+      "read_scope": "0a031168113f011987554916bd0311cc82be4137e6372aba26f5a4c48fb84599",
+      "private": true,
+      "snapshots": {
+        "subscription-1.json": "98edd9c9aa613ce65a3e8dd86f3cfc30fd640dccacb0208c3ccd13f5fd9e3dff"
+      }
+    }
+  }
 }

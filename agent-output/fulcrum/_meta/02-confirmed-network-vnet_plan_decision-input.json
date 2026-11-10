@@ -1,0 +1,9 @@
+{
+  "input_id": "vnet_plan_decision",
+  "value": "confirmed",
+  "environments": [
+    "dev"
+  ],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03"
+}

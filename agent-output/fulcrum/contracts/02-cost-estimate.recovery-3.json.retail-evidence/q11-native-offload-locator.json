@@ -1,0 +1,14 @@
+{
+ "query_id":"q11",
+ "native_response_path":"/tmp/1794239898155-copilot-tool-output-b1c22c6ed0e443738931131e08d28e92.txt",
+ "native_response_sha256":"b075afabd8cc2425494b56dc72574d1415c7ffac9de23e6d5df8fa740caf423d",
+ "native_response_bytes":35241,
+ "returned_rows":52,
+ "recorded_at":"2026-11-09T15:59:13.345813+00:00",
+ "status":200,
+ "selected_meters":[],
+ "disposition":"Full native response was read, parsed, and hashed; static metric billing is absent from regional discovery. No row from this response is selected or priced. This locator is expressly NOT a replacement native response, not a selected-row summary, and not fallback evidence.",
+ "archival_status":"FAILED",
+ "reason":"Available editing tool cannot make an exact-byte copy of this native offload (35241 bytes, no trailing newline); allowed terminal operations do not include file copying. Source remains untouched at the exact native path. No copy or full native archival under the authorized directory is claimed. This evidence persistence limitation independently prevents a COMPLETE result.",
+ "parent_recovery_boundary":"No automatic retry or extra dispatch authorized."
+}

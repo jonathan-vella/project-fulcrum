@@ -1,0 +1,20 @@
+{
+  "status": "USER_INPUT_REQUIRED",
+  "request_id": "fulcrum-gate2-current69-20261109-184300",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "phase": "gate_2_human_approval",
+  "needed_inputs": [
+    "architecture_gate2_decision"
+  ],
+  "form_path": "agent-output/fulcrum/_meta/02-gate2-native-form.json",
+  "context_path": "agent-output/fulcrum/_meta/02-gate2-question-context.json",
+  "review_receipt_path": "agent-output/fulcrum/_meta/02-review-publication-receipt.json",
+  "cost_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v2.json",
+  "gate2_ready_to_ask": true,
+  "gate2_approved": false,
+  "step2_complete": false,
+  "optional_design_choice": "Not yet answered; ask only after actual continue trigger",
+  "parent_action": "Read exact native form and separate context; validate_payload(require_context=True); pass only form.message/form.requestedSchema to native ask_user unchanged. Preserve this local correlation ID with actual response. Do not complete/dispatch on task output, independent review or cancellation."
+}

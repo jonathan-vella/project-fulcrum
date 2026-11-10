@@ -1,0 +1,82 @@
+{
+  "schema_version": "retail-price-evidence-v1",
+  "data_source": "Azure Retail Prices API (direct fallback)",
+  "query": {
+    "serviceName": "Azure Monitor",
+    "armRegionName": "Global",
+    "productName": "Azure Monitor",
+    "skuName": "Alerts",
+    "meterName": "Alerts Metric Monitored",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "mcp_failure": {
+    "kind": "missing_tier_metadata",
+    "recorded_at": "2026-11-09T16:02:21.471208+00:00",
+    "full_native_response_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q13-global-alerts.native.json",
+    "extraction_qualification": "All two exact raw matching metric rows; whole actual native response preserved separately. Timestamp is the actual post-query clock observation shared with q14, not an effectiveStartDate.",
+    "attempts": [
+      {
+        "query": {
+          "serviceName": "Azure Monitor",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {
+            "prices": [
+              {
+                "armSkuName": "",
+                "skuName": "Alerts",
+                "productName": "Azure Monitor",
+                "serviceName": "Azure Monitor",
+                "serviceFamily": "ManagementAndGovernance",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0,
+                "unitPrice": 0,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1/Month",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2018-02-01T00:00:00+00:00",
+                "meterName": "Alerts Metric Monitored",
+                "meterId": "6860c782-bbcc-41ed-a218-fb308dd0942e",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Alerts",
+                "productName": "Azure Monitor",
+                "serviceName": "Azure Monitor",
+                "serviceFamily": "ManagementAndGovernance",
+                "region": "Global",
+                "location": "Global",
+                "retailPrice": 0.1,
+                "unitPrice": 0.1,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1/Month",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2018-02-01T00:00:00+00:00",
+                "meterName": "Alerts Metric Monitored",
+                "meterId": "6860c782-bbcc-41ed-a218-fb308dd0942e",
+                "isPrimaryMeterRegion": true
+              }
+            ]
+          },
+          "duration": 0
+        }
+      }
+    ]
+  },
+  "requests_used": 1,
+  "pages": [
+    {
+      "url": "https://prices.azure.com/api/retail/prices?%24filter=serviceName+eq+%27Azure+Monitor%27+and+armRegionName+eq+%27Global%27+and+productName+eq+%27Azure+Monitor%27+and+skuName+eq+%27Alerts%27+and+meterName+eq+%27Alerts+Metric+Monitored%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+      "queried_at": "2026-11-09T16:02:44.684Z",
+      "response_sha256": "c748028a0ed23749afb748c0d74d689792865ca0c2fa8ef2fc978903a2d21a02",
+      "raw_response": "{\"BillingCurrency\":\"USD\",\"CustomerEntityId\":\"Default\",\"CustomerEntityType\":\"Retail\",\"Items\":[{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.0,\"unitPrice\":0.0,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2018-02-01T00:00:00Z\",\"meterId\":\"6860c782-bbcc-41ed-a218-fb308dd0942e\",\"meterName\":\"Alerts Metric Monitored\",\"productId\":\"DZH318Z0BQLB\",\"skuId\":\"DZH318Z0BQLB/016X\",\"productName\":\"Azure Monitor\",\"skuName\":\"Alerts\",\"serviceName\":\"Azure Monitor\",\"serviceId\":\"DZH315BMCLC8\",\"serviceFamily\":\"Management and Governance\",\"unitOfMeasure\":\"1/Month\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":10.0,\"retailPrice\":0.1,\"unitPrice\":0.1,\"armRegionName\":\"Global\",\"location\":\"Global\",\"effectiveStartDate\":\"2018-02-01T00:00:00Z\",\"meterId\":\"6860c782-bbcc-41ed-a218-fb308dd0942e\",\"meterName\":\"Alerts Metric Monitored\",\"productId\":\"DZH318Z0BQLB\",\"skuId\":\"DZH318Z0BQLB/016X\",\"productName\":\"Azure Monitor\",\"skuName\":\"Alerts\",\"serviceName\":\"Azure Monitor\",\"serviceId\":\"DZH315BMCLC8\",\"serviceFamily\":\"Management and Governance\",\"unitOfMeasure\":\"1/Month\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"}],\"NextPageLink\":null,\"Count\":2}"
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "schema_version": "policy-feasibility-collection-receipt-v1",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "mode": "preliminary-policy-feasibility-only",
+  "status": "COLLECTED_AND_BOUND",
+  "policy_evidence_contract": "corp-policy-v1",
+  "scope_ref": "8e02286b466548f4b011ea06560abf93",
+  "authorization_receipt": "_meta/04-governance-scope-receipt.json",
+  "environment": "dev",
+  "target_count": 1,
+  "read_scope": "subscription-and-inherited",
+  "evidence": {
+    "index_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+    "index_sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+    "snapshot_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+    "snapshot_sha256": "98edd9c9aa613ce65a3e8dd86f3cfc30fd640dccacb0208c3ccd13f5fd9e3dff",
+    "discovery_status": "COMPLETE",
+    "cache_hit": false,
+    "discovery_exit_code": 0,
+    "discovered_at": "2026-11-10T06:51:00Z",
+    "discovery_signature": "sha256:7c229c364db863e37de347eb2a53726f0de4d7566e3d1ddf5c4d178556d82292",
+    "ttl_days": 7,
+    "expires_at": "2026-11-17T06:51:00+00:00",
+    "canonical_script_sha256": "3da890e2bf8b61693730a2810c762197d1ec90be6e69d83014df42fc89852f27",
+    "canonical_schema_sha256": "759017a879fb1fce3144174a96a1f2e3f1233b90031a0567a8322ef49569b77c",
+    "raw_evidence_location": "Authorized owner-only managed private store; no raw repository copy",
+    "receipt_is_l0_authority": false
+  },
+  "counts": {
+    "assignments": 9,
+    "subscription_assignments": 3,
+    "inherited_assignments": 6,
+    "referenced_management_group_scopes": 1,
+    "deny_constraints": 13,
+    "modify_or_deploy_if_not_exists": 58,
+    "audit_results": 245,
+    "disabled_results": 15,
+    "exempted_findings": 0,
+    "defender_auto_filtered": 0,
+    "expanded_findings": 71
+  },
+  "l0_collection_metadata": {
+    "api_versions": {
+      "policyAssignments": "2022-06-01",
+      "policyDefinitions": "2021-06-01",
+      "policyExemptions": "2022-07-01-preview"
+    },
+    "collected_item_totals": {
+      "policyAssignments": 9,
+      "policyDefinitions": 3816,
+      "policyExemptions": 0
+    },
+    "historical_page_counts_semantics": "Collected item totals, not HTTP page totals",
+    "inheritance_method": "Canonical atScope() effective assignments, all-page collection and assignment-inventory self-check",
+    "management_group_scope_semantics": "Referenced inherited scopes, not a separately enumerated ancestry tree"
+  },
+  "checks": {
+    "tenant_matches_authorized_scope": true,
+    "exact_authorized_subscription_index": true,
+    "owner_only_directory_scope_index_snapshots_and_diagnostics": true,
+    "schema_validation": "PASS",
+    "schema_validator": "Repository shared Ajv2020 with ajv-formats",
+    "canonical_validate_only": "CURRENT",
+    "timezone_aware_positive_ttl_not_future": true,
+    "signature_verified": true,
+    "inherited_assignment_scopes_match_l0": true,
+    "full_defender_coverage": true,
+    "raw_snapshot_unchanged": true,
+    "generated_private_index_unchanged": true,
+    "protected_artifacts_unchanged": true,
+    "protected_artifact_count": 318,
+    "material_inputs_and_review_history_unchanged": true
+  },
+  "binding": {
+    "command": "apex-recall checkpoint fulcrum 2 policy_feasibility --policy-feasibility <managed-private-index> --json",
+    "exit_code": 0,
+    "policy_feasibility_status": "current",
+    "discovery_signature_recorded_with_supported_recall": true,
+    "current_step": 3,
+    "step_statuses_preserved": {
+      "1": "complete",
+      "2": "complete",
+      "3": "complete",
+      "3_5": "pending",
+      "4": "pending",
+      "5": "pending",
+      "6": "pending",
+      "7": "pending"
+    }
+  },
+  "current_readiness": {
+    "requirements_effective_review": "current",
+    "architecture_effective_review": "invalid",
+    "step_2_assessment_view": "blocked",
+    "step_3_assessment_view": "blocked",
+    "architecture_strict_cache": {
+      "path": "reviews/challenge-findings-architecture-archive-closure.json",
+      "status": "STALE",
+      "exit_code": 1,
+      "reason": "Required private policy evidence is not frozen in supporting inputs"
+    },
+    "cost_strict_cache": {
+      "path": "reviews/challenge-findings-cost-estimate-archive-closure.json",
+      "status": "STALE",
+      "exit_code": 1,
+      "reason": "Required private policy evidence is not frozen in supporting inputs"
+    },
+    "historical_approvals_preserved": true,
+    "review_attempt_count_before": 14,
+    "review_attempt_count_after": 14,
+    "existing_architecture_and_cost_allowances": "2/2 each; preserved, not renewed",
+    "collection_blockers": [],
+    "formal_readiness_blockers": [
+      "TARGET_BACKED_RECONCILIATION_PENDING",
+      "ARCHITECTURE_PRIVATE_INPUTS_STALE",
+      "COST_PRIVATE_INPUTS_STALE",
+      "CURRENT_ASSESSMENT_VIEWS_BLOCKED",
+      "EXHAUSTED_REVIEW_ALLOWANCES_REQUIRE_PARENT_OWNER_RESOLUTION"
+    ]
+  },
+  "source_deny_constraint_refs": [
+    "policy-3051731b0239c6f4",
+    "policy-f7430a9147179ef4",
+    "policy-50c2009f31a13487",
+    "policy-698afb784acd4256",
+    "policy-801388434e7a5c32",
+    "policy-433af166f71690e6",
+    "policy-b14dda4a68790a30",
+    "policy-198877c72ad6081c",
+    "policy-742bc6652d3adbf8",
+    "policy-7a76e060e7a5a2cc",
+    "policy-90f8749e4e1ec9c0",
+    "policy-0bc6f85e98967646",
+    "policy-d2d9ba61572c3cbf"
+  ],
+  "constraint_interpretation": {
+    "refs_are_review_findings": false,
+    "deny_count_proves_project_violations": false,
+    "exact_rules_parameters_paths_scopes_and_exemptions": "Retained unchanged in referenced private snapshot; interpretation/reconciliation belongs to the authorized next owner",
+    "audit_details": "Canonical collector retains summary counts rather than expanded Audit findings",
+    "planned_resource_groups": "Not yet created or named; informational lifecycle handoff, not a collection gap",
+    "later_intended_scope_checks_required": true
+  },
+  "operation_limits": {
+    "formal_governance_started": false,
+    "formal_governance_completed": false,
+    "governance_review_calls": 0,
+    "other_review_calls": 0,
+    "pricing_queries": 0,
+    "azure_writes": 0,
+    "resource_inventory_reads": 0,
+    "upstream_artifact_edits": 0,
+    "new_human_approval_inferred": false
+  },
+  "delivery_checks": {
+    "receipt_json_shape_and_evidence_binding": "PASS",
+    "readme_heading_check": {
+      "status": "PASS",
+      "exit_code": 0,
+      "required_headings": 5,
+      "total_headings": 6
+    },
+    "handoff_heading_check": {
+      "status": "PASS",
+      "exit_code": 0,
+      "required_headings": 6,
+      "total_headings": 6,
+      "line_count": 53
+    },
+    "formal_governance_markdown_json_and_decisions": "Not produced; not applicable to preliminary collection",
+    "review_freshness": "STALE",
+    "blocker_closure": "AWAITING VERIFICATION",
+    "privacy_scan": "PASS",
+    "supported_recall_handoff_exit_code": 0
+  },
+  "next_owner": "Interactive parent",
+  "next_action": "Resolve target-backed Architecture/cost reconciliation, current consumed-input views and exhausted review allowances before separately authorized formal Governance. Do not reset allowances, restamp historical reviews or infer implementation approval."
+}

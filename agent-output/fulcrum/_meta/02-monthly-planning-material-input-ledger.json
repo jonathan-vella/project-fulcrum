@@ -1,0 +1,31 @@
+{
+  "schema_version": "fulcrum-composed-material-ledger-v1",
+  "project": "fulcrum",
+  "step": "2",
+  "input_count": 69,
+  "current_full_records_path": "_meta/assessment-step-2.json",
+  "current_full_records_pointer": "/inputs",
+  "current_projection_sha256": "7906f5d6121480a4c38c9ad03ed3ae49741e7ae7e2c1dd7347bf216cb0fe44e3",
+  "source": "Supported apex-recall decide --input-record / --phase-scope and checkpoint --sync-assessment; compared with apex-recall show fulcrum --json session.material_inputs.",
+  "unchanged_predecessor": {
+    "path": "_meta/02-current-material-input-ledger.json",
+    "sha256": "abc05aa8dd3ed0cad42064de92a8ed0800dd960f46196093f81244f3829b86ab",
+    "record_count": 66,
+    "every_record_equal_current_recall": true,
+    "bytes_preserved": true
+  },
+  "new_actual_records": [
+    "_meta/inputs/02-dev-app-monthly-wire-planning-profile.json",
+    "_meta/inputs/02-dev-mgn-transfer-cost-profile.json",
+    "_meta/inputs/02-dev-bastion-transfer-cost-profile.json"
+  ],
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+  "receipt_path": "_meta/02-monthly-planning-response-receipt.json",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "normalization_path": "_meta/02-monthly-planning-normalization.json",
+  "scope_path": "_meta/02-monthly-planning-phase-scope.json",
+  "scope_authority_receipt": "_meta/02-indicative-resume-scope-response-receipt.json",
+  "authority_boundary": "Only actual additional1GB app planning envelope and the two separate service-specific paid budget-bound choices. No tariff certification, actual monthly bill, stage approval, Azure operations or new requests.",
+  "pending_request": "_meta/02-bastion-evidence-extension-input-request.json"
+}

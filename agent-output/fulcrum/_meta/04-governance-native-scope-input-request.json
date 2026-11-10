@@ -1,0 +1,55 @@
+{
+  "request_id": "fulcrum-formal-governance-target-20261109",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "governance_target_and_read_scope",
+  "needed_inputs": [
+    "dev_tenant_id",
+    "dev_subscription_id",
+    "governance_read_authorization"
+  ],
+  "privacy_contract": "Do not persist returned Azure identifiers or identifying native answers in this repository. On an explicitly authorized valid response, use supported apex-recall policy-source managed private capture. Public artifacts retain only opaque references and digests.",
+  "form": {
+    "message": "Architecture and the selected Design artifacts are complete. Formal Governance now needs target-verified DEV policy evidence; the accepted Corp assumptions cannot complete that step. To proceed with the tenant-evidence route, provide only the non-secret DEV tenant/subscription GUIDs and explicit read-only consent below. Identifiers will be captured in the managed owner-only store outside the repository, not in project receipts or published artifacts. Do not provide names, domains, tokens, passwords or credentials. If the target is not ready, choose Pause and leave the identifiers blank. No Azure read occurs unless a valid exact scope and consent are supplied.",
+    "requestedSchema": {
+      "properties": {
+        "dev_tenant_id": {
+          "type": "string",
+          "title": "DEV Governance target — Microsoft Entra tenant GUID",
+          "description": "Non-secret GUID only for the intended DEV tenant, or leave blank when pausing. The active CLI tenant will be compared with this confirmed scope without displaying its identifying value; a mismatch blocks rather than switching credentials."
+        },
+        "dev_subscription_id": {
+          "type": "string",
+          "title": "DEV Governance target — Azure subscription GUID",
+          "description": "Non-secret GUID only for the intended DEV subscription, or leave blank when pausing. This is the subscription for effective-policy discovery, including applicable inherited management-group policies; no Production scope is included."
+        },
+        "governance_read_authorization": {
+          "type": "string",
+          "title": "Formal DEV Governance — exact read-only authorization",
+          "description": "Authorize verification of the currently authenticated CLI tenant and deterministic discovery of subscription and inherited policy assignments, definitions/initiatives, parameters and exemptions for the supplied DEV target. Raw identifying scope, snapshots and diagnostics remain in the managed private store. No credential changes, resource or policy writes, remediation, spending, deletion, Production or deployment is authorized.",
+          "enum": ["authorize_scoped_dev_policy_reads", "pause_target_not_ready"],
+          "enumNames": [
+            "Authorize read-only target-verified DEV Governance discovery for the supplied scope",
+            "Pause before Governance; retain approved Architecture and Design"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "project_name": "fulcrum",
+      "target_environments": ["dev"],
+      "architecture_gate2_decision": "approve_and_continue",
+      "design_scope": "both",
+      "design_status": "complete",
+      "policy_source": "assumed_corp_not_tenant_verified",
+      "actual_target_and_policy_read_scope_captured": false
+    },
+    "fields": {
+      "dev_tenant_id": {"input_id": "formal_governance_dev_tenant", "kind": "input"},
+      "dev_subscription_id": {"input_id": "formal_governance_dev_subscription", "kind": "input"},
+      "governance_read_authorization": {"input_id": "formal_governance_read_authorization", "kind": "approval"}
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "schema_version": "retail-price-evidence-v1",
+  "data_source": "Azure Retail Prices API (direct fallback)",
+  "query": {
+    "serviceName": "Storage",
+    "armRegionName": "swedencentral",
+    "productName": "General Block Blob v2",
+    "skuName": "Hot LRS",
+    "meterName": "Hot LRS Data Stored",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "mcp_failure": {
+    "kind": "missing_tier_metadata",
+    "recorded_at": "2026-11-09T15:59:13.345813+00:00",
+    "full_native_response_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q12-gpv2.native.json",
+    "extraction_qualification": "All exact raw matching stored-data rows copied from current native q12, not original q10 summary.",
+    "attempts": [
+      {
+        "query": {
+          "serviceName": "Storage",
+          "armRegionName": "swedencentral",
+          "productName": "General Block Blob v2",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {
+            "prices": [
+              {
+                "armSkuName": "",
+                "skuName": "Hot LRS",
+                "productName": "General Block Blob v2",
+                "serviceName": "Storage",
+                "serviceFamily": "Storage",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.0184,
+                "unitPrice": 0.0184,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB/Month",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+                "meterName": "Hot LRS Data Stored",
+                "meterId": "39d8c6c1-22c0-5719-9330-593a56b3a2e0",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Hot LRS",
+                "productName": "General Block Blob v2",
+                "serviceName": "Storage",
+                "serviceFamily": "Storage",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.017664,
+                "unitPrice": 0.017664,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB/Month",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+                "meterName": "Hot LRS Data Stored",
+                "meterId": "39d8c6c1-22c0-5719-9330-593a56b3a2e0",
+                "isPrimaryMeterRegion": false
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Hot LRS",
+                "productName": "General Block Blob v2",
+                "serviceName": "Storage",
+                "serviceFamily": "Storage",
+                "region": "swedencentral",
+                "location": "SE Central",
+                "retailPrice": 0.016928,
+                "unitPrice": 0.016928,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1 GB/Month",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2021-06-08T00:00:00+00:00",
+                "meterName": "Hot LRS Data Stored",
+                "meterId": "39d8c6c1-22c0-5719-9330-593a56b3a2e0",
+                "isPrimaryMeterRegion": false
+              }
+            ]
+          },
+          "duration": 0
+        }
+      }
+    ]
+  },
+  "requests_used": 1,
+  "pages": [
+    {
+      "url": "https://prices.azure.com/api/retail/prices?%24filter=serviceName+eq+%27Storage%27+and+armRegionName+eq+%27swedencentral%27+and+productName+eq+%27General+Block+Blob+v2%27+and+skuName+eq+%27Hot+LRS%27+and+meterName+eq+%27Hot+LRS+Data+Stored%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+      "queried_at": "2026-11-09T16:02:49.393Z",
+      "response_sha256": "f46fccca21f68e690cb00bb92aa3e5562b7d049675d50fe4559a96e140f0ea13",
+      "raw_response": "{\"BillingCurrency\":\"USD\",\"CustomerEntityId\":\"Default\",\"CustomerEntityType\":\"Retail\",\"Items\":[{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.0184,\"unitPrice\":0.0184,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2021-06-08T00:00:00Z\",\"meterId\":\"39d8c6c1-22c0-5719-9330-593a56b3a2e0\",\"meterName\":\"Hot LRS Data Stored\",\"productId\":\"DZH318Z0BPH7\",\"skuId\":\"DZH318Z0BPH7/01F8\",\"productName\":\"General Block Blob v2\",\"skuName\":\"Hot LRS\",\"serviceName\":\"Storage\",\"serviceId\":\"DZH317F1HKN0\",\"serviceFamily\":\"Storage\",\"unitOfMeasure\":\"1 GB/Month\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":51200.0,\"retailPrice\":0.017664,\"unitPrice\":0.017664,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2021-06-08T00:00:00Z\",\"meterId\":\"39d8c6c1-22c0-5719-9330-593a56b3a2e0\",\"meterName\":\"Hot LRS Data Stored\",\"productId\":\"DZH318Z0BPH7\",\"skuId\":\"DZH318Z0BPH7/01F8\",\"productName\":\"General Block Blob v2\",\"skuName\":\"Hot LRS\",\"serviceName\":\"Storage\",\"serviceId\":\"DZH317F1HKN0\",\"serviceFamily\":\"Storage\",\"unitOfMeasure\":\"1 GB/Month\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":512000.0,\"retailPrice\":0.016928,\"unitPrice\":0.016928,\"armRegionName\":\"swedencentral\",\"location\":\"SE Central\",\"effectiveStartDate\":\"2021-06-08T00:00:00Z\",\"meterId\":\"39d8c6c1-22c0-5719-9330-593a56b3a2e0\",\"meterName\":\"Hot LRS Data Stored\",\"productId\":\"DZH318Z0BPH7\",\"skuId\":\"DZH318Z0BPH7/01F8\",\"productName\":\"General Block Blob v2\",\"skuName\":\"Hot LRS\",\"serviceName\":\"Storage\",\"serviceId\":\"DZH317F1HKN0\",\"serviceFamily\":\"Storage\",\"unitOfMeasure\":\"1 GB/Month\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":false,\"armSkuName\":\"\"}],\"NextPageLink\":null,\"Count\":3}"
+    }
+  ]
+}

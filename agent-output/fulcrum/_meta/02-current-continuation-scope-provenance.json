@@ -1,0 +1,11 @@
+{
+  "captured_at": "2026-11-09T13:25:00.177961+00:00",
+  "capture_mode": "recovered",
+  "request_id": "fulcrum-step2-continuation-capture-092d8802-9ed6-4c02-8a3e-31a31bee3c16",
+  "request_id_source": "apex-local",
+  "source": "Current explicit delegated Step 2 continuation instruction",
+  "actual_prior_start": "2026-11-09T13:13:22Z",
+  "gate1_receipt": "_meta/01-gate1-acr-revision-response-receipt.json",
+  "scope": "Owned Step 2 public research, pricing, artifacts and both independent reviews up to the next real parent-owned material/human gate. No Azure or source/IaC operations.",
+  "authority_boundary": "Captures existing granted continuation scope; no new material answer, stage approval, review allowance, tenant verification or Azure permission is created."
+}

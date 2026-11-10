@@ -1,0 +1,36 @@
+{
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "output_path": "agent-output/fulcrum/contracts/02-cost-candidates-access-compute.json",
+  "overwrite": false,
+  "manifest_writeback": false,
+  "compare_regions": false,
+  "include_ri_savings": false,
+  "scope_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only. Comparison-only Linux VM CPU/RAM charges, not total access-path or workload cost. One ephemeral private VNet client/runner, eighty provisioned hours monthly, billable resources deleted after use as a planning lifecycle only. No public-IP NIC, VPN, Spot, reservation, Windows or persistent access. Managed disk, Bastion Standard, NAT and service-owned public IPs remain mandatory separately in committed scope.",
+  "candidate_sets": [
+    {
+      "decision_id": "access-compute",
+      "candidates": [
+        {
+          "label": "access-compute-D2as-v5-dev-swedencentral",
+          "service_name": "Virtual Machines",
+          "sku": "Standard_D2as_v5",
+          "region": "swedencentral",
+          "quantity": 1,
+          "usage": {"amount": 80, "unit": "hours", "scope": "per-instance", "hours_per_month": 80},
+          "notes": "Select Linux D2as v5 Consumption USD compute only; 2 vCPU/8 GiB, no local temporary disk, non-burstable runner. Exclude Windows/license/Spot/DevTest/RI. Explicit 80 hours is not default 730. Managed OS disk billed while provisioned must be priced separately in final scope; VM deallocation alone is not deletion. Native Entra SSH via Bastion Standard into private VM; clients and publishers run inside VNet, not a physical-phone VPN."
+        },
+        {
+          "label": "access-compute-D2s-v5-dev-swedencentral",
+          "service_name": "Virtual Machines",
+          "sku": "Standard_D2s_v5",
+          "region": "swedencentral",
+          "quantity": 1,
+          "usage": {"amount": 80, "unit": "hours", "scope": "per-instance", "hours_per_month": 80},
+          "notes": "Select Linux D2s v5 Consumption USD compute only; 2 vCPU/8 GiB, no local temporary disk, non-burstable runner. Same lifecycle and supported x86 Linux client envelope as AMD alternative. Exclude Windows/license/Spot/DevTest/RI. Disk, Bastion, NAT and their public IPs are excluded only from this equivalent base compute comparison; do not call this full access-path cost."
+        }
+      ]
+    }
+  ]
+}

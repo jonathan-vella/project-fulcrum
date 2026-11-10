@@ -1,0 +1,26 @@
+{
+  "request_id": "fulcrum-indicative-resume-scope-20261109-174506",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_3_cost_scope_hold",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "Resume monthly-cost planning. Reuse existing verified pricing evidence and preserve the 34/34 request ledger. First list the genuinely missing usage/applicability inputs and ask them together. Where usage is unknown, propose clearly labelled planning scenarios for my approval—do not silently assume traffic. Recalculate from reusable evidence without new queries where possible. If additional pricing requests are essential, explain exactly what is missing and request a bounded extension before dispatch. Preserve existing SKUs, requirements and review history. This does not approve Architecture or authorize Azure operations.",
+  "normalized_scope": "Resume monthly-cost planning using reusable verified evidence, after one consolidated batch of genuinely missing usage/applicability decisions and explicitly approved planning scenarios.",
+  "pricing_authority": {
+    "existing_requests_consumed": 34,
+    "absolute_request_limit": 34,
+    "new_requests_authorized": 0,
+    "recalculation_from_reusable_evidence": "Permitted where source freshness, meter applicability and input equivalence validate.",
+    "essential_additional_requests": "Require an exact explanation and explicit bounded extension before dispatch."
+  },
+  "preserved": [
+    "Existing SKUs and user pins",
+    "Approved requirements and all review history",
+    "All consumed pricing and review allowances",
+    "No assumed monthly traffic or free entitlement"
+  ],
+  "authority_boundary": "No Architecture approval, Azure operations, deployment, spending, hidden scope change or automatic pricing allowance reset.",
+  "sdk_response_id_supplied": false
+}

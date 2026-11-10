@@ -1,0 +1,44 @@
+{
+  "request_id": "fulcrum-optional-design-selection-20261109",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "post_gate_2_optional_design_selection",
+  "needed_inputs": ["optional_design_scope"],
+  "form": {
+    "message": "Architecture approval and continuation are recorded. One routing choice remains: include the optional Design step or proceed to Governance. For this MVP, a rendered architecture diagram alone is a proportionate option. ADRs are optional decision records, not additional infrastructure. No service, SKU, cost or security choice is being repeated.",
+    "requestedSchema": {
+      "properties": {
+        "optional_design_scope": {
+          "type": "string",
+          "title": "After Architecture — optional Design artifacts",
+          "description": "Choose the next authorized owner and scope. Design produces documentation only; Governance still requires actual target evidence through its separate scope and approval process. No option authorizes Azure operations or bypasses tenant verification.",
+          "enum": ["diagrams", "both", "adrs", "skip"],
+          "enumNames": [
+            "Include Design: architecture diagram only (04-Design)",
+            "Include Design: architecture diagram and ADRs (04-Design)",
+            "Include Design: ADRs only (04-Design)",
+            "Skip optional Design; continue to Governance (04g-Governance)"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "architecture_gate2_decision": "approve_and_continue",
+      "target_environments": ["dev"],
+      "policy_source": "assumed_corp_not_tenant_verified",
+      "review_depth": "default"
+    },
+    "fields": {
+      "optional_design_scope": {
+        "input_id": "optional_design_scope",
+        "kind": "follow_up",
+        "when": {
+          "input_id": "architecture_gate2_decision",
+          "equals": "approve_and_continue"
+        }
+      }
+    }
+  }
+}

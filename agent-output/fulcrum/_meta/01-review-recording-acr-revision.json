@@ -1,0 +1,85 @@
+{
+  "project": "fulcrum",
+  "step": "1",
+  "request_path": "agent-output/fulcrum/_meta/01-review-request-acr-revision.json",
+  "request_id": "fulcrum-requirements-acr-revision-20261109-125300",
+  "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+  "closure_of": "fulcrum-requirements-comprehensive-20261106-152603",
+  "extension_receipt": "agent-output/fulcrum/_meta/01-review-extension-acr-response-receipt.json",
+  "extension_authorization_request_id": "fulcrum-requirements-acr-review-extension-20261109-125400",
+  "preflight": "PASS before dispatch; exact saved request and all nine returned attempt-input paths",
+  "input_digest": "2ca816f1159e10d3df9732c24306928df00ff29aebd2afc31d0ab57243c2ca6d",
+  "started": "Supported review-audit started succeeded before the single actual native dispatch",
+  "native_result": "completed, nonempty independent JSON",
+  "publication": {
+    "path": "agent-output/fulcrum/reviews/challenge-findings-requirements-acr-revision.json",
+    "exit_code": 0,
+    "events_path": "/home/vscode/.copilot/session-state/0cf01309-cc69-48e4-a764-f07a5c17a7b5/events.jsonl",
+    "source": "Actual exact-request native session; recorder-owned findings and provenance",
+    "initial_recording_failure": "Exit 1: ENOENT for COPILOT_AGENT_SESSION_ID-derived 6a0de854-e3ef-4d72-bb52-49e07de0a6db/events.jsonl. No publication occurred. Recovered using explicitly previously linked native session after confirming this exact request ID there; no newest-session discovery, invented logs, worker retry or metadata refresh."
+  },
+  "execution": {
+    "reviewer": "challenger-review-subagent",
+    "worker_id": "bd1c95ce-af50-4887-bb34-769083f412da",
+    "parent_id": "6b712e08-feac-4976-b502-2d18b356096a",
+    "tool_call_id": "call_yiO3JuLwHacJch5yPwRQobMu",
+    "completed_at": "2026-11-09T13:01:05.071Z",
+    "mode": "Actual synchronous one-shot linkage verified by recorder; tool has no mode parameter, no model/reasoning/context overrides supplied"
+  },
+  "strict_validation": {
+    "command": "node tools/scripts/validate-challenger-findings.mjs --path agent-output/fulcrum/reviews/challenge-findings-requirements-acr-revision.json --verify-cache",
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 0
+  },
+  "outcome_and_selection": {
+    "native_outcome": "completed --review-output nonempty; supported audit exit 0, recorded separately before successful publication",
+    "selection": "Completed audit with same request, original closure link, saved digest and --review-result exited 0 (already_applied). Subsequent supported show confirmed current effective_reviews, assessment_readiness and step-1-complete gate readiness; permission_granted=false.",
+    "checkpoint": "fulcrum:1:phase_6_challenger",
+    "checkpoint_updated": "2026-11-09T13:01:53Z"
+  },
+  "overall_assessment": "APPROVED",
+  "risk_level": "low",
+  "finding_counts": {"must_fix": 0, "should_fix": 0, "suggestion": 0},
+  "review_allowance": {
+    "calls": 3,
+    "max_calls": 4,
+    "remaining": 1,
+    "new_dispatches_this_continuation": 1,
+    "step2_pricing_dispatches": 0,
+    "step2_review_dispatches": 0,
+    "reset": false,
+    "closure_needed_for_clean_result": false
+  },
+  "current_projection_sha256": "4136c74c026d48c1ddb0aaa49bb896a273d5812631900c3b7e5104f2061e8c5b",
+  "preserved": {
+    "requirements_sha256": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+    "manifest_revision": 1,
+    "manifest_sha256": "e268aa317aa10bf5427d6daf9ec4efc975725de9dd96738de18cd3f886d69e5f",
+    "manifest_preservation_evidence": "Actual current bytes equal repository HEAD exactly; scoped JSON/Markdown git diff is empty and renderer already up-to-date. Rev 1 and sole LRS pin are unchanged. The preceding Entra receipt's a0d2a2d3... hash is historical, not the current committed bytes; no historical receipt or contract was edited.",
+    "history": "Original and Entra-only review/approval receipts and exact pre-ACR Requirements/projection snapshots remain unchanged; no restamping"
+  },
+  "other_inspection_failures": [
+    "Initial node tools/apex-recall/cli.mjs show failed MODULE_NOT_FOUND; supported apex-recall show then succeeded without initialization or direct state access.",
+    "Inspection rg paths tools/apex-recall/package.json, tools/apex-recall/docs/practical* and tools/ask-user-questionnaire were absent; no required reviewer input or file mutation was involved.",
+    "validate-sku-manifest.mjs --help is not supported and returned file-not-found; actual scoped manifest validation subsequently passed with zero errors/warnings. Renderer reported already up-to-date."
+  ],
+  "post_write_validation": {
+    "new_owned_json": "PASS: both new receipts/request JSON parse",
+    "gate_request": "_meta/01-gate1-acr-revision-input-request.json",
+    "gate_form_context": "PASS: validate_payload(form, context, require_context=True) returned errors=[]; sole needed_input exactly matches the approval property; no default or companion notes",
+    "full_current_ledger": "PASS: all 54 form-context answers exactly equal current supported recall material values",
+    "consumed_projection": "PASS: all 51 consumed answers equal frozen projection; exact prior/current scope and other 50 complete records unchanged",
+    "README_H2s": "PASS: five canonical deliverable headings in exact order",
+    "Requirements_H2s": "PASS: unchanged headings equal current canonical template",
+    "handoff": "PASS: six canonical H2s in exact order",
+    "frozen_bytes_after_status_writes": "PASS: primary and all eight supporting SHA-256 values equal exact pre-dispatch request",
+    "current_review_after_status_writes": "PASS: repeated strict --verify-cache, zero errors/warnings",
+    "supported_current_state": "PASS: selected current cycle path is challenge-findings-requirements-acr-revision.json, calls 3/max 4, six preserved attempt rows; effective review and gate readiness current, permission_granted=false",
+    "sku_manifest_validator": "PASS: zero errors/warnings, rev 1 unchanged",
+    "manifest_hash_check_recovery": "A preservation assertion against historical preceding receipt a0d2a2d3... failed. Current scoped manifest hash e268aa317... exactly matches repository HEAD, with empty JSON/Markdown diff; no contract repair needed or performed. Historical hash retained in its original receipt.",
+    "direct_artifact_markdown_lint": "Not run; hook/reviewer-owned",
+    "pending_approval": "No form displayed by this delegated owner; actual revised Gate 1 remains unresolved"
+  },
+  "approval": "Current revised Gate 1 is unanswered. Step 1 remains in_progress at phase_6_challenger; Step 2 remains stale. No completion, transition, Architecture invocation, Azure operation or additional material capture."
+}

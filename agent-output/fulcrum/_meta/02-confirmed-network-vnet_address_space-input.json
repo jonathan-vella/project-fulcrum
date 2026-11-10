@@ -1,0 +1,9 @@
+{
+  "input_id": "vnet_address_space",
+  "value": "10.42.0.0/22",
+  "environments": [
+    "dev"
+  ],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03"
+}

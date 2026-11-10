@@ -1,0 +1,92 @@
+{
+  "status": "PASS_FAILED_DIAGNOSTIC_AND_PENDING_EXACT_GAP_FORM",
+  "full_scope_cost_status": "FAILED",
+  "actual_worker": "cost-estimate-subagent",
+  "actual_output_path": "contracts/02-cost-estimate.conservative-planning-v1.json",
+  "actual_output_sha256": "8bf2ed27b2f58c298018ce4acf0a2dfc72a3fe3c5b935bc28432b5d107257f53",
+  "actual_request_path": "_meta/02-cost-conservative-planning-request.json",
+  "actual_request_sha256": "ab044d6ac18e3ccce84d0f88ac09eff1251ac516f2aa8cc7e4b93c2492f9f597",
+  "actual_native_task_dispatches": 1,
+  "actual_new_mcp_requests": 0,
+  "actual_new_direct_api_requests": 0,
+  "actual_new_network_requests": 0,
+  "schema_validation": {"ok":true,"errors":[],"warnings":[]},
+  "static_request_preflight": {
+    "status": "PREFLIGHT_FAILED",
+    "line_count": 17,
+    "estimated_query_groups": 13,
+    "unresolved_items": ["remaining_requests must be an integer between 1 and 20"],
+    "not_treated_as_new_query_permission": true
+  },
+  "coverage": {
+    "lines": 17,
+    "finite_components": 16,
+    "unresolved_line": "internet-outbound-allocation-dev",
+    "unresolved_component": "Separate Bastion5GB native transfer source coverage/publication contract",
+    "monthly_total": null,
+    "yearly_total": null,
+    "manifest_writeback": []
+  },
+  "actual_parent_checks": [
+    "Current69 material inputs equal current Step2 projection; all original66 records remain exactly unchanged.",
+    "All three new records match the actual receipt values, request ID, generic owner and DEV scope.",
+    "All69 captured values in the extension form's separate full context exactly equal recall material values, including array ordering.",
+    "All fourteen protected artifact/evidence/review hashes remain unchanged.",
+    "Manifest validator passed with0errors/0warnings; no writeback or SKU revision.",
+    "Original four manifest usages and twelve unaffected supplemental structured inputs equal the new request; only approved Internet scenario changes.",
+    "Actual FAILED output retains17 lines/16 finite components/null monthly and yearly totals/empty writeback/newMCP0/direct0.",
+    "Existing read-only02-cost-recovery-3-validation.py rerun passed raw evidence, archived hashes, fixed equations, source freshness and indicative evidence checks.",
+    "New output cost-estimate.mjs validate passed with0errors/0warnings.",
+    "validate_payload(form, separate_full_context, require_context=True) returned errors[]; one new permission field, no default, no redundant companion or repeated settled input."
+  ],
+  "worker_source_checks": {
+    "native_archives": 14,
+    "direct_envelopes": 6,
+    "direct_raw_page_hashes": 6,
+    "candidate_files": 3,
+    "official_semantic_archive_hashes": 10,
+    "fixed_equations": 16,
+    "fixed_line_meter_selections": 31,
+    "source_timestamps_preserved": true,
+    "future_dated_consumed_evidence": false
+  },
+  "technical_gap": {
+    "exact_diagnostic": "contracts/02-cost-estimate.conservative-planning-v1.json#query_ledger[id=bastion-missing-tier-contract-diagnostic]",
+    "complete_underlying_bastion_native_rate_set_proven": false,
+    "missing_metadata": ["tierMinimumUnits","pagination termination"],
+    "upper_bound_ok_exception_supported": false,
+    "minimum_proposed_direct_requests": 1,
+    "dispatch_authorized": false
+  },
+  "accounting": {
+    "initial_committed_mcp": 12,
+    "initial_committed_direct": 1,
+    "recovery1_mcp": 1,
+    "recovery2_requests": 0,
+    "recovery3_mcp": 14,
+    "recovery3_direct": 6,
+    "current_calculation_only_requests": 0,
+    "cumulative_requests": 34,
+    "absolute_limit": 34,
+    "remaining": 0,
+    "historical_comparison_dispatches_separate": 3,
+    "historical_comparison_mcp_separate": 7,
+    "allowances_reset": false
+  },
+  "pending_form": {
+    "request_id": "fulcrum-bastion-native-evidence-extension-20261109-181000",
+    "path": "_meta/02-bastion-evidence-extension-input-request.json",
+    "sha256": "e517bf4af51bc868335f7e6c658bafdcf0b37bb8cc435417256a265cfc006933",
+    "context_path": "_meta/02-bastion-evidence-extension-question-context.json",
+    "context_sha256": "c5f1598cbdc6f9a789b2d1fa1025fec556064129a745834e66bdcdd289ebc531",
+    "validate_payload_require_context_errors": []
+  },
+  "architecture_reviews_issued": 0,
+  "cost_reviews_issued": 0,
+  "gate2_ready": false,
+  "step2_complete": false,
+  "policy_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+  "runtime": "Unverified",
+  "next_owner": "Interactive parent",
+  "next_action": "Present the single saved exact-gap extension form through native ask_user unchanged, or stop on cancellation. No new request or pricing-owner retry before actual bounded approval."
+}

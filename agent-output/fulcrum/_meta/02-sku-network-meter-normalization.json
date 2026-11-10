@@ -1,0 +1,68 @@
+{
+  "project": "fulcrum",
+  "step": "2",
+  "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+  "request_path": "_meta/02-sku-network-meter-input-request.json",
+  "receipt_path": "_meta/02-sku-network-meter-response-receipt.json",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "normalization": {
+    "sku_confirmation_status": {
+      "actual_label": "Approve all",
+      "canonical_value": "approved"
+    },
+    "vnet_mode": {
+      "actual_label": "create-new",
+      "canonical_value": "create-new"
+    },
+    "dev_access_restore_dns_meter_profile": {
+      "actual_label": "Adopt the proposed capped access/restore and DNS allocation scenario",
+      "canonical_value": "Adopt the proposed capped access/restore and DNS allocation scenario",
+      "quantity_source": "_meta/02-sku-network-meter-input-request.json#/form/requestedSchema/properties/dev_access_restore_dns_meter_profile/description"
+    }
+  },
+  "sku_confirmation_binding": {
+    "manifest_path": "contracts/sku-manifest.json",
+    "manifest_revision": 2,
+    "manifest_sha256": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+    "approved_architect_derived_rows": [
+      {"id": "app-host", "size": "B1", "quantity": 1, "region": "swedencentral", "provisioned_hours_per_month": 730},
+      {"id": "document-store", "size": "Serverless", "quantity": 1, "region": "swedencentral", "backup": "continuous-30-days"},
+      {"id": "access-compute", "size": "Standard_D2as_v5", "quantity": 1, "region": "swedencentral", "provisioned_hours_per_month": 80}
+    ],
+    "unchanged_lock": {"id": "storage-blob-replication", "size": "LRS", "source": "user-pin", "source_step": "1"},
+    "manifest_bytes_edited": false,
+    "historical_manifest_note_handling": "The original selection notes state confirmation pending at authoring. This separate actual response/binding supersedes that status only; it does not rewrite the selection snapshot or its original provenance."
+  },
+  "meter_adoption": {
+    "planning_assumptions_not_telemetry": true,
+    "nat_processed_gb_per_month": 25,
+    "nat_breakdown_gb": {"runner_download_bootstrap": 20, "upload_other_outbound": 5},
+    "bastion_data_transfer_out_gb_per_month": 5,
+    "access_resources_provisioned_hours_per_month": 80,
+    "access_os_disk": {"sku": "Premium SSD P6", "size_gib": 64, "quantity": 1},
+    "access_public_ips": {"sku": "Standard", "allocation": "static", "version": "IPv4", "quantity": 2, "attached_to": ["Bastion", "NAT"]},
+    "bastion": {"sku": "Standard", "base_scale_units": 2},
+    "temporary_cosmos_restore": {
+      "region": "swedencentral",
+      "mode": "serverless",
+      "provisioned_hours": 4,
+      "within_access_hours": true,
+      "live_data_gb": 10,
+      "additional_ru": 1000000,
+      "backup": "paid continuous 30-day backup while provisioned",
+      "private_endpoint_quantity": 1,
+      "private_endpoint_hours": 4,
+      "private_endpoint_gb_toward_service": 1,
+      "private_endpoint_gb_from_service": 10,
+      "billing_granularity": "Must verify original meter minimum/granularity before costing; four-hour runtime does not prove four-hour storage/backup billing."
+    },
+    "blob_in_place_restore": {"restored_gb": 20, "additional_reads": 10000, "additional_writes": 10000, "additional_account": false},
+    "blob_recovery": {"pitr_days": 30, "supporting_retention_days_min": 31, "aggregate_retained_versions_deleted_gb": 10, "change_feed_gb": 0.5},
+    "central_dns_allocation": {"required_zone_equivalents": 4, "monthly_queries": 1000000, "tier": "verified highest applicable published commercial tier", "allocation_not_actual_bill_or_ownership": true},
+    "combined_workspace_ingestion_gb_per_month": 1,
+    "combined_workspace_ingestion_not_duplicated": true,
+    "shared_defender_policy_workspace_costs": "Outside project-deployed scope; unavailable actual shared allocation remains disclosed, not free."
+  },
+  "authority_boundary": "Only current DEV SKU selection, create-new origin and exact displayed capped meter scenario. No CIDR/subnet confirmation, Gate 2, spend, Azure read/write/deletion/deployment, Production, tenant verification, or shared DNS ownership/deployment authority."
+}

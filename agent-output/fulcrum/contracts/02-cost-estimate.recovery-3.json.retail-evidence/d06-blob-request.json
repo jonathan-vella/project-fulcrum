@@ -1,0 +1,13 @@
+{
+ "query":{"serviceName":"Storage","armRegionName":"swedencentral","productName":"General Block Blob v2","skuName":"Hot LRS","meterName":"Hot LRS Data Stored","priceType":"Consumption","currencyCode":"USD"},
+ "remaining_requests":1,
+ "mcp_failure":{"kind":"missing_tier_metadata","recorded_at":"2026-11-09T15:59:13.345813+00:00",
+ "full_native_response_path":"agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q12-gpv2.native.json",
+ "extraction_qualification":"All exact raw matching stored-data rows copied from current native q12, not original q10 summary.",
+ "attempts":[{"query":{"serviceName":"Storage","armRegionName":"swedencentral","productName":"General Block Blob v2","priceType":"Consumption","currencyCode":"USD"},
+ "response":{"status":200,"message":"Success","results":{"prices":[
+ {"armSkuName":"","skuName":"Hot LRS","productName":"General Block Blob v2","serviceName":"Storage","serviceFamily":"Storage","region":"swedencentral","location":"SE Central","retailPrice":0.0184,"unitPrice":0.0184,"currencyCode":"USD","unitOfMeasure":"1 GB/Month","priceType":"Consumption","effectiveStartDate":"2021-06-08T00:00:00+00:00","meterName":"Hot LRS Data Stored","meterId":"39d8c6c1-22c0-5719-9330-593a56b3a2e0","isPrimaryMeterRegion":false},
+ {"armSkuName":"","skuName":"Hot LRS","productName":"General Block Blob v2","serviceName":"Storage","serviceFamily":"Storage","region":"swedencentral","location":"SE Central","retailPrice":0.017664,"unitPrice":0.017664,"currencyCode":"USD","unitOfMeasure":"1 GB/Month","priceType":"Consumption","effectiveStartDate":"2021-06-08T00:00:00+00:00","meterName":"Hot LRS Data Stored","meterId":"39d8c6c1-22c0-5719-9330-593a56b3a2e0","isPrimaryMeterRegion":false},
+ {"armSkuName":"","skuName":"Hot LRS","productName":"General Block Blob v2","serviceName":"Storage","serviceFamily":"Storage","region":"swedencentral","location":"SE Central","retailPrice":0.016928,"unitPrice":0.016928,"currencyCode":"USD","unitOfMeasure":"1 GB/Month","priceType":"Consumption","effectiveStartDate":"2021-06-08T00:00:00+00:00","meterName":"Hot LRS Data Stored","meterId":"39d8c6c1-22c0-5719-9330-593a56b3a2e0","isPrimaryMeterRegion":false}
+ ]},"duration":0}}]}
+}

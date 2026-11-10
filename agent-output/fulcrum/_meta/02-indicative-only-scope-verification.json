@@ -1,0 +1,50 @@
+{
+  "request_id": "fulcrum-indicative-only-20261109-174326",
+  "request_id_source": "apex-local",
+  "source": "Explicit user scope restriction in the current conversation at 2026-11-09T17:43:26.997Z",
+  "scope": "Read-only verification of the already collected indicative transfer-rate evidence only.",
+  "new_pricing_queries": 0,
+  "new_worker_dispatches": 0,
+  "full_estimate_restarted": false,
+  "monthly_usage_adopted": false,
+  "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/indicative-app-transfer-unit-quote.json",
+  "verification": {
+    "direct_evidence_file_hash": "PASS",
+    "raw_response_page_hashes": "PASS",
+    "all_six_exact_product_region_currency_unit_and_meter_bands": "PASS",
+    "routing_product": "Rtn Preference: MGN",
+    "meter": "Standard Data Transfer Out",
+    "region": "swedencentral",
+    "currency": "USD",
+    "native_catalog_unit": "1 GB",
+    "routing_basis": "Saved official Microsoft routing-preference documentation states that Azure services use the Microsoft global network by default.",
+    "actual_deployed_routing": "Not inspected or asserted; no live Azure reads authorized.",
+    "tier_applicability": "Verified catalog band boundaries and marginal rates, not a selection of an actual billable monthly band.",
+    "free_band_entitlement": "Not assumed available."
+  },
+  "units": {
+    "GB": "Native catalog unit: gigabyte.",
+    "TB": "Decimal terabyte, 1000 GB.",
+    "Tb": "Decimal terabit, 125 GB; not interchangeable with TB.",
+    "conversion_meaning": "Marginal rate conversion only, not monthly usage or a whole-volume invoice."
+  },
+  "accounting_discrepancy": {
+    "latest_user_stated_consumed": 14,
+    "absolute_request_ceiling": 34,
+    "existing_audited_baseline_consumed": 14,
+    "existing_audited_subsequent_recovery_consumed": 20,
+    "existing_audited_cumulative_consumed": 34,
+    "evidence": [
+      "agent-output/fulcrum/_meta/02-cost-recovery-3-invocation.json",
+      "agent-output/fulcrum/_meta/02-cost-recovery-3-validation.json"
+    ],
+    "action": "No new queries, budget reset or history rewrite. Preserve the recorded fourteen-request baseline and twenty subsequent requests; the latest statement is not permission to erase consumed calls."
+  },
+  "holds": {
+    "monthly_workload_totals": "Blocked while app wire-transfer usage is unknown.",
+    "manifest_price_writeback": "Blocked; none performed.",
+    "architecture_approval": "Blocked; no approval or workflow advancement.",
+    "new_pricing_requests": "None issued or authorized by this verification."
+  },
+  "unverified_billing_applicability": "Actual monthly volume, service-specific exemptions, shared entitlement balance and actual deployed routing remain unknown. No extra gateway, NAT, Private Link or IP fees are included in the unit rate."
+}

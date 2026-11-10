@@ -1,0 +1,7 @@
+{
+  "input_id": "dev_bastion_transfer_cost_profile",
+  "value": "approve_proposed_bastion_paid_budget_bound",
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-monthly-transfer-planning-20261109-175347"
+}

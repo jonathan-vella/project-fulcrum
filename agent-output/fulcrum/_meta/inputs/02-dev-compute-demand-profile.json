@@ -1,0 +1,7 @@
+{
+  "input_id": "dev_compute_demand_profile",
+  "value": "Adopt the proposed compute planning envelope",
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c"
+}

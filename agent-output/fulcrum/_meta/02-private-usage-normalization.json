@@ -1,0 +1,20 @@
+{
+  "request_id": "fulcrum-step2-private-usage-2df78fc7-cf11-4497-9b66-fb6b5362d25c",
+  "request_id_source": "apex-local",
+  "source_receipt": "_meta/02-private-usage-response-receipt.json",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "original_access_hours_answer": " 80 for bounded sessions with billable access resources deleted afterward",
+  "normalized_access_hours_per_month": 80,
+  "normalization_basis": "Explicit unambiguous numeric 80 in the actual native freeform response; parent approved normalization. Original response remains unchanged.",
+  "adopted_compute_and_meter_source": "_meta/02-proposed-dev-usage-profile.json",
+  "adoption_scope": "Only the compute and data-meter proposals displayed in the matching saved form; planning assumptions, not measurements or SKU approval.",
+  "hosting_billed_hours_per_month": 730,
+  "application_recovery_retention_days": 30,
+  "blob_soft_delete_minimum_retention_days": 31,
+  "rto_goal_hours": 4,
+  "rpo_goal_hours": 1,
+  "runtime_status": "Unverified",
+  "billing_lifecycle": "80 provisioned monthly hours for bounded ephemeral access resources. VM, disk, Bastion, NAT and their billable public IPs must be removed afterward for this envelope; VM deallocation alone is insufficient.",
+  "authority_boundary": "Planning only; no live reads, deletion, deployment, spending, tenant verification, VNet approval, SKU approval or Gate 2 approval."
+}

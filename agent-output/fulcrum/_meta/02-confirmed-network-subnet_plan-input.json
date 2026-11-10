@@ -1,0 +1,50 @@
+{
+  "input_id": "subnet_plan",
+  "value": [
+    {
+      "name": "AzureBastionSubnet",
+      "address_prefix": "10.42.0.0/24",
+      "purpose": "bastion",
+      "delegation": "none",
+      "nsg": "auto",
+      "route_table": "none",
+      "service_endpoints": [],
+      "private_endpoint_network_policies": "Enabled"
+    },
+    {
+      "name": "snet-app-integration",
+      "address_prefix": "10.42.1.0/26",
+      "purpose": "app-service-integration",
+      "delegation": "Microsoft.Web/serverFarms",
+      "nsg": "auto",
+      "route_table": "none",
+      "service_endpoints": [],
+      "private_endpoint_network_policies": "Enabled"
+    },
+    {
+      "name": "snet-private-endpoints",
+      "address_prefix": "10.42.1.64/27",
+      "purpose": "private-endpoint",
+      "delegation": "none",
+      "nsg": "auto",
+      "route_table": "none",
+      "service_endpoints": [],
+      "private_endpoint_network_policies": "Disabled"
+    },
+    {
+      "name": "snet-dev-runner",
+      "address_prefix": "10.42.1.96/27",
+      "purpose": "vm",
+      "delegation": "none",
+      "nsg": "auto",
+      "route_table": "none",
+      "service_endpoints": [],
+      "private_endpoint_network_policies": "Enabled"
+    }
+  ],
+  "environments": [
+    "dev"
+  ],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03"
+}

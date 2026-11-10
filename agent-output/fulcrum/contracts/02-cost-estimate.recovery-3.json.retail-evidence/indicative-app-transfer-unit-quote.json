@@ -1,0 +1,59 @@
+{
+  "evidence_kind":"Indicative native marginal unit-rate quotation; NOT a monthly estimate or a COMPLETE subset",
+  "project_name":"fulcrum",
+  "deployment_region":"swedencentral",
+  "billing_region":"swedencentral",
+  "currency":"USD",
+  "price_type":"Consumption",
+  "routing":"Default Microsoft global network; no ISP substitution",
+  "source":"Azure Retail Prices API (direct fallback)",
+  "queried_at":"2026-11-09T16:01:38.913Z",
+  "source_evidence_path":"agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d01-bandwidth.json",
+  "source_evidence_sha256":"c27714517225f58d52d905087b68349ea491dc0e3994120db4ab4493aaf1348a",
+  "source_raw_response_sha256":"d18334bee4f62582699c23126249542813d41a0be2ee611802759c55171bdaa5",
+  "prior_native_evidence_path":"agent-output/fulcrum/_meta/02-cost-recovery-1-bandwidth-native-response.txt",
+  "prior_native_evidence_sha256":"b421829c3f0df4464aadfb8ef0a419b81227d9f6f8901567c5182e9986942371",
+  "prior_native_queried_at":"2026-11-09T15:22:57.239Z",
+  "fallback_basis":"Actual status-200 1437-row native response; six matching MGN meter rows omit tierMinimumUnits. All six exact matching raw rows verified against the hashed full archive. No original failure summaries used. One direct HTTP request; no pagination or repeated broad Bandwidth request.",
+  "selection":{
+    "serviceName":"Bandwidth",
+    "armSkuName":"",
+    "skuName":"Standard",
+    "productName":"Rtn Preference: MGN",
+    "meterName":"Standard Data Transfer Out",
+    "meterId":"9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+    "armRegionName":"swedencentral",
+    "unitOfMeasure":"1 GB",
+    "type":"Consumption",
+    "currencyCode":"USD"
+  },
+  "bands":[
+    {"tierMinimumUnits":0,"upper_exclusive_native_gb":100,"retailPrice":0,"unitOfMeasure":"1 GB","qualification":"Published free band only; shared entitlement applicability/unconsumed balance not verified. No exemption or zero app cost adopted."},
+    {"tierMinimumUnits":100,"upper_exclusive_native_gb":10335,"retailPrice":0.087,"unitOfMeasure":"1 GB","illustrative_marginal_usd_per_TB":87,"calculation":"0.087 USD/native GB * 1000 GB/TB = 87 USD/TB"},
+    {"tierMinimumUnits":10335,"upper_exclusive_native_gb":51295,"retailPrice":0.083,"unitOfMeasure":"1 GB","illustrative_marginal_usd_per_TB":83,"calculation":"0.083 USD/native GB * 1000 GB/TB = 83 USD/TB"},
+    {"tierMinimumUnits":51295,"upper_exclusive_native_gb":153695,"retailPrice":0.07,"unitOfMeasure":"1 GB","illustrative_marginal_usd_per_TB":70,"calculation":"0.07 USD/native GB * 1000 GB/TB = 70 USD/TB"},
+    {"tierMinimumUnits":153695,"upper_exclusive_native_gb":512095,"retailPrice":0.05,"unitOfMeasure":"1 GB","illustrative_marginal_usd_per_TB":50,"calculation":"0.05 USD/native GB * 1000 GB/TB = 50 USD/TB"},
+    {"tierMinimumUnits":512095,"upper_exclusive_native_gb":null,"retailPrice":0.05,"unitOfMeasure":"1 GB","illustrative_marginal_usd_per_TB":50,"calculation":"0.05 USD/native GB * 1000 GB/TB = 50 USD/TB"}
+  ],
+  "conversion_rule":"Explicitly illustrative marginal-rate conversion only: 1 TB = 1000 GB (decimal terabyte). Not an assumed 1000 GB/month volume, a charged-tier throughput scenario, an entry-band price flattened from a higher tier, or a workload total. The user's Tb spelling remains ambiguous; no terabit quote is adopted.",
+  "coverage":{
+    "monthly_app_wire_volume":"UNKNOWN",
+    "accepted_numeric_app_volume":false,
+    "suggested_5_gb_adopted":false,
+    "exact_app_transfer_exemption_established":false,
+    "app_route":"Independent 730-hour App Service platform egress, not 80-hour runner NAT",
+    "known_original_access_volume":"10 GB/month = NAT 5 GB + Bastion 5 GB only; unchanged",
+    "logs":"1 GB is combined ingestion, not on-wire app volume",
+    "private_traffic":"Charged separately under steady and temporary PEs; not duplicated as Internet egress",
+    "fees_and_inclusions":"NAT processing, public IPs, PE processing and gateway/host fees are separate. The published MGN 100 GB free band is not assumed available. Supplied official Bastion documentation states first 5 GB/month service-specific inclusion across Bastion resources, not a generic/shared MGN allowance and never an app exemption. Bastion's native response lacks tier boundaries; no paid Bastion bands or blanket free Internet allocation are manufactured.",
+    "full_scope_status":"FAILED; required monthly app usage remains unresolved; no manifest writeback"
+  },
+  "official_semantic_sources":[
+    {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/routing-search.native.txt","sha256":"9ddc367a8e979dc0c048872b05007b0ea34e8263d493b2452a9fd3277a6f8923"},
+    {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/outbound-monitor-search.native.txt","sha256":"e4eaf377d0968178cf571e22783a75a03a2416e0a0b9920177ac14a5e8bc350c"},
+    {"path":"agent-output/fulcrum/_meta/02-pricing-public-docs/bastion-unit-inclusions-recovery-3.native.txt","sha256":"b9b3b720ab5bd1667c9d365ed9064c5202630023174846cfe07092cd5a869a00"}
+  ],
+  "authorization_receipt":"agent-output/fulcrum/_meta/02-app-egress-recovery-response-receipt.json",
+  "authorization_request_id":"fulcrum-app-egress-recovery-20261109-151603",
+  "gate_2_hold":"Full-scope pricing is FAILED: no verified monthly app wire-transfer quantity or exact applicable exemption; no full workload totals, manifest price writeback, Gate 2 approval or implementation continuation. Independent reviews and final human approval remain required."
+}

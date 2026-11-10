@@ -1,0 +1,101 @@
+{
+  "schema_version": "retail-price-evidence-v1",
+  "data_source": "Azure Retail Prices API (direct fallback)",
+  "query": {
+    "serviceName": "Azure DNS",
+    "armRegionName": "",
+    "productName": "Azure DNS",
+    "skuName": "Private",
+    "priceType": "Consumption",
+    "currencyCode": "USD"
+  },
+  "mcp_failure": {
+    "kind": "missing_tier_metadata",
+    "recorded_at": "2026-11-09T15:58:04.356405+00:00",
+    "full_native_response_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q03-dns.native.json",
+    "extraction_qualification": "All exact empty-region raw matching rows extracted from the actual full response; native commercial query and zone representations are not additive; government rows rejected.",
+    "attempts": [
+      {
+        "query": {
+          "serviceName": "Azure DNS",
+          "productName": "Azure DNS",
+          "skuName": "Private",
+          "priceType": "Consumption",
+          "currencyCode": "USD"
+        },
+        "response": {
+          "status": 200,
+          "message": "Success",
+          "results": {
+            "prices": [
+              {
+                "armSkuName": "",
+                "skuName": "Private",
+                "productName": "Azure DNS",
+                "serviceName": "Azure DNS",
+                "serviceFamily": "Networking",
+                "region": "",
+                "location": "",
+                "retailPrice": 0.5,
+                "unitPrice": 0.5,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2019-12-01T00:00:00+00:00",
+                "meterName": "Private Zone",
+                "meterId": "0b608a26-f611-4232-8192-ce81b6b57194",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Private",
+                "productName": "Azure DNS",
+                "serviceName": "Azure DNS",
+                "serviceFamily": "Networking",
+                "region": "",
+                "location": "",
+                "retailPrice": 0.1,
+                "unitPrice": 0.1,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2019-12-01T00:00:00+00:00",
+                "meterName": "Private Zone",
+                "meterId": "0b608a26-f611-4232-8192-ce81b6b57194",
+                "isPrimaryMeterRegion": true
+              },
+              {
+                "armSkuName": "",
+                "skuName": "Private",
+                "productName": "Azure DNS",
+                "serviceName": "Azure DNS",
+                "serviceFamily": "Networking",
+                "region": "",
+                "location": "",
+                "retailPrice": 0.4,
+                "unitPrice": 0.4,
+                "currencyCode": "USD",
+                "unitOfMeasure": "1M",
+                "priceType": "Consumption",
+                "effectiveStartDate": "2019-12-01T00:00:00+00:00",
+                "meterName": "Private Queries",
+                "meterId": "46cff9cb-4b15-4af0-bf41-25143827fef8",
+                "isPrimaryMeterRegion": true
+              }
+            ]
+          },
+          "duration": 0
+        }
+      }
+    ]
+  },
+  "requests_used": 1,
+  "pages": [
+    {
+      "url": "https://prices.azure.com/api/retail/prices?%24filter=serviceName+eq+%27Azure+DNS%27+and+armRegionName+eq+%27%27+and+productName+eq+%27Azure+DNS%27+and+skuName+eq+%27Private%27+and+priceType+eq+%27Consumption%27&currencyCode=USD",
+      "queried_at": "2026-11-09T16:02:33.885Z",
+      "response_sha256": "6ae8f4ba019c88aafb1d2b1e16a91f68abcc0b125f1c41eab7de57574cb8dadd",
+      "raw_response": "{\"BillingCurrency\":\"USD\",\"CustomerEntityId\":\"Default\",\"CustomerEntityType\":\"Retail\",\"Items\":[{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.5,\"unitPrice\":0.5,\"armRegionName\":\"\",\"location\":\"\",\"effectiveStartDate\":\"2019-12-01T00:00:00Z\",\"meterId\":\"0b608a26-f611-4232-8192-ce81b6b57194\",\"meterName\":\"Private Zone\",\"productId\":\"DZH318Z0BNX0\",\"skuId\":\"DZH318Z0BNX0/0021\",\"productName\":\"Azure DNS\",\"skuName\":\"Private\",\"serviceName\":\"Azure DNS\",\"serviceId\":\"DZH318Z695ZG\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":25.0,\"retailPrice\":0.1,\"unitPrice\":0.1,\"armRegionName\":\"\",\"location\":\"\",\"effectiveStartDate\":\"2019-12-01T00:00:00Z\",\"meterId\":\"0b608a26-f611-4232-8192-ce81b6b57194\",\"meterName\":\"Private Zone\",\"productId\":\"DZH318Z0BNX0\",\"skuId\":\"DZH318Z0BNX0/0021\",\"productName\":\"Azure DNS\",\"skuName\":\"Private\",\"serviceName\":\"Azure DNS\",\"serviceId\":\"DZH318Z695ZG\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"},{\"currencyCode\":\"USD\",\"tierMinimumUnits\":0.0,\"retailPrice\":0.4,\"unitPrice\":0.4,\"armRegionName\":\"\",\"location\":\"\",\"effectiveStartDate\":\"2019-12-01T00:00:00Z\",\"meterId\":\"46cff9cb-4b15-4af0-bf41-25143827fef8\",\"meterName\":\"Private Queries\",\"productId\":\"DZH318Z0BNX0\",\"skuId\":\"DZH318Z0BNX0/0021\",\"productName\":\"Azure DNS\",\"skuName\":\"Private\",\"serviceName\":\"Azure DNS\",\"serviceId\":\"DZH318Z695ZG\",\"serviceFamily\":\"Networking\",\"unitOfMeasure\":\"1M\",\"type\":\"Consumption\",\"isPrimaryMeterRegion\":true,\"armSkuName\":\"\"}],\"NextPageLink\":null,\"Count\":3}"
+    }
+  ]
+}

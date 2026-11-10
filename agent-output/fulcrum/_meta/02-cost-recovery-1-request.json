@@ -1,0 +1,92 @@
+{
+  "request_id": "fulcrum-step2-cost-bounded-recovery-1-20261109",
+  "execution_mode": "delegated",
+  "worker": "cost-estimate-subagent",
+  "workspace_root": "/workspaces/project-fulcrum",
+  "authorization": {
+    "source": "Explicit user continuation in current delegated task, following /apex-workflow-start resume fulcrum at 2026-11-09T15:16:03.018Z",
+    "recorded_at": "2026-11-09T15:19:17.526488+00:00",
+    "scope": "One bounded recovery of unresolved pricing within the original remaining seven MCP plus direct requests. Preserve full original seventeen-line scope, existing history and immutable failure evidence.",
+    "allowances_reset": false,
+    "no_approval_no_spend_no_azure_operations": true
+  },
+  "original_request_path": "agent-output/fulcrum/_meta/02-cost-estimate-request.json",
+  "original_request_sha256": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8",
+  "input_rule": "Read the entire original request, preserving exactly its single manifest_path input mode, manifest_usage, supplemental_resources, region, currency and scope qualification. Only the output_path, recovery context and actual carried-forward attempt accounting change. This locator contract is not a new pricing input mode or new allowance.",
+  "output_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-1.json",
+  "overwrite": false,
+  "manifest_writeback": true,
+  "scope_qualification": "Assumed Corp policies—not tenant-verified; DEV Architecture-only.",
+  "recovery": {
+    "draft_path": "agent-output/fulcrum/_meta/02-cost-estimate.failed-attempt-1.json",
+    "draft_sha256": "7984f1f3c9574efee99b09dec94aebab710885df19ed73c17e2d86b325c08586",
+    "evidence_paths": [
+      "agent-output/fulcrum/_meta/02-cost-estimate.failed-attempt-1.json",
+      "agent-output/fulcrum/contracts/02-cost-estimate.json.retail-evidence/bandwidth-empty-request-01.json",
+      "agent-output/fulcrum/contracts/02-cost-candidates-app-host.json",
+      "agent-output/fulcrum/contracts/02-cost-candidates-document-store.json",
+      "agent-output/fulcrum/contracts/02-cost-candidates-access-compute.json",
+      "agent-output/fulcrum/_meta/02-final-official-evidence.json",
+      "agent-output/fulcrum/_meta/02-cost-failure-validation.json",
+      "agent-output/fulcrum/_meta/02-committed-pricing-invocation.json"
+    ],
+    "remaining_requests": 7,
+    "prior_attempt": {
+      "request_id": "fulcrum-step2-committed-cost-initial-20261109",
+      "original_output_path": "agent-output/fulcrum/contracts/02-cost-estimate.json",
+      "preserved_output_path": "agent-output/fulcrum/_meta/02-cost-estimate.failed-attempt-1.json",
+      "estimate_revision": 1,
+      "status": "FAILED",
+      "resource_count": 17,
+      "unresolved_count": 9,
+      "mcp_calls_used": 12,
+      "direct_api_calls_used": 1,
+      "requests_issued": 13,
+      "original_shared_ceiling": 20,
+      "remaining_requests": 7,
+      "historical_comparison_dispatches": 3,
+      "historical_comparison_mcp_calls": 7,
+      "historical_comparison_direct_api_calls": 0,
+      "allowances_reset": false
+    }
+  },
+  "ownership_checks": {
+    "performed_read_only": true,
+    "versioned_output_exists": false,
+    "versioned_tmp_exists": false,
+    "canonical_original_output_exists": false,
+    "failure_preserved_byte_for_byte": true,
+    "publication_rule": "Create only the authorized new versioned output and its own temporary/evidence siblings. Do not modify the preserved failed draft, original evidence or candidate files. Recheck ownership before publication.",
+    "manifest_rule": "Only COMPLETE worker-authorized price/timestamp fields and renderer writeback; preserve all SKU choices, pins, revisions and unrelated edits."
+  },
+  "preflight": {
+    "request_path": "agent-output/fulcrum/_meta/02-cost-estimate-request.json",
+    "actual_status": "PREFLIGHT_OK",
+    "line_count": 17,
+    "unresolved_items": [],
+    "failed_diagnostic_shape_valid": true,
+    "failed_shape_is_not_complete": true
+  },
+  "retained_evidence_observations": {
+    "bandwidth": "Actual q11/q12 and d1 all retain the exact meterName Data Transfer Out filter. Both MCP responses are status200 prices[]; d1 returned No retail meters returned and wrote no successful direct evidence. No proof of Bandwidth service unavailability.",
+    "raw_response_gap": "Preserved q1 through q10 contain summarized result strings and observed-meter selections, not full original response objects. q11/q12 contain actual empty response objects. Candidate files retain raw response records in their own ledgers. Verify every reused component and fallback eligibility; never manufacture a raw MCP response from summaries.",
+    "evidence_directory_inventory": [
+      "agent-output/fulcrum/contracts/02-cost-estimate.json.retail-evidence/bandwidth-empty-request-01.json"
+    ],
+    "missing_direct_evidence": "bandwidth-empty-evidence-01.json was intended but never written."
+  },
+  "activities": [
+    "Verify immutable hashes, complete draft, exact original inputs, current source freshness and full seventeen-line equivalence before deciding which evidence can be reused.",
+    "Prioritize one bounded generic MCP Bandwidth service/product discovery without the failed exact meter string; verify actual meter, European commercial applicability, tier metadata and approved allocation. Do not repeat q11/q12/d1 unchanged or assume free shared entitlement.",
+    "Resolve only required missing tiers/meters/semantics using actual retained evidence and current authorized native pricing/documentation capabilities. Preserve paid allocations, storage/restore granularity and all approved quantities. No parent prices, public calculator, parametric fallback or unverified included features.",
+    "If provenance repair, pagination or required resolution needs more than seven additional actual network requests, or a necessary capability is unavailable, stop precisely with actual counts and unresolved items. No automatic retry, new twenty-request allowance, blind full-estimate restart or forced COMPLETE.",
+    "Separate original thirteen requests, historical seven comparison MCP requests and actual recovery MCP/direct requests in persisted accounting. Original plus recovery must not exceed twenty.",
+    "Validate before publication. COMPLETE requires seventeen resolved lines, empty unresolved_items, finite nonnegative costs, exact monthly line sum and annual arithmetic, consumed source evidence and correct source labels. FAILED has no committed workload total or manifest writeback."
+  ],
+  "outputs": [
+    "agent-output/fulcrum/contracts/02-cost-estimate.recovery-1.json",
+    "agent-output/fulcrum/contracts/02-cost-estimate.recovery-1.json.tmp if interrupted",
+    "New request/evidence files exclusively under agent-output/fulcrum/contracts/02-cost-estimate.recovery-1.json.retail-evidence/",
+    "Compact actual COMPLETE or FAILED worker summary with exact publication/evidence paths, original and new counts, remaining original allowance and any precise capability or exhaustion blocker."
+  ]
+}

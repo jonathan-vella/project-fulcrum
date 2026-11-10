@@ -1,0 +1,15 @@
+{
+  "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+  "request_id_source": "apex-local",
+  "phase": "phase_3_new_vnet_confirmation_pending",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": "Confirm proposed CIDR and subnet plan",
+  "normalized_response": "confirmed",
+  "confirmed_vnet_address_space": "10.42.0.0/22",
+  "confirmed_subnet_proposal": "agent-output/fulcrum/_meta/02-proposed-new-vnet-subnet-plan.json",
+  "confirmed_scope": "The entire four-row displayed plan, including NSG/route/delegation settings, runner-only NAT and unused growth reservation.",
+  "authority_boundary": "DEV planning confirmation only. No tenant overlap, DNS ownership, runtime connectivity, Gate 2, spend, resource deletion, Azure read/write, Production or deployment authorization.",
+  "sdk_response_id_supplied": false
+}

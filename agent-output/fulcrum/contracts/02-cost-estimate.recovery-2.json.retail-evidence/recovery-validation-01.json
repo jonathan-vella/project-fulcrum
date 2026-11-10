@@ -1,0 +1,96 @@
+{
+  "kind": "Read-only recovery validation; not newly collected retail evidence",
+  "validated_at": "2026-11-09T15:40:48.463054+00:00",
+  "original_request_path": "agent-output/fulcrum/_meta/02-cost-estimate-request.json",
+  "original_request_sha256": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8",
+  "requirements_sha256": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+  "manifest_sha256": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+  "protected_failure_sha256": "7984f1f3c9574efee99b09dec94aebab710885df19ed73c17e2d86b325c08586",
+  "protected_prior_recovery_sha256": "161afe9beaac525ccfa9154f26179e982eb104c1aba568797444bb73005d4d33",
+  "authorization_receipt": "agent-output/fulcrum/_meta/02-pricing-extension-response-receipt.json",
+  "authorization_response": "authorize_bounded_recovery",
+  "authorization_request_id": "fulcrum-pricing-recovery-extension-20261109-151603",
+  "preflight": {"status": "PREFLIGHT_OK", "line_count": 17, "unresolved_items": []},
+  "freshness": {"ttl_days": 30, "future_dated_consumed_evidence": false},
+  "candidate_schema_validations": {"app_host": "PASS", "document_store": "PASS", "access_compute": "PASS", "errors": [], "warnings": []},
+  "reused_raw_sources": [
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-candidates-app-host.json",
+      "sha256": "b0ec156812b50300100e5348b976491bf157bd8c8323ac84fe501b8ff828c114",
+      "raw_object_locator": "query_ledger[id=q3].response",
+      "queried_at": "2026-11-09T13:38:13.526Z",
+      "resource_names": ["app-host (dev, swedencentral)"],
+      "calculation": "Exact Linux B1 raw row retailPrice 0.018 USD/1 Hour * 730 hours * 1 instance = 13.14 USD/month."
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-candidates-document-store.json",
+      "sha256": "8e08b817936f06a63505eb0a724a2ecf1d86150da0b08fef334d0ed0c1367b12",
+      "raw_object_locator": "query_ledger[sequence=2].response",
+      "queried_at": "2026-11-09T13:43:54.315Z",
+      "resource_names": ["document-store (dev, swedencentral)", "temporary-cosmos-restore-target-dev"],
+      "calculation": "Each selected meter matched exactly one actual raw row: 1M RUs 0.305 USD/1M; Data Stored 0.25 USD/1 GB/Month; Cont 30D Bckp Continuous Backup 0.2 USD/1 GB; Cont 30D Bckp Data Restore 0.15 USD/1 GB. Source: 20*0.305+10*0.25+10*1*0.2+10*1*0.15=12.1. Target: 1*0.305+10*0.25+10*1*0.2=4.805, authorized full-month storage/backup bound; no second restore fee."
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-candidates-access-compute.json",
+      "sha256": "e921b94bdcc85a6202773f20030586d85aca8844bb0d3f6990289c75787cdcc7",
+      "raw_object_locator": "query_ledger[query_id=q1].response",
+      "queried_at": "2026-11-09T13:43:21.592Z",
+      "resource_names": ["access-compute (dev, swedencentral)"],
+      "calculation": "Exact Linux Standard_D2as_v5 Consumption raw row retailPrice 0.092 USD/1 Hour * 80 hours * 1 instance = 7.36 USD/month."
+    }
+  ],
+  "reused_bandwidth_native_archive": {
+    "path": "agent-output/fulcrum/_meta/02-cost-recovery-1-bandwidth-native-response.txt",
+    "sha256": "b421829c3f0df4464aadfb8ef0a419b81227d9f6f8901567c5182e9986942371",
+    "bytes": 909319,
+    "actual_rows": 1437,
+    "recorded_at": "2026-11-09T15:22:57.239Z",
+    "parameters": {"filter": "serviceName eq 'Bandwidth'", "price-type": "Consumption", "currency": "USD"},
+    "matching_product": "Rtn Preference: MGN",
+    "matching_region": "swedencentral",
+    "matching_meter": "Standard Data Transfer Out",
+    "matching_unit": "1 GB",
+    "matching_price_type": "Consumption",
+    "matching_currency": "USD",
+    "matching_rows": 6,
+    "distinct_prices": 5,
+    "tierMinimumUnits_present": false,
+    "disposition": "Exact native bytes verified and preserved at immutable archive. Not selected for calculation. A missing-tier fallback could address bands, but cannot address missing app-transfer input/applicability. No direct request issued."
+  },
+  "public_document_archives": [
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/routing-search.native.txt", "sha256": "9ddc367a8e979dc0c048872b05007b0ea34e8263d493b2452a9fd3277a6f8923"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/acr-skus-fetch.native.txt", "sha256": "d1b5ba5be2bd19e6df66ebdd44de60a8c4c1c6073d1db2c1d87b485877f02c18"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/alerts-search.native.txt", "sha256": "986ba53f395f84e4895c588218de959079e2a2ab777df43f26b82f9d23b88db1"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/outbound-monitor-search.native.txt", "sha256": "e4eaf377d0968178cf571e22783a75a03a2416e0a0b9920177ac14a5e8bc350c"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-outbound-search.native.txt", "sha256": "40d59128ec84433583a34530d8a5c33053e674d4205c0aa6caf085e53195b58d"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/monitor-cost-usage-fetch.native.txt", "sha256": "b40f8329ffbadccf9e063f7322c19002727301b61124461c39b2dd3fde7a83c8"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-hosting-plans-fetch.native.txt", "sha256": "02b037ce9ba115ba773abe7388f234307f3b3df1ecea4e7110526b27f8838883"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-linux-applicability-fetch.native.txt", "sha256": "ac9bcc7914b5d9f6d3e1b44bf5cdfd19b1586100b6cfb4e4e83bbc274b2454e6"},
+    {"path": "agent-output/fulcrum/_meta/02-pricing-public-docs/appservice-bandwidth-search.native.txt", "sha256": "9afe335394c17323d201b35a673b1aefbdb0279a4886bad67a7c2258b57a4bc4"}
+  ],
+  "documentation_validation": {
+    "source_rule": "Read immutable actual native files; first complete JSON object parsed in repeated search transcripts without changing bytes. Product documentation only; Q&A, training, calculator examples and monetary documentation values were not used as rate evidence. Supplied routing/ACR/alert originals verified byte-identical to archived counterparts.",
+    "established": [
+      "All Azure services route through Microsoft global network by default.",
+      "ACR Premium includes 500 GiB storage; approved 10 GB fits. Paid registry base remains required.",
+      "Metric alert billing follows four static series without dynamic thresholds; scheduled log rule requires its exact one-resource five-minute meter.",
+      "Azure Monitor diagnostic-settings cross-region transfer exemption is explicitly limited to diagnostic settings.",
+      "Application Insights FAQ conditions web-app telemetry transfer exemption on a collection endpoint in the hosting datacenter, not merely the Application Insights resource's region."
+    ],
+    "actual_failure": "The approved required 730-hour app uses independent public platform identity/control and authenticated Monitor routes. No verified exact collection-endpoint applicability and no blanket App Service Linux B1 outbound exemption are established. Neither the hosting-plan feature-inclusion statement nor Monitor diagnostic-settings exemption covers all required app SDK/control flows. The combined 1 GB is an ingestion envelope, not an approved on-wire Internet transfer allocation. Approved Internet allocation is exactly 5 GB NAT plus 5 GB Bastion. Adding app bytes, mapping all telemetry to diagnostic settings, assuming zero, or moving app traffic to the 80-hour NAT would change or fabricate material inputs.",
+    "missing_input_or_applicability": "Exact applicable exemption/endpoint proof for each required app telemetry/control flow, or an explicitly approved distinct billable transfer allocation and aggregation. This bounded recovery does not authorize supplying that missing material input.",
+    "stop_stage": "billing_input_applicability",
+    "pricing_requests_after_failure": 0
+  },
+  "actual_current_counts": {"mcp_calls_used": 0, "direct_api_calls_used": 0, "total_requests": 0},
+  "accounting": {"prior_original_requests": 13, "prior_recovery_requests": 1, "prior_consumed": 14, "maximum_new_requests": 20, "cumulative_requests": 14, "cumulative_limit": 34, "remaining_authorized_requests": 20, "historical_comparison_mcp_calls_separate": 7, "allowances_reset": false},
+  "diagnostic_validation": {
+    "schema_validation": {"ok": true, "errors": [], "warnings": []},
+    "input_equivalence": "PASS: all seventeen lines, exact original usage including notes, SKU, deployment region, quantity, environment, stamp and effective subscription compared to normalizeCostRequest(original_request).",
+    "diagnostic_arithmetic": "PASS: four costs independently recalculated from exact matched raw COMPLETE candidate meters; thirteen unresolved resource costs null; both committed totals null.",
+    "accounting_and_ownership": "PASS: zero new MCP/direct requests; cumulative14/34, remaining20; output absent, owned temporary sibling regular; protected input/prior failure/prior recovery/manifest/requirements hashes unchanged.",
+    "new_native_pricing_responses": 0
+  },
+  "publication_gate": {"complete": false, "committed_monthly_total": null, "committed_yearly_total": null, "manifest_writeback_allowed": false},
+  "ownership_preflight": {"output_absent": true, "tmp_absent": true, "evidence_directory_absent": true}
+}

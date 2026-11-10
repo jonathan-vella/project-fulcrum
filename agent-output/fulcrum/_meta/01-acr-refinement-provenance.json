@@ -1,0 +1,42 @@
+{
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "source_request_id": "fulcrum-acr-residency-only-20261109-124406",
+  "request_id_source": "apex-local",
+  "source_receipt": "_meta/02-acr-residency-response-receipt.json",
+  "actual_response": "This is a non-issue. The paired region will still be within the EU residency boundary.",
+  "owner": "Project Stakeholders",
+  "environments": ["dev"],
+  "authorized_change": "ACR registry artifacts only: documented Microsoft-managed paired-region storage within the EU boundary. All non-ACR constraints and the accepted Entra behavior remain unchanged.",
+  "prior_requirements_sha256": "14fbcba64659e5f498037ee05f7871ee3a2a5f3db6d908d742e306a5fc8306be",
+  "prior_projection_sha256": "006b7dec8a9d094bff69b653eea2fc1a1392a71db58c76f7a424730c069a402c",
+  "prior_approved_requirements_copy": "_meta/01-pre-acr-approved-requirements.md",
+  "prior_consumed_projection_copy": "_meta/01-pre-acr-assessment-step-1.json",
+  "prior_consumed_projection_view_copy": "_meta/01-pre-acr-assessment-step-1.md",
+  "prior_completion": {
+    "step": "1",
+    "status": "complete",
+    "started": "2026-11-06T15:53:30Z",
+    "completed": "2026-11-06T16:24:10Z",
+    "completed_environments": ["dev"],
+    "review": "reviews/challenge-findings-requirements-entra-revision.json",
+    "gate_receipt": "_meta/01-gate1-entra-revision-response-receipt.json",
+    "actual_gate_answer": "approve_and_pause"
+  },
+  "prior_architecture_state": {
+    "step": "2",
+    "status": "in_progress",
+    "sub_step": "phase_1_prereqs",
+    "started": "2026-11-06T16:24:10Z",
+    "completed": null
+  },
+  "review_accounting_before": {
+    "cycle_id": "271d640c2a71d9c131ccac6d5afe824f4a310c362177587f7f4aa32aa65bd1bd",
+    "initial_id": "fulcrum-requirements-comprehensive-20261106-152603",
+    "calls": 2,
+    "max_calls": 3
+  },
+  "history_policy": "Preserve original answer/approval/review receipts, review attempts, cycle identity and consumed allowance. Reopening uses supported recall and makes dependent current work stale; prior completion remains historical, not approval of revised bytes. Policy-source acceptance stays Step 2-only and is not added to Step 1's consumed set. No SKU change.",
+  "new_approval": null,
+  "new_review": null
+}

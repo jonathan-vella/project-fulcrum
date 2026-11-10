@@ -1,0 +1,71 @@
+{
+  "status": "PROPOSED_NOT_APPROVED",
+  "environment": "dev",
+  "region": "swedencentral",
+  "authority": "Architect proposal only; no quantities are settled by this file.",
+  "compute": {
+    "container_count": 1,
+    "app_steady_memory_mib": 512,
+    "app_peak_memory_mib": 768,
+    "minimum_platform_memory_headroom_percent": 40,
+    "peak_requests_per_second": 20,
+    "peak_duration_seconds": 600,
+    "requests_per_active_day": 20000,
+    "active_days_per_month": 22,
+    "hosting_billed_hours_per_month": 730,
+    "runtime_status": "Unverified"
+  },
+  "meter_usage": {
+    "cosmos_live_data_gb": 10,
+    "cosmos_request_units_per_month": 20000000,
+    "cosmos_peak_request_units_per_second": 1000,
+    "cosmos_database_count": 1,
+    "cosmos_container_count": 3,
+    "cosmos_assumed_item_size_kib": 2,
+    "blob_live_hot_gb": 20,
+    "blob_retained_versions_and_soft_deleted_gb": 10,
+    "blob_change_feed_gb": 0.5,
+    "blob_read_operations_per_month": 100000,
+    "blob_write_operations_per_month": 10000,
+    "blob_list_operations_per_month": 10000,
+    "blob_max_object_mib": 10,
+    "acr_stored_images_gb": 10,
+    "workspace_total_sanitized_ingestion_gb_per_month": 1,
+    "workspace_analytics_retention_days": 30,
+    "operational_metric_alert_rules": 4,
+    "operational_metric_time_series": 4,
+    "scheduled_log_alert_rules": 1,
+    "scheduled_log_alert_frequency_minutes": 5,
+    "private_dns_queries_per_month": 1000000,
+    "private_endpoint_traffic_gb_per_month": {
+      "api": {
+        "towards_service": 20,
+        "from_service": 50
+      },
+      "cosmos": {
+        "towards_service": 5,
+        "from_service": 20
+      },
+      "blob": {
+        "towards_service": 10,
+        "from_service": 50
+      },
+      "acr": {
+        "towards_service": 5,
+        "from_service": 10
+      }
+    },
+    "traffic_aggregation": "Per endpoint, not a second copy of aggregate workload traffic.",
+    "restore_exercise_events_per_month": 1,
+    "cosmos_restore_exercise_gb": 10,
+    "blob_restore_exercise_gb": 20,
+    "growth_projection": "Flat six-month scenario only, not a user growth forecast."
+  },
+  "unresolved": [
+    "DEV client origin/access shape and billable provisioning hours",
+    "Recovery failure coverage and retention selection",
+    "Required supporting meters for the subsequently selected access shape",
+    "Tenant verification of central DNS zone/link and DINE ownership",
+    "Current exact candidate SKU/region/backup capability verification"
+  ]
+}

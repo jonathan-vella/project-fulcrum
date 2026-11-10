@@ -1,0 +1,7 @@
+{
+  "input_id": "policy_feasibility_read_intent",
+  "value": "provide_secure_scope_for_governance_read_only",
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-secret-capability-20261109-075300"
+}

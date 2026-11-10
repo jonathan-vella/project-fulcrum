@@ -1,0 +1,51 @@
+{
+  "request_id": "fulcrum-acr-residency-only-20261109-124406",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "phase": "phase_2_required_capability_feasibility",
+  "needed_inputs": ["registry_residency_resolution"],
+  "supersedes_request": "fulcrum-registry-and-private-scope-20261109",
+  "policy_source_receipt": "agent-output/fulcrum/_meta/02-assumed-corp-acceptance-receipt.json",
+  "evidence_path": "agent-output/fulcrum/_meta/02-container-image-feasibility-evidence.json",
+  "form": {
+    "message": "Your standard ALZ Corp acceptance is recorded for DEV Architecture only as assumed, tenant-unverified evidence. No private scope file or Azure reads are needed for that route. Only the ACR residency decision remains unanswered: Microsoft permits registry-artifact storage in the paired region. Choose whether to request a narrow ACR-only exception within Sweden or retain Sweden Central-only registry storage. The earlier highlighted option was not an answer. Any exception follows the Requirements owner and independent review; it does not change application-data residency or authorize deployment.",
+    "requestedSchema": {
+      "properties": {
+        "registry_residency_resolution": {
+          "type": "string",
+          "title": "ACR artifacts — unresolved residency decision",
+          "description": "The narrow exception would cover Microsoft-managed paired-region storage of registry artifacts within Sweden only. Workload compute, application data, Blob storage and backups stay Sweden Central-only; the existing Entra exception stays unchanged. No optional customer-configured geo-replication, other-service exception, GDPR certification or Azure-operation approval is implied.",
+          "enum": [
+            "request_narrow_acr_exception",
+            "retain_single_region_and_pause",
+            "stop"
+          ],
+          "enumNames": [
+            "Request a registry-only exception for Microsoft-managed paired-region storage within Sweden",
+            "Retain Sweden Central-only registry storage; pause pending a supported alternative",
+            "Stop this delivery workflow"
+          ]
+        }
+      }
+    }
+  },
+  "context": {
+    "answers": {
+      "target_environments": ["dev"],
+      "target_region": "swedencentral",
+      "acr_residency_decision_captured": false,
+      "policy_source": {
+        "kind": "assumed-corp",
+        "scope": "DEV Architecture only",
+        "tenant_verified": false
+      },
+      "dev_secret_certificate_profile": "managed identities plus platform-provided HTTPS can cover every required dev connection"
+    },
+    "fields": {
+      "registry_residency_resolution": {
+        "input_id": "registry_residency_resolution",
+        "kind": "input"
+      }
+    }
+  }
+}

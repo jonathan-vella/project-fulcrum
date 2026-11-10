@@ -1,0 +1,54 @@
+{
+  "project": "fulcrum",
+  "step": "2",
+  "validated_at": "2026-11-09T14:07:49Z",
+  "request_id": "fulcrum-step2-new-vnet-plan-f626298d-dc13-4b3a-bb33-7afd48c30c03",
+  "request_path": "_meta/02-new-vnet-plan-input-request.json",
+  "request_sha256": "d81722d063a0761cdd22e7fc4ad79796b46e26f96e843c0a492f81ac0bcfb904",
+  "full_material_input_ledger_path": "_meta/02-current-material-input-ledger.json",
+  "ledger_sha256": "428dd44de5c2a16b2c442ce85915aa4812ccfe6a50be78f62fe06ba601a50354",
+  "actual_checks": {
+    "new_json_parse": "PASS",
+    "full_63_record_ledger_equals_current_recall_with_provenance": "PASS",
+    "additive_63_input_phase_scope_equals_recall": "PASS",
+    "current_63_input_projection": "PASS",
+    "subnet_plan_schema": "PASS via installed Ajv 2020 and tools/schemas/subnet-plan.schema.json",
+    "strict_ipv4_rfc1918_containment": "PASS",
+    "pairwise_subnet_nonoverlap": "PASS",
+    "unused_growth_reservation_containment_and_nonoverlap": "PASS",
+    "bastion_minimum_and_recommended_app_subnet_sizes": "PASS",
+    "subnet_usable_addresses_after_five_reserved": [251, 59, 27, 27],
+    "validate_payload_require_context_saved_context_errors": [],
+    "validate_payload_require_context_complete_ledger_errors": [],
+    "pending_plan_cidr_and_rows_not_recorded_as_answers": "PASS",
+    "sku_approval_bound_to_unchanged_current_manifest": "PASS",
+    "sku_manifest_renderer": "already up-to-date",
+    "sku_manifest_validator": {"errors": 0, "warnings": 0}
+  },
+  "source_and_predecessor_sha256": {
+    "01-requirements.md": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+    "contracts/sku-manifest.json": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+    ".github/data/alz-corp-policy-baseline.json.gz": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed",
+    "current_step2_projection": "9033921d0d5bab63022a5dec0a1d926f4368d7fdcf9fdbbad02c8746773b08fc"
+  },
+  "recovered_optional_validation_failure": {
+    "attempt": "Python jsonschema import",
+    "actual_error": "ModuleNotFoundError: No module named 'jsonschema'",
+    "resolution": "No package installation or source edit. Canonical JSON Schema validation executed successfully using already installed Ajv 2020; Python geometry/context checks executed successfully separately."
+  },
+  "current_checkpoint": {"phase": "phase_3_new_vnet_confirmation_pending", "updated": "2026-11-09T14:07:09Z"},
+  "preserved_start": "2026-11-09T13:13:22Z",
+  "accounting": {
+    "recorded_material_inputs": 63,
+    "comparison_dispatches": 3,
+    "comparison_mcp_calls": 7,
+    "comparison_direct_api_calls": 0,
+    "committed_pricing_dispatches": 0,
+    "architecture_review_dispatches": 0,
+    "cost_review_dispatches": 0,
+    "step1_cycle_calls": 3,
+    "step1_absolute_cycle_cap": 4,
+    "allowances_reset_or_extended": false
+  },
+  "readiness_boundary": "Actual next gate is only guided new-VNet plan confirmation. Not full pricing, artifact completion, independent review, Gate 2, tenant compatibility/verification, spending or Azure operation authority."
+}

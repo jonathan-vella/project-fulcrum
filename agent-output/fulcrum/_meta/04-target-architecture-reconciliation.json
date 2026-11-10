@@ -1,0 +1,213 @@
+{
+  "schema_version": "architect-local-policy-reconciliation-receipt-v1",
+  "record_kind": "Architect owner research; not independent review or formal Governance",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "status": "PARTIAL_LOCAL_RECONCILIATION_TARGET_READINESS_BLOCKED",
+  "scope": "Existing approved DEV design versus already captured local target policy evidence only",
+  "summary": {
+    "confirmed_design_conflicts": 0,
+    "deny_conditions_compared": 13,
+    "deny_compatible_with_approved_design": 6,
+    "deny_outside_approved_capabilities": 7,
+    "deny_unknown_matches": 0,
+    "new_material_user_decisions_justified_now": [],
+    "complete_policy_to_design_reconciliation": false,
+    "blocking_limit": "The canonical snapshot retains all Deny conditions, but omits DINE deployment/existence bodies, all Modify applicability/complete operations, and individual Audit rules.",
+    "absence_of_confirmed_conflict_is_not_target_verified_architecture": true
+  },
+  "source": {
+    "scope_ref": "8e02286b466548f4b011ea06560abf93",
+    "index_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+    "index_sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+    "snapshots": [
+      {
+        "ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+        "sha256": "98edd9c9aa613ce65a3e8dd86f3cfc30fd640dccacb0208c3ccd13f5fd9e3dff"
+      }
+    ],
+    "discovery_signature": "sha256:7c229c364db863e37de347eb2a53726f0de4d7566e3d1ddf5c4d178556d82292",
+    "discovered_at": "2026-11-10T06:51:00Z",
+    "ttl_days": 7,
+    "expires_at": "2026-11-17T06:51:00+00:00",
+    "local_integrity_checked_at_runtime_utc": "2026-11-10T07:05:48.747260+00:00",
+    "l0_status": "COMPLETE/current at local integrity check; preserved, not reissued",
+    "assignment_counts": {"total": 9, "subscription": 3, "inherited": 6},
+    "effect_counts": {"deny": 13, "modify": 13, "deployIfNotExists": 45, "audit_summary": 245, "disabled_summary": 15},
+    "expanded_record_scope_checks": "All 71 records: Default enforcement, no notScopes, no resourceSelectors, no covering exemptions; inherited scopes match L0.",
+    "counts_are_not_resource_violations": true,
+    "full_defender_collection_option": true,
+    "private_detail_ref": "owner-private-note:fulcrum/8e02286b466548f4b011ea06560abf93/architect-reconciliation",
+    "private_detail_ref_semantics": "Owner-only research working file in the exact managed directory; not a canonical policy-contract URI or reviewer finding.",
+    "private_working_sha256": "9bfc38ba404f3557a2d688192dfc1a00486de82eeebf2ed19533b71c983c9260",
+    "private_protected_baseline_sha256": "490ddd7f5cbea027ff01f66c1ab6327e392159d0b3db979e8fd8f4a0328618a3",
+    "opaque_policy_ref_method": "Collection-compatible SHA256 prefix over sorted JSON identity: policy_id, assignment_id, policy_definition_reference_id."
+  },
+  "approved_input_identity": {
+    "old_ledger_input_count": 66,
+    "approved_consumed_projection_input_count": 69,
+    "current_recall_input_count": 70,
+    "existing_deltas_only": ["policy_source replaced by tenant", "azure_read_scope added with opaque authorized scope"],
+    "remaining_68_approved_values": "Unchanged against current recall; no new material choice made in this slice.",
+    "source_artifact_sha256": {
+      "01-requirements.md": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+      "02-architecture-assessment.md": "43e890d25e880dc651f254549cd66e076a037ee2de98a503223ebfd8aa98da5f",
+      "03-des-cost-estimate.md": "771866b2cf00920830d94837182d3399453c84d22ec0e8296f785f5558586bdc",
+      "03-des-sku-comparison.md": "c9d2bce9ec3505aa81433d5336be920c44bc1dcba9a1c416a142463f0ce88de9",
+      "contracts/sku-manifest.json": "f813c4783282079296c044b8765bede13552a39bb3121cb51e66bd9fb2953903",
+      "contracts/02-cost-estimate.conservative-planning-v2.json": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb",
+      "_meta/02-current-material-input-ledger.json": "abc05aa8dd3ed0cad42064de92a8ed0800dd960f46196093f81244f3829b86ab",
+      "_meta/assessment-step-2.json": "7906f5d6121480a4c38c9ad03ed3ae49741e7ae7e2c1dd7347bf216cb0fe44e3",
+      "_meta/02-gate2-response-receipt.json": "10cb00a060fa4e72d4eac9e7c9bea6609e3fe2a96bec6926ce7f8d5e2cc107de",
+      "_meta/02-optional-design-response-receipt.json": "7148b8a66715d9d883493d9dbd37d1a39db9c975e67ac087f42cf005f859e13a",
+      "03-des-design-traceability.md": "4750f94197fdf38c1f7fb12ff44bcaf33112e76dde78905850326f741fc50533",
+      "_meta/02-delivery-residue-archive-map.json": "3a9bf0c3bb9bba87f07d600936e8d89063f85e80e99b1b2c5814d052a26ce4f2",
+      "reviews/challenge-findings-architecture-archive-closure.json": "402754048ffd87e284260f72170daf2b296bfdc07df0d4823c245e74f3673a13",
+      "reviews/challenge-findings-cost-estimate-archive-closure.json": "1482955ddfed5dd062111db3d5c937c9350e0cec5da4c2685cedea626cb2a73d",
+      "_meta/04-policy-feasibility-collection-receipt.json": "c27eb668f1e03cb3db2089e5f0203ca7c6ea264b9f0c764ff6a7cbc6341f6085"
+    }
+  },
+  "deny_reconciliation": [
+    {"policy_ref": "policy-3051731b0239c6f4", "property": "VM/VMSS sku.name and priority", "effective_condition": "VM or VMSS, SKU in effective 17-item blocked set, priority not Spot", "classification": "COMPATIBLE", "basis": "Approved on-demand Standard_D2as_v5 and compared Standard_D2s_v5 are absent from this exact set."},
+    {"policy_ref": "policy-f7430a9147179ef4", "property": "VM/VMSS sku.name and priority", "effective_condition": "VM or VMSS, SKU in effective 44-item blocked set, priority not Spot", "classification": "COMPATIBLE", "basis": "Approved on-demand Standard_D2as_v5 and compared Standard_D2s_v5 are absent from this exact set."},
+    {"policy_ref": "policy-50c2009f31a13487", "property": "VM/VMSS sku.name and priority", "effective_condition": "VM or VMSS, SKU in effective 64-item blocked set, priority not Spot", "classification": "COMPATIBLE", "basis": "Approved on-demand Standard_D2as_v5 and compared Standard_D2s_v5 are absent from this exact set."},
+    {"policy_ref": "policy-698afb784acd4256", "property": "Microsoft.ContainerService/managedClusters/agentPoolProfiles[*]", "effective_condition": "AKS agent-pool count greater than 10", "classification": "OUT_OF_SCOPE", "basis": "No AKS."},
+    {"policy_ref": "policy-801388434e7a5c32", "property": "Microsoft.Compute/virtualMachineScaleSets/sku.capacity", "effective_condition": "VMSS capacity exists, is nonempty and its guarded numeric value is greater than 10", "classification": "OUT_OF_SCOPE", "basis": "One standalone VM, not VMSS."},
+    {"policy_ref": "policy-433af166f71690e6", "property": "Microsoft.CognitiveServices/accounts/deployments/sku.name", "effective_condition": "Cognitive Services deployment SKU equals ProvisionedManaged", "classification": "OUT_OF_SCOPE", "basis": "No Cognitive Services deployment."},
+    {"policy_ref": "policy-b14dda4a68790a30", "property": "Microsoft.OperationalInsights/workspaces/sku.capacityReservationLevel", "effective_condition": "Workspace capacityReservationLevel greater than 100", "classification": "COMPATIBLE", "basis": "Approved usage-based Analytics Logs allocation has no capacity reservation; no workspace tier change justified."},
+    {"policy_ref": "policy-198877c72ad6081c", "property": "Microsoft.Sql/servers/administrators.azureADOnlyAuthentication", "effective_condition": "SQL server, outside managed-service exclusion, azureADOnlyAuthentication not true, no allowed resource/RG tag branch", "classification": "OUT_OF_SCOPE", "basis": "No relational SQL server; no exception tag adopted."},
+    {"policy_ref": "policy-742bc6652d3adbf8", "property": "Microsoft.Sql/managedInstances/administrators.azureADOnlyAuthentication", "effective_condition": "SQL MI, azureADOnlyAuthentication not true, no allowed resource/RG tag branch", "classification": "OUT_OF_SCOPE", "basis": "No SQL MI; no exception tag adopted."},
+    {"policy_ref": "policy-7a76e060e7a5a2cc", "property": "type", "effective_condition": "Type belongs to effective 57-item forbidden classic-resource set and type exists", "classification": "COMPATIBLE", "basis": "All entries are classic-provider resource types; approved ARM resources do not match. Modern service-owned public IPs, disks and NSGs are not classic reserved IPs/disks/NSGs."},
+    {"policy_ref": "policy-90f8749e4e1ec9c0", "property": "Microsoft.KeyVault/managedHsms/enablePurgeProtection", "effective_condition": "Managed HSM, enablePurgeProtection equals string true, no allowed resource/RG tag branch", "classification": "OUT_OF_SCOPE", "basis": "No managed HSM or project vault. Actual rule polarity preserved; not reinterpreted from its name."},
+    {"policy_ref": "policy-0bc6f85e98967646", "property": "ring-dependent condition and classic resource type", "effective_condition": "Effective ring expression matches configured ring set AND type is one of seven listed classic service types", "classification": "OUT_OF_SCOPE", "basis": "Approved modern resources fail the classic-type conjunction regardless of later ring/tag bindings."},
+    {"policy_ref": "policy-d2d9ba61572c3cbf", "property": "location", "effective_condition": "location equals westeurope", "classification": "COMPATIBLE", "basis": "Sweden Central deployment does not match. This is a West Europe exclusion, not an allowed-location allowlist, RG same-region rule or ban on qualified Entra/ACR provider behavior."}
+  ],
+  "remediation_screen": {
+    "ordinal_semantics": "One-based order of the 58 non-Deny records in the exact signed snapshot. Every reference maps to its full retained condition/effective parameters in private workings.",
+    "UNKNOWN_SUBSCRIPTION_DEPLOYMENT_BODY": {
+      "count": 14,
+      "meaning": "Retained if matches subscription. Missing then.details/existence/deployment prevents determining deployed products, destinations, permissions, residency and cost ownership.",
+      "entries": [[1,"policy-3470c43a78c97d6d"],[2,"policy-8a67da3de3398898"],[3,"policy-fe37c7ca05eca617"],[4,"policy-cec937a45683d082"],[5,"policy-16814761f5abe3d9"],[6,"policy-b969b947803efa16"],[7,"policy-dedf7b0d7d7a548e"],[8,"policy-1d2ffcefdfde2d0b"],[9,"policy-5f063a23c829dcf1"],[10,"policy-8ddabc61bacce58b"],[11,"policy-a3ea5e0787b0d440"],[24,"policy-4330c156074e93cf"],[25,"policy-04d8e79fd35652b4"],[31,"policy-a751352bc7893e58"]]
+    },
+    "OUT_OF_SCOPE_RETAINED_CONDITION": {
+      "count": 31,
+      "meaning": "Complete retained if excludes modeled resources: absent service types, Windows-only VM branch, or Functions/workflow app kinds rather than the approved Linux container web app. No inference from display names.",
+      "entries": [[12,"policy-30a4c270451183aa"],[20,"policy-efa4c9d9ba5b582e"],[21,"policy-8ec5da24132ecb3f"],[22,"policy-81b3259174f7fd35"],[32,"policy-b9956bf1ad3c2549"],[33,"policy-b3470c7e03b5c9e6"],[34,"policy-a468c55157a2e0d4"],[35,"policy-15ea63f06623214f"],[36,"policy-43fea2076ec2a3f1"],[37,"policy-79d3f8ae27ed7a5d"],[38,"policy-7b5892424994765a"],[39,"policy-f21ee103e5861172"],[40,"policy-e57e3625b0ca0128"],[41,"policy-7be0d4eaa9e01507"],[42,"policy-6bbdbdf7b81d2bac"],[43,"policy-62c45d4b0be7e2a5"],[44,"policy-9e2e9b504e9e341e"],[45,"policy-26b34c097769e878"],[46,"policy-340eae84cfde7512"],[47,"policy-0b328a7f50405c5c"],[48,"policy-75dabbd805eec927"],[49,"policy-c16cc910c12b77ba"],[50,"policy-19bf5ab14d66dc1a"],[51,"policy-172af396048fa328"],[52,"policy-ead30060b3523f93"],[53,"policy-7e911c888d1f8cac"],[54,"policy-93690be6831c15ad"],[55,"policy-14740483c5a377d8"],[56,"policy-e7db53d9604ad227"],[57,"policy-17cbe5689d5f9036"],[58,"policy-d23afbe2a8a1f089"]]
+    },
+    "UNKNOWN_VM_IDENTITY_OPERATION_AND_CONDITION": {
+      "count": 2,
+      "meaning": "VM Modify extracts SystemAssigned and a second unbound value, but no property target, if or full operations. Existing MI intent is not proof of exact compatibility or a new disk/agent/identity cost.",
+      "entries": [[13,"policy-272b739bae0c7d7a"],[14,"policy-f67f29a1a312e3ce"]]
+    },
+    "ALIGNED_EXTRACTED_SETTING_FULL_RULE_UNKNOWN": {
+      "count": 5,
+      "meaning": "Extracted targets agree with approved data security: Blob public=false; Storage shared-key=false/public-network=Disabled; Cosmos disableLocalAuth=true/public-network=Disabled. Full applicability and operations still absent.",
+      "entries": [[15,"policy-e5f29bf1098568d9"],[18,"policy-b3cc3c1d0f1ac66f"],[19,"policy-f39cb004195408b4"],[27,"policy-27139868a75557c3"],[29,"policy-b43a61ab74e0f558"]]
+    },
+    "OUTSIDE_EXTRACTED_TARGET_FULL_RULE_UNKNOWN": {
+      "count": 6,
+      "meaning": "Extracted types are Event Hubs, Service Bus, Cognitive Services, ML, Key Vault and SQL, none selected. Missing Modify if/operations prevents stronger full-rule nonapplicability claims.",
+      "entries": [[16,"policy-05bc6357b74f62aa"],[17,"policy-484ccf184b6775bc"],[23,"policy-7e88f3c80feaea1c"],[26,"policy-1aadc19b5c9da75d"],[28,"policy-ba953a337f2a487d"],[30,"policy-ba45e034500b88df"]]
+    }
+  },
+  "specific_constraints_and_gaps": [
+    {
+      "id": "RULE_BODY_COVERAGE",
+      "classification": "BLOCKING_EVIDENCE_GAP",
+      "owner": "Governance evidence owner, routed by interactive parent",
+      "fact": "45 DINE then bodies, 13 Modify conditions/complete operations and 245 individual Audit rules are absent. member_policy_index contains definition identifiers, not definitions. L0 COMPLETE is not full rule-body retention.",
+      "required_action": "Establish whether the missing original captured bodies exist in authorized private evidence. Otherwise return for separately authorized Governance evidence recovery; no new Azure reads or invented replacement here."
+    },
+    {
+      "id": "CENTRAL_DINE_LOCATION_AND_COST",
+      "classification": "UNKNOWN_POTENTIAL_MATERIAL_CONFLICT",
+      "policy_refs": ["policy-4330c156074e93cf", "policy-04d8e79fd35652b4"],
+      "owner": "Governance/platform evidence and cost-allocation owners, then Architect",
+      "fact": "Two subscription DINE entries have effective Location=WestUS2 and the same privately named ResourceGroupName. Snapshot does not retain what they deploy or their existence conditions.",
+      "design_impact": "Not proof of workload telemetry replication, a workload RG location mandate or an actual residency violation. If complete bodies require this workload's monitoring/data outside Sweden Central, that would conflict with the approved boundary; Entra/ACR exceptions do not cover it. Central overhead and billing ownership remain unknown."
+    },
+    {
+      "id": "TAGS_AND_LOCATIONS",
+      "classification": "NO_TARGET_DENY_CONFLICT_ESTABLISHED",
+      "fact": "tags_required=[] and allowed_locations=[]; none of 13 Deny rules mandates RG tags, tag-key casing or RG/resource same-region equality. The actual regional Deny excludes westeurope only. Exception-tag parameters are not required RG tags or permission to waive policy.",
+      "design_impact": "Do not substitute generic nine-tag defaults as tenant facts. Any Audit-only tag controls remain unassessed. No tag contact values requested."
+    },
+    {
+      "id": "DNS_NETWORK_AND_ACCESS",
+      "classification": "TECHNICAL_BINDINGS_UNKNOWN_NOT_DENIED_MATCH",
+      "fact": "No retained in-scope condition establishes central private-DNS DINE ownership, forced UDR/firewall/NAT change, a modern public-IP ban, required CMK/WAF/vault, or a disk/lifetime/VM-SKU change.",
+      "design_impact": "Preserve four subnets, route_table=none, NSG auto, runner-only NAT, two service-owned Standard IPv4 addresses and Disabled PE-subnet policies. Zone/record/link ownership, permissions, DNS resolution, live overlap, image/MI and grants are later authorized technical prerequisites, not new user choices or inventory authority."
+    },
+    {
+      "id": "PUBLIC_MONITOR_AND_RETENTION",
+      "classification": "CONDITIONAL_UNKNOWN",
+      "fact": "No inspected Deny forces private Monitor, longer retention or a new egress route. Retained Microsoft.Web/sites diagnostic DINE conditions select Functions/workflow kinds, not the approved ordinary Linux container web app. Audit rules and subscription deployment bodies are missing.",
+      "design_impact": "Authenticated public Monitor, combined sanitized 1GB/30-day diagnostics, 730h independent app platform egress and minimal cost monitoring remain conditional, not tenant-approved or newly prohibited. No automatic AMPLS, persistent NAT, central firewall, additional ingestion or retention charge."
+    },
+    {
+      "id": "AUDIT_COVERAGE",
+      "classification": "UNASSESSED_OPERATIONAL_POLICY_COVERAGE",
+      "fact": "245 Audit/AuditIfNotExists results are summary counts without individual rules/parameters; no item-level reconciliation possible. They are not 245 project violations, deployment Deny rules or risk waivers.",
+      "design_impact": "No unsupported assertion about mandatory tagging, agents, disk encryption, diagnostics, retention, private Monitor or Defender configuration. Preserve unknown operational exposure until evidence is available."
+    }
+  ],
+  "cost_impact": {
+    "original_pricing_owner_status": "COMPLETE",
+    "protected_billing_lines": 17,
+    "monthly_scenario_usd": 168.104995,
+    "annual_scenario_usd": 2017.25994,
+    "basis": "Unchanged conditional conservative planning allocation, not actual spend or a target-verified workload total.",
+    "confirmed_new_billables_or_changed_quantities": [],
+    "reprice_required_by_demonstrated_constraint": false,
+    "reprice_feasibility_fully_resolved": false,
+    "unknown_cost_scope": "Subscription DINE/Defender, external policy-owned telemetry and central allocations remain unknown, not free or newly transferred into project scope. Scanning flags/caps are not observed usage.",
+    "protected_selections": "B1, NoSQL Serverless/paid continuous30-day recovery, Hot GPv2 LRS sole user pin, ACR Premium, D2as_v5/P6, 80h access resources versus 730h app/steady PEs, four-zone allocation, MGN6GB and separate Bastion5GB remain unchanged.",
+    "pricing_allowance": {"used": 35, "limit": 35, "remaining": 0, "new_queries": 0},
+    "future_action": "If recovered rules change project resources, quantities, retention, hours, routes or allocation ownership, obtain material scope authority and pricing-owner verification. Existing evidence reuse must be equivalent; missing new meters need explicit query extension. No new total inferred here."
+  },
+  "readiness_and_authority": {
+    "historical_steps_preserved": {"1": "complete", "2": "complete", "3": "complete", "3_5": "pending"},
+    "historical_gate2": "approve_and_continue, unchanged",
+    "historical_design_selection": "both, completed documentation unchanged",
+    "requirements_effective_review": "current",
+    "architecture_effective_review": "invalid; required private evidence omitted from historical supporting inputs",
+    "step2_and_step3_effective_assessment_views": "blocked",
+    "old_material_projection": "Historical assumed-source projection only; not regenerated or reapproved",
+    "architecture_review_cycle": {"id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba", "used": 2, "limit": 2, "remaining": 0},
+    "cost_review_cycle": {"id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba", "used": 2, "limit": 2, "remaining": 0},
+    "review_attempt_records_before": 14,
+    "new_reviews": 0,
+    "mandatory_future_private_supporting_inputs": "Exact bound index and every snapshot above, with their original hashes; formal Governance additionally needs its exact canonical private 04-governance-constraints.json only after authorized formal execution.",
+    "additional_review_inputs": "Actually recovered authoritative rule evidence, affected owner documents, actual material-source projection and unchanged COMPLETE pricing JSON plus consumed pricing evidence. Reviewers require authorized private access; do not copy private payloads into public inputs.",
+    "required_next_sequence": [
+      "Interactive parent resolves evidence-recovery ownership/scope first; do not repeat already captured target/consent.",
+      "Governance owner supplies missing effective original rule bodies under separately authorized scope if not already captured locally.",
+      "Architect reconciles resulting actual implications; only then collect any genuine material boundary/topology/SKU/retention/cost choices. None is justified now.",
+      "Before future independent dispatch, obtain explicit owner-granted bounded recovery/review extension tied to the actually captured new source/material projection. No reset, automatic cycles, fake extension projection or old approval reuse.",
+      "Freeze authorized target-backed inputs; obtain fresh independent architecture and cost-feasibility reviews within actual granted allowance and resolve blockers.",
+      "Only then may the interactive parent consider any applicable human gate. Formal Step3.5 remains separately authorized; no Planner, CodeGen or deployment handoff from this receipt."
+    ]
+  },
+  "local_checks": {
+    "managed_private_scope_resolution": "PASS; filesystem-only supported command",
+    "private_scope_index_snapshot_permissions_and_containment": "PASS; directory 0700, files 0600, outside repository",
+    "exact_index_snapshot_hashes": "PASS",
+    "shared_canonical_signature_and_runtime_ttl": "PASS",
+    "shared_Ajv2020_governance_snapshot_schema": "PASS",
+    "exact_scope_index_and_inherited_scope_consistency": "PASS",
+    "full_Defender_collection_option_and_no_filtered_records": "PASS",
+    "all_13_Deny_refs_match_collection_receipt": "PASS",
+    "all_58_remediation_records_accounted_for": "PASS",
+    "69_approved_values_compared_to_70_current_records": "PASS; only previously authorized source/scope deltas",
+    "protected_project_files": 316,
+    "protected_file_exclusions": "Session-state/backup/lock files not directly read; temporary helper and the two new reports excluded. Recall state compared through supported show.",
+    "requirements_and_COMPLETE_cost_exact_hashes": "PASS",
+    "17_line_decimal_sum_and_12_month_annualization": "PASS",
+    "new_azure_or_network_calls": 0,
+    "new_pricing_or_review_calls": 0,
+    "source_or_credential_changes": 0,
+    "approved_artifact_material_projection_or_step_status_writes": 0
+  },
+  "next_owner": "Interactive parent",
+  "next_action": "Resolve Governance-owned evidence coverage and explicit bounded recovery authority; retain current approval history. No premature Gate2 reapproval."
+}

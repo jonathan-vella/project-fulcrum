@@ -1,0 +1,24 @@
+{
+  "request_id": "fulcrum-step2-usage-scope-9aa29601-42cb-4cbe-ba00-cdf3eeadfda1",
+  "request_id_source": "apex-local",
+  "capture_mode": "recovered",
+  "captured_at": "2026-11-09T13:49:39.118854+00:00",
+  "project": "fulcrum",
+  "step": "2",
+  "owner": "Project Stakeholders",
+  "environments": ["dev"],
+  "source": "Current caller's explicit same-Step-2 full-phase continuation and six actual parent-relayed native answers, corroborated by _meta/02-private-usage-response-receipt.json.",
+  "actual_scope_text": "Continue through applicable SKU/VNet confirmation/pricing/full artifacts/both independent reviews to real Gate 2. Do not repeat settled 54 inputs/new 6 answers, reinit/reset calls, fabricate approval or stop merely draft.",
+  "previous_scope_request_id": "fulcrum-step2-continuation-capture-092d8802-9ed6-4c02-8a3e-31a31bee3c16",
+  "newly_consumed_inputs": [
+    "dev_client_access_profile",
+    "dev_compute_demand_profile",
+    "dev_data_meter_profile",
+    "dev_access_provisioned_hours_per_month",
+    "dev_recovery_failure_coverage",
+    "dev_backup_retention_profile"
+  ],
+  "scope_file": "_meta/02-current-continuation-phase-scope.json",
+  "preserved": "Existing Step 2 start at 2026-11-09T13:13:22Z, prior phase grant/history, material owners/request provenance, Step 1 reviews and allowances. This capture only extends the consumed set from 54 to 60 with explicitly supplied inputs; it does not initialize or reset any cycle.",
+  "permission_boundary": "Routine owned Step 2 work and existing ordinary independent reviews only. No human SKU/VNet/Gate 2 approval, Azure reads/writes, source repairs, deployment, spending or deletion permission."
+}

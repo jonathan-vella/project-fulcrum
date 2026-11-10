@@ -1,0 +1,34 @@
+{
+  "kind": "third-party-documentation-attribution",
+  "scope": "The listed historical Microsoft Learn document captures only. This does not license commercial pricing pages or establish current billing applicability.",
+  "attribution": "Microsoft and contributors",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "license_source_url": "https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE",
+  "retention_note": "Historical tool-rendered text captures are retained with their existing bytes and hashes. Tool rendering may differ from the original page presentation; no endorsement is implied. Other source terms and trademark rights are not waived.",
+  "sources": [
+    {
+      "path": "_meta/02-pricing-public-docs/acr-skus-fetch.native.txt",
+      "title": "Azure Container Registry service tiers",
+      "source_url": "https://learn.microsoft.com/azure/container-registry/container-registry-skus",
+      "sha256": "d1b5ba5be2bd19e6df66ebdd44de60a8c4c1c6073d1db2c1d87b485877f02c18"
+    },
+    {
+      "path": "_meta/02-pricing-public-docs/appservice-hosting-plans-fetch.native.txt",
+      "title": "Azure App Service hosting plans",
+      "source_url": "https://learn.microsoft.com/azure/app-service/overview-hosting-plans#cost-of-app-service-plans",
+      "sha256": "02b037ce9ba115ba773abe7388f234307f3b3df1ecea4e7110526b27f8838883"
+    },
+    {
+      "path": "_meta/02-pricing-public-docs/monitor-cost-usage-fetch.native.txt",
+      "title": "Azure Monitor cost and usage",
+      "source_url": "https://learn.microsoft.com/azure/azure-monitor/fundamentals/cost-usage#pricing-model",
+      "sha256": "b40f8329ffbadccf9e063f7322c19002727301b61124461c39b2dd3fde7a83c8"
+    }
+  ],
+  "excluded_full_page": {
+    "path": "_meta/02-pricing-public-docs/appservice-linux-applicability-fetch.native.txt",
+    "repository_content": "publication-safe-provenance-notice-only",
+    "repair_record": "_meta/02-documentation-publication-repair.json"
+  }
+}

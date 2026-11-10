@@ -1,0 +1,7 @@
+{
+  "input_id": "dev_access_restore_dns_meter_profile",
+  "value": "Adopt the proposed capped access/restore and DNS allocation scenario",
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8"
+}

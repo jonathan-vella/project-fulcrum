@@ -1,0 +1,47 @@
+{
+  "schema_version": "fulcrum-design-visual-checks-v1",
+  "project": "fulcrum",
+  "date": "2026-11-09",
+  "performed_by": "design agent",
+  "independent_review": false,
+  "status": "PASS",
+  "method": "Direct image-tool inspection of PNG previews and separately rasterized actual SVG masters at 1920x1080. SVGs were rendered by CairoSVG 2.8.2, not checked only by header or size.",
+  "views": [
+    {
+      "stem": "03-des-diagram",
+      "svg_sha256": "3d6c517ea8c9f4c6da4d3c072b7027de33921e22e3cf6f9b57568b9a9e0158db",
+      "png_sha256": "a6f01b6470cb497078b9d31b2cb299019e795c7c4f48df6940c6da4d24ae4766",
+      "png_inspected": "_meta/03-des-diagram-png-preview.png",
+      "svg_render_inspected": "_meta/03-des-diagram-svg-preview.png",
+      "checks": [
+        "Official embedded Azure icons render, including App Service, Cosmos, Blob, ACR, Bastion, NAT, Entra, DNS and workspace Insights.",
+        "Labels are legible at normal 1920x1080 overview size; final connector corridors do not cross card text or boundary labels.",
+        "Sweden Central workload and isolated VNet boundaries are distinct; managed PaaS is outside the VNet; shared DNS and qualified Entra are outside the workload-region frame.",
+        "Private ingress is distinct from outbound integration; 730h app platform egress is independent of 80h runner-only NAT.",
+        "Four steady endpoints and conditional new-account/PE recovery are distinct; no fifth steady dependency or regional failover is drawn.",
+        "Runtime Unverified and assumed-policy qualification are visible; monitoring public access is explicitly conditional."
+      ],
+      "layout_repairs": "Moved independent top/left egress and operator routes out of header text; separated DNS from the private request bus; moved access public-IP caption away from runner telemetry."
+    },
+    {
+      "stem": "03-des-diagram-network",
+      "svg_sha256": "76c0d111f6c7cf2f0cc1c2a49221bd9eb10af184ded34cfd52b8e4940dca0d97",
+      "png_sha256": "01c9210bcb0b7a1f175d09d17620257a87498c04d12e1f1208eca6ad6d5cba1f",
+      "png_inspected": "_meta/03-des-diagram-network-png-preview.png",
+      "svg_render_inspected": "_meta/03-des-diagram-network-svg-preview.png",
+      "checks": [
+        "All four exact subnet CIDRs, VNet prefix and unused growth reserve are readable.",
+        "Delegation, NSG/route-table semantics and Disabled PE network policies are visible without claiming endpoint filtering.",
+        "Four central zone names and PaaS target mappings are readable; App/SCM and ACR regional records are called out.",
+        "Operator and DNS routes use margins rather than crossing header text; arrows stay clear of unrelated cards.",
+        "Native Entra SSH, no public VM NIC, service-owned IPs and independent app egress are explicit.",
+        "Conditional restore PE and future-authorized deletion billing qualification are visible."
+      ],
+      "layout_repairs": "Routed operator through the left margin and DNS through the right-hand corridor; changed wording to planned subnet rows."
+    }
+  ],
+  "limitations": [
+    "Rasterized-SVG visual check exercises the actual embedded symbols and text, but is not a second independent browser-engine review.",
+    "No runtime connectivity, Azure state, performance, policy enforcement or recovery test was performed."
+  ]
+}

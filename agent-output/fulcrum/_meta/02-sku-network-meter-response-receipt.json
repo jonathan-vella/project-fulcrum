@@ -1,0 +1,17 @@
+{
+  "request_id": "fulcrum-step2-sku-network-meters-3c992718-7356-4e9e-a9b0-77fbd8b27bd8",
+  "request_id_source": "apex-local",
+  "phase": "phase_3_sku_confirmation_pending",
+  "source": "Actual native ask_user result in the current conversation",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "actual_response": {
+    "sku_confirmation_status": "Approve all",
+    "vnet_mode": "create-new",
+    "dev_access_restore_dns_meter_profile": "Adopt the proposed capped access/restore and DNS allocation scenario"
+  },
+  "approved_selection": "The three current architect-derived DEV rows described in the matching saved form, with the LRS user pin unchanged.",
+  "adopted_meter_scope": "The exact capped access, restore and central-DNS allocation profile actually displayed in the saved form; not actual telemetry, shared resource ownership or actual billing.",
+  "authority_boundary": "No final CIDR/subnet confirmation, Gate 2, tenant verification, Azure read/write, spending, resource deletion, Production or deployment approval.",
+  "sdk_response_id_supplied": false
+}

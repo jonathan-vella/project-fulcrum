@@ -1,0 +1,754 @@
+{
+  "schema_version": "cost-estimate-v1",
+  "status": "COMPLETE",
+  "project_name": "fulcrum",
+  "region": "swedencentral",
+  "currency": "USD",
+  "monthly_total": 168.104995,
+  "yearly_total": 2017.25994,
+  "resources": [
+    {
+      "name": "storage-blob-replication (dev, swedencentral)",
+      "manifest_service_id": "storage-blob-replication",
+      "source_kind": "manifest",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Storage",
+      "sku": "LRS",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 10.7552,
+      "notes": "DEV/stamp null/subscription null; on-demand Consumption USD; deployment/billing swedencentral. Original LRS user pin unchanged; Storage Account deployment maps to catalog Storage/Standard GPv2 Hot non-HNS, provider Standard_LRS. Aggregate live20GB+retained versions/soft-deleted10GB+change feed0.5GB=30.5GB; read110000/write20000/list10000 operations already include one restore's extra10k reads/10k writes. One20GB logical in-place restore processes full0.5GB feed=500MB (decimal GB=1000MB), not20GB processed. PITR30days, supporting retention at least31days; no multiplying retention by bytes, extra account/vault or seven-day fallback. Azure Retail Prices API direct fallback d06-blob.json, original2026-11-09T16:02:49.393Z: General Block Blob v2/Hot LRS/Hot LRS Data Stored/1 GB/Month, meter39d8c6c1-22c0-5719-9330-593a56b3a2e0; native minima0/51200/512000, rates0.0184/0.017664/0.016928. Reused MCP q12-gpv2.native.json at2026-11-09T15:59:13.345813+00:00: same product/Hot LRS, Hot Read Operations0.004, Hot LRS Write Operations0.05, LRS List and Create Container Operations0.05, each10K, one flat row per operation. MCP q14-pitr.native.json at2026-11-09T16:02:21.471208+00:00: Blob Features/Point-in-time Restore LRS/Point-in-time Restore LRS Data Processed/1 MB at0.02. Equation30.5*0.0184+110000/10000*0.004+20000/10000*0.05+10000/10000*0.05+500*0.02=10.7552. Native tiers verified and applied in ascending order to stored30.5GB. All meter IDs/source hashes retained in verified fixed-scope-calculations.json and historical query ledger. Protection volumes are adopted envelopes, not measured churn; no duplicate transactions."
+    },
+    {
+      "name": "app-host (dev, swedencentral)",
+      "manifest_service_id": "app-host",
+      "source_kind": "manifest",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure App Service",
+      "sku": "B1",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": 0.018,
+      "monthly_cost": 13.14,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, Linux, on-demand Consumption USD. Aggregate730 provisioned hours, one instance. Reused COMPLETE 02-cost-candidates-app-host.json q3 actual raw response, original queried_at2026-11-09T13:38:13.526Z: Azure App Service Basic Plan - Linux/B1/B1/1 Hour, empty armSkuName, meter87a319c7-c1cc-56a0-a6c2-a043cd34225d at0.018; one flat exact row, not Windows B1 App. Canonical Linux meter correction does not change deployment B1. Equation0.018*730*1=13.14. One container512MiB steady/768MiB peak plus40% platform headroom, no extra worker/slot/paid filesystem backup. Private data/image traffic uses PEs below. Independent730h platform identity/control/combined telemetry is not80h runner NAT. Current explicitly adopted additional app public wire1 decimalGB/month is separately allocated under MGN in Internet line, not inferred from ingestion. Original full notes and current approved usage are hash-bound in request provenance; runtime paths Unverified."
+    },
+    {
+      "name": "document-store (dev, swedencentral)",
+      "manifest_service_id": "document-store",
+      "source_kind": "manifest",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure Cosmos DB",
+      "sku": "Serverless",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 12.1,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD. One NoSQL Serverless account, three containers/one database,2KiB items. Aggregate20mRU/month, peak1000RU/s, live10GB, paid continuous30daybackup10GB, region_count1, one10GB source restore/month. Reused COMPLETE 02-cost-candidates-document-store.json sequence2 raw response at original2026-11-09T13:43:54.315Z: Azure Cosmos DB serverless/RUs/1M RUs/1M at0.305 (7f356bc7-f8a6-5cb2-a7c2-4cf785e6c596); Azure Cosmos DB/RUs/Data Stored/1 GB/Month at0.25 (feba2784-d0c5-55e9-8543-c57af5affe64); Azure Cosmos DB - PITR/Backup/Cont 30D Bckp Continuous Backup/1 GB at0.2 (04c6d453-bc0e-5ad3-880a-19b8bb45a275); same product/SKU/Cont 30D Bckp Data Restore/1 GB at0.15 (2f880206-a729-597a-9c13-8423a683475e). Empty ARM SKUs; one flat exact row each. Equation20000000/1000000*0.305+10*0.25+10*1*0.2+10*1*0.15=12.1. Paid monthly backup is liveGB times one region, not thirty copies, per captured official continuous-backup billing semantics. Source restore charge occurs once, not again in temporary target. Temporary target RU/live/backup separately priced."
+    },
+    {
+      "name": "access-compute (dev, swedencentral)",
+      "manifest_service_id": "access-compute",
+      "source_kind": "manifest",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Virtual Machines",
+      "sku": "Standard_D2as_v5",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": 0.092,
+      "monthly_cost": 7.36,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD, Linux Standard_D2as_v5 x86. One instance, aggregate80 provisioned hours includes restore. Reused COMPLETE 02-cost-candidates-access-compute.json q1 raw response, original queried_at2026-11-09T13:43:21.592Z: exact Virtual Machines Dasv5 Series/Standard_D2as_v5/D2as v5/1 Hour, armSkuName Standard_D2as_v5, meter0ef9fe9f-7a45-596d-905c-dc15a89559ad at0.092. One flat matching Linux product row; Windows/Cloud Services/Spot/DevTest excluded deterministically by exact product and meter ID, not name-only selection. Equation0.092*80*1=7.36. OS disk/Bastion/NAT/service IPs/transfer separately priced. Future separately authorized deletion is required for adopted provisioned lifetime; VM deallocation is not deletion. No present deletion or deployment authority."
+    },
+    {
+      "name": "acr-premium-dev-swedencentral",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Container Registry",
+      "sku": "Premium",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 50.692417,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD. Aggregate one Premium registry,10GB image storage,365/12=30.416666666666668 billable days/month. Reused MCP q01-acr.native.json at original2026-11-09T15:58:04.356405+00:00: Container Registry/Container Registry/Premium/Premium Registry Unit/1/Day, empty ARM SKU, meter2f8e1105-47d0-4105-a934-b2175c766a71 at1.6666, one flat base meter. Equation1.6666*(365/12)*1=50.692416666666674, round6=50.692417. Captured official acr-skus-fetch.native.txt establishes Premium500GiB storage included in daily base, covering10GB with no overage; not a free registry. No optional replica/Tasks/builds/Connected Registry. Private Link is priced separately. Narrow accepted provider-paired EU image/artifact storage qualification retained, not an exception for other workload data or a configured geo-replica."
+    },
+    {
+      "name": "steady-private-endpoints-dev-swedencentral",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Virtual Network",
+      "sku": "Standard Private Endpoint",
+      "region": "swedencentral",
+      "billing_region": "Global",
+      "quantity": 4,
+      "hourly_rate": 0.01,
+      "monthly_cost": 30.9,
+      "notes": "DEV/stamp null/subscription null; deployment swedencentral unchanged, canonical Global billing substitution, on-demand Consumption USD. Four app/Cosmos/Blob/ACR endpoints EACH730h; traffic aggregate ONCE across all4: API20/50,Cosmos5/20,Blob10/50,ACR5/10GB towards/from, total40GB ingress130GB egress. Reused Azure Retail Prices API direct fallback d02-private-link.json at original2026-11-09T16:02:22.717Z after q02 missing_tier_metadata: Virtual Network Private Link/Standard/Standard Private Endpoint/1 Hour, metere6ab7238-e433-4fe0-a2b2-2b2564df2cdb at0.01; same product/SKU/Standard Data Processed - Ingress (10caa28b-6479-4852-9eb7-610870cb6417) and Standard Data Processed - Egress (e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b)/1 GB, each native minima0/1000000/5000000 and rates0.01/0.006/0.004. Complete tiers sorted and verified; combined steady+temporary41GB/140GB still entry bands, applied once per direction. Equation4*730*0.01+40*0.01+130*0.01=30.9. Never multiply aggregate traffic by four; multiple endpoint IP configurations do not create extra billed endpoint resources. Not a service-endpoint or Container Apps surcharge."
+    },
+    {
+      "name": "central-private-dns-allocation-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure DNS",
+      "sku": "Private",
+      "region": "swedencentral",
+      "billing_region": "",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 2.4,
+      "estimate_kind": "upper_bound",
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment unchanged; canonical empty-region commercial billing representation, Consumption USD/on-demand. Explicit conservative shared-cost allocation: aggregate4 central zone-equivalents and1mqueries/month, NOT ownership, duplicate project zones or actual central invoice. Reused Azure Retail Prices API direct fallback d03-dns.json at original2026-11-09T16:02:33.885Z after q03: Azure DNS/Azure DNS/Private/Private Zone/unit1 interpreted as zone-month by canonical guidance, meter0b608a26-f611-4232-8192-ce81b6b57194 with complete native bands minimum0/rate0.5 and25/rate0.1; Private Queries/1M, meter46cff9cb-4b15-4af0-bf41-25143827fef8 minimum0/rate0.4. Explicit highest-commercial allocated upper-bound equation4*0.5+1000000/1000000*0.4=2.4, not actual tier placement. Empty and named billing zones are not additive; government rows rejected. Four service-correct zones/SCM/ACR data records/links assumed, actual owner Unverified. No invented DNS Resolver/security-policy/per-record/public-zone surcharge; temporary Cosmos uses existing zone, not a fifth."
+    },
+    {
+      "name": "log-analytics-app-insights-combined-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Log Analytics",
+      "sku": "Analytics Logs",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 2.99,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, Consumption USD/on-demand. One aggregate1GB/month sanitized combined envelope for workspace-based App Insights/app/access/data/registry/platform diagnostics; NOT1GB per resource, not wire bytes. Retention30days included per canonical guidance; no archive/search/export/cluster/commitment or separate Insights ingestion. Reused Azure Retail Prices API direct fallback d04-logs.json at original2026-11-09T16:02:38.978Z after q04: Log Analytics/Log Analytics/Analytics Logs/Analytics Logs Data Ingestion/1 GB, metere3669cc9-19b6-55fc-b9fe-782ab83615ab; native minimum0/free0 and minimum5/paid2.99 both preserved. Approved paid allocation1*2.99=2.99, no shared free entitlement or ingestion-to-wire inference. Additional app wire1GB is a separately approved scenario. Central Defender/policy-owned external workspace/transfer allocation is unavailable and outside project scope, excluded not free. No paid retention beyond approved30days."
+    },
+    {
+      "name": "operational-metric-alerts-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure Monitor",
+      "sku": "Metric Alerts",
+      "region": "swedencentral",
+      "billing_region": "Global",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 0.4,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment unchanged, observed exact Global billing, on-demand Consumption USD. Aggregate4 static metric rules/4 total paid monitored time series,1-minute evaluation. Reused Azure Retail Prices API direct fallback d05-metric.json at original2026-11-09T16:02:44.684Z after q13 missing_tier_metadata: Azure Monitor/Azure Monitor/Alerts/Alerts Metric Monitored/1/Month, meter6860c782-bbcc-41ed-a218-fb308dd0942e. Native bands minimum0/free0 and minimum10/paid0.1 preserved. Explicit paid allocation4*0.1=0.4; no subscription-free ten-series availability assumed. Not dynamic thresholds or frequency resource-monitored substitution. Existing authorized team routing; no additional email/webhook/notification transport or extra series."
+    },
+    {
+      "name": "operational-scheduled-log-alert-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure Monitor",
+      "sku": "Scheduled Query Alerts",
+      "region": "swedencentral",
+      "billing_region": "Global",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 1.5,
+      "notes": "DEV/stamp null/subscription null; deployment swedencentral unchanged, observed Global billing, on-demand Consumption USD. Aggregate1 scheduled log rule/1 monitored workspace resource,5-minute evaluation; no dimensional split. Reused MCP q13-global-alerts.native.json at original2026-11-09T16:02:21.471208+00:00: Azure Monitor/Azure Monitor/Alerts/Alerts System Log Monitored at 5 Minute Frequency/1/Month, meter92f6f16a-1e67-4a1d-8271-9d9498d609a1 at1.5, one exact flat row. Equation1*1*1.5=1.5. Not one-minute, dynamic-threshold, health-model or notification meter. Existing authorized operational action routing, no transport submeter."
+    },
+    {
+      "name": "ephemeral-bastion-standard-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure Bastion",
+      "sku": "Standard",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": 0.29,
+      "monthly_cost": 23.2,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD. Aggregate80 provisioned hours, one Standard gateway INCLUDES2 base scale units. Reused MCP q06-bastion.native.json at original2026-11-09T15:58:04.356405+00:00: Azure Bastion/Azure Bastion/Standard/Standard Gateway/1 Hour, meter4836590f-078a-5184-b23a-63ad1c7979cc at0.29, one flat exact gateway row. Equation80*0.29*1=23.2; never multiply base by2 or add Additional Gateway. Native Entra SSH to private Linux VM, not Premium/session-recording/tunnel-as-Entra. Billing until future separately authorized deletion, not deallocation. Approved5GB outbound is priced ONCE in Internet allocation under Bastion's OWN fully verified transfer maximum paid rate, not MGN and not this gateway-only line. Captured official Bastion semantics distinguish hourly and transfer dimensions. No claim that published first5GB inclusion is available or applied to this planning allocation."
+    },
+    {
+      "name": "ephemeral-nat-standard-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "NAT Gateway",
+      "sku": "Standard",
+      "region": "swedencentral",
+      "billing_region": "Global",
+      "quantity": 1,
+      "hourly_rate": 0.045,
+      "monthly_cost": 4.725,
+      "notes": "DEV/stamp null/subscription null; deployment swedencentral unchanged, canonical Global billing substitution, on-demand Consumption USD. Runner ONLY aggregate80 provisioned hours and25GB processed=20GB return/download+5GB outbound. Reused MCP q07-nat.native.json at original2026-11-09T15:58:04.356405+00:00: NAT Gateway/NAT Gateway/Standard/Standard Gateway/1 Hour, meterae30040a-67f5-485b-b0f4-a6ef50504d9c at0.045; same product/SKU/Standard Data Processed/1 GB, meterd32b6352-b66b-4c4c-8f21-60e94058e04d at0.045; each one flat exact row, StandardV2 excluded. Equation80*0.045+25*0.045=4.725. Additional5GB Internet transfer and service IP priced separately. No730h app dependency or all-traffic app reroute; Internet MGN combines only this5GB with separately adopted app1GB."
+    },
+    {
+      "name": "ephemeral-runner-os-disk-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Storage",
+      "sku": "P6 LRS",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 1.230378,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD. One64GiB provisioned P6 Premium SSD managed disk, aggregate80 billable hours including restore. Reused MCP q08-disk.native.json at original2026-11-09T15:58:04.356405+00:00: Premium SSD Managed Disks/P6 LRS/P6 LRS Disk/1/Month, armSkuName Premium_SSD_Managed_Disk_P6, metera65c7333-db6c-5d6e-bbc8-466836c97782 at11.2272, one flat disk row, Disk Mount excluded. Captured official disks-types managed billing explicitly permits hourly proration of monthly provisioned-size offering when deleted. Equation11.2272*80/730=1.2303780821917807, round6=1.230378;730h is monthly-price proration divisor, not billable lifetime. No snapshot/data disk/paid bursting/multiattach/transaction add-on. Deallocation leaves disk billable; future separately authorized deletion required, not performed."
+    },
+    {
+      "name": "ephemeral-service-public-ipv4-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Virtual Network",
+      "sku": "Standard IPv4",
+      "region": "swedencentral",
+      "quantity": 2,
+      "hourly_rate": 0.005,
+      "monthly_cost": 0.8,
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD. Two service-owned Standard static IPv4 addresses, one Bastion and one NAT, EACH80 provisioned hours=160 address-hours. Not a VM NIC public IP or Public IP Prefix. Reused MCP q09-ip.native.json at original2026-11-09T15:58:04.356405+00:00: IP Addresses/Standard/Standard IPv4 Static Public IP/1 Hour, meter9c150bf9-2bad-430e-a53c-c213804f49ef at0.005, one flat exact row. Equation2*80*0.005=0.8. Quantity multiplies hourly lifetime, not aggregate traffic. No retained unused address beyond approved profile; future deletion separately authorized."
+    },
+    {
+      "name": "internet-outbound-allocation-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Bandwidth",
+      "sku": "Internet Data Transfer Out",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 0.957,
+      "estimate_kind": "upper_bound",
+      "notes": "CURRENT EXPLICITLY ADOPTED conservative planning allocation, DEV/stamp null/subscription null, deployment/billing swedencentral, on-demand Consumption USD, aggregate11 decimalGB/month. Additional app1GB across730h PLUS unchanged runner NAT5GB gives MGN6GB; SEPARATE Bastion5GB uses Bastion's OWN transfer maximum paid rate. No shared free entitlement, inclusion, volume discount, actual applied-tier assertion or invoice prediction. Not measured traffic, not ingestion-as-wire, not suggested5GB app, not monthlyTB/Tb; historical indicative/unknown-volume restriction is superseded ONLY for this approved scenario. ComponentA reuses complete Azure Retail Prices API direct fallback d01-bandwidth.json at original2026-11-09T16:01:38.913Z: Bandwidth/Rtn Preference: MGN/Standard/Standard Data Transfer Out/1 GB, empty ARM SKU, meter9995d93a-7d35-4d3f-9c69-7a7fea447ef4. Complete native minima0/100/10335/51295/153695/512095, rates0/0.087/0.083/0.07/0.05/0.05; max verified paid0.087. Allocation6*0.087=0.522. ComponentB NEW single authorized Azure Retail Prices API direct fallback d07-bastion.json, actual queried_at2026-11-09T18:19:28.172Z, after exact q06 status200 missing-tier response at original2026-11-09T15:58:04.356405+00:00: Azure Bastion/Azure Bastion/Standard/Standard Data Transfer Out/1 GB, empty ARM SKU, metere31d6690-69c9-50a4-9c56-baeaf79edd56. Complete raw Count5/NextPageLink:null; sorted native minima0/5/10240/51200/153600, rates0/0.087/0.082998/0.07/0.049999; max verified paid0.087. Allocation5*0.087=0.435. Equation6*max(0.087,0.083,0.07,0.05,0.05)+5*max(0.087,0.082998,0.07,0.049999)=0.957. All native tiers retained and validated; none guessed/waived by upper_bound_ok. This is a service-specific maximum-paid-rate budget allocation, deliberately not the free-band marginal bill for11GB. Bastion5GB is NEVER added to MGN6GB or charged again in gateway-only line. Default Microsoft routing and selective independent app platform egress unchanged. Private workload traffic separately priced under PEs; no required wire volume silently zero."
+    },
+    {
+      "name": "temporary-cosmos-restore-target-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Azure Cosmos DB",
+      "sku": "Serverless",
+      "region": "swedencentral",
+      "quantity": 1,
+      "hourly_rate": null,
+      "monthly_cost": 4.805,
+      "estimate_kind": "upper_bound",
+      "notes": "DEV/stamp null/subscription null; swedencentral deployment/billing, on-demand Consumption USD. Aggregate one monthly temporary NoSQL Serverless restore target4h inside80h access session;1mRU,live10GB,continuous30daybackup10GB,region_count1. Four-hour storage/backup proration unverified: explicitly approved FULL monthly10GB live/backup conservative paid bound, not4/730 or80/730. Reused COMPLETE 02-cost-candidates-document-store.json sequence2 raw response at original2026-11-09T13:43:54.315Z: Azure Cosmos DB serverless/RUs/1M RUs/1M at0.305; Azure Cosmos DB/RUs/Data Stored/1 GB/Month at0.25; Azure Cosmos DB - PITR/Backup/Cont 30D Bckp Continuous Backup/1 GB at0.2. Empty ARM SKUs, one exact flat row each; same meter IDs as source account. Equation1000000/1000000*0.305+10*0.25+10*1*0.2=4.805. Source-account restore API fee charged once in source line, NEVER here again. No unproven forever-free backup after deletion; temporal PE/DNS accounted separately."
+    },
+    {
+      "name": "temporary-cosmos-restore-private-endpoint-dev",
+      "source_kind": "supplemental",
+      "environment": "dev",
+      "stamp": null,
+      "subscription": null,
+      "service_name": "Virtual Network",
+      "sku": "Standard Private Endpoint",
+      "region": "swedencentral",
+      "billing_region": "Global",
+      "quantity": 1,
+      "hourly_rate": 0.01,
+      "monthly_cost": 0.15,
+      "notes": "DEV/stamp null/subscription null; deployment swedencentral unchanged, canonical Global billing substitution, on-demand Consumption USD. Aggregate one temporary endpoint4h with1GB towards/10GB from target, extra ONCE to steady40GB/130GB; cumulative41GB/140GB stays in entry native bands. Reused Azure Retail Prices API direct fallback d02-private-link.json at original2026-11-09T16:02:22.717Z: Virtual Network Private Link/Standard/Standard Private Endpoint/1 Hour0.01; Standard Data Processed - Ingress and Standard Data Processed - Egress/1 GB, both complete minima0/1000000/5000000 and rates0.01/0.006/0.004, same exact IDs as steady endpoints. Equation1*4*0.01+1*0.01+10*0.01=0.15. Evidence shared, not deployment quantities. No endpoint traffic multiplier, duplicate central Cosmos DNS/fifth hosted zone or second source restore fee. Existing central zone/records/link assumed, owner/runtime Unverified; future deletion separately authorized."
+    }
+  ],
+  "optimization_notes": [
+    "COMPLETE only for the explicitly approved seventeen-line DEV conservative planning scenario, conditional on its adopted usage envelopes. Assumed Corp policies—not tenant-verified; DEV Architecture-only. All runtime paths Unverified. Not tenant billing, actual measured usage, Architecture/review approval, spending, deletion, deployment or Production authority.",
+    "All17 finite line equations were independently recalculated from validated original raw meter sources using normalizeCostRequest/calculateLineCost plus explicit native MB arithmetic and official monthly-disk proration. Historical FAILED subtotals were not promoted. Six-decimal line rounding; monthly_total is the sum of those17 figures, yearly_total=monthly_total*12. Medium confidence follows multiple component meters and documented static inclusions/upper-bound allocations.",
+    "Current scope is hash-bound to assessment-step-2.json with69 actual records, not the historical66-record ledger. Original66 records are unchanged, plus exactly3 actual approved monthly-planning choices. All17 structured usages match the previous approved calculation request. Current app1GB/MGN6GB/separate Bastion5GB semantics are authorized scenario changes, NOT false equivalence with the original unknown-app/10GB transfer request.",
+    "Fresh-catalog static preflight remains PREFLIGHT_FAILED with only Estimated distinct query groups (13) exceed remaining request budget (1). All17 substantive lines/usages validate. Explicit existing-evidence reuse and ONE exact missing-tier fallback are authorized; that heuristic was retained, not relabeled PASS and never used to expand allowance.",
+    "New requests this invocation:0MCP,1direct, cumulative35/35; prior34 remain consumed. No discovery, retry, pagination, catalog restart, other HTTP/Azure tools or follow-up. Single helper response is fully valid, Count5, NextPageLink:null with native tiers on every row. upper_bound_ok did NOT waive raw metadata. Original q06 failure timestamp and entire response preserved; direct data is not MCP-verified.",
+    "Internet allocation uses each service's own maximum verified PAID native rate: MGN6GB(app1+NAT5) and separate Bastion5GB. No free credit, inclusion, discount, actual tariff placement or invoice prediction. Published free bands remain in raw evidence but are not claimed for these allocations. No Bastion double count, ingestion-as-wire, monthlyTB/Tb volume, transport change or app route through80h NAT.",
+    "Every reused source retains its original collection timestamps in line notes and immutable raw archives/ledgers; queried_at records this composite estimate's latest actual collection event only. Manifest cost_estimated_at marks the composite estimate evidence timestamp, not a fresh quote for reused individual rates. Candidate evidence remains comparison-origin raw evidence, not SKU approval.",
+    "Original full usage notes remain at the hash-verified original request and were read in full together with approved normalization, network/dependency closure and cached official semantics. Narrow ACR EU artifact exception, private ingress/SCM/image paths, Gateway HTTPS Cosmos, Blob/PITR, DNS, selective app egress, access lifecycle and combined monitoring/recovery remain unchanged. Central Defender/policy-owned external workspace/transfer allocation remains outside project scope and unknown, not free.",
+    "All14 native archives,6 prior direct envelopes/raw pages,3 candidate raw sources,10 official semantic archives and exact q11 recovered byte archive were revalidated read-only. q11 old archival wording and original FAILED history remain unchanged; current actual receipt resolves persistence, not retrospective success.",
+    "Manifest writeback is authorized only after COMPLETE validation, limited to four manifest-owned service price/timestamp fields and supported Markdown renderer. Supplemental resources and comparisons do not enter writeback. All SKU choices, revisions, pins, Requirements, requests and unrelated history are preserved."
+  ],
+  "savings_status": "NOT_QUANTIFIED",
+  "savings_reason": "No RI/savings-plan analysis requested; no shared free entitlement or volume discount is inferred. Conservative planning allocations are not quantified savings.",
+  "eligible_strategies": [],
+  "data_source": "Azure MCP pricing_get + Azure Retail Prices API (direct fallback)",
+  "queried_at": "2026-11-09T18:19:28.172Z",
+  "confidence": "Medium",
+  "unresolved_items": [],
+  "mcp_calls_used": 0,
+  "direct_api_calls_used": 1,
+  "budget_exceeded": false,
+  "manifest_writeback": [
+    {
+      "id": "storage-blob-replication",
+      "cost_estimate_monthly_usd": 10.7552,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    },
+    {
+      "id": "app-host",
+      "cost_estimate_monthly_usd": 13.14,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    },
+    {
+      "id": "document-store",
+      "cost_estimate_monthly_usd": 12.1,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    },
+    {
+      "id": "access-compute",
+      "cost_estimate_monthly_usd": 7.36,
+      "cost_estimated_at": "2026-11-09T18:19:28.172Z"
+    }
+  ],
+  "retail_api_evidence": [
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d01-bandwidth.json",
+      "resource_names": [
+        "internet-outbound-allocation-dev"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0
+        },
+        {
+          "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 100,
+          "retailPrice": 0.087
+        },
+        {
+          "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 10335,
+          "retailPrice": 0.083
+        },
+        {
+          "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 51295,
+          "retailPrice": 0.07
+        },
+        {
+          "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 153695,
+          "retailPrice": 0.05
+        },
+        {
+          "meterId": "9995d93a-7d35-4d3f-9c69-7a7fea447ef4",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 512095,
+          "retailPrice": 0.05
+        }
+      ],
+      "calculation": "Reused complete direct raw page at original2026-11-09T16:01:38.913Z; original MCP missing-tier failure2026-11-09T15:22:57.239Z and full1437-row source hash retained in envelope. Native1GB MGN allocation6GB*(maximum verified paid0.087)=0.522. No free credit/tier placement/discount; separate Bastion0.435 yields line0.957."
+    },
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d02-private-link.json",
+      "resource_names": [
+        "steady-private-endpoints-dev-swedencentral",
+        "temporary-cosmos-restore-private-endpoint-dev"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "e6ab7238-e433-4fe0-a2b2-2b2564df2cdb",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0.01
+        },
+        {
+          "meterId": "10caa28b-6479-4852-9eb7-610870cb6417",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0.01
+        },
+        {
+          "meterId": "10caa28b-6479-4852-9eb7-610870cb6417",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 1000000,
+          "retailPrice": 0.006
+        },
+        {
+          "meterId": "10caa28b-6479-4852-9eb7-610870cb6417",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 5000000,
+          "retailPrice": 0.004
+        },
+        {
+          "meterId": "e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0.01
+        },
+        {
+          "meterId": "e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 1000000,
+          "retailPrice": 0.006
+        },
+        {
+          "meterId": "e7f162f6-7cb8-4cea-ad4f-12cdb5dda25b",
+          "skuName": "Standard",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 5000000,
+          "retailPrice": 0.004
+        }
+      ],
+      "calculation": "Reused original2026-11-09T16:02:22.717Z direct page after q02 failure2026-11-09T15:58:04.356405+00:00. Steady4*730*0.01+40*0.01+130*0.01=30.9; temporary4*0.01+1*0.01+10*0.01=0.15. Full native bands verified/applied once per direction; combined41GB/140GB remains entry band. Original failures/raw hashes/timestamps retained."
+    },
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d03-dns.json",
+      "resource_names": [
+        "central-private-dns-allocation-dev"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "0b608a26-f611-4232-8192-ce81b6b57194",
+          "skuName": "Private",
+          "armRegionName": "",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0.5
+        },
+        {
+          "meterId": "0b608a26-f611-4232-8192-ce81b6b57194",
+          "skuName": "Private",
+          "armRegionName": "",
+          "tierMinimumUnits": 25,
+          "retailPrice": 0.1
+        },
+        {
+          "meterId": "46cff9cb-4b15-4af0-bf41-25143827fef8",
+          "skuName": "Private",
+          "armRegionName": "",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0.4
+        }
+      ],
+      "calculation": "Reused original2026-11-09T16:02:33.885Z direct page after q03 failure2026-11-09T15:58:04.356405+00:00. Complete native bands retained. Approved highest commercial shared allocation4zone-months*0.5+1mqueries/1m*0.4=2.4; not actual invoice or duplicate zone ownership. Original failures/raw hashes/timestamps retained."
+    },
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d04-logs.json",
+      "resource_names": [
+        "log-analytics-app-insights-combined-dev"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "e3669cc9-19b6-55fc-b9fe-782ab83615ab",
+          "skuName": "Analytics Logs",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0
+        },
+        {
+          "meterId": "e3669cc9-19b6-55fc-b9fe-782ab83615ab",
+          "skuName": "Analytics Logs",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 5,
+          "retailPrice": 2.99
+        }
+      ],
+      "calculation": "Reused original2026-11-09T16:02:38.978Z direct page after q04 failure2026-11-09T15:58:04.356405+00:00. Approved combined paid1GB*2.99=2.99; native free/paid bands preserved, no free entitlement/duplicate Insights ingestion/wire inference. Original failures/raw hashes/timestamps retained."
+    },
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d05-metric.json",
+      "resource_names": [
+        "operational-metric-alerts-dev"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "6860c782-bbcc-41ed-a218-fb308dd0942e",
+          "skuName": "Alerts",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0
+        },
+        {
+          "meterId": "6860c782-bbcc-41ed-a218-fb308dd0942e",
+          "skuName": "Alerts",
+          "armRegionName": "Global",
+          "tierMinimumUnits": 10,
+          "retailPrice": 0.1
+        }
+      ],
+      "calculation": "Reused original2026-11-09T16:02:44.684Z direct page after q13 failure2026-11-09T16:02:21.471208+00:00. Four paid STATIC monitored series*0.1=0.4, no free ten-series credit or dynamic thresholds; all native bands retained. Original failures/raw hashes/timestamps retained."
+    },
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/d06-blob.json",
+      "resource_names": [
+        "storage-blob-replication (dev, swedencentral)"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "39d8c6c1-22c0-5719-9330-593a56b3a2e0",
+          "skuName": "Hot LRS",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0.0184
+        },
+        {
+          "meterId": "39d8c6c1-22c0-5719-9330-593a56b3a2e0",
+          "skuName": "Hot LRS",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 51200,
+          "retailPrice": 0.017664
+        },
+        {
+          "meterId": "39d8c6c1-22c0-5719-9330-593a56b3a2e0",
+          "skuName": "Hot LRS",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 512000,
+          "retailPrice": 0.016928
+        }
+      ],
+      "calculation": "Reused original2026-11-09T16:02:49.393Z direct page after q12 failure2026-11-09T15:59:13.345813+00:00. Full native storage bands applied to30.5GB:0.5612; add sourced q12 reads0.044/write0.1/list0.05 plus q14 native500MB*0.02=10, total10.7552. No duplicate operations or logical20GB processing substitution. Original failures/raw hashes/timestamps retained."
+    },
+    {
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v2.json.retail-evidence/d07-bastion.json",
+      "resource_names": [
+        "internet-outbound-allocation-dev"
+      ],
+      "selected_meters": [
+        {
+          "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 0,
+          "retailPrice": 0
+        },
+        {
+          "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 5,
+          "retailPrice": 0.087
+        },
+        {
+          "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 10240,
+          "retailPrice": 0.082998
+        },
+        {
+          "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 51200,
+          "retailPrice": 0.07
+        },
+        {
+          "meterId": "e31d6690-69c9-50a4-9c56-baeaf79edd56",
+          "skuName": "Standard",
+          "armRegionName": "swedencentral",
+          "tierMinimumUnits": 153600,
+          "retailPrice": 0.049999
+        }
+      ],
+      "calculation": "NEW one exact direct GET by documented helper, queried_at2026-11-09T18:19:28.172Z. Raw Count5/NextPageLink:null, native1GB tiers on every exact service/product/Standard/meter/Sweden Central/USD/Consumption row. Original full q06 missing_tier_metadata response and timestamp2026-11-09T15:58:04.356405+00:00 preserved in envelope. Raw SHA256 ebd0816a80bb8b62723808a0cbae2a7fe321a0e3657bb76872bd1981269fc361. Approved separate Bastion allocation5GB*max(0.087,0.082998,0.07,0.049999)=0.435; plus separate MGN0.522=0.957. No free5GB availability/inclusion, discount or actual applied-tier claim. Not MCP-verified and no double count."
+    }
+  ],
+  "query_ledger": [
+    {
+      "id": "continuation-authority-and-accounting",
+      "kind": "provenance-not-a-query",
+      "issued_now": false,
+      "request_path": "agent-output/fulcrum/_meta/02-cost-conservative-planning-v2-request.json",
+      "request_sha256": "3a4d4efc14b60d06a54ab548934bc27a49c23e27e69c41335582c7553b2fa9e0",
+      "authority_receipt_path": "agent-output/fulcrum/_meta/02-bastion-evidence-extension-response-receipt.json",
+      "authority_receipt_sha256": "0c6e7d1f9147fb308c7a964c4fe70945aa2262519b03647742cbc6ebce05aba7",
+      "actual_response": "authorize_one_bastion_request_and_one_same_history_continuation",
+      "new_mcp_calls": 0,
+      "new_direct_api_calls": 1,
+      "cumulative_requests": 35,
+      "absolute_limit": 35,
+      "remaining_requests": 0,
+      "budget_exceeded": false,
+      "allowances_reset": false,
+      "prior_accounting": {
+        "initial_mcp": 12,
+        "initial_direct": 1,
+        "recovery1_mcp": 1,
+        "recovery1_direct": 0,
+        "recovery2_requests": 0,
+        "recovery3_mcp": 14,
+        "recovery3_direct": 6,
+        "calculation_only_requests": 0,
+        "total": 34,
+        "comparison_dispatches_separate": 3,
+        "comparison_mcp_separate": 7
+      },
+      "history_boundary": "Original12MCP+1direct=13; recovery1+1MCP=14; recovery2zero; recovery3+14MCP+6direct=34; calculation-onlyzero; current+1direct=35. Historical comparison requests are separate, never recounted. No new20-request allowance.",
+      "preflight_path": "agent-output/fulcrum/_meta/02-cost-conservative-planning-v2-preflight.json",
+      "actual_preflight": {
+        "status": "PREFLIGHT_FAILED",
+        "mode": "manifest_path",
+        "line_count": 17,
+        "estimated_query_groups": 13,
+        "unresolved_items": [
+          "Estimated distinct query groups (13) exceed remaining request budget (1)"
+        ]
+      },
+      "diagnostic_resolution": "Fresh-catalog heuristic only; no substantive usage errors. Actual authorized reuse plus one exact fallback used. Diagnostic retained without expanded budget or source edits."
+    },
+    {
+      "id": "current69-input-binding",
+      "kind": "read-only-validation-not-a-query",
+      "issued_now": false,
+      "projection_path": "agent-output/fulcrum/_meta/assessment-step-2.json",
+      "projection_sha256": "7906f5d6121480a4c38c9ad03ed3ae49741e7ae7e2c1dd7347bf216cb0fe44e3",
+      "projection_input_count": 69,
+      "historical_ledger_path": "agent-output/fulcrum/_meta/02-current-material-input-ledger.json",
+      "historical_ledger_sha256": "abc05aa8dd3ed0cad42064de92a8ed0800dd960f46196093f81244f3829b86ab",
+      "historical_ledger_input_count": 66,
+      "all66_historical_records_equal_current_projection": true,
+      "exactly3_added_choices": {
+        "dev_app_monthly_wire_planning_profile": "proposed_low_1_gb_per_month",
+        "dev_mgn_transfer_cost_profile": "approve_proposed_mgn_paid_budget_bound",
+        "dev_bastion_transfer_cost_profile": "approve_proposed_bastion_paid_budget_bound"
+      },
+      "usage_receipt_path": "agent-output/fulcrum/_meta/02-monthly-planning-response-receipt.json",
+      "usage_receipt_sha256": "17928b073e6abaa8f73c310c144cd049dba28846732891da92627ea752e4b53d",
+      "usage_normalization_path": "agent-output/fulcrum/_meta/02-monthly-planning-normalization.json",
+      "current_projection_vs_recall": "Parent supplied current69 equality with recall snapshot; worker independently verified all69 projection records and original66 plus actual3 receipt values without recall access or edits.",
+      "original_request_path": "agent-output/fulcrum/_meta/02-cost-estimate-request.json",
+      "original_request_sha256": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8",
+      "previous_approved_request_path": "agent-output/fulcrum/_meta/02-cost-conservative-planning-request.json",
+      "previous_approved_request_sha256": "ab044d6ac18e3ccce84d0f88ac09eff1251ac516f2aa8cc7e4b93c2492f9f597",
+      "all17_structured_usages_equal_previous_approved_scenario": true,
+      "original16_non_internet_structured_usages_unchanged": true,
+      "original_full_notes_read": true,
+      "authorized_scope_delta": "Only additional app1decimalGB + original NAT5GB = MGN6GB, and separate unchanged Bastion5GB at its own highest verified paid rate; eleven total allocatedGB. Changed quantities/semantics have actual authority, not original-input equivalence.",
+      "identity": "Four manifest lines plus thirteen supplements; all DEV, stamp null, effective subscription null explicitly retained. Deployment swedencentral unchanged. on-demand Consumption USD; no candidate resources added to deployed total.",
+      "dependency_paths": [
+        "agent-output/fulcrum/_meta/02-private-usage-normalization.json",
+        "agent-output/fulcrum/_meta/02-sku-network-meter-normalization.json",
+        "agent-output/fulcrum/_meta/02-confirmed-network-binding.json",
+        "agent-output/fulcrum/_meta/02-final-dependency-closure.md",
+        "agent-output/fulcrum/_meta/02-final-official-evidence.json"
+      ]
+    },
+    {
+      "id": "all-source-and-equation-revalidation",
+      "kind": "read-only-validation-not-a-query",
+      "issued_now": false,
+      "historical_ledger_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json#query_ledger",
+      "historical_result_sha256": "1c290d30906a95beda21e2e607ddd48b8a6f4851f39597938e36d92a11e5ba82",
+      "prior_failed_result_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v1.json",
+      "prior_failed_result_sha256": "8bf2ed27b2f58c298018ce4acf0a2dfc72a3fe3c5b935bc28432b5d107257f53",
+      "method": "Executed existing read-only 02-cost-recovery-3-validation.py successfully; verified native14/archive hashes, direct6/query/raw hashes/failure-row extractions, candidate3/raw selection/freshness, official semantic10 hashes and exact q11 receipt. Independently selected full service/product/SKU/meter/unit/region/USD/Consumption rows and recalculated all17 from current normalized usages using supported calculator plus explicit native1MB arithmetic and documented monthly-disk proration. No prior FAILED price copied as evidence.",
+      "verified_native_archives": 14,
+      "verified_existing_direct_envelopes": 6,
+      "verified_existing_direct_raw_page_hashes": 6,
+      "verified_new_direct_envelopes": 1,
+      "verified_candidate_source_files": 3,
+      "verified_official_semantic_archive_hashes": 10,
+      "verified_fixed_equations": 16,
+      "verified_total_equations": 17,
+      "prepublication_validation": {
+        "canonical_validateEstimate": {
+          "ok": true,
+          "errors": [],
+          "warnings": []
+        },
+        "full_Ajv_cost_estimate_schema": "PASS",
+        "normalizeCostRequest_exact17_identity_subscription_scope": "PASS",
+        "validate_sku_manifest": {
+          "errors": 0,
+          "warnings": 0
+        },
+        "all17_independent_source_equations": "PASS",
+        "all7_direct_envelopes_exact_complete_tier_selections": "PASS",
+        "strict_decimal_monthly_and_annual_sums": "PASS",
+        "protected242_file_tree_unchanged": "PASS",
+        "publication_method": "Supported cost-estimate.mjs publishEstimate with manifestPath and renderMarkdown:true; no helper/source changes. API renderer option is explicit because CLI publish does not forward renderMarkdown."
+      },
+      "fixed_equations_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/fixed-scope-calculations.json",
+      "fixed_equations_sha256": "10638b1e56e6dfb4ddd8d6d45e74c41decaca1d0a35b03b92e2fcc9d7051bc40",
+      "fixed_equations_use": "Source locators and exact selected IDs independently checked, not authoritative historical FAILED totals.",
+      "mgn_evidence_sha256": "c27714517225f58d52d905087b68349ea491dc0e3994120db4ab4493aaf1348a",
+      "mgn_raw_sha256": "d18334bee4f62582699c23126249542813d41a0be2ee611802759c55171bdaa5",
+      "candidate_hashes": {
+        "02-cost-candidates-app-host.json": "b0ec156812b50300100e5348b976491bf157bd8c8323ac84fe501b8ff828c114",
+        "02-cost-candidates-document-store.json": "8e08b817936f06a63505eb0a724a2ecf1d86150da0b08fef334d0ed0c1367b12",
+        "02-cost-candidates-access-compute.json": "e921b94bdcc85a6202773f20030586d85aca8844bb0d3f6990289c75787cdcc7"
+      },
+      "official_semantic_archive_index": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/recovery-validation.json#official_semantic_archives",
+      "official_semantics_path": "agent-output/fulcrum/_meta/02-final-official-evidence.json",
+      "official_semantics_sha256": "2f07a7e3a06d55a6374a735d26b0009ab4eab0cd0027cf84b4290a9951862995",
+      "q11_receipt_path": "agent-output/fulcrum/_meta/02-cost-recovery-3-archive-receipt.json",
+      "q11_archive_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q11-alert-discovery.native.txt",
+      "q11_archive_sha256": "b075afabd8cc2425494b56dc72574d1415c7ffac9de23e6d5df8fa740caf423d",
+      "q11_archive_bytes": 35241,
+      "q11_archive_rows": 52,
+      "q11_selected_meters": [],
+      "freshness": {
+        "ttl_days": 30,
+        "future_dated_consumed_evidence": false,
+        "timestamps_preserved": true,
+        "earliest_reused_query": "2026-11-09T13:38:13.526Z",
+        "latest_new_query": "2026-11-09T18:19:28.172Z"
+      },
+      "local_validation_diagnostics": "An initial name-only VM selector found3 rows (Linux,Windows,Cloud Services); corrected to exact previously approved Linux product/meter ID. An initial full-response equality check of old direct failure extracts was too strict; exact subset rows were independently verified against full preserved native sources. These were local read-only validation assumptions, not new catalog ambiguity, source edits, HTTP retries or unresolved evidence.",
+      "protected_tree_before": {
+        "file_count": 242,
+        "sha256": "657878fbb050989af9acf8421770406bdeccf0c5f465239c7d19d187e3a7805b",
+        "algorithm": "SHA256 of sorted relative path+NUL+SHA256(file bytes)+newline under agent-output/fulcrum excluding new output/siblings and authorized manifest JSON/Markdown"
+      },
+      "manifest_before_sha256": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+      "manifest_canonical_non_price_sha256": "c984118bbe8b0a06549769c6f435bd4f3c4336038c9c898e63d2e1c3cc8498e4"
+    },
+    {
+      "id": "d07",
+      "source": "Azure Retail Prices API (direct fallback)",
+      "issued_now": true,
+      "requests_used": 1,
+      "status": "EVIDENCE_READY",
+      "request_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v2.json.retail-evidence/d07-bastion-request.json",
+      "evidence_path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v2.json.retail-evidence/d07-bastion.json",
+      "sha256": "444745efeb1a1520b0a6a368190f7f539ecf90afff258462c9ccb5622041d038",
+      "recorded_at": "2026-11-09T18:19:28.172Z",
+      "query": {
+        "serviceName": "Azure Bastion",
+        "productName": "Azure Bastion",
+        "skuName": "Standard",
+        "meterName": "Standard Data Transfer Out",
+        "armRegionName": "swedencentral",
+        "priceType": "Consumption",
+        "currencyCode": "USD"
+      },
+      "mcp_failure_kind": "missing_tier_metadata",
+      "mcp_trigger_path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence/q06-bastion.native.json",
+      "mcp_trigger_sha256": "2818f85c8ff4657258ca617dbee3462806f12df76ad208f04de451ba64945882",
+      "mcp_trigger_recorded_at": "2026-11-09T15:58:04.356405+00:00",
+      "mcp_trigger_query_metadata": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json#query_ledger[id=q06]",
+      "raw_sha256": "ebd0816a80bb8b62723808a0cbae2a7fe321a0e3657bb76872bd1981269fc361",
+      "native_unit": "1 GB",
+      "count": 5,
+      "NextPageLink": null,
+      "all_exact_native_tiers_present": true,
+      "helper_remaining_requests": 1,
+      "retry_requests": 0,
+      "pagination_requests": 0,
+      "mcp_requests": 0,
+      "calculation": "Approved aggregate Bastion5GB*own highest verified native paid0.087=0.435; MGN app1+NAT5=6GB*own highest verified native paid0.087=0.522; allocation0.957. Full raw rate-set/tier coverage validated before selecting maxima; no free entitlement, discount or applied-tier assertion."
+    }
+  ]
+}

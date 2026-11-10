@@ -1,0 +1,222 @@
+{
+  "captured_at": "2026-11-09T14:19:52.217746+00:00",
+  "evidence_kind": "Public provider documentation; not runtime or tenant evidence",
+  "documentation_excerpts": [
+    {
+      "title": "Continuous backup with point-in-time restore in Azure Cosmos DB",
+      "content": "# Continuous backup with point-in-time restore in Azure Cosmos DB\n## Pricing\nAzure Cosmos DB accounts with continuous 30-day or 35-day backup have an extra monthly charge to *store the backup*. All tiers (7, 30, or 35 days) of continuous backup incur charges to *restore your data*. The restore cost is added every time the restore operation is initiated. If you configure an account with continuous backup but don't restore the data, only backup storage cost is included in your bill.\nThe following example is based on the price for an Azure Cosmos DB account deployed in West US. The pricing and calculation can vary depending on the region you're using, see the [Azure Cosmos DB pricing page](https://azure.microsoft.com/pricing/details/cosmos-db/) for latest pricing information.\n1. Accounts enabled with continuous backup policy at the 30-day or 35-day tier incur a monthly charge for backup storage. The 30-day and 35-day tiers are charged at the same rate, calculated as follows:\n  $0.20/GB \\* Data size in GB in account \\* Number of regions\n2. Every restore API invocation incurs a one-time charge. The charge is a function of the amount of data restored:\n  $0.15/GB \\* Data size in GB\nFor example, if you have 1 TB of data in two regions:\n1. Backup storage cost is calculated as 1000 \\* 0.20 \\* 2 = $400 per month\n2. Restore cost is calculated as 1000 \\* 0.15 = $150 per restore\nTip\nFor more information about measuring the current data usage of your Azure Cosmos DB account, see [Explore Azure Monitor Azure Cosmos DB insights](https://learn.microsoft.com/azure/cosmos-db/insights-overview#view-utilization-and-performance-metrics-for-azure-cosmos-db). Continuous 7-day tier doesn't incur charges for backup of the data.\n## Compare the continuous backup tiers\n1. The retention period is 7 days, 30 days, or 35 days, depending on the tier you choose.\n2. The 30-day and 35-day tiers are charged for backup storage. The 7-day tier isn't charged for backup storage.\n3. Restore is always charged, regardless of the tier.",
+      "contentUrl": "https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction#pricing",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 0
+    },
+    {
+      "title": "Restore an Azure Cosmos DB account that uses continuous backup mode",
+      "content": "# Restore an Azure Cosmos DB account that uses continuous backup mode\nAzure Cosmos DB's point-in-time restore feature helps you recover from an accidental change within a container, restore a deleted account, database, or container, or restore into any region where backups exist. By using continuous backup mode, you can restore to any point in time within the configured retention tier of 7, 30, or 35 days.\nThis article describes how to identify the restore time and restore a live or deleted Azure Cosmos DB account. It shows how to restore the account using the Azure portal, PowerShell, CLI, or an Azure Resource Manager template.\nNote\nRestoring from satellite region is slower compared to restore in hub region for multi-region account to resolve local [tentative writes](https://learn.microsoft.com/azure/cosmos-db/multi-region-writes#hub-region) as confirmed or take an action to roll them back.",
+      "contentUrl": "https://learn.microsoft.com/azure/cosmos-db/restore-account-continuous-backup",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 1
+    },
+    {
+      "title": "Perform a point-in-time restore on block blob data",
+      "content": "# Perform a point-in-time restore on block blob data\n## Enable and configure point-in-time restore\nBefore you enable and configure point-in-time restore, enable its prerequisites for the storage account: soft delete, change feed, and blob versioning. For more information about enabling each of these features, see these articles:\n1. [Enable soft delete for blobs](https://learn.microsoft.com/azure/storage/blobs/soft-delete-blob-enable)\n2. [Enable and disable the change feed](https://learn.microsoft.com/azure/storage/blobs/storage-blob-change-feed#enable-and-disable-the-change-feed)\n3. [Enable and manage blob versioning](https://learn.microsoft.com/azure/storage/blobs/versioning-enable)\nImportant\nEnabling soft delete, change feed, and blob versioning may result in additional charges. For more information, see [Soft delete for blobs](https://learn.microsoft.com/azure/storage/blobs/soft-delete-blob-overview), [Change feed support in Azure Blob Storage](https://learn.microsoft.com/azure/storage/blobs/storage-blob-change-feed), and [Blob versioning](https://learn.microsoft.com/azure/storage/blobs/versioning-overview).\n### **Azure portal**\nTo configure point-in-time restore with the Azure portal, follow these steps:\n1. Navigate to your storage account in the Azure portal.\n2. Under **Data management**, choose **Data Protection**.\n3. Select **Turn on point-in-time** restore. When you select this option, soft delete for blobs, versioning, and change feed are also enabled.\n4. Set the maximum restore point for point-in-time restore, in days. This number must be at least one day less than the retention period specified for blob soft delete.\n5. Save your changes.\nThe following image shows a storage account configured for point-in-time restore with a restore point of seven days ago, and a retention period for blob soft delete of 14 days.\n![Screenshot showing how to configure point-in-time restore in the Azure portal](https://learn.microsoft.com/azure/storage/blobs/media/point-in-time-restore-manage/configure-point-in-time-restore-portal.png)\n### **PowerShell**\nTo configure point-in-time restore with PowerShell, first install the [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage) module version 2.6.0 or later. Then call the [Enable-AzStorageBlobRestorePolicy](https://learn.microsoft.com/en-us/powershell/module/az.storage/enable-azstorageblobrestorepolicy) command to enable point-in-time restore for the storage account.\nThe following example enables soft delete and sets the soft-delete retention period, enables change feed and versioning, and then enables point-in-time restore. When running the example, remember to replace the values in angle brackets with your own values:",
+      "contentUrl": "https://learn.microsoft.com/azure/storage/blobs/point-in-time-restore-manage#enable-and-configure-point-in-time-restore",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 0
+    },
+    {
+      "title": "Point-in-time restore for block blobs",
+      "content": "# Point-in-time restore for block blobs\n## Pricing and billing\nThere's no charge to enable point-in-time restore. However, enabling point-in-time restore also enables blob versioning, soft delete, and change feed, each of which might result in extra charges.\nBilling for point-in-time restore operations is based on the amount of change feed data processed for the restore. You also pay for any storage transactions involved in the restore process.\nFor more information about pricing for point-in-time restore, see [Block blob pricing](https://azure.microsoft.com/pricing/details/storage/blobs/).",
+      "contentUrl": "https://learn.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#pricing-and-billing",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 3
+    },
+    {
+      "title": "Point-in-time restore for block blobs",
+      "content": "# Point-in-time restore for block blobs\n## Prerequisites and configuration\nTo use point-in-time restore, enable the following Azure Storage features before you enable point-in-time restore:\n1. [Soft delete](https://learn.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)\n2. [Change feed](https://learn.microsoft.com/azure/storage/blobs/storage-blob-change-feed)\n3. [Blob versioning](https://learn.microsoft.com/azure/storage/blobs/versioning-overview)\nTo learn more about Microsoft's recommendations for data protection, see [Data protection overview](https://learn.microsoft.com/azure/storage/blobs/data-protection-overview).\nCaution\nAfter you enable blob versioning for a storage account, every write operation to a blob in that account creates a new version. For this reason, enabling blob versioning might result in extra costs. To minimize costs, use a lifecycle management policy to automatically delete old versions. For more information about lifecycle management, see [Optimize costs by automating Azure Blob Storage access tiers](https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview).\n### Retention period for point-in-time restore\nWhen you enable point-in-time restore for a storage account, specify a retention period. You can restore block blobs in your storage account during the retention period.\nThe retention period starts a few minutes after you enable point-in-time restore. You can't restore blobs to a state before the start of the retention period. For example, if you enabled point-in-time restore on May 1 with a retention of 30 days, then on May 15 you can restore to a maximum of 15 days. On June 1, you can restore data from between 1 and 30 days.\nThe retention period for point-in-time restore must be at least one day less than the retention period specified for soft delete. For example, if the soft delete retention period is set to seven days, then the point-in-time restore retention period can be between 1 and 6 days.\nNote\nThe retention period that you specify for point-in-time restore has no effect on the retention of blob versions. Blob versions are retained until they are explicitly deleted. To optimize costs by deleting or tiering older versions, create a lifecycle management policy. For more information, see [Optimize costs by automatically managing the data lifecycle](https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview).",
+      "contentUrl": "https://learn.microsoft.com/azure/storage/blobs/point-in-time-restore-overview#prerequisites-and-configuration",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 4
+    },
+    {
+      "title": "Change feed support in Azure Blob Storage",
+      "content": "# Change feed support in Azure Blob Storage\n## How the change feed works\nChange feed records are stored as [blobs](https://learn.microsoft.com/en-us/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) in a special container in your storage account at standard [blob pricing](https://azure.microsoft.com/pricing/details/storage/blobs/) cost. You can control the retention period of these files based on your requirements (See the conditions of the current release). Change events are appended to the change feed as records in the [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) format specification: a compact, fast, binary format that provides rich data structures with inline schema. This format is widely used in the Hadoop ecosystem, Stream Analytics, and Azure Data Factory.\nYou can process these logs asynchronously, incrementally or in-full. Any number of client applications can independently read the change feed, in parallel, and at their own pace. Analytics applications such as [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) or [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) can consume logs directly as Avro files, which let you process them at a low-cost, with high-bandwidth, and without having to write a custom application.\nThe following diagram shows how records are added to the change feed:\n![Diagram showing how the change feed works to provide an ordered log of changes to blobs](https://learn.microsoft.com/azure/storage/blobs/media/storage-blob-change-feed/change-feed-diagram.png)\nChange feed support is well-suited for scenarios that process data based on objects that have changed. For example, applications can:\n1. Update a secondary index, synchronize with a cache, search-engine, or any other content-management scenarios.\n2. Extract business analytics insights and metrics, based on changes that occur to your objects, either in a streaming manner or batched mode.\n3. Store, audit, and analyze changes to your objects, over any period of time, for security, compliance or intelligence for enterprise data management.\n4. Build solutions to backup, mirror, or replicate object state in your account for disaster management or compliance.\n5. Build connected application pipelines that react to change events or schedule executions based on created or changed object.\nChange feed is a prerequisite feature for [Object Replication](https://learn.microsoft.com/azure/storage/blobs/object-replication-overview) and [Point-in-time restore for block blobs](https://learn.microsoft.com/azure/storage/blobs/point-in-time-restore-overview).\nNote",
+      "contentUrl": "https://learn.microsoft.com/azure/storage/blobs/storage-blob-change-feed#how-the-change-feed-works",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 8
+    },
+    {
+      "title": "Microsoft Entra authentication for Application Insights",
+      "content": "# Microsoft Entra authentication for Application Insights\n## Configure and enable Microsoft Entra ID-based authentication\n### **Java native**\nMicrosoft Entra ID authentication isn't available for GraalVM Native applications.\n### **Node.js**\nNote\n```\n- Support for Microsoft Entra ID in the Application Insights Node.js SDK is included starting with [version 2.1.0-beta.1](https://www.npmjs.com/package/applicationinsights/v/2.1.0-beta.1).\n- The SDK supports the credential classes provided by [Azure Identity](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/identity/identity#credential-classes).\n```\n### Prerequisites\n```\n- Use `DefaultAzureCredential` for local development.\n- Use `ManagedIdentityCredential` for system-assigned and user-assigned managed identities.\n\n    - For system-assigned, use the default constructor without parameters.\n    - For user-assigned, provide the client ID to the constructor.\n- Use `ClientSecretCredential` for service principals.\n\n    - Provide the tenant ID, client ID, and client secret to the constructor.\n```\n### Environment variable configuration\nUse the `APPLICATIONINSIGHTS_AUTHENTICATION_STRING` environment variable to let Application Insights authenticate to Microsoft Entra ID and send telemetry when using [Azure App Service monitoring without code changes](https://learn.microsoft.com/en-us/azure/app-service/monitor-app-service?tabs=nodejs#application-insights).\n```\n- For system-assigned identity:\n\n| App setting | Value |\n| --- | --- |\n| APPLICATIONINSIGHTS\\_AUTHENTICATION\\_STRING | `Authorization=AAD` |\n\n- For user-assigned identity:\n\n| App setting | Value |\n| --- | --- |\n| APPLICATIONINSIGHTS\\_AUTHENTICATION\\_STRING | `Authorization=AAD;ClientId={Client id of the User-Assigned Identity}` |\n```\n### Manual configuration\nThe following sample applies when using @azure/monitor-opentelemetry:\nThe following sample applies when using `applicationinsights` npm package.",
+      "contentUrl": "https://learn.microsoft.com/azure/azure-monitor/app/azure-ad-authentication#configure-and-enable-microsoft-entra-id-based-authentication",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 0
+    },
+    {
+      "title": "Architecture best practices for Azure App Service (Web Apps)",
+      "content": "# Architecture best practices for Azure App Service (Web Apps)\n## Security\n| Recommendation | Benefit| \n|  --- | ---  |\n| (Web Apps) Evaluate whether [App Service built-in authentication](https://learn.microsoft.com/en-us/azure/app-service/overview-authentication-authorization) is the right mechanism to authenticate users that access your application. App Service built-in authentication integrates with Microsoft Entra ID. This feature handles token validation and user identity management across multiple sign-in providers and supports OpenID Connect. With this feature, you don't have authorization at a granular level, and you don't have a mechanism to test authentication. | When you use this feature, you don't have to use authentication libraries in application code, which reduces complexity. The user is already authenticated when a request reaches the application. |\n| (Web Apps) Configure the application for [virtual network integration](https://learn.microsoft.com/en-us/azure/app-service/overview-vnet-integration). Use [private endpoints for App Service apps](https://learn.microsoft.com/en-us/azure/app-service/overview-private-endpoint). Block all public traffic. Route the [container image pull through the virtual network](https://learn.microsoft.com/en-us/azure/app-service/configure-vnet-integration-routing#container-image-pull) integration. All [outgoing traffic from the application](https://learn.microsoft.com/en-us/azure/app-service/configure-vnet-integration-routing#configure-application-routing) passes through the virtual network. | Get the security benefits of using an Azure virtual network. For example, the application can securely access resources within the network. Add a private endpoint to help protect your application. Private endpoints limit direct exposure to the public network and allow controlled access through the reverse proxy. |",
+      "contentUrl": "https://learn.microsoft.com/azure/well-architected/service-guides/app-service-web-apps#security",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 1
+    },
+    {
+      "title": "Configure OpenTelemetry in Application Insights",
+      "content": "# Configure OpenTelemetry in Application Insights\n## Enable Microsoft Entra ID (formerly Azure AD) authentication\nTo create a more secure connection to Azure, enable Microsoft Entra authentication. This authentication method prevents unauthorized telemetry from being ingested into your subscription.\nFor more information, see the dedicated Microsoft Entra authentication page linked for each supported language.\n### **ASP.NET Core**\nFor information on configuring Entra ID authentication, see [Microsoft Entra authentication for Application Insights](https://learn.microsoft.com/azure/azure-monitor/app/azure-ad-authentication?tabs=aspnetcore).\nFor the Microsoft OpenTelemetry Distro, set `options.AzureMonitor.Credential`. See the [.NET authentication example](https://github.com/microsoft/opentelemetry-distro-dotnet/blob/main/docs/azure-monitor-getting-started.md#authenticate-the-client).\n### **.NET**\nFor information on configuring Entra ID authentication, see [Microsoft Entra authentication for Application Insights](https://learn.microsoft.com/azure/azure-monitor/app/azure-ad-authentication?tabs=net).\nSet `options.AzureMonitor.Credential` inside `UseMicrosoftOpenTelemetry()` for the Microsoft OpenTelemetry Distro.\n### **Java**\nFor information on configuring Entra ID authentication, see [Microsoft Entra authentication for Application Insights](https://learn.microsoft.com/azure/azure-monitor/app/azure-ad-authentication?tabs=java).\n### **Java native**\nMicrosoft Entra ID authentication isn't available for GraalVM Native applications.\n### **Node.js**\nFor information on configuring Entra ID authentication, see [Microsoft Entra authentication for Application Insights](https://learn.microsoft.com/azure/azure-monitor/app/azure-ad-authentication?tabs=nodejs).\nFor the Microsoft OpenTelemetry Distro, set `azureMonitor.azureMonitorExporterOptions.credential` in the [distro options](https://github.com/microsoft/opentelemetry-distro-javascript#configuration).\n### **Python**\nFor information on configuring Entra ID authentication, see [Microsoft Entra authentication for Application Insights](https://learn.microsoft.com/azure/azure-monitor/app/azure-ad-authentication?tabs=python).\nFor the Microsoft OpenTelemetry Distro, pass `azure_monitor_exporter_credential` to `use_microsoft_opentelemetry()`. See the [Python authentication example](https://github.com/microsoft/opentelemetry-distro-python#quick-start).",
+      "contentUrl": "https://learn.microsoft.com/azure/azure-monitor/app/opentelemetry-configuration#enable-microsoft-entra-id-formerly-azure-ad-authentication",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 2
+    },
+    {
+      "title": "Azure managed disk types",
+      "content": "# Azure managed disk types\n## Azure managed disk billing\nWhen using managed disks, the following billing considerations apply:\n1. Disk type\n2. Managed disk size\n3. Snapshots\n4. Outbound data transfers\n5. Number of transactions\n### Managed disk size\nManaged disks are billed according to their provisioned size. Azure maps the provisioned size (rounded up) to the nearest offered disk size. For the disk sizes offered for each managed disk type, see Ultra Disk size, Premium SSD v2 capacities, Premium SSD size, Standard SSD size, and Standard HDD size. Each disk maps to a supported provisioned disk-size offering and is billed accordingly. For example, if you provisioned a 200-GiB Standard SSD, it maps to the disk size offer of E15 (256 GiB). Billing for any provisioned disk is prorated hourly by using the monthly price for the storage offering. For example, you provision an E10 disk and delete it after 20 hours of use. In this case, you're billed for the E10 offering prorated to 20 hours, regardless of the amount of data written to the disk.\n### Snapshots\nSnapshots are billed based on the size used. For example, you create a snapshot of a managed disk with provisioned capacity of 64 GiB and actual used data size of 10 GiB. In this case, the snapshot is billed only for the used data size of 10 GiB.\nFor more information on snapshots, see [Create a snapshot of a virtual hard disk](https://learn.microsoft.com/azure/virtual-machines/snapshot-copy-managed-disk).\n### Outbound data transfers\n[Outbound data transfers](https://azure.microsoft.com/pricing/details/bandwidth/) (data going out of Azure data centers) incur billing for bandwidth usage.\n### Transactions\nYou're billed for the number of transactions performed on a standard managed disk. For Standard SSDs, each I/O operation less than or equal to 256 KiB of throughput is considered a single I/O operation. I/O operations larger than 256 KiB of throughput are considered multiple I/Os of size 256 KiB. For Standard HDDs, each I/O operation less than or equal to 16 KiB of throughput is considered a single billable transaction. I/O operations larger than 16 KiB of throughput are considered multiple I/Os of size 16 KiB. For details, see Standard HDD transactions. ",
+      "contentUrl": "https://learn.microsoft.com/azure/virtual-machines/disks-types#azure-managed-disk-billing",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 0
+    },
+    {
+      "title": "What is Azure Bastion?",
+      "content": "# What is Azure Bastion?\n## Connection methods\nAzure Bastion supports multiple connection methods:\n1. **Browser-based connections**: Connect through the Azure portal using an HTML5 web client. Available for all SKU tiers. No additional client software required.\n2. **Native client connections**: Connect using the SSH or RDP client already installed on your local computer. Available for Standard and Premium SKUs. Supports Microsoft Entra ID authentication and file transfer.\n3. **Shareable links**: Create shareable links that allow users to connect to VMs without accessing the Azure portal. Available for Standard and Premium SKUs.\nFor more information about connection methods and authentication options, see [About VM connections and features](https://learn.microsoft.com/azure/bastion/vm-about).\n## Pricing and SLA\nAzure Bastion pricing combines hourly SKU charges with outbound data transfer costs. Billing starts from the moment Bastion is deployed, regardless of usage.\nFor pricing details, see [Azure Bastion pricing](https://azure.microsoft.com/pricing/details/azure-bastion/). For SLA and reliability information, see [Reliability in Azure Bastion](https://learn.microsoft.com/en-us/azure/reliability/reliability-bastion).\n## What's new\nAzure Bastion is continuously updated with new features and improvements. To learn about the latest updates and announcements, see [What's new in Azure Bastion?](https://learn.microsoft.com/azure/bastion/whats-new)\n## Troubleshooting and FAQ\nFor information about troubleshooting and frequently asked questions, see the [troubleshooting guide](https://learn.microsoft.com/en-us/troubleshoot/azure/bastion/welcome-azure-bastion) and [Azure Bastion FAQ](https://learn.microsoft.com/azure/bastion/bastion-faq).",
+      "contentUrl": "https://learn.microsoft.com/azure/bastion/bastion-overview#connection-methods",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 1
+    },
+    {
+      "title": "Azure NAT Gateway SKUs",
+      "content": "# Azure NAT Gateway SKUs\n## Pricing and SLA\nStandard and StandardV2 NAT gateways are the same price. For more information, see [Azure NAT Gateway pricing](https://azure.microsoft.com/pricing/details/azure-nat-gateway/).\nFor information on the service-level agreement (SLA), see the [Microsoft SLAs for online services](https://azure.microsoft.com/support/legal/sla/virtual-network-nat/v1_0/).\n## Standard SKU features\nThe Standard SKU is a zonal resource. It's deployed into a specific availability zone and is resilient within that zone.\nYou can attach a Standard NAT gateway to individual subnets within the same virtual network in order to provide scalable outbound connectivity to the internet.",
+      "contentUrl": "https://learn.microsoft.com/azure/nat-gateway/nat-sku#pricing-and-sla",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 5
+    },
+    {
+      "title": "Architecture best practices for Application Insights",
+      "content": "# Architecture best practices for Application Insights\n## Cost Optimization\n4. **Review costs like regional pricing and available pricing tiers regularly.** The most significant charges for most Azure Monitor implementations are typically ingestion and retention of data in your Log Analytics workspaces. For more information, see [Azure Monitor Logs cost calculations and options](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/cost-logs) or the [Cost Optimization section](https://learn.microsoft.com/en-us/azure/well-architected/service-guides/azure-log-analytics#cost-optimization) in the Log Analytics service guide.\n5. **Remove or optimize legacy, unneeded, and underutilized components of your application monitoring solution regularly.**[Edit ApplicationInsights.config](https://learn.microsoft.com/en-us/azure/azure-monitor/app/configuration-with-applicationinsights-config) to turn off collection modules that you don't need. For example, you might decide that performance counters or dependency data isn't required. Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.\n6. **Optimize environment costs.** Determine the [number of Application Insights resources](https://learn.microsoft.com/en-us/azure/azure-monitor/app/create-workspace-resource?tabs=bicep#how-many-application-insights-resources-should-i-deploy) you need and where to deploy them. Optimize log levels and metrics collected per environment to manage costs effectively. For example, production environments might require different logging levels compared to development environments.\n7. **Optimize flow costs.** Use telemetry filters or processors in code to help optimize component costs by not logging or sampling irrelevant calls.\n8. **Optimize code costs.** Make sure to use updated Application Insights SDKs. Earlier versions of the ASP.NET Core SDK and Worker Service SDK [collect many counters by default](https://learn.microsoft.com/en-us/azure/azure-monitor/app/eventcounters#default-counters-collected), which were collected as custom metrics. Use later versions to specify [only required counters](https://learn.microsoft.com/en-us/azure/azure-monitor/app/eventcounters#customizing-counters-to-be-collected).",
+      "contentUrl": "https://learn.microsoft.com/azure/well-architected/service-guides/application-insights#cost-optimization",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 0
+    },
+    {
+      "title": "Architecture best practices for Application Insights",
+      "content": "# Architecture best practices for Application Insights\n## Cost Optimization\nCost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.\nThe [Cost Optimization design principles](https://learn.microsoft.com/en-us/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Application Insights and its environment.\nFor more information on how data charges are calculated for the underlying Log Analytics workspaces of your Application Insights resources, see [Azure Monitor Logs cost calculations and options](https://learn.microsoft.com/en-us/azure/azure-monitor/cost-usage).\n### Workload design checklist\nStart your design strategy based on the [design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.\n1. **Review [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/) to create a cost model.** Estimate the initial cost, run rates, and ongoing costs by using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/). Notice that Application Insights is billed through the Log Analytics workspace into which its log data ingested.\n2. **Tune the amount of data collected.**\n2.1. Use [sampling](https://learn.microsoft.com/en-us/azure/azure-monitor/app/sampling) on an Application Insights-level to reduce data traffic and storage costs while preserving a statistically correct analysis of application data.\n2.2. Application Insights has several possible [log sources](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview#logging-frameworks). Use log levels to tune and reduce trace log telemetry.\n3. **Limit unplanned charges for your workspace.** You can set a daily cap in both Application Insights and Log Analytics.",
+      "contentUrl": "https://learn.microsoft.com/azure/well-architected/service-guides/application-insights#cost-optimization",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 1
+    },
+    {
+      "title": "Architecture best practices for Log Analytics",
+      "content": "# Architecture best practices for Log Analytics\n## Cost Optimization\n| Recommendation | Benefit| \n|  --- | ---  |\n| Configure [data retention and archiving](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive). Consider your specific requirements for having data readily available for log queries. Configure [archived logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/data-retention-archive) to retain data for up to seven years and still access it occasionally through [search jobs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/search-jobs) or by [restoring a set of data](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/restore) to the workspace. | Data retention and archiving configuration significantly reduces your cost for long-term data retention beyond the default period while maintaining access to historical data when needed. |\n| Use Summary rules for high-volume data streams to optimize storage costs. [Summary rules](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/summary-rules) let you summarize high-ingestion-rate streams across Analytics, Basic, or Auxiliary plans, providing robust analysis, dashboarding, and long-term reporting experiences on summarized data. Summary rules enable automated data summarization capabilities that significantly reduce storage costs for high-volume log data while maintaining analytical insights through aggregated datasets. | Summary rules provide cost-effective long-term data retention by creating tiered data architectures where high-frequency raw data is summarized for storage optimization. Organizations can balance cost efficiency with analytical requirements by maintaining detailed insights through aggregated datasets while optimizing long-term data retention expenses. |\n| If you use Microsoft Sentinel to analyze security logs, consider employing a separate workspace to store those logs. Review [Microsoft Sentinel pricing](https://learn.microsoft.com/en-us/azure/sentinel/billing#how-youre-charged-for-microsoft-sentinel) to understand cost implications. | Separate workspaces help you control costs by separating security logs subject to Microsoft Sentinel pricing from operational logs charged at standard Log Analytics pricing. |\n| Configure tables used for debugging, troubleshooting, and auditing as [Basic logs](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/basic-logs-configure). | Basic logs configuration provides lower ingestion costs for infrequently queried tables, where query charges can be offset by reduced ingestion costs. |",
+      "contentUrl": "https://learn.microsoft.com/azure/well-architected/service-guides/azure-log-analytics#cost-optimization",
+      "source": "Actual Azure documentation MCP microsoft_docs_search",
+      "retrieved_on": "2026-11-09",
+      "result_index": 2
+    }
+  ],
+  "avm_public_presence": [
+    {
+      "module": "container-registry/registry",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/container-registry/registry/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "insights/component",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/insights/component/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/bastion-host",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/bastion-host/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/nat-gateway",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/nat-gateway/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "compute/virtual-machine",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/compute/virtual-machine/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/private-endpoint",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/private-endpoint/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/public-ip-address",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/public-ip-address/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/private-dns-zone",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/private-dns-zone/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/virtual-network",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/virtual-network/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    },
+    {
+      "module": "network/network-security-group",
+      "url": "https://mcr.microsoft.com/v2/bicep/avm/res/network/network-security-group/tags/list",
+      "actual_http_status": 200,
+      "checked_on": "2026-11-09",
+      "version_pin": "Planner-owned; not selected"
+    }
+  ],
+  "reused_evidence": [
+    "_meta/02-new-vnet-plan-research.md",
+    "_meta/02-current-architecture-research.md",
+    "_meta/02-secretless-design-research.md",
+    "_meta/02-feasibility-validation.json"
+  ],
+  "interpretations": {
+    "blob_restore": "One 20GB logical restore; billing processes full adopted 0.5GB retained change feed and captured 10k additional reads/10k writes, not a 20GB PITR meter substitution.",
+    "temporary_cosmos": "Four-hour runtime does not establish storage/backup proration. Full monthly 10GB units are a conservative priced bound unless worker establishes stronger applicable billing semantics.",
+    "managed_disk": "Official managed billing explicitly allows provisioned monthly-size offering prorated hourly when deleted; adopted P6 64GiB for80 hours.",
+    "telemetry": "MI-authenticated Node.js/.NET/Java/Python supported paths exist; browser JS/GraalVM and exact image versions are not inferred. Application team binds a supported SDK later."
+  },
+  "observed_validation_recovery": [
+    {
+      "attempt": "Ajv strict subnet schema compilation",
+      "error": "unknown keyword: version",
+      "resolution": "PASS after registering repository schema's version annotation; constraints unchanged"
+    },
+    {
+      "attempt": "json.loads on tool transcript",
+      "error": "Extra data",
+      "resolution": "Recovered exact first JSON payload with JSONDecoder.raw_decode; no source-content reconstruction"
+    }
+  ]
+}

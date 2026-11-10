@@ -1,0 +1,32 @@
+{
+  "request_id": "fulcrum-conservative-planning-v2-exact-bastion-20261109",
+  "request_path": "_meta/02-cost-conservative-planning-v2-request.json",
+  "request_sha256": "3a4d4efc14b60d06a54ab548934bc27a49c23e27e69c41335582c7553b2fa9e0",
+  "json_parse": "PASS",
+  "all_17_structured_usages_equal_previous_approved_scenario": true,
+  "recall_material_input_count": 69,
+  "current_projection_input_count": 69,
+  "output_and_tmp_absent_before_creation": true,
+  "actual_static_preflight": {
+    "status": "PREFLIGHT_FAILED",
+    "mode": "manifest_path",
+    "line_count": 17,
+    "estimated_query_groups": 13,
+    "unresolved_items": ["Estimated distinct query groups (13) exceed remaining request budget (1)"]
+  },
+  "diagnostic_boundary": "Fresh-catalog heuristic only; no substantive usage diagnostic. Existing source reuse and one exact missing-tier fallback are explicitly authorized. This result grants no fresh13-group run or widened budget.",
+  "authority_receipt": "_meta/02-bastion-evidence-extension-response-receipt.json",
+  "prior_consumed": 34,
+  "absolute_limit": 35,
+  "remaining": 1,
+  "new_direct_max": 1,
+  "new_mcp_max": 0,
+  "retry_max": 0,
+  "pagination_max": 0,
+  "protected_before": {
+    "01-requirements.md": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99",
+    "contracts/sku-manifest.json": "211d805e75a1bbd7380402972928decb95aba17161f618fd8508b0f795e711cf",
+    "_meta/02-cost-estimate-request.json": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8",
+    "contracts/02-cost-estimate.conservative-planning-v1.json": "8bf2ed27b2f58c298018ce4acf0a2dfc72a3fe3c5b935bc28432b5d107257f53"
+  }
+}

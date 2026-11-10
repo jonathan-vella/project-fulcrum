@@ -1,0 +1,51 @@
+{
+  "project": "fulcrum",
+  "step": "2",
+  "captured_at": "2026-11-09T13:52:50Z",
+  "scope": "Three independent comparison-only native cost-estimate-subagent tasks; no committed estimate or manifest price writeback.",
+  "attempts": [
+    {
+      "decision_id": "app-host",
+      "request_path": "_meta/02-cost-candidates-app-host-request.json",
+      "output_path": "contracts/02-cost-candidates-app-host.json",
+      "output_sha256": "b0ec156812b50300100e5348b976491bf157bd8c8323ac84fe501b8ff828c114",
+      "worker": "cost-estimate-subagent",
+      "actual_status": "COMPLETE",
+      "mcp_calls_used": 4,
+      "direct_api_calls_used": 0,
+      "validation": "cost-estimate.mjs validate --input: ok=true, errors=[], warnings=[]",
+      "request_preflight": "PREFLIGHT_OK; 2 lines; 2 estimated query groups; unresolved_items=[]"
+    },
+    {
+      "decision_id": "document-store",
+      "request_path": "_meta/02-cost-candidates-document-store-request.json",
+      "output_path": "contracts/02-cost-candidates-document-store.json",
+      "output_sha256": "8e08b817936f06a63505eb0a724a2ecf1d86150da0b08fef334d0ed0c1367b12",
+      "worker": "cost-estimate-subagent",
+      "actual_status": "COMPLETE",
+      "mcp_calls_used": 2,
+      "direct_api_calls_used": 0,
+      "validation": "cost-estimate.mjs validate --input: ok=true, errors=[], warnings=[]",
+      "request_preflight": "PREFLIGHT_OK; 2 lines; 1 estimated query group; unresolved_items=[]"
+    },
+    {
+      "decision_id": "access-compute",
+      "request_path": "_meta/02-cost-candidates-access-compute-request.json",
+      "output_path": "contracts/02-cost-candidates-access-compute.json",
+      "output_sha256": "e921b94bdcc85a6202773f20030586d85aca8844bb0d3f6990289c75787cdcc7",
+      "worker": "cost-estimate-subagent",
+      "actual_status": "COMPLETE",
+      "mcp_calls_used": 1,
+      "direct_api_calls_used": 0,
+      "validation": "cost-estimate.mjs validate --input: ok=true, errors=[], warnings=[]",
+      "request_preflight": "PREFLIGHT_OK; 2 lines; 1 estimated query group; unresolved_items=[]"
+    }
+  ],
+  "comparison_dispatch_count": 3,
+  "comparison_mcp_calls_used": 7,
+  "comparison_direct_api_calls_used": 0,
+  "committed_pricing_dispatch_count": 0,
+  "architecture_review_dispatch_count": 0,
+  "cost_review_dispatch_count": 0,
+  "allowance_boundary": "No initialization, reset, retry or review extension. Each decision used its existing first invocation. Preserve each worker's successful exact output and query ledger for final pricing evidence reuse only when inputs/meters are equivalent."
+}

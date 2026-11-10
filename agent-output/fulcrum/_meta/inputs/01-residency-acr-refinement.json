@@ -1,0 +1,14 @@
+{
+  "input_id": "residency_requirement",
+  "value": {
+    "workload": "Sweden Central only for workload compute, application data, storage and backups; retain the existing single-region boundary for non-Entra services, monitoring and other dependencies, except the narrow ACR registry-artifact behavior explicitly accepted below.",
+    "microsoft_entra_identity_exception": "Accept Microsoft Entra identity's documented European customer data storage and processing behavior at https://learn.microsoft.com/en-us/entra/fundamentals/data-storage-eu, including its documented qualifications and limited temporary or permanent transfers. Most customer data within the EU Data Boundary is not an absolute no-EU-egress guarantee.",
+    "applicability_prerequisite": "Architecture must verify tenant creation/provisioning and exact identity-product coverage for workforce and external Volunteer sign-in, including Entra External ID external-tenant applicability; no applicable tenant or deployed commitment is verified here.",
+    "excluded_permissions": "No general global-service, monitoring, storage or other integrated-service exception beyond the explicitly accepted ACR registry-artifact behavior; no automatic permission for optional multitenant collaboration, Application Proxy or other optional cross-boundary features; no law, effective-policy or security-baseline waiver. No optional customer-configured ACR geo-replication, arbitrary replicas or other-service paired-region storage is authorized.",
+    "acceptance_scope": "Project Stakeholders accept the existing narrow Entra exception as meeting their project GDPR requirements; that acceptance is unchanged. The additional DEV-only ACR acceptance covers only the documented Microsoft-managed paired-region storage of container images and registry artifacts within the EU residency boundary. Neither acceptance is independent certification, blanket GDPR compliance assurance, architecture approval or Azure read/write, spend, Production or deployment authority; no new review allowance or regional disaster-recovery guarantee is granted.",
+    "acr_registry_artifact_exception": "Accept the documented Microsoft-managed ACR paired-region storage behavior within the EU residency boundary for container images and registry artifacts only, per https://learn.microsoft.com/azure/container-registry/container-registry-storage. Sweden Central remains the registry creation/workload region; its documented Sweden South pair lies within the accepted EU boundary. Actual replication and regional recovery remain unverified. Workload compute, application data, Blob, backups, monitoring, non-ACR dependencies and the existing Entra exception remain unchanged."
+  },
+  "environments": ["dev"],
+  "owner": "Project Stakeholders",
+  "request_id": "fulcrum-acr-residency-only-20261109-124406"
+}
