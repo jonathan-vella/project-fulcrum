@@ -4,7 +4,7 @@
 
 ```bash
 # Clone the Accelerator template
-# https://github.com/jonathan-vella/project-fulcrum
+# https://github.com/jonathan-vella/apex-accelerator
 git clone https://github.com/YOUR-USERNAME/my-infraops-project.git && cd my-infraops-project
 # Microsoft employees: use the host launcher below before opening the container.
 # Everyone else: code . then F1 → Dev Containers: Reopen in Container.

@@ -1,6 +1,6 @@
 {
   "$schema": "../../tools/schemas/explorer-graph.schema.json",
-  "generatedAt": "2026-11-09T11:39:23.458Z",
+  "generatedAt": "2026-11-09T09:13:35.112Z",
   "categories": [
     { "id": "agent", "key": "agents", "label": "Agent", "color": "#3b82f6", "shape": "round-rectangle", "count": 14 },
     {
@@ -35,11 +35,11 @@
       "label": "CI Workflow",
       "color": "#06b6d4",
       "shape": "cut-rectangle",
-      "count": 6
+      "count": 7
     },
     { "id": "mcp", "key": "mcp_servers", "label": "MCP Server", "color": "#f43f5e", "shape": "barrel", "count": 2 }
   ],
-  "nodeCount": 171,
+  "nodeCount": 172,
   "edgeCount": 564,
   "nodes": [
     {
@@ -1352,7 +1352,8 @@
       "description": "node tools/scripts/validate-agents.mjs",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "node tools/scripts/validate-agents.mjs" }
+      "meta": { "command": "node tools/scripts/validate-agents.mjs", "orphan": true },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:validate-orchestrator-handoff",
@@ -1391,7 +1392,8 @@
       "description": "node tools/scripts/validate-skills.mjs",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "node tools/scripts/validate-skills.mjs" }
+      "meta": { "command": "node tools/scripts/validate-skills.mjs", "orphan": true },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:lint-version-sync",
@@ -1490,7 +1492,8 @@
       "description": "node tools/scripts/validate-workflow-graph.mjs",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "node tools/scripts/validate-workflow-graph.mjs" }
+      "meta": { "command": "node tools/scripts/validate-workflow-graph.mjs", "orphan": true },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:validate-lens-references",
@@ -1559,7 +1562,8 @@
       "description": "node tools/scripts/validate-agent-registry.mjs",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "node tools/scripts/validate-agent-registry.mjs" }
+      "meta": { "command": "node tools/scripts/validate-agent-registry.mjs", "orphan": true },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:validate-skill-checks",
@@ -2001,8 +2005,7 @@
       "description": "markdownlint-cli2",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "markdownlint-cli2", "orphan": true },
-      "parent": "group:validator-orphans"
+      "meta": { "command": "markdownlint-cli2" }
     },
     {
       "id": "validator:lint-python",
@@ -2011,8 +2014,7 @@
       "description": "cd tools/apex-recall && python3 -m ruff check src/",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "cd tools/apex-recall && python3 -m ruff check src/", "orphan": true },
-      "parent": "group:validator-orphans"
+      "meta": { "command": "cd tools/apex-recall && python3 -m ruff check src/" }
     },
     {
       "id": "validator:lint-powershell",
@@ -2021,11 +2023,7 @@
       "description": "pwsh -NoLogo -NoProfile -NonInteractive -File tools/scripts/check-powershell.ps1",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": {
-        "command": "pwsh -NoLogo -NoProfile -NonInteractive -File tools/scripts/check-powershell.ps1",
-        "orphan": true
-      },
-      "parent": "group:validator-orphans"
+      "meta": { "command": "pwsh -NoLogo -NoProfile -NonInteractive -File tools/scripts/check-powershell.ps1" }
     },
     {
       "id": "validator:test-powershell",
@@ -2034,8 +2032,7 @@
       "description": "node --test tools/tests/powershell-analysis.test.mjs",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "node --test tools/tests/powershell-analysis.test.mjs", "orphan": true },
-      "parent": "group:validator-orphans"
+      "meta": { "command": "node --test tools/tests/powershell-analysis.test.mjs" }
     },
     {
       "id": "validator:lint-terraform-fmt",
@@ -2044,7 +2041,8 @@
       "description": "terraform fmt -check -recursive infra/terraform/",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "terraform fmt -check -recursive infra/terraform/" }
+      "meta": { "command": "terraform fmt -check -recursive infra/terraform/", "orphan": true },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:lint-bicep-fmt",
@@ -2053,7 +2051,8 @@
       "description": "bash tools/scripts/check-bicep-fmt.sh",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "bash tools/scripts/check-bicep-fmt.sh" }
+      "meta": { "command": "bash tools/scripts/check-bicep-fmt.sh", "orphan": true },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:validate-terraform",
@@ -2063,8 +2062,10 @@
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
       "meta": {
-        "command": "status=0; for dir in infra/terraform/*/; do if [ -f \"$dir/main.tf\" ]; then echo \"Validating $dir\"; (cd \"$dir\" && terraform init -backend=false -input=false && terraform validate) || status=1; fi; done; exit \"$status\""
-      }
+        "command": "status=0; for dir in infra/terraform/*/; do if [ -f \"$dir/main.tf\" ]; then echo \"Validating $dir\"; (cd \"$dir\" && terraform init -backend=false -input=false && terraform validate) || status=1; fi; done; exit \"$status\"",
+        "orphan": true
+      },
+      "parent": "group:validator-orphans"
     },
     {
       "id": "validator:test-apex-recall",
@@ -2074,10 +2075,8 @@
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
       "meta": {
-        "command": "python3 -m pytest tools/tests/test_apex_recall/ -q && python3 -m pytest tools/apex-recall/tests/ -q",
-        "orphan": true
-      },
-      "parent": "group:validator-orphans"
+        "command": "python3 -m pytest tools/tests/test_apex_recall/ -q && python3 -m pytest tools/apex-recall/tests/ -q"
+      }
     },
     {
       "id": "validator:test-python-tools",
@@ -2086,8 +2085,7 @@
       "description": "python3 -m pytest tools/tests/scripts tools/tests/python-diagrams -q",
       "path": "package.json",
       "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/package.json" },
-      "meta": { "command": "python3 -m pytest tools/tests/scripts tools/tests/python-diagrams -q", "orphan": true },
-      "parent": "group:validator-orphans"
+      "meta": { "command": "python3 -m pytest tools/tests/scripts tools/tests/python-diagrams -q" }
     },
     {
       "id": "validator:test-governance-baseline-python",
@@ -2103,6 +2101,27 @@
       "parent": "group:validator-orphans"
     },
     {
+      "id": "workflow:branch-enforcement",
+      "category": "workflow",
+      "label": "branch-enforcement",
+      "description": "",
+      "path": ".github/workflows/branch-enforcement.yml",
+      "links": {
+        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/branch-enforcement.yml"
+      },
+      "meta": { "orphan": true },
+      "parent": "group:workflow-orphans"
+    },
+    {
+      "id": "workflow:ci",
+      "category": "workflow",
+      "label": "ci",
+      "description": "",
+      "path": ".github/workflows/ci.yml",
+      "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/ci.yml" },
+      "meta": {}
+    },
+    {
       "id": "workflow:consumer-template-checks",
       "category": "workflow",
       "label": "consumer-template-checks",
@@ -2115,48 +2134,40 @@
       "parent": "group:workflow-orphans"
     },
     {
-      "id": "workflow:governance-policy-baseline",
+      "id": "workflow:dependency-security",
       "category": "workflow",
-      "label": "governance-policy-baseline",
+      "label": "dependency-security",
       "description": "",
-      "path": ".github/workflows/governance-policy-baseline.yml",
+      "path": ".github/workflows/dependency-security.yml",
       "links": {
-        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/governance-policy-baseline.yml"
+        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/dependency-security.yml"
       },
       "meta": { "orphan": true },
       "parent": "group:workflow-orphans"
     },
     {
-      "id": "workflow:iac-checks",
+      "id": "workflow:upstream-skill-drift",
       "category": "workflow",
-      "label": "iac-checks",
+      "label": "upstream-skill-drift",
       "description": "",
-      "path": ".github/workflows/iac-checks.yml",
-      "links": { "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/iac-checks.yml" },
-      "meta": {}
-    },
-    {
-      "id": "workflow:weekly-maintenance",
-      "category": "workflow",
-      "label": "weekly-maintenance",
-      "description": "",
-      "path": ".github/workflows/weekly-maintenance.yml",
+      "path": ".github/workflows/upstream-skill-drift.yml",
       "links": {
-        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/weekly-maintenance.yml"
+        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/upstream-skill-drift.yml"
       },
       "meta": { "orphan": true },
       "parent": "group:workflow-orphans"
     },
     {
-      "id": "workflow:weekly-upstream-sync",
+      "id": "workflow:validate-devcontainer-base",
       "category": "workflow",
-      "label": "weekly-upstream-sync",
+      "label": "validate-devcontainer-base",
       "description": "",
-      "path": ".github/workflows/weekly-upstream-sync.yml",
+      "path": ".github/workflows/validate-devcontainer-base.yml",
       "links": {
-        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/weekly-upstream-sync.yml"
+        "source": "https://github.com/jonathan-vella/apex/blob/main/.github/workflows/validate-devcontainer-base.yml"
       },
-      "meta": {}
+      "meta": { "orphan": true },
+      "parent": "group:workflow-orphans"
     },
     {
       "id": "mcp:github",
@@ -2179,18 +2190,18 @@
     {
       "id": "group:validator-orphans",
       "category": "validator",
-      "label": "Validator (unlinked, 69)",
-      "description": "69 validator nodes with no cross-references in the current graph.",
+      "label": "Validator (unlinked, 70)",
+      "description": "70 validator nodes with no cross-references in the current graph.",
       "isGroup": true,
-      "meta": { "groupSize": 69 }
+      "meta": { "groupSize": 70 }
     },
     {
       "id": "group:workflow-orphans",
       "category": "workflow",
-      "label": "CI Workflow (unlinked, 3)",
-      "description": "3 ci workflow nodes with no cross-references in the current graph.",
+      "label": "CI Workflow (unlinked, 5)",
+      "description": "5 ci workflow nodes with no cross-references in the current graph.",
       "isGroup": true,
-      "meta": { "groupSize": 3 }
+      "meta": { "groupSize": 5 }
     }
   ],
   "edges": [
@@ -4877,45 +4888,39 @@
       "kind": "applies-to"
     },
     {
-      "id": "workflow:iac-checks--runs->validator:lint-terraform-fmt",
-      "source": "workflow:iac-checks",
-      "target": "validator:lint-terraform-fmt",
+      "id": "workflow:ci--runs->validator:lint-powershell",
+      "source": "workflow:ci",
+      "target": "validator:lint-powershell",
       "kind": "runs"
     },
     {
-      "id": "workflow:iac-checks--runs->validator:validate-terraform",
-      "source": "workflow:iac-checks",
-      "target": "validator:validate-terraform",
+      "id": "workflow:ci--runs->validator:test-powershell",
+      "source": "workflow:ci",
+      "target": "validator:test-powershell",
       "kind": "runs"
     },
     {
-      "id": "workflow:iac-checks--runs->validator:lint-bicep-fmt",
-      "source": "workflow:iac-checks",
-      "target": "validator:lint-bicep-fmt",
+      "id": "workflow:ci--runs->validator:lint-md",
+      "source": "workflow:ci",
+      "target": "validator:lint-md",
       "kind": "runs"
     },
     {
-      "id": "workflow:weekly-upstream-sync--runs->validator:validate-agents",
-      "source": "workflow:weekly-upstream-sync",
-      "target": "validator:validate-agents",
+      "id": "workflow:ci--runs->validator:lint-python",
+      "source": "workflow:ci",
+      "target": "validator:lint-python",
       "kind": "runs"
     },
     {
-      "id": "workflow:weekly-upstream-sync--runs->validator:validate-agent-registry",
-      "source": "workflow:weekly-upstream-sync",
-      "target": "validator:validate-agent-registry",
+      "id": "workflow:ci--runs->validator:test-apex-recall",
+      "source": "workflow:ci",
+      "target": "validator:test-apex-recall",
       "kind": "runs"
     },
     {
-      "id": "workflow:weekly-upstream-sync--runs->validator:validate-skills",
-      "source": "workflow:weekly-upstream-sync",
-      "target": "validator:validate-skills",
-      "kind": "runs"
-    },
-    {
-      "id": "workflow:weekly-upstream-sync--runs->validator:validate-workflow-graph",
-      "source": "workflow:weekly-upstream-sync",
-      "target": "validator:validate-workflow-graph",
+      "id": "workflow:ci--runs->validator:test-python-tools",
+      "source": "workflow:ci",
+      "target": "validator:test-python-tools",
       "kind": "runs"
     },
     {
@@ -5168,6 +5173,12 @@
       "id": "skill:apex-azure-compute--refs->skill:apex-azure-quotas",
       "source": "skill:apex-azure-compute",
       "target": "skill:apex-azure-quotas",
+      "kind": "refs"
+    },
+    {
+      "id": "skill:apex-azure-cost-optimization--refs->skill:apex-azure-artifacts",
+      "source": "skill:apex-azure-cost-optimization",
+      "target": "skill:apex-azure-artifacts",
       "kind": "refs"
     },
     {
