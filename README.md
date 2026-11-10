@@ -33,6 +33,9 @@ The shared `.github/data/alz-corp-policy-baseline.json.gz` describes standard Az
 not this tenant's actual policy assignments. Architecture can use it after explicit owner acceptance.
 Current target-verified evidence remains required before planning completion, CodeGen and deployment.
 Private tenant snapshots remain excluded from upstream sync.
+Private policy collection uses `--retain-rule-evidence` to preserve complete rule bodies and parameter lineage
+inside the existing owner-only snapshot. Offline semantic validation requires the same flag; summary-only caches
+need a bounded authorized refresh. Existing opaque hashes bind the full snapshot; raw rules never belong in Git.
 See the [policy-source procedure](.github/skills/apex-azure-governance-discovery/references/policy-source.md).
 
 Updating the kit does not migrate an existing workflow or authorize Azure reads.
