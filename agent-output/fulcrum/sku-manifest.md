@@ -90,7 +90,7 @@ _No services declare environment overrides._
 | `rev` | Step | Agent | Created (UTC) | Summary | Changed `id`s | Commit | Checkpoint |
 | ----- | ---- | ----- | ------------- | ------- | ------------- | ------ | ---------- |
 | `1` | `1` | `02-Requirements` | `2026-11-06T14:34:00Z` | Draft Step 1 capture: sole explicit creative pin is LRS replication. App Service and Cosmos explicitly have no SKU preference. On-demand only, dev only, no environment override. No architecture-derived configuration or prices. Validation and checkpoint success are tracked separately. | `storage-blob-replication` | `16cd2c7` | `fulcrum:1:phase_5_artifact` |
-| `2` | `2` | `03-Architect` | `2026-11-09T13:48:00Z` | Current DEV architect selections from three COMPLETE comparison-only pricing results; original LRS lock and Step 1 commit metadata preserved. Supporting access/network/recovery scope remains subject to confirmation; no prices written into manifest and no SKU or Architecture approval inferred. | `storage-blob-replication`, `app-host`, `document-store`, `access-compute` | — | `fulcrum:2:phase_2_waf` |
+| `2` | `2` | `03-Architect` | `2026-11-09T13:48:00Z` | Current DEV architect selections from three COMPLETE comparison-only pricing results; original LRS lock and Step 1 commit metadata preserved. Supporting access/network/recovery scope remains subject to confirmation; no prices written into manifest and no SKU or Architecture approval inferred. | `storage-blob-replication`, `app-host`, `document-store`, `access-compute` | `e63215a` | `fulcrum:2:phase_2_waf` |
 
 ## Open Substitutions
 

@@ -34,7 +34,8 @@
         "app-host",
         "document-store",
         "access-compute"
-      ]
+      ],
+      "commit_sha": "e63215a"
     }
   ],
   "services": [
