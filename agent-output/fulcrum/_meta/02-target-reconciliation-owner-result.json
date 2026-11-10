@@ -1,0 +1,199 @@
+{
+  "schema_version": "architecture-owner-reconciliation-result-v1",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "request_id": "fulcrum-managed-reconciliation-20261110-135203",
+  "status": "REVIEW_EXECUTION_BLOCKED",
+  "record_kind": "Actual owner-phase results; not a reviewer findings payload or human approval",
+  "authority_receipt": "_meta/04-managed-reconciliation-package-20261110-135203.json",
+  "owner_outputs": [
+    "02-architecture-assessment.md",
+    "03-des-cost-estimate.md",
+    "03-des-sku-comparison.md",
+    "_meta/02-target-policy-dependency-closure.md",
+    "_meta/assessment-step-2.json",
+    "_meta/assessment-step-2.md"
+  ],
+  "current_projection": {
+    "path": "_meta/assessment-step-2.json",
+    "file_sha256": "8836d3aee6f7b667860cbbb4628c81a7777bda1b95f9914ee9f4fb6c90fd1254",
+    "projection_sha256": "6b472cb7fee07b5bc8ffbda7e9889ef00d2923dc8566257c2c9071296526c44a",
+    "scope_receipt": "_meta/02-target-reconciliation-phase-scope.json",
+    "scope_request_id": "fulcrum-managed-reconciliation-20261110-135203",
+    "inputs": 70,
+    "interpretation": "69 settled choices plus captured authorized policy-read scope; policy_source now consumes its existing tenant record, all 68 other original input records unchanged",
+    "historical_projection_archive": "_meta/02-pre-target-reconciliation/",
+    "supported_phase_scope_write_exit": 0,
+    "supported_assessment_sync_exit": 0,
+    "recall_assessment_step_2_readiness": "current",
+    "recall_assessment_step_3_readiness": "blocked: historical Design assessment view is stale against changed policy-source inputs; not repaired or restarted by Architect"
+  },
+  "public_primary_hashes": {
+    "02-architecture-assessment.md": "822b12dbd5d7746456a26fd6faed2f20096b355fbd6e0b621a27f5a9a0ac2618",
+    "03-des-cost-estimate.md": "2c363a401c958788a5b8ae3444c4d729cb645026413c10680145dd1f1592ad40",
+    "03-des-sku-comparison.md": "129669ecf26146f2ec874455c5948ef5549792ccefad7964e3f7bdd7420d7099",
+    "_meta/02-target-policy-dependency-closure.md": "1951000b212dca6e73055a663657a2d44678a7ccec1812b07a2ccb100bf34e13"
+  },
+  "policy_evidence": {
+    "collection": "COMPLETE target-bound full rules; 2026-11-10T13:05:48Z; expires 2026-11-17T13:05:48Z subject to drift",
+    "index": {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+      "sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796"
+    },
+    "snapshot": {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+      "sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541"
+    },
+    "canonical": {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-governance-constraints.json",
+      "sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541"
+    },
+    "facts": "_meta/04-managed-applicability-20261110-facts.json",
+    "matrix": "_meta/04-managed-applicability-20261110-matrix.json",
+    "new_azure_or_discovery_calls": 0,
+    "actual_private_inputs_frozen_per_review": 3,
+    "transient_mapping": "Resolved through supported native preflight; supplied only to protected native review tasks, never persisted in repository request identities",
+    "raw_evidence_or_governance_owner_files_modified": false
+  },
+  "pricing": {
+    "status": "ORIGINAL_COMPLETE_PROJECT_SCENARIO_UNCHANGED",
+    "path": "contracts/02-cost-estimate.conservative-planning-v2.json",
+    "sha256": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb",
+    "schema": "Original cost-estimate-v1 retained, not relabelled as a new v2 publication",
+    "monthly_usd": 168.104995,
+    "annual_usd": 2017.25994,
+    "billing_lines": 17,
+    "new_queries": 0,
+    "used": 35,
+    "max": 35,
+    "remaining": 0,
+    "shared_security_and_central_workspace_costs": "Outside settled project allocation, actual usage and allocation unknown, not free",
+    "scope": "Conditional conservative project scenario, not total corporate obligations, actual tenant spend or invoice",
+    "historical_assumed_corp_labels_and_all_raw_rates_preserved": true
+  },
+  "reviews_in_presentation_order": [
+    {
+      "lens": "cost-feasibility",
+      "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba",
+      "initial_request_id": "fulcrum-step2-cost-estimate-initial-20261109",
+      "extension": "_meta/02-cost-target-review-extension.json",
+      "supported_extension_exit": 0,
+      "request": "_meta/02-review-request-cost-estimate-target-reconciliation.json",
+      "request_id": "fulcrum-step2-cost-estimate-target-reconciliation-20261110",
+      "output": "reviews/challenge-findings-cost-estimate-target-reconciliation.json",
+      "preflight_exit": 0,
+      "started_before_dispatch": true,
+      "native_execution_mode": "sync",
+      "native_invocation": "completed",
+      "review_output": "nonempty",
+      "actual_verdict": "APPROVED",
+      "risk_level": "medium",
+      "actual_findings": 0,
+      "recorder_exit": 0,
+      "strict_verify_cache_exit": 0,
+      "strict_errors": 0,
+      "strict_warnings": 0,
+      "selected_through_supported_recall": true,
+      "required_private_inputs_actually_read": true,
+      "worker_tool_failures": 0,
+      "calls": 3,
+      "max_calls": 4,
+      "new_calls": 1,
+      "closure_dispatched": false,
+      "closure_needed": false
+    },
+    {
+      "lens": "comprehensive",
+      "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba",
+      "initial_request_id": "fulcrum-step2-architecture-initial-20261109",
+      "extension": "_meta/02-architecture-target-review-extension.json",
+      "supported_extension_exit": 0,
+      "request": "_meta/02-review-request-architecture-target-reconciliation.json",
+      "request_id": "fulcrum-step2-architecture-target-reconciliation-20261110",
+      "intended_output": "reviews/challenge-findings-architecture-target-reconciliation.json",
+      "preflight_exit": 0,
+      "started_before_dispatch": true,
+      "native_execution_mode": "sync",
+      "native_invocation": "completed",
+      "review_output": "nonempty execution failure",
+      "actual_verdict": null,
+      "actual_findings": null,
+      "returned_failure": {
+        "status": "FAILED",
+        "stage": "required_evidence_read",
+        "error": "The canonical private-evidence read incorrectly omitted the supplied opaque scope directory and failed because that path does not exist. Required evidence review is incomplete; no substantive findings or verdict were produced.",
+        "request_id": "fulcrum-step2-architecture-target-reconciliation-20261110"
+      },
+      "recorder_exit": 1,
+      "recorder_error": "Worker tool calls must complete successfully",
+      "result_published": false,
+      "worker_tool_failures": 1,
+      "selected_current_path": "reviews/challenge-findings-architecture-archive-closure.json",
+      "selected_current_path_status": "Historical APPROVED result is stale, not current target-backed evidence",
+      "calls": 3,
+      "max_calls": 4,
+      "new_calls": 1,
+      "closure_dispatched": false,
+      "conditional_capacity_unspent": 1,
+      "automatic_empty_output_retry_eligible": false,
+      "recovery_boundary": "Nonempty execution failure and failed publication block current review. No blind relaunch, same-interaction salvage, fabricated findings or counter reset."
+    }
+  ],
+  "frozen_review_input_digest": "7dc9308028c04adb7f3bfaf330cedfba94e92d0ec1ff22ba8808d02fef1bce4b",
+  "native_audit": {
+    "source": "Existing external protected native session capture, resolved from retained publication receipt and exact current request IDs",
+    "native_events_copied_into_repository": false,
+    "both_attempts_recorded_before_dispatch": true,
+    "actual_outcomes_match_recall": true,
+    "audit_gaps": 0,
+    "both_output_states_recorded": "completed/nonempty; actual execution failure is separate from task completion and recording success"
+  },
+  "owner_recall_recording": {
+    "actual_decision_log_recorded_at": "2026-11-10T14:31:36Z",
+    "checkpoint": "phase_6_target_review_execution_blocked",
+    "checkpoint_recorded_at": "2026-11-10T14:31:40Z",
+    "checkpoint_exit": 0,
+    "artifact_added": "_meta/02-target-reconciliation-owner-result.json",
+    "numeric_step_completed_or_reopened": false
+  },
+  "checks": {
+    "report_h2_order": "PASS with exact .md filenames",
+    "report_badges_toc_navigation_mermaid_details": "Preserved template structure; reviewed by cost lens, Architecture review incomplete",
+    "manifest_schema_semantics_pins_revision_price_freshness": "PASS, 0 errors/0 warnings; rev2 unchanged",
+    "subnet_ajv_2020_schema": "PASS, four rows",
+    "subnet_containment_nonoverlap_and_settled_controls": "PASS",
+    "price_legacy_audit": "PASS, 0 errors/0 warnings",
+    "price_original_schema_note": "Ordinary current v2 validation correctly rejects original v1 schema/purpose; explicit supported legacy-audit passes. Original evidence retained, not rewritten.",
+    "price_decimal_17_line_monthly_annual_arithmetic": "PASS",
+    "price_source_directories_original_hashes": "PASS; both raw directories unchanged against historical review bindings",
+    "price_timestamp_freshness": "PASS within 30 days; original timestamps unchanged",
+    "historical_file_supports_except_authorized_report_comparison_projection_changes": "PASS",
+    "requirements_original_hash": "PASS",
+    "all_chart_png_svg_source_siblings": "PASS nonempty and format-valid, shared save_figure present; not regenerated",
+    "owned_reports_anonymization_scan": "PASS; no identifying Azure IDs, contacts or absolute private paths",
+    "numeric_completions_or_approvals_recorded": 0,
+    "steps_1_2_3_completion_timestamps_preserved": true,
+    "step_1_cycle_preserved": "3/4, no dispatch",
+    "step_3_5": "pending, not started/completed by Architect"
+  },
+  "next_parent_action": {
+    "status": "TECHNICAL_REVIEW_RECOVERY_REQUIRED_BEFORE_HUMAN_GATE",
+    "new_business_or_read_inputs": [],
+    "no_administrative_extension_question_required": true,
+    "next_human_gate": "Current target-reconciled Architecture Gate 2, only after valid current Architecture review and resolved blockers",
+    "gate_facts": "Security7/10, Reliability5/10, Performance6/10, Cost8/10, Operations6/10; unchanged USD168.104995/month and USD2017.25994/year project scenario; corporate shared costs unknown; runtime Unverified",
+    "governance_order": {
+      "graph": ".github/skills/apex-workflow-engine/templates/workflow-graph.json: step-3_5.requires=[gate-2]",
+      "owner_requirement": ".github/agents/04g-governance.agent.md: Require approved 02-architecture-assessment.md and current Step 2 completion evidence",
+      "meaning": "Historical handoff reports READY by ordering, but it does not approve revised Architecture bytes. Formal Governance cannot treat historical Gate2 as current. Prepare inputs now; parent owns actual current approval and subsequent Governance review within the package."
+    },
+    "prepared_governance_inputs": [
+      "Current frozen Architecture report SHA822b12dbd5d7746456a26fd6faed2f20096b355fbd6e0b621a27f5a9a0ac2618 and cost report SHA2c363a401c958788a5b8ae3444c4d729cb645026413c10680145dd1f1592ad40",
+      "Current 70-input projection and complete owner facts/332-occurrence matrix",
+      "Actual private index, snapshot and canonical JSON with immutable identities/hashes above",
+      "Existing Governance public draft remains owner-controlled and references historical classification binding; Governance must finalize its own public report without rewriting immutable raw evidence",
+      "Selected actual current cost review plus explicit unresolved Architecture execution failure; no current human approval inferred"
+    ],
+    "no_numeric_completion_planning_codegen_or_deployment_authorization": true
+  }
+}

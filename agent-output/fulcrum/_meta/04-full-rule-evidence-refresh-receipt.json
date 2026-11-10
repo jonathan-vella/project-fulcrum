@@ -1,0 +1,147 @@
+{
+  "schema_version": "policy-full-rule-evidence-refresh-receipt-v1",
+  "record_kind": "Bounded preliminary Governance recovery outcome; not L0 authority, review or approval",
+  "project": "fulcrum",
+  "execution_mode": "delegated",
+  "request_id": "fulcrum-full-rule-recovery-20261110-120123",
+  "status": "FAILED_COLLECTION_BOUND_EXHAUSTED",
+  "blocker_id": "FULL_RULE_REFRESH_COLLECTOR_RUNTIME_FAILURE",
+  "observed_at": "2026-11-10T12:07:08.853314+00:00",
+  "authorization": {
+    "existing_request_id": "fulcrum-formal-governance-target-20261109",
+    "actual_read_grant_receipt": "_meta/04-governance-scope-receipt.json",
+    "parent_execution_bound": "_meta/04-full-rule-refresh-recovery-scope.json",
+    "scope_ref": "8e02286b466548f4b011ea06560abf93",
+    "environment": "dev",
+    "managed_scope_resolved": true,
+    "supported_tenant_verification": {
+      "exit_code": 0,
+      "tenant_matches": true
+    },
+    "scope_or_credentials_changed": false,
+    "new_consent_created_or_requested": false
+  },
+  "capability": {
+    "collector": ".github/skills/apex-azure-governance-discovery/scripts/discover.py",
+    "collector_sha256": "463ab0aaee7e2717204a26a1c92e2dbea0a3bd6d6726d7f758c9eeb3a4c95e92",
+    "renderer_sha256": "bc4315ec2bf12fb2d2e655c521fe054f5edd274cba6ae2af916fa446233cd50f",
+    "new_option_accepted": true,
+    "full_rule_retention_successfully_exercised": false,
+    "historical_blocker_receipt": "_meta/04-policy-rule-evidence-recovery.json",
+    "historical_blocker_qualification": "The old absent-capability diagnosis is historical. This attempt used the new supported flag and failed at runtime; it does not establish that the current collector lacks that option."
+  },
+  "actual_attempt": {
+    "started_at": "2026-11-10T12:06:10.667126+00:00",
+    "activity": "Canonical discover.py with project fulcrum, explicitly captured private subscription, approved Architecture input and canonical private subscription-1.json output",
+    "options": ["--refresh", "--retain-rule-evidence"],
+    "include_defender_auto": true,
+    "live_discovery_invocations": 1,
+    "live_discovery_invocations_max": 1,
+    "retry_allowed": false,
+    "retry_attempted": false,
+    "canonical_exit_code": 2,
+    "canonical_status": "FAILED",
+    "canonical_error": "unexpected",
+    "privacy_safe_exact_detail": "'list' object has no attribute 'get'",
+    "stage": "discover() exception before envelope persistence; exact internal location was not emitted by the canonical tool",
+    "mechanical_io_harness_exit_code": 1,
+    "new_snapshot_written": false,
+    "new_coverage_counts": null,
+    "new_rule_evidence_sha256": null,
+    "new_signature_or_ttl": null,
+    "diagnostics": [
+      {
+        "ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/full-rule-recovery-20261110-120123/collection.stdout",
+        "sha256": "05aff48a20dc4851145f43a99c622685067694c5d371e4828be6789bb3fdf4d9"
+      },
+      {
+        "ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/full-rule-recovery-20261110-120123/collection.stderr",
+        "sha256": "756bef511fa1c9fd5e02f648f01a698c246e77104ab0d279e00aac2ec1cce18f"
+      }
+    ]
+  },
+  "preserved_evidence": {
+    "index_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+    "index_sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+    "snapshot_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+    "snapshot_sha256": "98edd9c9aa613ce65a3e8dd86f3cfc30fd640dccacb0208c3ccd13f5fd9e3dff",
+    "prior_signature": "sha256:7c229c364db863e37de347eb2a53726f0de4d7566e3d1ddf5c4d178556d82292",
+    "prior_collected_at": "2026-11-10T06:51:00Z",
+    "prior_ttl_days": 7,
+    "prior_expires_at": "2026-11-17T06:51:00Z",
+    "prior_summary_collection_status": "COMPLETE",
+    "full_rule_semantic_evidence_status": "INSUFFICIENT; no new full-rule snapshot",
+    "binding": "Existing summary-only feasibility binding retained unchanged; not a new successful binding or full-rule attestation",
+    "byte_equivalent_archive": [
+      {
+        "name": "04-policy-feasibility.json",
+        "sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+        "ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/full-rule-recovery-20261110-120123/prior/04-policy-feasibility.json"
+      },
+      {
+        "name": "subscription-1.json",
+        "sha256": "98edd9c9aa613ce65a3e8dd86f3cfc30fd640dccacb0208c3ccd13f5fd9e3dff",
+        "ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/full-rule-recovery-20261110-120123/prior/subscription-1.json"
+      },
+      {
+        "name": "subscription-1.preview.md",
+        "sha256": "9991903a37ad578bd0fe54d33b1c0e1077b1e98620ba105706e30a546c918b88",
+        "ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/full-rule-recovery-20261110-120123/prior/subscription-1.preview.md"
+      }
+    ],
+    "all_three_canonical_files_and_archives_hash_match": true,
+    "prior_receipts_and_history_rewritten": false
+  },
+  "validation": {
+    "private_storage": "PASS: managed authorized scope, outside Git, owner-owned, directories 0700, files 0600, no symlinks",
+    "new_snapshot_offline_validate_only_retain_rule_evidence": "NOT RUN: live collection failed",
+    "new_snapshot_json_schema_signature_ttl_digest_lineage_coverage": "NOT RUN: no new snapshot",
+    "private_index_rebinding": "NOT ATTEMPTED",
+    "local_policy_semantics_analysis": "NOT RUN: required full-rule evidence unavailable",
+    "public_receipt_shape": "PASS",
+    "readme_h2": "PASS",
+    "handoff_h2_and_under_60_lines": "PASS",
+    "formal_governance_markdown_json_and_decisions": "NOT PRODUCED: preliminary recovery only",
+    "review_freshness": "NONCURRENT: both historical strict-cache checks exit 1; no new review",
+    "blocker_closure": "AWAITING VERIFICATION",
+    "selected_governance_review": null
+  },
+  "independent_cache_checks": [
+    {
+      "path": "reviews/challenge-findings-architecture-archive-closure.json",
+      "command": "validate-challenger-findings.mjs --verify-cache",
+      "exit_code": 1
+    },
+    {
+      "path": "reviews/challenge-findings-cost-estimate-archive-closure.json",
+      "command": "validate-challenger-findings.mjs --verify-cache",
+      "exit_code": 1
+    }
+  ],
+  "boundaries": {
+    "protected_files_before_after_hashes_checked": 2192,
+    "protected_files_changed": 0,
+    "approved_requirements_architecture_cost_design_manifest_changed": false,
+    "source_or_schema_edits": 0,
+    "azure_resource_or_policy_writes": 0,
+    "resource_inventory_calls": 0,
+    "pricing_calls": 0,
+    "review_dispatches": 0,
+    "review_allowances_reset": false,
+    "recall_mutations_or_new_step_checkpoints": 0,
+    "steps_1_2_3": "complete; historical approvals preserved",
+    "formal_step_3_5": "pending; not started or completed",
+    "planning_or_deployment_authorized": false
+  },
+  "recovery_owner": {
+    "immediate": "Interactive parent",
+    "technical": "Discovery tooling/code owner under separate source-change authorization",
+    "needed": "Resolve the canonical collector runtime error using the private diagnostics, then obtain a new bounded execution allowance before any further live collection. Existing scope consent is not being re-requested.",
+    "remaining_after_evidence_recovery": [
+      "Canonical offline full-rule schema/digest/lineage/coverage validation and supported private index binding",
+      "Local target-backed DINE/Modify/Audit and location/tag/co-location reconciliation",
+      "Architecture/cost current-input views and exhausted review-budget recovery without history resets",
+      "Separately authorized formal Governance reconciliation review and independent human Gate 2.5"
+    ]
+  }
+}

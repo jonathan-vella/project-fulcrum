@@ -1,0 +1,87 @@
+{
+  "request_id": "fulcrum-managed-reconciliation-20261110-135203",
+  "project": "fulcrum",
+  "status": "BLOCKED_ARCHITECTURE_REVIEW_EXECUTION_ALLOWANCE_EXHAUSTED",
+  "authority_receipt": "_meta/04-managed-reconciliation-package-20261110-135203.json",
+  "completed_work": [
+    "Accounted for all 332 recovered policy occurrences without discovery.",
+    "Resolved policy applicability and fact-derived tag/location/co-location topics.",
+    "Prepared anonymized Governance report and offline private canonical Governance contract.",
+    "Updated owner-controlled Architecture/cost qualifications, SKU comparison and current 70-input assessment views.",
+    "Applied both explicit extensions through supported Recall to the existing cycles, retaining consumed calls.",
+    "Completed and strictly verified the current cost-feasibility review."
+  ],
+  "policy_applicability": {
+    "demonstrated_workload_deny_conflicts": 0,
+    "nonblocking_audit_treatment": "Explicit planning and test requirements, not policy waivers or automatic Deny blockers.",
+    "new_business_or_read_permission_questions_needed": [],
+    "fact_package": "_meta/04-managed-applicability-20261110-facts.json",
+    "raw_private_policy_evidence_changed": false
+  },
+  "pricing": {
+    "evidence": "contracts/02-cost-estimate.conservative-planning-v2.json",
+    "sha256": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb",
+    "monthly_scenario_usd": 168.104995,
+    "yearly_scenario_usd": 2017.25994,
+    "lines": 17,
+    "rates_skus_and_usage_unchanged": true,
+    "new_pricing_queries": 0,
+    "queries_consumed": 35,
+    "query_limit": 35,
+    "qualification": "Existing conservative project allocation; shared central policy/security charges remain outside that allocation, unknown and not free."
+  },
+  "reviews": {
+    "architecture": {
+      "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba",
+      "historical_calls_preserved": 2,
+      "new_calls": 2,
+      "total_calls": 4,
+      "absolute_limit": 4,
+      "current_verdict": null,
+      "actual_findings": null,
+      "execution_result": "Both new calls failed required private-evidence reads because the reviewer constructed an incorrect path despite valid supplied literal mappings.",
+      "recorder_result": "Rejected failed worker tool calls; no current substantive Architecture review was published.",
+      "last_execution_receipt": "_meta/02-target-read-closure-owner-result.json",
+      "further_calls_authorized": false
+    },
+    "cost_feasibility": {
+      "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba",
+      "historical_calls_preserved": 2,
+      "new_calls": 1,
+      "total_calls": 3,
+      "absolute_limit": 4,
+      "current_verdict": "APPROVED",
+      "actual_findings": 0,
+      "current_sidecar": "reviews/challenge-findings-cost-estimate-target-reconciliation.json",
+      "strict_cache": "PASS: zero errors and warnings",
+      "closure_needed_or_dispatched": false
+    },
+    "governance": {
+      "new_calls": 0,
+      "status": "Not dispatched: current target-reconciled Architecture approval prerequisites are not met.",
+      "prepared_report": "04-governance-constraints.md",
+      "authority_preserved": "The ordinary bounded Governance review grant is unused; it does not waive the preceding Architecture gate."
+    }
+  },
+  "preserved": [
+    "Historical approvals and completed Steps 1–3",
+    "Original reviews, prior failures and all consumed accounting",
+    "Captured requirements, SKUs and unchanged pricing evidence",
+    "Private evidence bytes and opaque source identities"
+  ],
+  "next_required_gate": {
+    "name": "Current target-reconciled Architecture Gate 2",
+    "ready": false,
+    "reason": "A valid current Architecture review is mandatory; neither execution failure supplies findings or a verdict.",
+    "next_action": "Resolve reviewer private-path execution and obtain separately bounded recovery authority before any further Architecture call. Do not present an approval-shaped substitute or advance to formal Governance/planning."
+  },
+  "new_discovery_calls": 0,
+  "new_resource_metadata_reads": 0,
+  "source_code_edits": 0,
+  "git_writes": 0,
+  "azure_writes_remediation_or_deployment": 0,
+  "policy_waivers": 0,
+  "human_approval_manufactured": false,
+  "approval_gate_crossed": false,
+  "counter_reset_or_old_review_restamp": false
+}

@@ -2,7 +2,7 @@
   "contract": "practical-v1",
   "step": "2",
   "scope": {
-    "request_id": "fulcrum-monthly-transfer-planning-20261109-175347",
+    "request_id": "fulcrum-managed-reconciliation-20261110-135203",
     "input_ids": [
       "company_size",
       "target_environments",
@@ -58,6 +58,7 @@
       "dev_secret_certificate_profile",
       "policy_feasibility_read_intent",
       "policy_source",
+      "azure_read_scope",
       "dev_client_access_profile",
       "dev_compute_demand_profile",
       "dev_data_meter_profile",
@@ -132,6 +133,20 @@
       "owner": "Project Stakeholders",
       "request_id": "requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb",
       "recorded_at": "2026-11-06T14:10:26Z"
+    },
+    "azure_read_scope": {
+      "input_id": "azure_read_scope",
+      "value": {
+        "scope_ref": "8e02286b466548f4b011ea06560abf93",
+        "scope_sha256": "63629d36c67e12e97aa47cc4624d2d9d60ba140876ef914503252fba5b7844e8",
+        "policy_read_scope": "subscription-and-inherited"
+      },
+      "environments": [
+        "dev"
+      ],
+      "owner": "Project Stakeholders",
+      "request_id": "fulcrum-formal-governance-target-20261109",
+      "recorded_at": "2026-11-10T06:46:45Z"
     },
     "budget_currency": {
       "input_id": "budget_currency",
@@ -541,15 +556,14 @@
     "policy_source": {
       "input_id": "policy_source",
       "value": {
-        "kind": "assumed-corp",
-        "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"
+        "kind": "tenant"
       },
       "environments": [
         "dev"
       ],
       "owner": "Project Stakeholders",
-      "request_id": "fulcrum-assumed-corp-owner-acceptance-20261109-124406",
-      "recorded_at": "2026-11-09T12:45:13Z"
+      "request_id": "fulcrum-formal-governance-target-20261109",
+      "recorded_at": "2026-11-10T06:46:45Z"
     },
     "private_client_access": {
       "input_id": "private_client_access",

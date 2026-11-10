@@ -1,12 +1,13 @@
 
 
 <!-- recall-assessment:2 -->
-Decision projection: `9ecc1ef96f5ad0c3f9f557129b95534f897ed295b06088536c30377392427707`
+Decision projection: `6b472cb7fee07b5bc8ffbda7e9889ef00d2923dc8566257c2c9071296526c44a`
 
 - anonymity_requirements: ["Anonymous generated source, documentation, commits, issues, pull requests, test data, infrastructure-as-code and artifacts", "No customer/nonprofit or technology-partner names, individual names, real domains, organizational identifiers, correspondence or real beneficiary/Volunteer information", "Use only generic party labels: The Organization, Technology Contributors, Volunteers, Coordinators, Administrators, Project Stakeholders", "Do not request real names, personal emails, domains or identities during discovery", "Do not publish repository remote URLs or account identities in project documentation", "Author attribution uses agent role only; no people", "Fictional sample data only"]; environments=dev; owner=Project Stakeholders; request=requirements-brief-capture-20261106-134127
 - application_scope_exclusions: ["Cross-platform mobile application development", "Backend application code", "Application tests", "Application permission implementation", "Detailed business workflow, escalation and reporting implementation"]; environments=dev; owner=Project Stakeholders; request=requirements-brief-capture-20261106-134127
 - authentication_requirement: "Employees plus external Volunteers \u2014 fictional dev accounts"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
 - availability_target: "Dev/test \u2014 occasional downtime acceptable"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
+- azure_read_scope: {"scope_ref": "8e02286b466548f4b011ea06560abf93", "scope_sha256": "63629d36c67e12e97aa47cc4624d2d9d60ba140876ef914503252fba5b7844e8", "policy_read_scope": "subscription-and-inherited"}; environments=dev; owner=Project Stakeholders; request=fulcrum-formal-governance-target-20261109
 - budget_currency: "USD"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
 - budget_limit: "Planning target \u2014 optimize and highlight overruns"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
 - business_objective: "Reduce manual coordination and administrative overhead; improve Volunteer engagement and matching, opportunity discovery, assignments, approvals, tracking, reporting, visibility and communication; accelerate assignments and grow without proportional administration."; environments=dev; owner=Project Stakeholders; request=requirements-brief-capture-20261106-134127
@@ -44,7 +45,7 @@ Decision projection: `9ecc1ef96f5ad0c3f9f557129b95534f897ed295b06088536c30377392
 - peak_concurrent_users: "10\u2013100"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
 - performance_target: "Typical API responses under 2 seconds \u2014 planning goal to validate"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
 - policy_feasibility_read_intent: "provide_secure_scope_for_governance_read_only"; environments=dev; owner=Project Stakeholders; request=fulcrum-step2-secret-capability-20261109-075300
-- policy_source: {"kind": "assumed-corp", "sha256": "97c367dc6ab1950e34d5e59fa8fef5d1afaff34b0a2f4b9a458cc539b1e2a2ed"}; environments=dev; owner=Project Stakeholders; request=fulcrum-assumed-corp-owner-acceptance-20261109-124406
+- policy_source: {"kind": "tenant"}; environments=dev; owner=Project Stakeholders; request=fulcrum-formal-governance-target-20261109
 - private_client_access: "A new secure remote-access path is needed"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb
 - project_name: "fulcrum"; environments=dev; owner=Project Stakeholders; request=requirements-brief-capture-20261106-134127
 - recovery_profile: "Standard \u2014 recover within 4 hours; up to 1 hour of data loss"; environments=dev; owner=Project Stakeholders; request=requirements-6fef74ef-6ad1-49d4-a011-4c0a24fe83eb

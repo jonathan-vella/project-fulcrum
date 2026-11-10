@@ -1,0 +1,63 @@
+{
+  "request_id": "fulcrum-full-rule-recovery-20261110-125941",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "mode": "preliminary-governance-evidence-recovery-only",
+  "source": "Explicit user request in the current conversation at 2026-11-10T12:59:41.505Z",
+  "actual_authorization": "At most one additional canonical live policy-discovery invocation within the existing captured DEV subscription-plus-inherited-policy read scope; prefer reuse of valid current full-rule evidence.",
+  "existing_scope": {
+    "scope_ref": "8e02286b466548f4b011ea06560abf93",
+    "original_read_consent_request_id": "fulcrum-formal-governance-target-20261109",
+    "receipt": "_meta/04-governance-scope-receipt.json",
+    "environment": "dev",
+    "active_tenant_verification": "Supported helper returned tenant_matches: true; no credential or subscription switch."
+  },
+  "fix_verification": {
+    "commit": "8af687b73f86bf1a46299bfe829da0222907eb8a",
+    "ancestor_of_local_main": true,
+    "ancestor_of_head": true,
+    "working_collector_matches_commit": true,
+    "working_renderer_matches_commit": true,
+    "collector_sha256": "d83c0c571d37550795e64058c906909074d9f6619c99ab62f8483d8a48a44c67",
+    "renderer_sha256": "bc4315ec2bf12fb2d2e655c521fe054f5edd274cba6ae2af916fa446233cd50f",
+    "focused_rule_evidence_tests": "42 passed",
+    "git_writes": 0
+  },
+  "prior_consumed_attempt": {
+    "request_id": "fulcrum-full-rule-recovery-20261110-120123",
+    "receipt": "_meta/04-full-rule-evidence-refresh-receipt.json",
+    "live_invocations_consumed": 1,
+    "previous_limit": 1,
+    "outcome": "FAILED_COLLECTION_BOUND_EXHAUSTED",
+    "preserve_receipt_and_allowance": true
+  },
+  "new_run_bound": {
+    "live_policy_discovery_invocations_max": 1,
+    "reuse_current_valid_full_rule_evidence_first": true,
+    "candidate_collection_options": ["--refresh", "--retain-rule-evidence"],
+    "full_defender_coverage": true,
+    "owned_private_candidate_required": true,
+    "validate_before_promotion_or_rebinding": true,
+    "required_validation": [
+      "Schema, authorized scope, completeness signature and TTL",
+      "Full-rule digest and member/parameter lineage",
+      "DINE deployment and existence details",
+      "Modify conditions and operations",
+      "Append complete field/value entries, preserving nested arrays and false/zero/null values",
+      "Audit and Disabled occurrence coverage"
+    ],
+    "on_failed_or_partial": "Stop; preserve candidate and private diagnostics; report exact privacy-safe error.",
+    "automatic_retry_allowed": false,
+    "scope_or_credentials_change_allowed": false
+  },
+  "success_scope": "Supported Recall private-evidence binding followed by read-only reconciliation against the approved design. Report actual conflicts, evidence gaps and stale/exhausted review blockers.",
+  "privacy": "All raw policies, candidate snapshots and diagnostics remain in the managed owner-only store outside Git. Repository receipts contain opaque references and redacted summaries only.",
+  "not_authorized": [
+    "Pricing queries or reviewer dispatches",
+    "Approved-artifact or source edits",
+    "Git writes",
+    "Azure writes, remediation or deployment",
+    "Formal Governance completion or planning advancement",
+    "Resetting steps, approvals or consumed allowances"
+  ]
+}

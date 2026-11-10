@@ -1,0 +1,58 @@
+{
+  "schema_version": "offline-governance-owner-checks-v1",
+  "project": "fulcrum",
+  "request_id": "fulcrum-managed-reconciliation-20261110-135203",
+  "scope": "Local owner preparation only; zero reviewer dispatches or human approvals",
+  "structure": "PASS",
+  "command_outcomes": {
+    "governance_headings": {
+      "exit": 0,
+      "diagnostics_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-managed-applicability-20261110-governance_headings"
+    },
+    "readme_headings": {
+      "exit": 0,
+      "diagnostics_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-managed-applicability-20261110-readme_headings"
+    },
+    "handoff_headings": {
+      "exit": 0,
+      "diagnostics_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-managed-applicability-20261110-handoff_headings"
+    },
+    "architecture_strict_cache": {
+      "exit": 1,
+      "diagnostics_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-managed-applicability-20261110-architecture_strict_cache"
+    },
+    "cost_strict_cache": {
+      "exit": 1,
+      "diagnostics_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-managed-applicability-20261110-cost_strict_cache"
+    }
+  },
+  "handoff_lines": 59,
+  "handoff_below_60_lines": true,
+  "governance_annotation_placeholders": [],
+  "source_and_canonical_full_rule_offline_validation": "PASS (exit 0 each)",
+  "canonical_shared_ajv_schema": "PASS",
+  "canonical_bytes_equal_original_snapshot": true,
+  "source_l0_and_property_alias_contract": "PASS",
+  "owner_json_shape_and_count_invariants": "PASS",
+  "preservation_receipt": "_meta/04-managed-applicability-20261110-preservation-after.json",
+  "review_decision_sidecar_schema": "NOT_APPLICABLE_NO_REVIEW_OR_DISPOSITIONS_CREATED",
+  "review_freshness": {
+    "architecture": "STALE",
+    "cost": "STALE",
+    "governance": "UNAVAILABLE_NOT_DISPATCHED_OR_SELECTED"
+  },
+  "blocker_closure": "AWAITING_VERIFICATION",
+  "prepared_artifact_hashes": {
+    "04-governance-constraints.md": "50a44e7e7f99821afe45a9becf804acd076dec0e0526962f0eed3f4c7d0e90fc",
+    "README.md": "95cec337e01d47eb303a9f51e0935406c671a84d0374cf4a10058bcc28ac9725",
+    "00-handoff.md": "863ab5f615cc54fdc6f24e6d36af2bc354495afceff5cc7c8c559ee4a6248f7d",
+    "_meta/04-managed-applicability-20261110-facts.json": "be5f4aca8e91ed4b949d2f0fd506e83d5ad1ec303d4bdd4f943e4a0a0742f7f0",
+    "_meta/04-managed-applicability-20261110-matrix.json": "9e8ad2ea6c354c8ac47d590fc8861f7ce6fd38982c98d0f80e9ce39ccdd880cb"
+  },
+  "private_source_hashes": {
+    "04-policy-feasibility.json": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+    "subscription-1.json": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541",
+    "04-governance-constraints.json": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541"
+  },
+  "no_stage_completion_or_next_step_authority": true
+}
