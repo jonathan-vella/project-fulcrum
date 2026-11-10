@@ -1,0 +1,228 @@
+{
+  "request_id": "fulcrum-step2-cost-estimate-target-reconciliation-20261110",
+  "step": "2",
+  "review_depth": "default",
+  "artifact_path": "agent-output/fulcrum/03-des-cost-estimate.md",
+  "project_name": "fulcrum",
+  "artifact_type": "cost-estimate",
+  "review_focus": "cost-feasibility",
+  "pass_number": 1,
+  "prior_findings": [],
+  "output_path": "agent-output/fulcrum/reviews/challenge-findings-cost-estimate-target-reconciliation.json",
+  "overwrite": false,
+  "cache_inputs": {
+    "artifact_sha": "2c363a401c958788a5b8ae3444c4d729cb645026413c10680145dd1f1592ad40",
+    "checklists_sha": "418fdabfe6b6d1f762c798fd559369a89c1e607af237a5c2861abc9b34876073",
+    "protocol_sha": "ee62e6840d6b4e331bf39fc6ae1a617ae17bebe795a5a9d8587cb8c5ab988182",
+    "reviewer": "challenger-review-subagent",
+    "reviewer_contract": ".github/skills/apex-azure-defaults/references/one-shot-review.md",
+    "reviewer_contract_sha": "9c3243808f64728c77d632c952456548576fcb0be301a9c5d22973d0a69c4c7a",
+    "reviewer_definition": ".github/agents/_subagents/challenger-review-subagent.agent.md",
+    "reviewer_definition_sha": "61fc7885bbfdd9f47dcbbc23cbc3a8ecbc0e6a5f04d6504c3146bae9d32bd769",
+    "model_policy": "runtime-managed",
+    "artifact_hash": "9e4182f55193103382c7c7f0f59ed3244147173b80c2b42a3d1ad8da49f22253"
+  },
+  "supporting_inputs": [
+    {
+      "path": "agent-output/fulcrum/01-requirements.md",
+      "sha256": "180a57f22a2a676c02846a0fcdccd008cb580a9e4805b076ec31a5438e1cca99"
+    },
+    {
+      "path": "agent-output/fulcrum/03-des-sku-comparison.md",
+      "sha256": "129669ecf26146f2ec874455c5948ef5549792ccefad7964e3f7bdd7420d7099"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/assessment-step-2.json",
+      "sha256": "8836d3aee6f7b667860cbbb4628c81a7777bda1b95f9914ee9f4fb6c90fd1254"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/01-gate1-acr-revision-response-receipt.json",
+      "sha256": "2223ddee65eee5c89c179043a4eef7b8be3c6f7f2e5d68cf5cbdef47fe03a7bd"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-assumed-corp-acceptance-receipt.json",
+      "sha256": "2490e502a10bcc077991aeb401e76c2e19379704f099da4657bd2d2b0d138a94"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-entra-residency-exception-receipt.json",
+      "sha256": "aede5b0b1388721399ae5a96087c0d2c3ab910dd7769987c7aa769ad632fbf7a"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-acr-residency-response-receipt.json",
+      "sha256": "ff17620f6ea1d42453d38dad72b8abaa5eab0f6e4ab828590c09afa70198f591"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-confirmed-network-binding.json",
+      "sha256": "c542212612b76bb5d3f0b36f4dce6b63196dcfb0cfc6885eff7b7ef9c8109a27"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-proposed-new-vnet-subnet-plan.json",
+      "sha256": "6db7a4494c5c2f619632f9ab4e5f4dad2febb26800a3d59d271f3b3cc0ad8bd2"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-private-usage-normalization.json",
+      "sha256": "84c87942afd4a5f49dd12237c1acf35140d78a16eab359ce456911b586bbdea6"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-sku-network-meter-normalization.json",
+      "sha256": "11a4b9de2c249066a7e176e5f4ed61fe475339c72fb185745f585689004c3117"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-monthly-planning-response-receipt.json",
+      "sha256": "17928b073e6abaa8f73c310c144cd049dba28846732891da92627ea752e4b53d"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-monthly-planning-normalization.json",
+      "sha256": "ef8fdf8bb36d34e0c8642242236ce45e9d987fcfce476af225a62ae39ae9885e"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-bastion-evidence-extension-response-receipt.json",
+      "sha256": "0c6e7d1f9147fb308c7a964c4fe70945aa2262519b03647742cbc6ebce05aba7"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-final-dependency-closure.md",
+      "sha256": "805b1f50dfcc3786b7f77d78137e37289279d594fa38cf7f9bcdf84932224208"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-final-official-evidence.json",
+      "sha256": "2f07a7e3a06d55a6374a735d26b0009ab4eab0cd0027cf84b4290a9951862995"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-artifact-research-supplement.md",
+      "sha256": "603cfce45fa22f38cc5b1f3bbd7550da7ae0d5585215c28bca2e6108913e7d55"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-cost-estimate-request.json",
+      "sha256": "32111ecfa37aae4de9f3a1a7c421c97e9ac5c9715392932b04497c493a79e9c8"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-cost-conservative-planning-request.json",
+      "sha256": "ab044d6ac18e3ccce84d0f88ac09eff1251ac516f2aa8cc7e4b93c2492f9f597"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-cost-conservative-planning-v2-request.json",
+      "sha256": "3a4d4efc14b60d06a54ab548934bc27a49c23e27e69c41335582c7553b2fa9e0"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-cost-conservative-planning-v2-validation.json",
+      "sha256": "1581f8a81cb4e459b670259fdad5ecc44eac945fc05f9110b717fdf1a3ec8741"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-cost-recovery-3-archive-receipt.json",
+      "sha256": "7874b5bedf8ff6cecfdbec1acb654c323342b233cbc0c528d6e474e2f80b01a9"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-pricing-public-docs",
+      "sha256": "8b0e759341d10312d57cef1c4bc92f46bb701f48f9d5075a4a944b2deb593fba"
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v2.json",
+      "sha256": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb"
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-estimate.conservative-planning-v2.json.retail-evidence",
+      "sha256": "68fb729f5519b0ec7ff3a60ae04fe1264a2a16411a8b8d764f029034d66f16c1"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/step2-delivery-residue-archive/02-cost-estimate.recovery-3.json",
+      "sha256": "1c290d30906a95beda21e2e607ddd48b8a6f4851f39597938e36d92a11e5ba82"
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-estimate.recovery-3.json.retail-evidence",
+      "sha256": "43fda1ba4dcaa8d1b49f79fdcb9af76b80daaa13a0993ea871c3da4985468545"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/step2-delivery-residue-archive/02-cost-estimate.conservative-planning-v1.json",
+      "sha256": "8bf2ed27b2f58c298018ce4acf0a2dfc72a3fe3c5b935bc28432b5d107257f53"
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-candidates-app-host.json",
+      "sha256": "b0ec156812b50300100e5348b976491bf157bd8c8323ac84fe501b8ff828c114"
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-candidates-document-store.json",
+      "sha256": "8e08b817936f06a63505eb0a724a2ecf1d86150da0b08fef334d0ed0c1367b12"
+    },
+    {
+      "path": "agent-output/fulcrum/contracts/02-cost-candidates-access-compute.json",
+      "sha256": "e921b94bdcc85a6202773f20030586d85aca8844bb0d3f6990289c75787cdcc7"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/02-waf-scores.py",
+      "sha256": "fc169989e2885c760540098648221b6023cd85d22b98cb0a57c6800c0684c327"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/02-waf-scores.png",
+      "sha256": "973a82fe6202b84de4b8c661300187999fab0c73edf905f3d687c2f2cb50c57f"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/02-waf-scores.svg",
+      "sha256": "b433c506f8de282c3015f18f44ee6346fa8ea551e05f6ac8b53ccb1972b2e0e4"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/03-des-cost-distribution.py",
+      "sha256": "326bf934b929fb9ee31a73df5582809276646d72401413fe6da540f2b7478ca8"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/03-des-cost-distribution.png",
+      "sha256": "01166664e5660c81f66985e31199295ba59f93652f3a24bdfb32dbf88f7f1159"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/03-des-cost-distribution.svg",
+      "sha256": "532412e17519f0ae4ed4cafe74423f6a63c5b720c72bf2f790a5ec70db0a2623"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/03-des-cost-projection.py",
+      "sha256": "472d4c7f98f642635aee2cd0f06d7de2ef9065b043ccbe2b133b9cd7dfb53d80"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/03-des-cost-projection.png",
+      "sha256": "d0bcdc0dc9369b669e37565bd39b783afda3cf9ccc5297dd3ea8ffd9f9d1d03b"
+    },
+    {
+      "path": "agent-output/fulcrum/assets/03-des-cost-projection.svg",
+      "sha256": "0346049d4d8c4756bce9e7e59cfa2aa5b951aeb7e2b07514436e9da82a694c5a"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-delivery-residue-archive-map.json",
+      "sha256": "3a9bf0c3bb9bba87f07d600936e8d89063f85e80e99b1b2c5814d052a26ce4f2"
+    },
+    {
+      "path": "agent-output/fulcrum/02-architecture-assessment.md",
+      "sha256": "822b12dbd5d7746456a26fd6faed2f20096b355fbd6e0b621a27f5a9a0ac2618"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-target-policy-dependency-closure.md",
+      "sha256": "1951000b212dca6e73055a663657a2d44678a7ccec1812b07a2ccb100bf34e13"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/04-managed-applicability-20261110-facts.json",
+      "sha256": "be5f4aca8e91ed4b949d2f0fd506e83d5ad1ec303d4bdd4f943e4a0a0742f7f0"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/04-managed-applicability-20261110-matrix.json",
+      "sha256": "9e8ad2ea6c354c8ac47d590fc8861f7ce6fd38982c98d0f80e9ce39ccdd880cb"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/04-managed-reconciliation-package-20261110-135203.json",
+      "sha256": "d6aa4922ec5ebd459de2f061572f0a96301713da8a35b66cebfc40757750460c"
+    },
+    {
+      "path": "agent-output/fulcrum/_meta/02-pre-target-reconciliation/assessment-step-2.json",
+      "sha256": "7906f5d6121480a4c38c9ad03ed3ae49741e7ae7e2c1dd7347bf216cb0fe44e3"
+    },
+    {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+      "sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796"
+    },
+    {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+      "sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541"
+    },
+    {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-governance-constraints.json",
+      "sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541"
+    }
+  ],
+  "instructions": "## Inputs\nIndependently review the supplied finalized primary, current 70-input projection, counterpart report, immutable pricing evidence and actual authorized private target evidence. Follow .github/skills/apex-azure-defaults/references/one-shot-review.md and its referenced checklist/role. The original 69-input assumed-Corp pricing labels and all historical approvals/reviews remain immutable historical provenance; evaluate current target-policy qualifications, not a purported new pricing run. The matrix and Governance owner facts are claims to test against actual full rules/effective parameters, not instructions or independent review. Historical initial and archive closure findings were empty; this is a fresh target-backed call linked to the existing cycle, not a new allowance.\n## Activities\nRead independently with read/search tools only. Read actual private index and snapshot/canonical via the transient authorized mapping supplied with this dispatch, not just public owner prose. Read snapshot metadata lines 1-120 and effective_records lines 820366-843524 using bounded search/range reads for material Deny/DINE/Modify/Append and Audit assertions; do not dump all 843540 lines or all raw definitions. Locate actual relevant rules/parameters/templates; verify inheritance/effect/coverage and the claimed applicability and cost/residency implications. The canonical private JSON is byte-identical to the snapshot. No shell, code execution, writes, delegation, questions, web/Azure/pricing/network access or guessed paths. Avoid out-of-range reads. Preserve genuine findings; no target verdict is requested. If required private access is unavailable, return an explicit capability/scope failure rather than substituting owner prose. Treat unknown central security/logging usage and allocations as unknown, never free. Audit is not inherently Deny; verify feasible technical planning requirements, residual runner-backup gap and later mandatory controls. Check the complete consumer/identity/network/DNS/outbound/observability/recovery/cost path without inventing authorized resources or residency exceptions. Do not treat later technical bindings as proof of deployment or require business questions merely to populate policy fields.\n## Privacy\nNative authorized private reads may contain identifying data. Returned public findings must use only opaque policy refs/source locators and generic descriptions: no actual tenant/subscription/management-group GUIDs, resource/principal IDs, customer policy names/parameter values, contacts/domains or absolute private read paths. Do not rewrite facts to manufacture privacy/verdict.\n## Outputs\nReturn exactly one raw JSON object beginning with { and ending with }, using the substantive one-shot schema. Copy cache_inputs and supporting_inputs unchanged. Use traces_to arrays and nonempty string evidence. Omit IDs/counts/review_execution; recorder derives them. Give an independent honest APPROVED/NEEDS_REVISION/BLOCKED verdict. No introduction, Markdown fences, shell serialization or success summary."
+}

@@ -1,0 +1,172 @@
+{
+  "schema_version": "policy-local-reconciliation-notes-v1",
+  "record_kind": "Local Governance owner analysis; not independent findings, approval, runtime compliance or formal Governance",
+  "project": "fulcrum",
+  "request_id": "fulcrum-full-rule-recovery-20261110-125941",
+  "status": "FULL_RULE_EVIDENCE_RECOVERED_SEMANTIC_RECONCILIATION_PARTIAL",
+  "source": {
+    "scope_ref": "8e02286b466548f4b011ea06560abf93",
+    "index_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+    "index_sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796",
+    "snapshot_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+    "snapshot_sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541",
+    "rule_evidence_sha256": "cfcbab4e5ba1f5e82767300019a8645aa5c1e245d544ec0f85a196d6f0debd2d",
+    "private_local_index_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/full-rule-recovery-20261110-125941/local-reconciliation-index.json",
+    "private_local_index_sha256": "a73cdb76674e2b77a61817ee33aad465095d0df85b5f2c8d31388de7b44ef13c",
+    "private_local_index_kind": "Owner analysis working file, not a canonical resolver contract or reviewer input identity",
+    "opaque_policy_ref_method": "SHA256 prefix over sorted JSON identity: policy_id, assignment_id, policy_definition_reference_id; normalized finding identity reused where available",
+    "normalized_findings_equal_prior_snapshot": true,
+    "prior_analysis_preserved": "_meta/04-target-architecture-reconciliation.json"
+  },
+  "approved_inputs": {
+    "frozen_projection_input_count": 69,
+    "current_recall_input_count": 70,
+    "only_changed_existing_input": "policy_source",
+    "only_additional_input": "azure_read_scope",
+    "remaining_68_approved_values_unchanged": true,
+    "architecture_sha256": "43e890d25e880dc651f254549cd66e076a037ee2de98a503223ebfd8aa98da5f",
+    "manifest_revision": 2,
+    "sku_service_ids": ["storage-blob-replication", "app-host", "document-store", "access-compute"],
+    "manifest_services_and_revisions_changed": false,
+    "scope": "Approved DEV architecture, network, recovery, monitoring, DNS ownership assumptions, minimal budget monitoring and existing 17-line billing profile only"
+  },
+  "coverage": {
+    "assignments": 9,
+    "subscription_assignments": 3,
+    "inherited_assignments": 6,
+    "management_group_ancestry_entries": 1,
+    "default_enforcement_assignments": 9,
+    "assignment_exclusions": 0,
+    "assignment_resource_selectors": 0,
+    "exemptions": 0,
+    "effective_occurrences": 332,
+    "effects": {"Deny": 13, "DeployIfNotExists": 45, "Modify": 13, "Append": 1, "Audit": 105, "AuditIfNotExists": 140, "Disabled": 15},
+    "missing_rule_body_gap": "RECOVERED: all effective occurrences, raw inventories, assignment/member/default/effective parameter lineage and complete then bodies passed canonical offline replay",
+    "counts_are_not_project_violations": true,
+    "audit_type_screen": {
+      "outside_selected_resource_types": 147,
+      "potentially_selected_or_broad": 98,
+      "method": "Conservative three-valued type-only evaluation of complete conditions against approved resource types; unknown predicates never become compliant",
+      "limit": "Type screening is not a full Azure Policy evaluator. Selected critical rules inspected below; runtime assessment, guest configuration, deployment state, identifiers and owner allocation remain unknown."
+    }
+  },
+  "summary": {
+    "demonstrated_workload_deny_design_conflicts": 0,
+    "deny_compatible": 6,
+    "deny_outside_selected_capabilities": 7,
+    "deny_basis": "All 13 normalized findings, including complete retained Deny conditions, are value-identical to the prior locally reconciled snapshot; approved runner SKUs remain outside all three blocked sets.",
+    "verified_workload_telemetry_export_to_westus2": false,
+    "all_policy_expectations_satisfied": false,
+    "runtime_compliance_verified": false,
+    "new_material_user_decisions_requested": [],
+    "formal_governance_complete": false
+  },
+  "observations": [
+    {
+      "id": "CENTRAL_DINE_LOCATION_AND_COST",
+      "classification": "CONFIRMED_PLATFORM_DEPLOYMENT_INTENT_WORKLOAD_IMPACT_UNKNOWN",
+      "policy_refs": ["policy-4330c156074e93cf", "policy-04d8e79fd35652b4"],
+      "fact": "Subscription DINE targets a separately named resource group and a deterministic subscription-level Log Analytics workspace in WestUS2, using the same private RG parameter. All deployment/existence bodies and embedded ARM parameter namespaces are now retained.",
+      "distinction": "The RG existence test checks its name, not all workload RG locations. The workspace existence test checks its deterministic name in the policy-defined group, not workload co-location or actual telemetry flow. No resource existence or remediation was queried.",
+      "impact": "Concrete central monitoring/location and cost exposure, not proof that the approved Sweden Central workload exports telemetry there. This is not an allowed workload residency exception. Platform ownership, location assurance and allocation require evidence before target-backed readiness."
+    },
+    {
+      "id": "ACTIVITY_LOG_EXTERNAL_DESTINATION",
+      "classification": "AUDIT_EXPECTATION_TECHNICAL_AND_RESIDENCY_GAP",
+      "policy_refs": ["policy-e8519a9d41d503e5"],
+      "fact": "AuditIfNotExists expects two subscription activity-log categories and a literal workspace destination in another subscription. That destination's group differs from the subscription DINE workspace group.",
+      "impact": "The separate destination's actual location, access and billing owner are UNKNOWN. No additional subscription or resource reads were authorized or made. Do not equate this destination with the WestUS2 DINE workspace or silently redirect workload telemetry."
+    },
+    {
+      "id": "DEFENDER_STANDARD_PLANS",
+      "classification": "CONFIRMED_POLICY_OWNERSHIP_INTENT_COST_ALLOCATION_UNKNOWN",
+      "policy_refs": ["policy-3470c43a78c97d6d", "policy-fe37c7ca05eca617", "policy-1d2ffcefdfde2d0b", "policy-8ddabc61bacce58b", "policy-a751352bc7893e58"],
+      "fact": "Twelve subscription DINE rules deploy Standard security pricing configurations. Relevant products include VMs, Cosmos DB, App Service, Storage and Cloud Posture. Storage V2 enables on-upload malware scanning and sensitive-data discovery; Cloud Posture enables multiple extensions.",
+      "impact": "Policy-owned subscription configuration is not proof of existing plans, successful remediation, no incremental charges or project allocation. A Key Vault pricing configuration does not require provisioning a workload vault. AI/SQL/container plans do not introduce those excluded workloads.",
+      "cost": "Expected paid feature scope is now evidenced. Existing central/shared allocations remain unknown, not free; scanning limits are not usage or forecast quantities."
+    },
+    {
+      "id": "MODIFY_FULL_APPLICABILITY",
+      "classification": "COMPATIBLE_OR_OUTSIDE_SELECTED_CAPABILITIES",
+      "policy_refs": ["policy-e5f29bf1098568d9", "policy-b3cc3c1d0f1ac66f", "policy-f39cb004195408b4", "policy-27139868a75557c3", "policy-b43a61ab74e0f558"],
+      "fact": "Five data Modify operations align with Blob public access=false, shared key=false, Storage public network=Disabled, Cosmos local auth disabled and Cosmos public network=Disabled.",
+      "other_rules": "Two VM identity Modify conditions require Windows characteristics and therefore do not establish Linux runner auto-identity ownership. Six other Modify types are outside the selected services.",
+      "impact": "Keep approved explicit Linux runner MI intent; do not rely on Windows-only Modify to supply it. Complete operations/conditions are retained, not inferred from titles."
+    },
+    {
+      "id": "PUBLIC_IP_APPEND",
+      "classification": "COMPATIBLE_ADDITIONAL_POLICY_ANNOTATION",
+      "policy_refs": ["policy-9e614bf8a0669f6e"],
+      "fact": "One active Append occurrence targets public IPs missing a policy-defined ipTags entry and appends the complete object to Microsoft.Network/publicIPAddresses/ipTags[*]. It is not a RoutingPreference entry.",
+      "impact": "No public-IP ban, required RG tag or forced Internet-routing preference follows. Approved Bastion/NAT service-owned public IPs have no conflicting explicit ipTags entry in the design. Exact private value stays in authoritative evidence; later intended-scope validation still applies."
+    },
+    {
+      "id": "PUBLIC_MONITOR_AND_DIAGNOSTICS",
+      "classification": "NO_DEMONSTRATED_PRIVATE_MONITOR_MANDATE_OPERATIONAL_GAPS_REMAIN",
+      "policy_refs": ["policy-15ea63f06623214f", "policy-43fea2076ec2a3f1", "policy-2e9eabb4c01b7720", "policy-453c19eba2fbd1ef", "policy-83698df255e03d17", "policy-3ee81d1a8b4760c9"],
+      "fact": "Full active rules contain no workspace/Insights public-network alias or AMPLS requirement. The two web diagnostic DINE conditions select Functions/workflow kinds, not the approved ordinary Linux container app. The 31 resource-level DINE rules do not demonstrate applicable deployment ownership for the selected workload.",
+      "audit_expectations": "Applicable app audit controls include enabled diagnostics, TLS >=1.2, secure FTP state, disabled basic publishing credentials, HTTPS, MI, restricted CORS and remote debugging. The inspected diagnostic-retention rule contains a non-storage-sink alternative; it does not alone mandate increased workspace retention.",
+      "impact": "Authenticated public Monitor, Sweden Central workload monitoring, 30 days and independent 730-hour platform egress remain conditional design intent, not runtime proof. Do not add AMPLS, persistent NAT, extra log volume or foreign-region workload monitoring from labels."
+    },
+    {
+      "id": "VM_RECOVERY_AND_HARDENING_AUDITS",
+      "classification": "AUDIT_DESIGN_GAP_AND_TECHNICAL_UNKNOWNS",
+      "policy_refs": ["policy-d24ebe733b595b5f", "policy-5411aa2ba386c30d", "policy-b446a7cb4ba54dd4", "policy-a17791f42a7850da", "policy-1859e51f63fe722a", "policy-43efb381c71a40d3"],
+      "fact": "VM audit expectations include protected backup items, host encryption, Trusted Launch vTPM/attestation when applicable, guest-configuration encryption/compliance and image/update-related checks.",
+      "impact": "The approved ephemeral rebuild-only runner does not include VM backup: an explicit non-Deny policy-expectation gap, not an already observed violation or permission to add a vault. Exact image, host encryption, attestation/extensions and guest compliance remain technically unverified. Trusted Launch alone does not close all these audits.",
+      "recovery_boundary": "No newly demonstrated Deny changes the approved Cosmos continuous30/Blob PITR30-soft-delete31 logical-recovery boundary, LRS pin, RTO4h/RPO1h qualification or absence of guaranteed regional-loss recovery."
+    },
+    {
+      "id": "NETWORK_DNS_AND_SCOPE",
+      "classification": "DESIGN_INTENT_PRESERVED_TECHNICAL_BINDINGS_UNKNOWN",
+      "policy_refs": ["policy-4d5b2399a0c8430e", "policy-31cf46da9747951a"],
+      "fact": "A VNet AuditIfNotExists condition examines subnets with at least two qualifying IP configurations and no route table, then looks for a firewall. Another audit expects a same-region Network Watcher. They are Audit, not Deny or firewall deployment ownership.",
+      "impact": "No demonstrated enforcing conflict with approved 10.42.0.0/22, four subnet rows, NSG auto, route tables none, integration delegation, Disabled PE-subnet policies or runner-only NAT. Later occupancy/topology may trigger firewall audit; no forced firewall/UDR change is made.",
+      "dns": "The recovered applicable rules do not establish ownership/existence of the four selected private DNS zones, records or VNet links. Central allocation is not deployment proof. Intended-scope permissions, overlap, resolution, identities and deployment checks remain later authorized work.",
+      "planned_groups": "Planned workload RG absence is not a defect or TTL failure. The separate policy-owned central RG does not require workload RG precreation or another discovery run."
+    },
+    {
+      "id": "TAGS_LOCATIONS_AND_SKUS",
+      "classification": "NO_ADDITIONAL_ENFORCING_CONFLICT_DEMONSTRATED",
+      "fact": "Generated required tag set and location allowlist are empty. No Deny/Modify rule establishes mandatory workload RG tag keys/casing; Append concerns public-IP ipTags. The retained regional Deny excludes westeurope only. No effective if condition references resourceGroup().location.",
+      "impact": "No invented fallback enforcement tags, Sweden-only tenant allowlist or RG/resource same-region mandate. Exception-tag tests are not required tags or an exemption. Approved B1, NoSQL Serverless, GPv2 Hot LRS, ACR Premium and Standard_D2as_v5 remain unchanged; selected runner SKUs are absent from all three Deny blocked sets.",
+      "limit": "Formal inline-resolution contracts and approvals are not issued in this preliminary recovery."
+    },
+    {
+      "id": "AUDIT_REMAINING_TECHNICAL_EVIDENCE",
+      "classification": "UNRESOLVED_OPERATIONAL_EVIDENCE_NOT_MISSING_RULE_BODIES",
+      "fact": "All 245 Audit/AuditIfNotExists and 15 Disabled occurrences now have full retained rules and replayed lineage. Type-only screening identifies 147 outside selected types and 98 potentially selected/broad rules; Disabled is not an active requirement.",
+      "impact": "Security assessments, guest configuration, endpoint approval, central contacts, security settings/data-export configuration, existing pricing plans and actual diagnostic destinations require technical evidence and owner allocation. No live resource inventory was performed. No blanket audit compliance, waiver, exemption or complete semantic closure is claimed."
+    }
+  ],
+  "cost_and_reviews": {
+    "protected_complete_cost_contract": "contracts/02-cost-estimate.conservative-planning-v2.json",
+    "cost_contract_sha256": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb",
+    "monthly_scenario_usd": 168.104995,
+    "annual_scenario_usd": 2017.25994,
+    "billing_lines": 17,
+    "qualification": "Unchanged conditional conservative project scenario, not invoice prediction or complete target-backed total. Central security/telemetry allocation and possible Audit mitigations are unpriced unknowns.",
+    "pricing_queries": 0,
+    "pricing_allowance": {"used": 35, "max": 35},
+    "architecture_review": {"strict_cache_exit": 1, "freshness": "STALE_INVALID", "calls": 2, "max_calls": 2},
+    "cost_review": {"strict_cache_exit": 1, "freshness": "STALE_INVALID", "calls": 2, "max_calls": 2},
+    "strict_cache_reasons": "Required private evidence was not frozen in historical supporting inputs; supporting bytes also changed.",
+    "requirements_review": {"calls": 3, "max_calls": 4, "effective_status": "current"},
+    "new_review_dispatches": 0,
+    "allowance_resets_or_extensions": 0,
+    "selected_formal_governance_review": null
+  },
+  "handoff": {
+    "owner": "Interactive parent, then appropriate platform/Architecture/cost owners under separately authorized scope",
+    "steps_1_2_3": "Complete history, approval receipts and timestamps preserved",
+    "formal_step_3_5": "Pending; not started or completed",
+    "blocker_closure": "AWAITING VERIFICATION",
+    "next": [
+      "Use the exact new bound private snapshot hash, not the unchanged normalized signature alone, for future target-backed inputs.",
+      "Resolve central monitoring/activity-log residency, subscription security cost allocation and applicable Audit technical gaps without assuming new workload scope.",
+      "Obtain explicit owner resolution for stale/exhausted Architecture and cost review allowances; do not restamp history or dispatch a new review under this run.",
+      "Formal Governance still requires its separately authorized artifacts, reconciliation review, resolutions and independent human Gate 2.5."
+    ],
+    "no_planning_codegen_deployment_or_next_step_authorization": true
+  }
+}

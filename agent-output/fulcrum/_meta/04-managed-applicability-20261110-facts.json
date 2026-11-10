@@ -1,0 +1,266 @@
+{
+  "schema_version": "governance-owner-fact-package-v1",
+  "project": "fulcrum",
+  "request_id": "fulcrum-managed-reconciliation-20261110-135203",
+  "execution_mode": "delegated",
+  "status": "READY_FOR_ARCHITECTURE_OWNER_UPDATE",
+  "record_kind": "Offline Governance owner evidence and reconciliation, not independent review or human approval",
+  "phase_authority": "_meta/04-managed-reconciliation-package-20261110-135203.json",
+  "scope": {
+    "environment": "dev",
+    "workload": "Approved fictional-data infrastructure only; ordinary Linux app and ephemeral Linux private-access runner",
+    "new_network_calls": 0,
+    "new_discovery_calls": 0,
+    "new_resource_metadata_reads": 0,
+    "new_pricing_queries": 0,
+    "new_reviewer_dispatches": 0,
+    "source_or_git_writes": 0,
+    "azure_writes_or_deployments": 0,
+    "completed_steps_or_gate_approvals": 0
+  },
+  "evidence": {
+    "index": {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-policy-feasibility.json",
+      "sha256": "538ee1199cba7f70c6182f036dba02bc3e03e258ec9ccab7476a1bc20e1b7796"
+    },
+    "snapshot": {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+      "sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541"
+    },
+    "canonical_governance": {
+      "path": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/04-governance-constraints.json",
+      "sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541",
+      "generation": "Existing render_cached_governance.py --retain-rule-evidence, offline from full snapshot, not the index",
+      "byte_identical_to_snapshot": true,
+      "full_rule_validation_exit": 0,
+      "shared_ajv_schema_valid": true,
+      "canonical_private_resolver_selected": true,
+      "owner_only_no_symlink": true
+    },
+    "discovered_at": "2026-11-10T13:05:48Z",
+    "ttl_days": 7,
+    "expires_at": "2026-11-17T13:05:48Z",
+    "discovery_status": "COMPLETE",
+    "completeness_signature": "sha256:7c229c364db863e37de347eb2a53726f0de4d7566e3d1ddf5c4d178556d82292",
+    "rule_evidence_sha256": "cfcbab4e5ba1f5e82767300019a8645aa5c1e245d544ec0f85a196d6f0debd2d",
+    "signature_alone_is_full_body_proof": false,
+    "original_snapshot_index_or_collection_metadata_changed": false
+  },
+  "coverage": {
+    "assignments": 9,
+    "subscription_assignments": 3,
+    "inherited_assignments": 6,
+    "effective_occurrences": 332,
+    "effects": {
+      "Deny": 13,
+      "DeployIfNotExists": 45,
+      "Modify": 13,
+      "Append": 1,
+      "Audit": 105,
+      "AuditIfNotExists": 140,
+      "Disabled": 15
+    },
+    "exemptions": 0,
+    "full_defender_coverage": true,
+    "matrix": "_meta/04-managed-applicability-20261110-matrix.json",
+    "matrix_is_full_runtime_policy_evaluator": false
+  },
+  "resolutions": {
+    "resolution_kind": "Owner evidence-derived facts under practical-v1, not human signoff or material preferences",
+    "binding": {
+      "project": "fulcrum",
+      "private_scope_ref": "8e02286b466548f4b011ea06560abf93",
+      "source_sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541",
+      "architecture_sha256": "43e890d25e880dc651f254549cd66e076a037ee2de98a503223ebfd8aa98da5f",
+      "target_region": "swedencentral",
+      "expires_at": "2026-11-17T13:05:48Z"
+    },
+    "tag_contract": {
+      "source": "policy",
+      "resolution_status": "RESOLVED_FROM_RULES",
+      "tags": [],
+      "required_tag_keys": [],
+      "casing_guidance": "No policy-enforced workload RG keys or casing; no fallback enforcement tags",
+      "active_tags_category_occurrences": 0,
+      "exception_tags_are_required_or_authorized_exemptions": false,
+      "public_ip_ipTags_are_rg_tags": false
+    },
+    "location_constraints": {
+      "resolution_status": "RESOLVED_FROM_RULES",
+      "target_region": "swedencentral",
+      "allowed_locations": [],
+      "allowlist_established": false,
+      "denied_locations": ["westeurope"],
+      "target_matches_discovered_location_deny": false,
+      "rg_and_resource_locations_must_match": false,
+      "same_region_value_meaning": "No effective general workload RG/resource co-location mandate established; approved regional alignment remains a project choice",
+      "unrestricted_all_regions_claimed": false,
+      "location_deny_policy_ref": "policy-d2d9ba61572c3cbf",
+      "separate_central_resource_location": "westus2",
+      "workload_residency_exception_added": false
+    },
+    "stored_via_supported_recall": ["required_rg_tags", "allowed_locations", "rg_resource_same_region"],
+    "generated_envelope_manually_modified": false,
+    "governance_gate_status": "PENDING_OWNER_UPDATES_INDEPENDENT_REVIEWS_AND_HUMAN_APPROVAL"
+  },
+  "policy_impacts": {
+    "deny": {
+      "design_compatible": 6,
+      "outside_selected_capabilities": 7,
+      "demonstrated_workload_design_conflicts": 0,
+      "exemptions_or_waivers_requested": 0
+    },
+    "dine": {
+      "subscription_security_plan_configurations": 12,
+      "separate_central_resources": 2,
+      "nonmatching_resource_kind_or_os": 31,
+      "central_policy_refs": ["policy-4330c156074e93cf", "policy-04d8e79fd35652b4"],
+      "central_resource_meaning": "Separate subscription RG and deterministic workspace in WestUS2; existence tests do not establish selected-workload telemetry attachment or RG co-location",
+      "ordinary_app_export_to_central_workspace_demonstrated": false,
+      "selected_web_diagnostic_templates_match": false,
+      "linux_runner_extension_ownership_demonstrated": false,
+      "selected_private_dns_ownership_demonstrated": false,
+      "successful_remediation_or_deployment_claimed": false,
+      "security_features": "Standard paid-feature intent; Storage V2 scanning and sensitive-data discovery; Cloud Posture eight retained extensions. No selected service, usage, data-processing geography or billing allocation inferred from feature labels.",
+      "shared_charges": "Outside settled 17-line project allocation; unknown, not free"
+    },
+    "modify": {
+      "compatible_selected_data_operations": 5,
+      "windows_only_identity_operations": 2,
+      "other_unselected_resource_operations": 6,
+      "compatible_policy_refs": [
+        "policy-e5f29bf1098568d9",
+        "policy-b3cc3c1d0f1ac66f",
+        "policy-f39cb004195408b4",
+        "policy-27139868a75557c3",
+        "policy-b43a61ab74e0f558"
+      ],
+      "linux_identity_remains_explicit_project_dependency": true
+    },
+    "append": {
+      "policy_ref": "policy-9e614bf8a0669f6e",
+      "property": "Microsoft.Network/publicIPAddresses/ipTags[*]",
+      "meaning": "Append retained complete ipTags object when required entry absent; not RG tags, a public-IP ban or routing-preference change"
+    },
+    "audit": {
+      "occurrences": 245,
+      "outside_selected_types": 147,
+      "initial_selected_or_broad_candidates": 98,
+      "additional_nonmatching_kind_or_os": 13,
+      "workload_technical_checks": 49,
+      "shared_or_broad_technical_checks": 35,
+      "explicit_vm_backup_design_gap": 1,
+      "vm_backup_policy_ref": "policy-d24ebe733b595b5f",
+      "vm_backup_disposition": "Nonblocking Audit expectation gap versus approved rebuild-only runner. No vault, backup plan, cost, waiver or runtime compliance adopted.",
+      "activity_log_policy_ref": "policy-e8519a9d41d503e5",
+      "activity_log_disposition": "Separate cross-subscription workspace Audit for Administrative/Security activity logs. Location unknown; not proven ordinary workload data export and not the central DINE workspace.",
+      "planning_requirements": [
+        "App HTTPS/TLS, MI, restricted CORS, disabled debugging and basic publishing credentials, FTPS-or-disabled state and resource diagnostics",
+        "Preserve approved 30-day sanitized monitoring; diagnostic-retention existence rule has a non-storage-sink alternative",
+        "Eligible Linux image, host encryption, vTPM, conditional attestation, guest baseline/update/encryption/vulnerability compliance tests",
+        "NSG/port/forwarding checks; conditional subnet occupancy/firewall Audit and same-region Network Watcher Audit",
+        "Shared subscription security contacts, permissions hygiene, security-plan/settings and assessment verification"
+      ],
+      "audit_is_deny_or_automatic_architecture_block": false,
+      "all_runtime_expectations_satisfied": false,
+      "technical_results_require_later_authorized_evidence": true
+    }
+  },
+  "protected_scenario": {
+    "cost_contract": "contracts/02-cost-estimate.conservative-planning-v2.json",
+    "cost_contract_sha256": "e1accf793ed77a9899279849ef5b818a8186a59aef45d2dab95b48b77076a8cb",
+    "monthly_usd": 168.104995,
+    "annual_usd": 2017.25994,
+    "billing_lines": 17,
+    "pricing_allowance": {"used": 35, "max": 35},
+    "sku_service_ids": ["storage-blob-replication", "app-host", "document-store", "access-compute"],
+    "sku_manifest_services_and_revisions_changed": false,
+    "sku_projection_precheck_exit": 0,
+    "sku_projection_precheck_stdout_empty": true,
+    "sku_projection_limit": "No normalized restriction recognized by existing projector; full raw conditional SKU lists remain authoritative and selected runner is absent from all three",
+    "workload_residency": "Sweden Central compute/application data/Blob/backups/monitoring; only existing qualified European Entra and Microsoft-managed paired-EU registry-artifact exceptions",
+    "topology_network_recovery_and_69_settled_choices_changed": false
+  },
+  "genuine_missing_inputs": {
+    "needed_inputs": [],
+    "business_questions": [],
+    "narrow_read_permission_requests": [],
+    "reason": "Full local policy establishes applicability needed for report preparation. Unknown deployed/shared bindings are implementation evidence, not missing business intent or authority needed for this owner phase."
+  },
+  "later_technical_bindings": [
+    {
+      "id": "DNS_BINDING",
+      "owner": "Planner/platform owner under later authorized implementation scope",
+      "requirement": "Resolve four selected zones, records, VNet links and permissions; verify before relying on central DNS",
+      "blocks_report_preparation": false
+    },
+    {
+      "id": "SHARED_SECURITY_AND_LOGGING_BINDING",
+      "owner": "Platform/security owner before feature activation or reliance",
+      "requirement": "Verify relevant pricing/settings, actual central resources, data/export boundary and cost allocation; no privacy exception or zero-cost assertion",
+      "blocks_report_preparation": false
+    },
+    {
+      "id": "WORKLOAD_CONFIGURATION_AND_AUDIT",
+      "owner": "IaC Planner/CodeGen/platform verification under later authority",
+      "requirement": "Bind image, extensions, secure settings, actual plan properties and intended-scope conditions; keep residual Audit gap visible",
+      "blocks_report_preparation": false
+    },
+    {
+      "id": "PLANNED_RESOURCE_GROUPS",
+      "owner": "IaC Planner and later deployment precheck",
+      "requirement": "Determine intended names and scope; planned absence alone requires neither group creation nor repeat subscription discovery",
+      "blocks_report_preparation": false
+    }
+  ],
+  "prepared_owner_update_scope": {
+    "immediate_owner": "Interactive parent coordinating 03-Architect",
+    "architecture": [
+      "Replace assumption-only/no-target wording in current owner-controlled views with exact recovered target evidence and qualifications",
+      "Reconcile source/topology/DNS/monitoring/identity/risk tables using this package without changing approved service topology, network, residency, recovery or usage",
+      "Expose Audit planning controls and residual VM-backup design gap without creating Deny, waiver or costly remediation",
+      "Retain shared security/logging intent and implementation prerequisites without claiming deployed assets, workload foreign-region export or free allocation"
+    ],
+    "cost": [
+      "Update target-policy qualifications and shared-feature risk notes only; retain original meter evidence, 17 lines, quantities, total and pricing allowance",
+      "No necessary new project resource or reprice demonstrated by this local applicability analysis"
+    ],
+    "assessment_views": "Parent/Architect prepares actual current scope/projection, including policy_source and azure_read_scope, through supported Recall; preserve completed Step 1/2/3 histories",
+    "review_extensions": {
+      "dispatch_this_phase": false,
+      "architecture_cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba",
+      "cost_cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba",
+      "existing_calls_each": 2,
+      "existing_absolute_max_each": 2,
+      "user_authorized_additional_max_each": 2,
+      "parent_to_bind_absolute_max_each": 4,
+      "binding": "Supported linked extension after final actual projection hash; one fresh plus optional closure only if needed; no reset/new cycle/restamp"
+    },
+    "governance_review": "Later ordinary practical-v1 initial plus optional closure within actual allowance; none dispatched/started/selected here",
+    "human_gate": "Present next required independent human approval package after current reviews; do not advance past it"
+  },
+  "private_review_freeze": {
+    "derived_with": "requiredPrivateReviewInputs, offline; not request preflight, attempt start or dispatch",
+    "architecture_and_cost_required": ["index", "snapshot"],
+    "governance_required": ["index", "snapshot", "canonical_governance"],
+    "actual_current_entry_hashes": "evidence objects above",
+    "later_action": "Freeze final public primaries and actual supporting artifacts after owner updates; native preflight resolves transient private read paths only",
+    "absolute_private_paths_persisted_publicly": false
+  },
+  "workflow": {
+    "steps_1_2_3": "Completed history preserved; no reopening or new approvals",
+    "step_3_5": "Pending; no formal start or completion in this bounded owner slice",
+    "selected_governance_review": null,
+    "governance_review_freshness": "UNAVAILABLE_NOT_DISPATCHED",
+    "historical_architecture_and_cost_reviews": "STALE; original attributed APPROVED results retained, not current target-backed evidence",
+    "blocker_ids": [
+      "TARGET_BACKED_RECONCILIATION_PENDING",
+      "ARCHITECTURE_PRIVATE_INPUTS_STALE",
+      "COST_PRIVATE_INPUTS_STALE",
+      "CURRENT_ASSESSMENT_VIEWS_BLOCKED"
+    ],
+    "collector_failure": "Historical preserved receipt, not current blocker",
+    "blocker_closure": "AWAITING_VERIFICATION",
+    "planning_codegen_deployment_authorized": false
+  }
+}

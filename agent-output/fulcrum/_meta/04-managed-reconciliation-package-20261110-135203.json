@@ -1,0 +1,55 @@
+{
+  "request_id": "fulcrum-managed-reconciliation-20261110-135203",
+  "request_id_source": "apex-local",
+  "capture_mode": "recovered",
+  "project": "fulcrum",
+  "source": "Explicit user message in the current conversation at 2026-11-10T13:52:03.029Z",
+  "respondent": "Project Stakeholders",
+  "environments": ["dev"],
+  "objective": "Finish the remaining Architecture/Governance reconciliation as one managed work package and present the next required human approval package.",
+  "authorized_work": [
+    "Reuse recovered private full-rule policy evidence and captured requirements.",
+    "Resolve applicability first, treating non-blocking Audit observations as planning requirements where appropriate.",
+    "Necessary owner-controlled reports and assessment-view updates.",
+    "Supported Recall extensions linked to the existing Architecture and cost cycles.",
+    "At most one fresh review and one closure only if needed per extended lens.",
+    "Ordinary bounded Governance review under the current workflow contract.",
+    "Batch only genuinely missing business decisions or narrow read-permission requests; handle bookkeeping internally."
+  ],
+  "architecture_review_extension": {
+    "cycle_id": "48012a6e8a889c6bd1e203bc4c61e302d1bb6a291f794d4f1e0d43838a2d55ba",
+    "calls_already_consumed": 2,
+    "previous_absolute_max_calls": 2,
+    "authorized_additional_calls_max": 2,
+    "new_absolute_max_calls": 4,
+    "additional_call_purpose": "One current target-backed review, then one closure only if necessary.",
+    "projection_binding": "Bind the actual finalized current projection through supported Recall; do not manufacture a hash or reset the cycle."
+  },
+  "cost_review_extension": {
+    "cycle_id": "12a93c25d9249919345a8f90b79db85423f41441d314ae6b768b66af4208c5ba",
+    "calls_already_consumed": 2,
+    "previous_absolute_max_calls": 2,
+    "authorized_additional_calls_max": 2,
+    "new_absolute_max_calls": 4,
+    "additional_call_purpose": "One current target-backed cost-feasibility review, then one closure only if necessary.",
+    "projection_binding": "Bind the actual finalized current projection through supported Recall; do not manufacture a hash or reset the cycle."
+  },
+  "evidence_to_reuse": {
+    "recovery_receipt": "_meta/04-full-rule-recovery-20261110-125941-receipt.json",
+    "snapshot_ref": "apex-private-policy://fulcrum/8e02286b466548f4b011ea06560abf93/subscription-1.json",
+    "snapshot_sha256": "c5a09fadfae085b22796cd7426cfac2134afeb3265357d4240d8dec2393dc541",
+    "prior_live_recovery_allowance": "Consumed; unchanged and not renewed.",
+    "new_discovery_authorized": false
+  },
+  "preservation": "Consumed calls, historical approvals, original reviews, raw evidence, prior failures and unchanged SKUs/pricing inputs remain historical and unmodified. Current reviews must freeze the actual private evidence using supported opaque identities and transient preflight-resolved read paths.",
+  "not_authorized": [
+    "Policy waivers",
+    "Source-code changes",
+    "Git writes",
+    "Azure writes, remediation or deployment",
+    "Repeating discovery or repricing unchanged resources",
+    "Review-counter resets or old-review restamping",
+    "Advancing past a human approval gate"
+  ],
+  "sdk_response_id_supplied": false
+}

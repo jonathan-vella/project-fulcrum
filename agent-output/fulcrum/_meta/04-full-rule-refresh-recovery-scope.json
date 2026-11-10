@@ -1,0 +1,40 @@
+{
+  "request_id": "fulcrum-full-rule-recovery-20261110-120123",
+  "request_id_source": "apex-local",
+  "project": "fulcrum",
+  "mode": "bounded-private-policy-evidence-recovery",
+  "continuation_source": "Explicit resume fulcrum request in the current conversation at 2026-11-10T12:01:23.209Z",
+  "existing_actual_read_authorization": {
+    "request_id": "fulcrum-formal-governance-target-20261109",
+    "receipt": "_meta/04-governance-scope-receipt.json",
+    "scope_ref": "8e02286b466548f4b011ea06560abf93",
+    "environment": "dev",
+    "operations": "Existing authorized effective subscription and inherited policy assignments, definitions/initiatives, parameters and exemptions only."
+  },
+  "new_capability_observed": {
+    "collector": ".github/skills/apex-azure-governance-discovery/scripts/discover.py",
+    "sha256": "463ab0aaee7e2717204a26a1c92e2dbea0a3bd6d6726d7f758c9eeb3a4c95e92",
+    "renderer": ".github/skills/apex-azure-governance-discovery/scripts/render_cached_governance.py",
+    "renderer_sha256": "bc4315ec2bf12fb2d2e655c521fe054f5edd274cba6ae2af916fa446233cd50f",
+    "supported_option": "--retain-rule-evidence"
+  },
+  "parent_execution_bound": {
+    "live_discovery_invocations_max": 1,
+    "required_options": ["--refresh", "--retain-rule-evidence"],
+    "target_change": false,
+    "read_scope_change": false,
+    "retry_allowed": false,
+    "private_storage_only": true,
+    "preserve_prior_evidence": true,
+    "offline_validation_required": "--validate-only --retain-rule-evidence",
+    "binding": "Supported private policy-feasibility index and apex-recall checkpoint only after complete validation."
+  },
+  "provenance_boundary": "This bounds an ordinary recovery within the existing actual read grant; it is not a fabricated fresh human approval or an expansion of Azure scope.",
+  "not_authorized": [
+    "Resource or policy writes, remediation, credentials or tenant switching",
+    "Resource inventory beyond the authorized policy evidence",
+    "Pricing queries, review dispatches or allowance resets",
+    "Source edits, Git operations or changes to approved artifacts",
+    "Formal Governance completion or planning/deployment continuation"
+  ]
+}
