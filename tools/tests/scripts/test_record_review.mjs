@@ -1683,3 +1683,332 @@ test("CLI requires absolute, parseable native events and refuses unknown overrid
   const result = run();
   assert.equal(result.status, 0, result.stderr);
 });
+
+test("recorder stamps omitted cache_inputs and supporting_inputs across single and batch results while rejecting null or conflicts", (t) => {
+  const single = fixture(t, { supporting: true });
+  delete single.doc.cache_inputs;
+  delete single.doc.supporting_inputs;
+  single.record();
+  assert.deepEqual(single.persisted().cache_inputs, single.input.cache_inputs);
+  assert.deepEqual(single.persisted().supporting_inputs, single.input.supporting_inputs);
+
+  const withoutSupport = fixture(t, { supporting: false });
+  delete withoutSupport.doc.cache_inputs;
+  withoutSupport.record();
+  assert.deepEqual(withoutSupport.persisted().cache_inputs, withoutSupport.input.cache_inputs);
+  assert.equal(Object.hasOwn(withoutSupport.persisted(), "supporting_inputs"), false);
+
+  const batch = fixture(t, { batch: true, supporting: true });
+  for (const item of batch.doc.batch_results) {
+    delete item.cache_inputs;
+    delete item.supporting_inputs;
+  }
+  batch.record();
+  for (const item of batch.persisted().batch_results) {
+    assert.deepEqual(item.cache_inputs, batch.input.cache_inputs);
+    assert.deepEqual(item.supporting_inputs, batch.input.supporting_inputs);
+  }
+
+  for (const bad of [(f) => (f.entry.cache_inputs = null), (f) => (f.entry.supporting_inputs = null)]) {
+    const invalid = fixture(t, { supporting: true });
+    bad(invalid);
+    assert.throws(() => invalid.record(), /differ from dispatch/);
+  }
+});
+
+test("--events-dir resolves unique session log by request_id, tolerates worker-first flush, and rejects symlinks/duplicates", async (t) => {
+  const f = fixture(t, { supporting: true });
+  delete f.doc.cache_inputs;
+  delete f.doc.supporting_inputs;
+  f.flush();
+  const sessions = path.join(f.root, "session-state");
+  const s1 = path.join(sessions, "session-a");
+  const s2 = path.join(sessions, "session-b");
+  fs.mkdirSync(s1, { recursive: true });
+  fs.mkdirSync(s2, { recursive: true });
+  fs.writeFileSync(path.join(s1, "events.jsonl"), `${JSON.stringify({ type: "session.start", data: {} })}\n`);
+  const raw = fs.readFileSync(f.options.events, "utf8");
+  fs.writeFileSync(path.join(s2, "events.jsonl"), raw);
+  const res = recordReview({
+    root: f.root,
+    eventsDir: sessions,
+    requestId: "request-1",
+    output,
+  });
+  assert.equal(res.review_execution.request_id, "request-1");
+
+  // Duplicate request_id across two session logs fails closed.
+  fs.writeFileSync(path.join(s1, "events.jsonl"), raw);
+  f.input.overwrite = true;
+  assert.throws(
+    () => recordReview({ root: f.root, eventsDir: sessions, requestId: "request-1", output }),
+    /Ambiguous request ID/,
+  );
+
+  // Symlinked events.jsonl in --events-dir is rejected.
+  fs.unlinkSync(path.join(s1, "events.jsonl"));
+  fs.symlinkSync(path.join(s2, "events.jsonl"), path.join(s1, "events.jsonl"));
+  assert.throws(
+    () => recordReview({ root: f.root, eventsDir: sessions, requestId: "request-1", output }),
+    /Symlinked nested events\.jsonl/,
+  );
+
+  // Trailing partial JSON line during --events-dir flush wait is tolerated until flushed.
+  fs.unlinkSync(path.join(s1, "events.jsonl"));
+  f.input.overwrite = true;
+  f.flush();
+  const rawOverwrite = fs.readFileSync(f.options.events, "utf8");
+  const logPath = path.join(s2, "events.jsonl");
+  fs.writeFileSync(logPath, `${rawOverwrite}\n{"type":"partial_flush`);
+  const child = spawn(
+    process.execPath,
+    [recorder, "--events-dir", sessions, "--request-id", "request-1", "--output", output],
+    { cwd: f.root, stdio: ["ignore", "pipe", "pipe"] },
+  );
+  setTimeout(() => {
+    fs.writeFileSync(logPath, `${rawOverwrite}\n`);
+  }, 150);
+  const [exitCode] = await once(child, "exit");
+  assert.equal(exitCode, 0);
+});
+
+test("root-session mid-turn buffered dispatch records via preToolUse/postToolUse hooks and rejects overrides", (t) => {
+  const f = fixture(t, { supporting: true });
+  delete f.doc.cache_inputs;
+  delete f.doc.supporting_inputs;
+  f.flush();
+
+  const dispatchEvent = f.events.find(
+    (event) => event.type === "tool.execution_start" && event.data?.toolName === "task",
+  );
+  const args = structuredClone(dispatchEvent.data.arguments);
+  const startEvent = f.events.find((event) => event.type === "subagent.started");
+  delete startEvent.data.parentId;
+  startEvent.data.resumable = false;
+  startEvent.data.taskModelSource = "unset";
+
+  // Remove root tool.execution_start / tool.execution_complete to simulate mid-turn SDK RAM buffering.
+  const workerStream = f.events.filter(
+    (event) =>
+      !(
+        (event.type === "tool.execution_start" || event.type === "tool.execution_complete") &&
+        event.data?.toolCallId === "call-1"
+      ),
+  );
+  const preHookStart = {
+    type: "hook.start",
+    data: {
+      hookInvocationId: "hook-pre-1",
+      hookType: "preToolUse",
+      input: {
+        sessionId: "session-root",
+        cwd: f.root,
+        toolCalls: [{ id: "call-1", name: "task", args }],
+      },
+    },
+  };
+  const preHookEnd = {
+    type: "hook.end",
+    data: { hookInvocationId: "hook-pre-1", hookType: "preToolUse", success: true },
+  };
+  const postHookStart = {
+    type: "hook.start",
+    data: {
+      hookInvocationId: "hook-post-1",
+      hookType: "postToolUse",
+      input: {
+        sessionId: "session-root",
+        cwd: f.root,
+        toolCallId: "call-1",
+        toolName: "task",
+        toolArgs: structuredClone(args),
+        toolResult: { resultType: "success" },
+      },
+    },
+  };
+  const postHookEnd = {
+    type: "hook.end",
+    data: { hookInvocationId: "hook-post-1", hookType: "postToolUse", success: true },
+  };
+
+  const bufferedEvents = [preHookStart, preHookEnd, ...workerStream, postHookStart, postHookEnd];
+  const sessions = path.join(f.root, "buffered-sessions");
+  const sessionDir = path.join(sessions, "root-session");
+  fs.mkdirSync(sessionDir, { recursive: true });
+  fs.writeFileSync(path.join(sessionDir, "events.jsonl"), bufferedEvents.map((e) => JSON.stringify(e)).join("\n"));
+
+  const t0 = Date.now();
+  const recorded = recordReview({
+    root: f.root,
+    eventsDir: sessions,
+    requestId: "request-1",
+    output,
+  });
+  assert.ok(Date.now() - t0 < 5_000, "Root hook completion must not block on 25s flush timeout");
+  assert.equal(recorded.review_execution.parent_id, "root");
+  assert.equal(recorded.review_execution.request_id, "request-1");
+
+  // Missing or runtime-managed taskModelSource labels must remain nonblocking when task args have no overrides.
+  for (const labelVal of [undefined, "runtime_default", "session_inheritance"]) {
+    const variant = structuredClone(bufferedEvents);
+    const sEv = variant.find((e) => e.type === "subagent.started");
+    if (labelVal === undefined) delete sEv.data.taskModelSource;
+    else sEv.data.taskModelSource = labelVal;
+    assert.equal(extractReview(variant, "worker-1", "root").execution.request_id, "request-1");
+  }
+
+  // Caller model override inside preToolUse args must still fail closed.
+  const badOverride = structuredClone(bufferedEvents);
+  badOverride[0].data.input.toolCalls[0].args.model = "gpt-override";
+  badOverride.at(-2).data.input.toolArgs.model = "gpt-override";
+  assert.throws(() => extractReview(badOverride, "worker-1", "root"), /without caller overrides/);
+
+  // Failed postToolUse resultType must fail closed.
+  const badResult = structuredClone(bufferedEvents);
+  badResult.at(-2).data.input.toolResult.resultType = "failure";
+  assert.throws(() => extractReview(badResult, "worker-1", "root"), /successful task invocation/);
+
+  // Non-root parentId cannot use the root hook fallback.
+  assert.throws(() => extractReview(bufferedEvents, "worker-1", "subagent-parent"), /Attributed one-shot/);
+});
+
+test("APEX_REVIEW_FILE hash-bound request pointer records cleanly and rejects tampered, symlinked, or non-_meta paths", (t) => {
+  const f = fixture(t, { supporting: true });
+  delete f.doc.cache_inputs;
+  delete f.doc.supporting_inputs;
+  const reqRel = "agent-output/example/_meta/review-request.json";
+  const reqRaw = `${JSON.stringify(f.input, null, 2)}\n`;
+  f.write(reqRel, reqRaw);
+
+  const preflight = spawnSync(process.execPath, [recorder, "--preflight", "--request", reqRel], {
+    cwd: f.root,
+    encoding: "utf8",
+  });
+  assert.equal(preflight.status, 0, preflight.stderr);
+  const preflightOut = JSON.parse(preflight.stdout);
+  assert.equal(preflightOut.review_file_envelope.request_path, reqRel);
+  assert.equal(preflightOut.review_file_envelope.request_sha256, hash(reqRaw));
+
+  const filePrompt = `APEX_REVIEW_FILE\n${JSON.stringify(preflightOut.review_file_envelope)}`;
+  f.flush();
+  f.events[0].data.arguments.prompt = filePrompt;
+  f.events.find((e) => e.type === "user.message").data.content = filePrompt;
+  f.write("events.jsonl", f.events.map((e) => JSON.stringify(e)).join("\n"));
+
+  const sessions = path.join(f.root, "file-envelope-sessions");
+  const sessionDir = path.join(sessions, "s1");
+  fs.mkdirSync(sessionDir, { recursive: true });
+  fs.writeFileSync(path.join(sessionDir, "events.jsonl"), fs.readFileSync(f.options.events, "utf8"));
+
+  const recorded = recordReview({
+    root: f.root,
+    eventsDir: sessions,
+    requestId: "request-1",
+    output,
+  });
+  assert.equal(recorded.review_execution.request_id, "request-1");
+  assert.deepEqual(f.persisted().supporting_inputs, f.input.supporting_inputs);
+
+  // Tampering with saved request file bytes after dispatch fails closed on request_sha256 mismatch.
+  f.write(reqRel, `${reqRaw} `);
+  assert.throws(() => extractReview(f.events, "worker-1", "root", { root: f.root }), /request_sha256 does not match/);
+  f.write(reqRel, reqRaw);
+
+  // Path outside agent-output/<project>/_meta/ omits review_file_envelope on --preflight and fails closed on extractReview.
+  const outsideRel = "agent-output/example/review-request.json";
+  const overwriteRaw = `${JSON.stringify({ ...f.input, overwrite: true }, null, 2)}\n`;
+  f.write(outsideRel, overwriteRaw);
+  const outsidePreflight = spawnSync(process.execPath, [recorder, "--preflight", "--request", outsideRel], {
+    cwd: f.root,
+    encoding: "utf8",
+  });
+  assert.equal(outsidePreflight.status, 0, outsidePreflight.stderr);
+  assert.equal(Object.hasOwn(JSON.parse(outsidePreflight.stdout), "review_file_envelope"), false);
+
+  const badOutside = structuredClone(f.events);
+  const outsidePrompt = `APEX_REVIEW_FILE\n${JSON.stringify({
+    ...preflightOut.review_file_envelope,
+    request_path: outsideRel,
+    request_sha256: hash(overwriteRaw),
+  })}`;
+  badOutside[0].data.arguments.prompt = outsidePrompt;
+  badOutside.find((e) => e.type === "user.message").data.content = outsidePrompt;
+  assert.throws(
+    () => extractReview(badOutside, "worker-1", "root", { root: f.root }),
+    /must reside under agent-output/,
+  );
+
+  // Omitting project_name / step / review_depth on APEX_REVIEW_FILE fails closed.
+  const missingHeader = structuredClone(f.events);
+  const incompleteEnv = { ...preflightOut.review_file_envelope };
+  delete incompleteEnv.project_name;
+  const incompletePrompt = `APEX_REVIEW_FILE\n${JSON.stringify(incompleteEnv)}`;
+  missingHeader[0].data.arguments.prompt = incompletePrompt;
+  missingHeader.find((e) => e.type === "user.message").data.content = incompletePrompt;
+  assert.throws(
+    () => extractReview(missingHeader, "worker-1", "root", { root: f.root }),
+    /requires request_id, project_name, step, review_depth/,
+  );
+
+  // Symlinked request_path fails closed.
+  const linkRel = "agent-output/example/_meta/linked-request.json";
+  fs.symlinkSync(path.join(f.root, reqRel), path.join(f.root, linkRel));
+  const badLink = structuredClone(f.events);
+  const linkPrompt = `APEX_REVIEW_FILE\n${JSON.stringify({
+    ...preflightOut.review_file_envelope,
+    request_path: linkRel,
+  })}`;
+  badLink[0].data.arguments.prompt = linkPrompt;
+  badLink.find((e) => e.type === "user.message").data.content = linkPrompt;
+  assert.throws(() => extractReview(badLink, "worker-1", "root", { root: f.root }), /must not traverse symlinks/);
+
+  // Persisted private_inputs inside saved request JSON is rejected even when envelope omits private_inputs.
+  const privRel = "agent-output/example/_meta/persisted-private.request.json";
+  const privRaw = `${JSON.stringify({ ...f.input, private_inputs: [{ reference: "ref", read_path: "/tmp/p" }] }, null, 2)}\n`;
+  f.write(privRel, privRaw);
+  const badPriv = structuredClone(f.events);
+  const privPrompt = `APEX_REVIEW_FILE\n${JSON.stringify({
+    ...preflightOut.review_file_envelope,
+    request_path: privRel,
+    request_sha256: hash(privRaw),
+  })}`;
+  badPriv[0].data.arguments.prompt = privPrompt;
+  badPriv.find((e) => e.type === "user.message").data.content = privPrompt;
+  assert.throws(
+    () => extractReview(badPriv, "worker-1", "root", { root: f.root }),
+    /must not persist literal private_inputs/,
+  );
+});
+
+test("rg/grep regex parse error is recovered when retried on exact same paths, but unrecovered or different-path retries fail closed", (t) => {
+  const f = fixture(t);
+  addReadTurns(f, 2);
+  const targetPaths = [path.join(f.root, artifact), path.join(f.root, "other.md")];
+  const toolStarts = f.events.filter((e) => e.type === "tool.execution_start" && e.agentId === "worker-1");
+  const toolCompletes = f.events.filter((e) => e.type === "tool.execution_complete" && e.agentId === "worker-1");
+
+  toolStarts[0].data.toolName = "rg";
+  toolStarts[0].data.arguments = { pattern: '"sheet_state": "(?!visible)', paths: targetPaths };
+  toolCompletes[0].data.success = false;
+  toolCompletes[0].data.error = {
+    message: 'rg: regex parse error:\n    "sheet_state": "(?!visible)\nerror: look-around is not supported',
+  };
+
+  toolStarts[1].data.toolName = "rg";
+  toolStarts[1].data.arguments = { pattern: '"sheet_state":', paths: structuredClone(targetPaths) };
+
+  f.record();
+  const saved = f.persisted();
+  assert.deepEqual(saved.review_execution.recovered_read_calls, ["read-0"]);
+
+  // Retrying on different paths must still fail closed.
+  toolStarts[1].data.arguments = { pattern: '"sheet_state":', paths: [targetPaths[0]] };
+  f.flush();
+  assert.throws(() => extractReview(f.events, "worker-1", "root", { root: f.root }), /must complete successfully/);
+
+  // Non-regex-parse errors on rg/grep (e.g. permission denied / execution failure) must still fail closed.
+  toolStarts[1].data.arguments = { pattern: '"sheet_state":', paths: structuredClone(targetPaths) };
+  toolCompletes[0].data.error = { message: "Permission denied" };
+  f.flush();
+  assert.throws(() => extractReview(f.events, "worker-1", "root", { root: f.root }), /must complete successfully/);
+});

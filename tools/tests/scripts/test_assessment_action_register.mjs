@@ -696,3 +696,113 @@ test("CLI argument failures are explicit nonzero JSON, never silent defaults", (
     assert.equal(JSON.parse(result.stdout).valid, false);
   }
 });
+
+test("optional action disposition preserves exact byte parity when absent and renders cleanly when supplied", (t) => {
+  const { root, f } = setup(t, true);
+  const opts = options(root, f);
+  assert.equal(renderAssessmentActionRegister(opts).valid, true);
+  const baselineMd = fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.markdown));
+  const baselineXlsx = fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.workbook));
+  const baselineDerived = JSON.parse(fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.derived), "utf8"));
+  assert.equal(Object.hasOwn(baselineDerived.actions[0], "disposition"), false);
+
+  // Explicit disposition updates derived, Markdown and workbook readback cleanly.
+  f.data.actions[0].disposition = "intentional_lab_tradeoff";
+  f.save();
+  assert.equal(renderAssessmentActionRegister({ ...opts, overwrite: true }).valid, true);
+  const withDispDerived = JSON.parse(fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.derived), "utf8"));
+  assert.equal(withDispDerived.actions[0].disposition, "intentional_lab_tradeoff");
+  const mdText = fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.markdown), "utf8");
+  assert.match(mdText, /Disposition: intentional\\_lab\\_tradeoff/);
+
+  // Removing disposition restores exact derived/Markdown/workbook byte parity.
+  delete f.data.actions[0].disposition;
+  f.save();
+  assert.equal(renderAssessmentActionRegister({ ...opts, overwrite: true }).valid, true);
+  assert.deepEqual(fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.markdown)), baselineMd);
+  assert.deepEqual(fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.workbook)), baselineXlsx);
+
+  // Invalid disposition enum fails validation.
+  f.data.actions[0].disposition = "invalid_disposition";
+  f.save();
+  assert.equal(calculate(f, root).valid, false);
+});
+
+test("workbook read-back sidecar is emitted, byte-verified from xlsx, and legacy compatible receipts remain valid", (t) => {
+  const { root, f } = setup(t, true);
+  const opts = options(root, f);
+  const res = renderAssessmentActionRegister(opts);
+  assert.equal(res.valid, true);
+
+  const readbackPath = path.join(root, ACTION_REGISTER_OUTPUTS.readback);
+  assert.equal(fs.existsSync(readbackPath), true);
+  const readback = JSON.parse(fs.readFileSync(readbackPath, "utf8"));
+  assert.equal(readback.schema_version, "action-register-workbook-readback-v1");
+  assert.equal(readback.formula_cell_count, 0);
+  assert.equal(readback.hyperlink_count, 0);
+  assert.equal(readback.sheets.length, 3);
+  assert.equal(readback.workbook_sha256, res.receipt.output_hashes.workbook);
+  assert.equal(Array.isArray(readback.sheets[0].rows), true);
+  assert.equal(Array.isArray(readback.sheets[1].rows), true);
+  assert.equal(Object.hasOwn(readback.sheets[2], "rows"), false);
+  assert.match(readback.sheets[2].rows_sha256, /^[0-9a-f]{64}$/);
+
+  // Tampering with cell values inside readback JSON while recomputing its receipt hash still fails workbook parity!
+  const originalReadbackBytes = fs.readFileSync(readbackPath);
+  const originalReceiptBytes = fs.readFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.receipt));
+  const tampered = structuredClone(readback);
+  tampered.sheets[0].rows[0][0] = "Tampered Category";
+  const tamperedBytes = Buffer.from(`${JSON.stringify(tampered, null, 2)}\n`, "utf8");
+  fs.writeFileSync(readbackPath, tamperedBytes);
+  const tamperedReceipt = JSON.parse(originalReceiptBytes.toString("utf8"));
+  tamperedReceipt.output_hashes.readback = digest(tamperedBytes);
+  fs.writeFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.receipt), `${JSON.stringify(tamperedReceipt, null, 2)}\n`);
+  const badCheck = validateAssessmentActionRegisterExport(opts);
+  assert.equal(badCheck.valid, false);
+  assert.match(badCheck.errors.join("\n"), /Workbook read-back JSON differs/);
+
+  // 1. Legacy pre-#837 compatible 3-key receipt (readback_mode: "none") passes without readback sidecar.
+  fs.unlinkSync(readbackPath);
+  const compat = JSON.parse(
+    fs.readFileSync(
+      path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../registry/register-tool-compatibility.json"),
+      "utf8",
+    ),
+  );
+  const pre837Snapshot = compat.compatible_tool_snapshots.find((s) => s.readback_mode === "none");
+  const legacyReceipt = JSON.parse(originalReceiptBytes.toString("utf8"));
+  delete legacyReceipt.output_hashes.readback;
+  legacyReceipt.tool_hashes = pre837Snapshot.tool_hashes;
+  fs.writeFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.receipt), `${JSON.stringify(legacyReceipt, null, 2)}\n`);
+  const legacyCheck = validateAssessmentActionRegisterExport(opts);
+  assert.equal(legacyCheck.valid, true, legacyCheck.errors.join("; "));
+
+  // 2. PR #837 4-key receipt (readback_mode: "legacy_full_rows") rejects missing readback, and accepts deterministic v1 full-row readback!
+  const pr837Snapshot = compat.compatible_tool_snapshots.find((s) => s.readback_mode === "legacy_full_rows");
+  legacyReceipt.tool_hashes = pr837Snapshot.tool_hashes;
+  fs.writeFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.receipt), `${JSON.stringify(legacyReceipt, null, 2)}\n`);
+  assert.equal(validateAssessmentActionRegisterExport(opts).valid, false);
+
+  const legacyFullReadback = spawnSync(
+    "python3",
+    [
+      "-c",
+      `import importlib.util, json, pathlib; spec = importlib.util.spec_from_file_location("r", "tools/scripts/render-assessment-action-register.py"); m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m); root = pathlib.Path(json.loads(${JSON.stringify(JSON.stringify(root))})); p = m.verified_payload(root, root / m.SOURCE, ${JSON.stringify(opts.asOf)}); print(m.workbook_readback_json((root / m.XLSX).read_bytes(), p, compact=False), end="")`,
+    ],
+    { encoding: "utf8" },
+  );
+  assert.equal(legacyFullReadback.status, 0, legacyFullReadback.stderr);
+  const fullBytes = Buffer.from(legacyFullReadback.stdout, "utf8");
+  fs.writeFileSync(readbackPath, fullBytes);
+  const pr837Receipt = JSON.parse(originalReceiptBytes.toString("utf8"));
+  pr837Receipt.tool_hashes = pr837Snapshot.tool_hashes;
+  pr837Receipt.output_hashes.readback = digest(fullBytes);
+  fs.writeFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.receipt), `${JSON.stringify(pr837Receipt, null, 2)}\n`);
+  const pr837Check = validateAssessmentActionRegisterExport(opts);
+  assert.equal(pr837Check.valid, true, pr837Check.errors.join("; "));
+
+  // Restore current export cleanly.
+  fs.writeFileSync(readbackPath, originalReadbackBytes);
+  fs.writeFileSync(path.join(root, ACTION_REGISTER_OUTPUTS.receipt), originalReceiptBytes);
+  assert.equal(validateAssessmentActionRegisterExport(opts).valid, true);
+});

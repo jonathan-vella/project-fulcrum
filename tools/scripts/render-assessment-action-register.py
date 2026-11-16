@@ -2,6 +2,7 @@
 """Deterministic snapshot views; signed amounts and summaries are verified by the Node calculator."""
 
 import argparse
+import hashlib
 import html
 import io
 import json
@@ -29,8 +30,10 @@ SAVINGS_FORMAT = '[Green]#,##0.00;[Green](#,##0.00);"0.00"'
 SOURCE = "contracts/assessment-action-register.json"
 MD = "04-assessment-action-register.md"
 XLSX = "assets/04-assessment-action-register.xlsx"
+READBACK = "_meta/action-register-workbook-readback.json"
 STAGED_MD = "_meta/action-register-staged.md"
 STAGED_XLSX = "_meta/action-register-staged.xlsx"
+STAGED_READBACK = "_meta/action-register-staged-readback.json"
 SCRIPT = Path(__file__).with_name("assessment-action-register.mjs")
 NOTICE = (
     "Generated snapshot: recommendations only, not approved actions, deadlines, an invoice or a forecast. "
@@ -165,6 +168,11 @@ def view_rows(payload: dict) -> list[tuple[tuple[str, ...], list[list[object]]]]
             resource = resources[resource_id]
             count = "count unknown" if resource["count"] is None else f"evidenced count {resource['count']}"
             affected.append(f"{resource['name']} ({resource['type']}; {count})")
+        note_items = (
+            ([f"Disposition: {action['disposition']}"] if "disposition" in action else [])
+            + action["notes"]
+            + [f"Dependencies: {', '.join(action['dependencies']) or 'none supplied'}"]
+        )
         action_rows.append(
             [
                 action["category"],
@@ -174,7 +182,7 @@ def view_rows(payload: dict) -> list[tuple[tuple[str, ...], list[list[object]]]]
                 "; ".join(affected) or "Resource attribution unknown / proposed service",
                 amount(value["display_contribution"]),
                 action["effort"],
-                "; ".join(action["notes"] + [f"Dependencies: {', '.join(action['dependencies']) or 'none supplied'}"]),
+                "; ".join(note_items),
                 action["comments"],
                 action["status"],
                 action["target_window"],
@@ -258,7 +266,7 @@ def view_rows(payload: dict) -> list[tuple[tuple[str, ...], list[list[object]]]]
         basis_rows.append(
             ["Action", action["id"], "Applicability", f"{action['applicability']}; {action.get('condition', '')}"]
         )
-        for key in ("alternative_group", "overlap_group", "critical_evidence_id", "lifecycle"):
+        for key in ("disposition", "alternative_group", "overlap_group", "critical_evidence_id", "lifecycle"):
             if key in action:
                 basis_rows.append(["Action", action["id"], key, json.dumps(action[key], ensure_ascii=False)])
         finance = action["finance"]
@@ -653,26 +661,119 @@ def validate_workbook(content: bytes, payload: dict) -> None:
         raise ValueError("Workbook bytes differ from the deterministic verified snapshot")
 
 
-def validate_export(root: Path, payload: dict, *, staged: bool = False) -> None:
+def workbook_readback_json(content: bytes, payload: dict, *, compact: bool = True) -> str:
+    workbook = load_workbook(io.BytesIO(content), data_only=False, keep_links=False)
+    try:
+        sheets = []
+        formula_cells = 0
+        hyperlink_cells = 0
+        for index, sheet_name in enumerate(SHEETS):
+            sheet = workbook[sheet_name]
+            max_row = sheet.max_row
+            max_col = sheet.max_column
+            for row in sheet.iter_rows(min_row=1, max_row=max_row, min_col=1, max_col=max_col):
+                for cell in row:
+                    if cell.data_type == "f":
+                        formula_cells += 1
+                    if cell.hyperlink:
+                        hyperlink_cells += 1
+            headers = [sheet.cell(4, col).value for col in range(1, max_col + 1)]
+            rows = [[sheet.cell(r, col).value for col in range(1, max_col + 1)] for r in range(5, max_row + 1)]
+            if compact:
+                rows_digest = hashlib.sha256(
+                    json.dumps(rows, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+                ).hexdigest()
+                sheet_entry: dict[str, object] = {
+                    "name": sheet_name,
+                    "state": sheet.sheet_state,
+                    "table_name": TABLES[index],
+                    "table_ref": sheet.tables[TABLES[index]].ref,
+                    "freeze_panes": sheet.freeze_panes,
+                    "row_count": len(rows),
+                    "column_count": max_col,
+                    "headers": headers,
+                    "rows_sha256": rows_digest,
+                }
+                if index < 2:
+                    sheet_entry["rows"] = rows
+                else:
+                    sheet_entry["rows_omitted_reason"] = (
+                        "Verified via rows_sha256 and rendered verbatim in 04-assessment-action-register.md ## Basis of Estimate"
+                    )
+                sheets.append(sheet_entry)
+            else:
+                sheets.append(
+                    {
+                        "name": sheet_name,
+                        "state": sheet.sheet_state,
+                        "table_name": TABLES[index],
+                        "table_ref": sheet.tables[TABLES[index]].ref,
+                        "freeze_panes": sheet.freeze_panes,
+                        "row_count": len(rows),
+                        "column_count": max_col,
+                        "headers": headers,
+                        "rows": rows,
+                    }
+                )
+        doc = {
+            "schema_version": "action-register-workbook-readback-v1",
+            "project": payload["register"]["project"],
+            "workbook_path": XLSX,
+            "workbook_sha256": hashlib.sha256(content).hexdigest(),
+            "source_sha256": payload["source_sha256"],
+            "derived_sha256": payload["derived_sha256"],
+            "formula_cell_count": formula_cells,
+            "hyperlink_count": hyperlink_cells,
+            "sheets": sheets,
+        }
+        return json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
+    finally:
+        workbook.close()
+
+
+def validate_export(
+    root: Path,
+    payload: dict,
+    *,
+    staged: bool = False,
+    require_readback: bool = False,
+    allow_legacy_readback: bool = False,
+) -> None:
     md_file = safe_path(root, STAGED_MD if staged else MD)
     xlsx_file = safe_path(root, STAGED_XLSX if staged else XLSX)
     if md_file.stat().st_size > 32 * 1024 * 1024 or xlsx_file.stat().st_size > 32 * 1024 * 1024:
         raise ValueError("Oversized export")
     if md_file.read_text(encoding="utf-8") != markdown(payload):
         raise ValueError("Markdown source/financial summary mismatch")
-    validate_workbook(xlsx_file.read_bytes(), payload)
+    xlsx_bytes = xlsx_file.read_bytes()
+    validate_workbook(xlsx_bytes, payload)
+    readback_rel = STAGED_READBACK if staged else READBACK
+    readback_candidate = safe_path(root, readback_rel, missing=not (staged or require_readback))
+    if staged or require_readback or readback_candidate.is_file():
+        if readback_candidate.stat().st_size > 32 * 1024 * 1024:
+            raise ValueError("Oversized workbook read-back")
+        actual_text = readback_candidate.read_text(encoding="utf-8")
+        expected_compact = workbook_readback_json(xlsx_bytes, payload, compact=True)
+        if actual_text != expected_compact and not (
+            not staged
+            and allow_legacy_readback
+            and actual_text == workbook_readback_json(xlsx_bytes, payload, compact=False)
+        ):
+            raise ValueError("Workbook read-back JSON differs from the verified workbook bytes")
 
 
 def render_export(root: Path, payload: dict) -> None:
     md_file = safe_path(root, STAGED_MD, missing=True)
     xlsx_file = safe_path(root, STAGED_XLSX, missing=True)
+    readback_file = safe_path(root, STAGED_READBACK, missing=True)
     if not md_file.parent.is_dir():
         raise ValueError("Owned _meta staging directory required")
     content = workbook_bytes(payload)
     validate_workbook(content, payload)
     md_file.write_text(markdown(payload), encoding="utf-8", newline="\n")
     xlsx_file.write_bytes(content)
-    validate_export(root, payload, staged=True)
+    readback_file.write_text(workbook_readback_json(content, payload), encoding="utf-8", newline="\n")
+    validate_export(root, payload, staged=True, require_readback=True)
 
 
 def main() -> int:
@@ -682,6 +783,8 @@ def main() -> int:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--as-of", required=True)
     parser.add_argument("--staged", action="store_true")
+    parser.add_argument("--require-readback", action="store_true")
+    parser.add_argument("--allow-legacy-readback", action="store_true")
     args = parser.parse_args()
     try:
         supplied = json.loads(sys.stdin.read()) if not sys.stdin.isatty() else None
@@ -691,7 +794,13 @@ def main() -> int:
                 raise ValueError("Renderer only writes staging; use Node render to publish a receipt")
             render_export(args.root, payload)
         else:
-            validate_export(args.root, payload, staged=args.staged)
+            validate_export(
+                args.root,
+                payload,
+                staged=args.staged,
+                require_readback=args.require_readback,
+                allow_legacy_readback=args.allow_legacy_readback,
+            )
         print(json.dumps({"valid": True, "errors": [], "renderer_version": f"openpyxl-{openpyxl.__version__}"}))
         return 0
     except (
