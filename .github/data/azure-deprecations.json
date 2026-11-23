@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-06-22T12:09:22.357Z",
-  "totalCount": 6,
+  "lastUpdated": "2026-11-23T17:54:32.285Z",
+  "totalCount": 13,
   "sources": [
     "manual-known",
     "azure-updates-rss"
@@ -12,7 +12,8 @@
       "sunsetDate": "2024-03-31",
       "replacement": "Basic/Standard/Premium",
       "source": "manual",
-      "addedDate": "2023-01-01"
+      "addedDate": "2023-01-01",
+      "status": "retired"
     },
     {
       "service": "Azure CDN",
@@ -20,7 +21,8 @@
       "sunsetDate": "2025-09-30",
       "replacement": "Standard_AzureFrontDoor",
       "source": "manual",
-      "addedDate": "2024-01-15"
+      "addedDate": "2024-01-15",
+      "status": "retired"
     },
     {
       "service": "Azure CDN",
@@ -28,7 +30,8 @@
       "sunsetDate": "2025-09-30",
       "replacement": "Premium_AzureFrontDoor",
       "source": "manual",
-      "addedDate": "2024-01-15"
+      "addedDate": "2024-01-15",
+      "status": "retired"
     },
     {
       "service": "Application Gateway",
@@ -36,7 +39,8 @@
       "sunsetDate": "2026-04-28",
       "replacement": "Standard_v2",
       "source": "manual",
-      "addedDate": "2024-06-01"
+      "addedDate": "2024-06-01",
+      "status": "retired"
     },
     {
       "service": "Application Gateway",
@@ -44,7 +48,77 @@
       "sunsetDate": "2026-04-28",
       "replacement": "WAF_v2",
       "source": "manual",
-      "addedDate": "2024-06-01"
+      "addedDate": "2024-06-01",
+      "status": "retired"
+    },
+    {
+      "service": "Support for .NET",
+      "title": "Retirement: Support for .NET 8 and .NET 9 on Static Web Apps is ending November 10, 2026",
+      "link": "https://azure.microsoft.com/updates?id=575106",
+      "pubDate": "Mon, 09 Nov 2026 22:50:01 Z",
+      "source": "azure-updates-rss",
+      "sunsetDate": "2026-11-10",
+      "replacement": null,
+      "status": "retired"
+    },
+    {
+      "service": "Azure Cache for Redis",
+      "sku": "Enterprise, Enterprise Flash",
+      "sunsetDate": "2027-03-31",
+      "replacement": "Azure Managed Redis",
+      "source": "manual",
+      "notes": "https://learn.microsoft.com/azure/azure-cache-for-redis/retirement-faq",
+      "addedDate": "2026-10-13",
+      "status": "upcoming"
+    },
+    {
+      "service": "Transition to Entra",
+      "title": "Retirement: Transition to Entra ID (formerly known as Azure AD) to query data from Azure Monitor application insights by March 31, 2027",
+      "link": "https://azure.microsoft.com/updates?id=transition-to-azure-ad-to-query-data-from-azure-monitor-application-insights-by-31-march-2026",
+      "pubDate": "Mon, 15 May 2023 19:51:58 Z",
+      "source": "azure-updates-rss",
+      "sunsetDate": "2027-03-31",
+      "replacement": null,
+      "status": "upcoming"
+    },
+    {
+      "service": "Support for Azure Functions",
+      "title": "Retirement: Support for Azure Functions OpenAI Extension ends on April 20, 2027",
+      "link": "https://azure.microsoft.com/updates?id=579952",
+      "pubDate": "Fri, 20 Nov 2026 23:16:31 Z",
+      "source": "azure-updates-rss",
+      "sunsetDate": "2027-04-20",
+      "replacement": null,
+      "status": "upcoming"
+    },
+    {
+      "service": "Azure Cache for Redis",
+      "sku": "Basic, Standard, Premium",
+      "sunsetDate": "2028-09-30",
+      "replacement": "Azure Managed Redis",
+      "source": "manual",
+      "notes": "https://learn.microsoft.com/azure/azure-cache-for-redis/retirement-faq",
+      "addedDate": "2026-10-13",
+      "status": "upcoming"
+    },
+    {
+      "service": "Azure Functions",
+      "sku": "Linux Consumption",
+      "sunsetDate": "2028-09-30",
+      "replacement": "Flex Consumption",
+      "source": "manual",
+      "addedDate": "2026-10-13",
+      "status": "upcoming"
+    },
+    {
+      "service": "Data Share",
+      "title": "Retirement: Azure Data Share will be retired on November 12, 2029",
+      "link": "https://azure.microsoft.com/updates?id=578818",
+      "pubDate": "Fri, 13 Nov 2026 19:54:45 Z",
+      "source": "azure-updates-rss",
+      "sunsetDate": "2029-11-12",
+      "replacement": null,
+      "status": "upcoming"
     },
     {
       "service": "Azure Service Bus",
