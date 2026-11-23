@@ -22,11 +22,13 @@ export const ACTION_REGISTER_OUTPUTS = Object.freeze({
   markdown: "04-assessment-action-register.md",
   workbook: "assets/04-assessment-action-register.xlsx",
   derived: "_meta/action-register-derived.json",
+  readback: "_meta/action-register-workbook-readback.json",
   receipt: "_meta/action-register-export.json",
 });
 const STAGED = {
   markdown: "_meta/action-register-staged.md",
   workbook: "_meta/action-register-staged.xlsx",
+  readback: "_meta/action-register-staged-readback.json",
 };
 const TOOL_FILES = [
   "assessment-action-register.mjs",
@@ -171,6 +173,27 @@ export function safeEvidenceUrl(value) {
 
 function toolHashes() {
   return Object.fromEntries(TOOL_FILES.map((file) => [file, digest(fs.readFileSync(path.resolve(HERE, file)))]));
+}
+
+function resolveToolSnapshotPolicy(recorded) {
+  if (isDeepStrictEqual(recorded, toolHashes())) {
+    return { compatible: true, readbackMode: "compact" };
+  }
+  const registryPath = path.resolve(HERE, "../registry/register-tool-compatibility.json");
+  if (!fs.existsSync(registryPath)) return { compatible: false, readbackMode: null };
+  const policy = readJson(registryPath);
+  if (policy?.contract !== "register-tool-compatibility-v1" || !Array.isArray(policy.compatible_tool_snapshots)) {
+    return { compatible: false, readbackMode: null };
+  }
+  const match = policy.compatible_tool_snapshots.find(
+    (entry) =>
+      typeof entry?.rationale === "string" &&
+      entry.rationale.trim().length > 0 &&
+      isDeepStrictEqual(recorded, entry.tool_hashes),
+  );
+  if (!match) return { compatible: false, readbackMode: null };
+  const mode = ["none", "legacy_full_rows", "compact"].includes(match.readback_mode) ? match.readback_mode : "none";
+  return { compatible: true, readbackMode: mode };
 }
 
 function comparableRetail(leaf, basis) {
@@ -535,6 +558,7 @@ function calculateInternal(data, { root, asOf, evidenceHashes = {} }) {
     }
     derivedActions.push({
       id: action.id,
+      ...(action.disposition !== undefined ? { disposition: action.disposition } : {}),
       monthly_contribution: contribution,
       display_contribution: displayCost(contribution),
       currency: basis.currency,
@@ -709,7 +733,14 @@ function checked(root, input, asOf) {
   };
 }
 
-function python(operation, root, input, asOf, payload, staged = false) {
+function python(
+  operation,
+  root,
+  input,
+  asOf,
+  payload,
+  { staged = false, requireReadback = false, allowLegacyReadback = false } = {},
+) {
   const result = spawnSync(
     "python3",
     [
@@ -722,6 +753,8 @@ function python(operation, root, input, asOf, payload, staged = false) {
       "--as-of",
       asOf,
       ...(staged ? ["--staged"] : []),
+      ...(requireReadback ? ["--require-readback"] : []),
+      ...(allowLegacyReadback ? ["--allow-legacy-readback"] : []),
     ],
     { input: JSON.stringify(payload), encoding: "utf8", maxBuffer: 8 * 1024 * 1024, timeout: 120000 },
   );
@@ -764,26 +797,42 @@ export function validateAssessmentActionRegisterExport({ root, input, asOf }) {
   try {
     const payload = checked(root, input, asOf);
     const receipt = JSON.parse(reader(root)(ACTION_REGISTER_OUTPUTS.receipt));
+    const toolPolicy = resolveToolSnapshotPolicy(receipt.tool_hashes);
     requireValue(
       receipt.schema_version === "action-register-export-v1" &&
         receipt.source_sha256 === payload.source_sha256 &&
         receipt.derived_sha256 === payload.derived_sha256 &&
-        isDeepStrictEqual(receipt.tool_hashes, toolHashes()) &&
+        toolPolicy.compatible &&
         isDeepStrictEqual(receipt.evidence_hashes, sourceHashes(payload, root)),
       "Stale export receipt/source/derivation hashes",
     );
     requireValue(
-      isDeepStrictEqual(Object.keys(receipt.output_hashes).sort(), ["markdown", "workbook", "derived"].sort()),
+      receipt.output_hashes !== null &&
+        typeof receipt.output_hashes === "object" &&
+        !Array.isArray(receipt.output_hashes),
       "Receipt output contract mismatch",
     );
-    for (const name of ["markdown", "workbook", "derived"])
+    const keys = Object.keys(receipt.output_hashes).sort();
+    const hasReadback = Object.hasOwn(receipt.output_hashes, "readback");
+    const expectedKeys =
+      toolPolicy.readbackMode === "none"
+        ? ["markdown", "workbook", "derived"].sort()
+        : ["markdown", "workbook", "derived", "readback"].sort();
+    requireValue(
+      isDeepStrictEqual(keys, expectedKeys) && (toolPolicy.readbackMode === "none" ? !hasReadback : hasReadback),
+      "Receipt output contract mismatch",
+    );
+    for (const name of expectedKeys)
       requireValue(
         digest(reader(root)(ACTION_REGISTER_OUTPUTS[name])) === receipt.output_hashes[name],
         `Export hash mismatch: ${name}`,
       );
     const saved = JSON.parse(reader(root)(ACTION_REGISTER_OUTPUTS.derived));
     requireValue(isDeepStrictEqual(saved, payload.derived), "Derived sidecar mismatch");
-    const readback = python("validate", root, input, asOf, payload);
+    const readback = python("validate", root, input, asOf, payload, {
+      requireReadback: hasReadback,
+      allowLegacyReadback: toolPolicy.readbackMode === "legacy_full_rows",
+    });
     requireValue(receipt.renderer_version === readback.renderer_version, "Renderer dependency version changed");
     return { valid: true, errors: [], receipt };
   } catch (error) {
@@ -798,7 +847,7 @@ export function renderAssessmentActionRegister({ root, input, asOf, overwrite = 
   for (const relative of [...Object.values(ACTION_REGISTER_OUTPUTS), ...Object.values(STAGED)])
     projectPath(root, relative, { missing: true });
   const pendingPath = projectPath(root, "_meta/action-register-export.pending.json", { missing: true });
-  const finals = ["markdown", "workbook", "derived", "receipt"];
+  const finals = ["markdown", "workbook", "derived", "readback", "receipt"];
   let recovering = false;
   if (fs.existsSync(pendingPath)) {
     const pending = readJson(pendingPath);
@@ -862,8 +911,8 @@ export function renderAssessmentActionRegister({ root, input, asOf, overwrite = 
       }),
     );
     writeJson(pendingPath, { ...provenance, previous_output_hashes: previousOutputHashes });
-    const rendered = python("render", root, input, asOf, payload, true);
-    python("validate", root, input, asOf, payload, true);
+    const rendered = python("render", root, input, asOf, payload, { staged: true });
+    python("validate", root, input, asOf, payload, { staged: true, requireReadback: true });
     const refreshed = checked(root, input, asOf);
     requireValue(
       refreshed.source_sha256 === payload.source_sha256 &&
@@ -877,6 +926,7 @@ export function renderAssessmentActionRegister({ root, input, asOf, overwrite = 
       markdown: digest(reader(root)(STAGED.markdown)),
       workbook: digest(reader(root)(STAGED.workbook)),
       derived: digest(fs.readFileSync(stagedDerived)),
+      readback: digest(reader(root)(STAGED.readback)),
     };
     const receipt = {
       schema_version: "action-register-export-v1",
@@ -902,7 +952,7 @@ export function renderAssessmentActionRegister({ root, input, asOf, overwrite = 
       );
     }
     // Receipt is the commit marker: readers reject any partial pair until it is published last.
-    for (const key of ["markdown", "workbook"])
+    for (const key of ["markdown", "workbook", "readback"])
       fs.renameSync(projectPath(root, STAGED[key]), projectPath(root, ACTION_REGISTER_OUTPUTS[key], { missing: true }));
     fs.renameSync(stagedDerived, projectPath(root, ACTION_REGISTER_OUTPUTS.derived, { missing: true }));
     fs.renameSync(stagedReceipt, projectPath(root, ACTION_REGISTER_OUTPUTS.receipt, { missing: true }));

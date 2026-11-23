@@ -27,9 +27,14 @@ Use one field per independent input and retain the complete captured-answer ledg
 Do not treat default options, local IDs, task output or Autopilot responses as independent human authorization.
 
 For static sources record exact allowed files/directories. For live sources record the tenant, subscriptions
-and resource-group boundaries, plus allowed read categories: configuration/topology, utilization, operations,
+and resource-group boundaries, optional disjoint `scope.rg_attribution` (`workload_rgs`, `shared_rgs`,
+`excluded_rgs` so unrelated or orphaned resource groups are classified explicitly without widening scope),
+plus allowed read categories: configuration/topology, utilization, operations,
 cost and optionally policy. Referenced external subscriptions remain out of scope unless explicitly added.
 Do not request secrets, sign in, change credentials or broaden access automatically.
+Use `python3 tools/scripts/collect-assessment-evidence.py --project-dir agent-output/<project>` to collect
+paginated, scalar-allowlisted inventory, topology, configuration, operations, recovery and policy headers
+uniformly across all approved scopes without persisting raw ARM properties, secrets or tag values.
 
 Cost settings are part of the scope: last completed calendar month, preceding-month comparison,
 month-to-date and current-month forecast when available are suggested defaults. Persist resolved dates;
@@ -63,11 +68,17 @@ apex-recall handoff example --json
 In the show response, `.session.assessment_run` is the authoritative route/checkpoint and
 `.session.assessment_readiness` is current validation, not permission.
 `.session.assessment_cost_plan` is derived from captured reporting settings, not the report being checked.
-Graph 3.2 starts persist `assessment_run.bundle_contract: "assessment-bundle-v2"` and
+Graph 3.2 and 3.3 starts persist `assessment_run.bundle_contract: "assessment-bundle-v2"` by default
+(or `"assessment-bundle-v3"` under graph 3.3 when the scope request sets `"visual_charts": true`) and
 `assessment_run.action_register`: true for Azure/combined, false for IaC unless the actual request
-contains `"action_register": true`. Do not send a guessed `bundle_contract` in the scope request.
-The reader explicitly supports graphs 3.1 and 3.2, not arbitrary future versions.
-An original run without `bundle_contract` remains `assessment-bundle-v1` even under graph 3.2;
+contains `"action_register": true`. For `assessment-bundle-v3`, `03-Architect` writes `_meta/waf-scores.json`
+and runs `python3 tools/scripts/render-assessment-charts.py --project-dir agent-output/<project>` during
+`analysis` to emit `assets/02-waf-posture.{png,svg}`, `assets/03-cost-trends.{png,svg}`, and
+`assets/03-cost-drivers.{png,svg}` (embedded inline in `02-architecture-assessment.md` and
+`03-cost-management-report.md`); do not write project-local `assets/03-cost-*.py` monkey-patch wrappers around
+the shared chart renderer. Do not send a guessed `bundle_contract` in the scope request.
+The reader explicitly supports graphs 3.1, 3.2 and 3.3, not arbitrary future versions.
+An original run without `bundle_contract` remains `assessment-bundle-v1` even under graph 3.2/3.3;
 file presence, newer source or a resume never opts it in.
 
 The graph phase IDs are `scope`, optional `requirements`, `evidence`, `analysis`, `diagram`,
@@ -152,6 +163,11 @@ not a second routing table. Use current `apex-recall show` and `handoff` assessm
 4. Design renders the required existing-state diagram from the validated analysis and evidence.
    There is no intermediate Architecture approval or optional-design scope question in this profile.
    Use `.github/skills/apex-python-diagrams/SKILL.md`; execute only owned generated code.
+   Bound output to `assets/03-des-diagram.{py,png,svg}` (plus at most one optional
+   `assets/03-des-inventory.{py,png,svg}` companion for `>80`-resource multi-subscription scopes, keeping
+   resource-family count pills inside secondary subscription cards on the primary diagram) and verify with
+   `python3 tools/scripts/validate-assessment-diagram.py --project-dir agent-output/<project>` rather than
+   writing custom per-project checker scripts.
    Distinguish observed, declared, inferred and unverified connections; do not adopt a redesigned topology.
    Inspect both PNG and SVG, embedded icons and legibility, not merely nonzero file size.
    When no topology is evidenced, render the explicit scope boundary and "Topology not assessed"
@@ -161,7 +177,11 @@ not a second routing table. Use current `apex-recall show` and `handoff` assessm
    and separate cost-feasibility lenses when nested tasks are available. Otherwise return `REVIEW_REQUIRED`
    for the authorized interactive parent's sibling invocation; existing native task, recorder and freshness rules apply.
    Architecture review includes the diagram and evidence as supporting inputs. Cost review includes cost
-   source/coverage and actual query or verified pricing evidence.
+   source/coverage and actual query or verified pricing evidence; bound `supporting_inputs` to canonical
+   contracts, evidence and rendered outputs rather than `_meta/scratch/**` scripts.
+   When both lenses review the same frozen `input_digest`, record their `started` audit entries sequentially,
+   invoke both read-only `mode: sync` `challenger-review-subagent` tasks in parallel, then run
+   `record-review.mjs` and `completed` audit writes sequentially.
    The register source and exports belong to this same bundle. WAF review checks finding linkage,
    priorities, applicability and proposed status; cost review checks financial-kind evidence,
    signed contributions, exclusions, cross-report benefit deduplication and render consistency.
@@ -204,6 +224,13 @@ The register's `04-` filename never means numeric IaC Step 4. Original assessmen
 retroactively require it. Use the persisted output contract and recall readiness, not file numbering,
 to determine conditional outputs. New contract adoption preserves prior approvals and spent reviews;
 changed reviewed inputs require current review evidence, not a fresh allowance.
+
+Git publication checks route explicit standalone runs through `assessment_run`, not numeric delivery gates.
+Schema-valid in-progress bundles before acceptance may be committed as drafts with unresolved reviews and
+spent allowances intact; publication never accepts a bundle or authorizes downstream work. Acceptance and
+terminal snapshots require the selected WAF and cost sidecars (terminal snapshots also verify recorded
+sidecar hashes), and downstream delivery history/artifacts cannot use this draft route. ESLint hooks ignore
+configured ignored paths (`--no-warn-ignored`) while still blocking warnings/errors in source files.
 
 The evidence contract is `{coverage,checks:[{category,scope,status,evidence}]}`.
 Use the authorized read-category names and exact approved scope; evidence entries point to retained
